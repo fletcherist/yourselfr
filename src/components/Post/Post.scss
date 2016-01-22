@@ -1,0 +1,77 @@
+.post:first-child {
+	padding-top: 18px;
+}
+.post {
+
+	word-wrap: break-word;
+	padding: 10px 0px 20px 5px;
+	font-size: 18px;
+	justify-content: left;
+	display: flex;
+	.time {
+		font-size: 14px;
+		align-self: center;
+		padding: 0px 0px 0px 10px;
+		color: #B1B1B1;
+		width: 80px;
+	}
+	.text {
+		width: 70%;
+		font-weight: 400;
+		color: #303030;
+		
+		@media screen and (max-width: 540px) {
+			max-width: 65%;
+		}
+	}
+	.like {
+		align-self: center;
+	}
+	.fav {
+		align-self: center;
+	}
+	.attachment-photo-back {
+		margin-top: 10px;
+		// width: 402px;
+		// background-color: #FCFCFC;
+	}
+	.attachment-photo {
+		max-width: 340px;
+		background-color: #EFEFEF;
+		border-radius: 2px;
+		
+		@media screen and (max-width: 1000px) {
+			max-width: 99%;
+		}
+		@media screen and (max-width: 480px) {
+			max-width: 222px;
+		}
+	}
+}
+.hot {
+	background-color: #F2FAFF;
+}
+
+
+
+.remove-button {
+	position: absolute;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .2s;
+	display: none;
+	margin-top: -14px;
+}
+.remove-button:hover {
+	opacity: 1 !important;
+}
+
+.post:hover .remove-button {
+	display: block;
+	opacity: .6;
+}
+.post:hover .hide-onhover {
+	display: none;
+}

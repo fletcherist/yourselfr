@@ -1,0 +1,28 @@
+.counter {
+	width: 29.333%;
+	display: inline-block;
+	padding: 10px 0px 20px 10px;
+	text-align: center;
+
+	a {
+		text-decoration: none;
+		color: black;
+	}
+}
+
+.counter_count {
+	// font-weight: bold;
+	text-align: center;
+	font-size: 20px;
+}
+.counter_title {
+	font-weight: 500;
+	// color: #6F6F6F;
+	color: #999;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+.counter_divider {
+	// border-right: 1px solid #DCDCDC;
+	height: 30px;
+}

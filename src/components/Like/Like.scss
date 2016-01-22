@@ -1,0 +1,48 @@
+.like {
+	align-self: center;
+	margin-left: 20px;
+	min-width: 40px;
+	.count {
+		position: absolute;
+		font-weight: 700;
+		margin-top: -2px;
+		margin-left: 6px;
+		font-size: 13px;
+		color:  #148BC3;
+	}
+	
+	.button {
+		-webkit-mask: url(./like.svg) no-repeat 50% 50%;
+		mask: url(./like.svg) no-repeat 50% 50%;
+		-webkit-mask-size: cover;
+		mask-size: cover;
+
+		width: 18px;
+		height: 18px;
+		cursor: pointer;
+		opacity: .3;
+		transition: opacity .5s;
+		outline: 0px;
+		outline-width: 0px;
+		mask-size: cover;
+		-webkit-mask-size: cover;
+		display: inline-block;
+		transition: transform .4s, background-color 2s, opacity .4s;
+		cursor: pointer;
+	}
+	.inactive {
+		/*background: #FF5252;*/
+		background: #148BC3;
+		opacity: .2 !important;
+	}
+	.active {
+		background: #148BC3;
+		opacity: .7 !important;
+		/-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+	
+}
