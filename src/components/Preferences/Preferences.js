@@ -1,12 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './Preferences.scss';
-import withStyles from '../../decorators/withStyles';
 
 import Redux from 'redux';
-
-
-@withStyles(s)
 
 class Preferences extends React.Component {
     constructor(props) {
@@ -20,12 +16,6 @@ class Preferences extends React.Component {
 
     }
 
-    static propTypes = {
-        username: React.PropTypes.string.isRequired,
-        alias: React.PropTypes.string.isRequired,
-        about: React.PropTypes.string
-    }
-
     handle(e){
         console.log("sadasd");
         this.setState({
@@ -34,7 +24,7 @@ class Preferences extends React.Component {
     }
 
     render() {
-        // var posts 
+        // var posts
         return(
             <div className={s.container}>
                 <h3>имя</h3>
@@ -56,4 +46,11 @@ class Preferences extends React.Component {
         );
     }
 }
+
+Preferences.propTypes = {
+  username: React.PropTypes.string.isRequired,
+  alias: React.PropTypes.string.isRequired,
+  about: React.PropTypes.string
+};
+
 export default Preferences;

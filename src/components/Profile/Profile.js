@@ -1,28 +1,26 @@
 import React from 'react';
-import cx from 'classnames';
 import s from './Profile.scss';
-import Link from '../Link';
-import withStyles from '../../decorators/withStyles';
+import { Link } from 'react-router';
 import Counters from '../Counters';
+import {connect} from 'react-redux';
 
-@withStyles(s)
+import {actions as userActions} from '../../redux/modules/user';
 
 class Profile extends React.Component {
-   static propTypes = {
-     username: React.PropTypes.string.isRequired
-   };
-
-    render() {
-        var online;
-        if (this.props.online == true){
-            online =  <img className={s.online} src='css/img/icons/online.png' width='12x'></img>
-        } else {
-            online = "";
-        }
-        return(
-            <div className={s.container_user}>
+   componentWillMount () {
+     this.props.loadUser();
+   }
+    render () {
+      var online;
+      if (this.props.online === true) {
+        online = <img className={s.online} src='css/img/icons/online.png' width='12x'></img>
+      } else {
+        online = '';
+      }
+      return (
+        <div className={s.container_user}>
                 <div className={s.avatar}>
-                    <Link to="abracadabra">
+                    <Link to='abracadabra'>
                         <img src={require('./avatar.png')}/>
                     </Link>
                 </div>
@@ -35,14 +33,37 @@ class Profile extends React.Component {
                 <div className={s.status}>
                     {this.props.status}
                 </div>
-                <Counters
-                    visits={this.props.visits}
-                    followers={this.props.followers}
-                    following={this.props.following}
-                />
+                <Counters/>
             </div>
-        );
+      )
     }
 }
 
-export default Profile;
+// <Counters
+//     visits={this.props.visits}
+//     followers={this.props.followers}
+//     following={this.props.following}
+// />
+Profile.propTypes = {
+  username: React.PropTypes.string.isRequired,
+  photo: React.PropTypes.string.isRequired,
+  online: React.PropTypes.obj,
+  status: React.PropTypes.string,
+  stats: React.PropTypes.shape({
+    visits: React.PropTypes.number.isRequired,
+    followers: React.PropTypes.number.isRequired,
+    following: React.PropTypes.number.isRequired
+  })
+};
+
+function mapStateToProps (state) {
+  return {
+    username: state.user.username,
+    photo: state.user.photo,
+    online: state.user.online,
+    status: state.user.status,
+    stats: state.user.stats
+  }
+}
+
+export default connect(mapStateToProps, userActions)(Profile);

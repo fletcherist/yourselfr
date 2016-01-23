@@ -4,10 +4,6 @@ import Like from '../Like';
 import s from './Post.scss';
 import cx from 'classnames/bind';
 
-import withStyles from '../../decorators/withStyles';
-
-@withStyles(s)
-
 class Post extends React.Component {
     constructor(props) {
         super(props);
@@ -19,10 +15,6 @@ class Post extends React.Component {
             createdPronounce: "сейчас",
             isHot: false
         }
-    }
-
-    static propTypes = {
-        text: React.PropTypes.string.isRequired
     }
 
     tickTime(){
@@ -70,7 +62,7 @@ class Post extends React.Component {
         this.tickTime();
     }
 
-    render() { 
+    render() {
         let ccx = cx.bind(s);
         let postClasses = ccx({
             post: true,
@@ -92,6 +84,10 @@ class Post extends React.Component {
         	</div>
         );
     }
+}
+
+Post.propTypes = {
+  text: React.PropTypes.string.isRequired
 }
 
 export default Post;

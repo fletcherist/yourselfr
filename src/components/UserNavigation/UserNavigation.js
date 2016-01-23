@@ -1,10 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './UserNavigation.scss';
-import withStyles from '../../decorators/withStyles';
-import Link from '../Link';
-
-@withStyles(s)
+import {Link} from 'react-router';
 
 class UserNavigation extends React.Component {
     constructor(props) {
@@ -13,11 +10,11 @@ class UserNavigation extends React.Component {
     }
 
     render() {
-        // var posts 
+        // var posts
         return(
             <div className={s.container}>
                 <ul className={s.path} >
-                    
+
                     <Link to="preferences">
                         <li>настройки </li>
                     </Link>

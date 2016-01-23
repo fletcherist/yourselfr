@@ -1,14 +1,5 @@
 import React from 'react';
 import s from './WriteBox.scss';
-import withStyles from '../../decorators/withStyles';
-
-import * as types from '../../constants/ActionTypes';
-
-
-// Create a Redux store holding the state of your app.
-// Its API is { subscribe, dispatch, getState }.
-
-@withStyles(s)
 
 
 
@@ -21,14 +12,10 @@ class WriteBox extends React.Component {
         }
     }
 
-    static propTypes = {
-        alias: React.PropTypes.string.isRequired
-    }
-
     render() {
         return (
             <div className={s.container}>
-                <textarea 
+                <textarea
                     placeholder="Оставьте мнение о Ване"
                     ref={(ref) => this.textBox = ref}
                 >
@@ -49,9 +36,8 @@ class WriteBox extends React.Component {
     }
 }
 
-
-
-
-
+WriteBox.propTypes = {
+  alias: React.PropTypes.string.isRequired
+}
 
 export default WriteBox;

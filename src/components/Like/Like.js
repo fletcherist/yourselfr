@@ -1,32 +1,20 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import s from './Like.scss';
-import withStyles from '../../decorators/withStyles';
-
-import * as types from '../../constants/ActionTypes';
-
-
 
 let cx = classNames.bind(s);
-@withStyles(s)
-
-
 
 class Like extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			active: false,
-			count: this.props.count,
-			object: this.props.object
+		constructor (props) {
+  super(props);
+  this.state = {
+    active: false,
+    count: this.props.count,
+				object: this.props.object
+			}
 		}
-	}
-	static propTypes = {
-		count: React.PropTypes.number,
-		object: React.PropTypes.string.isRequired
-	}
 
-	toggle(){
+	toggle () {
 		var diff = 0;
 		if(this.state.active === false){
 			diff = 1;
@@ -38,7 +26,7 @@ class Like extends React.Component {
 			count: this.state.count + diff
 		})
 	}
-	render(){
+	render () {
 		var classes = cx({
 			button: true,
 			inactive: !this.state.active,
@@ -53,6 +41,11 @@ class Like extends React.Component {
 			</div>
 		);
 	}
+}
+
+Like.propTypes = {
+	count: React.PropTypes.number,
+	object: React.PropTypes.string.isRequired
 }
 
 export default Like;

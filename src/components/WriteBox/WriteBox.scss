@@ -13,14 +13,14 @@
 	textarea {
 		display: block;
 		height: 155px;
-		
+
 		width: 90%;
 
 		resize: none;
 		font-size: 17px !important;
 		border: 0;
 		padding: 10px 10px 10px 16px;
-		
+
 		&:focus {
 			outline: none;
 		}
@@ -29,7 +29,7 @@
 		}
 		@media screen and (max-width: 500px){
 			border-radius: 0px;
-			// margin-bottom: 50px; 
+			// margin-bottom: 50px;
 		}
 	}
 	.preview {
@@ -40,7 +40,7 @@
 		width: 145px;
 		border-radius: 3px;
 	}
-		
+
 	@media screen and (max-width: 1000px){
 		max-width: 56%;
 		min-width: 50%;
@@ -52,7 +52,7 @@
 		min-width: 96%;
 		width: 90%;
 		border-bottom: 1px solid #e7e7e7;
-		
+
 		margin: 0px 10px 14px 10px;
 	}
 	@media screen and (max-width: 500px){
@@ -126,15 +126,13 @@
 	display: inline-block;
 	transition: transform .4s, background-color .5s, opacity .1s;
 	background-color: #888B8C;
-	-webkit-mask: url(./camera.svg) no-repeat 50% 50%;
+	// -webkit-mask: url('./camera.svg') no-repeat 50% 50%;
+	// mask: url(./camera.svg) no-repeat 100% 100%;
 	-webkit-mask-size: 25px;
-	mask: url(./camera.svg) no-repeat 100% 100%;
+
 	width: 26px;
 	height: 26px;
 	cursor: pointer;
 	margin-right: 10px;
 	margin-top: 2px;
 }
-
-
-

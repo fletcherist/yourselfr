@@ -2,19 +2,7 @@ import React from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
 import cx from 'classnames';
-import withStyles from '../../decorators/withStyles';
 import {ending} from '../tools';
-
-
-import { createStore } from 'redux';
-import { connect } from 'react-redux';
-import * as types from '../../constants/ActionTypes';
-import {postController} from '../../actions/PostActions';
-
-
-@withStyles(s)
-
-
 
 class Posts extends React.Component {
     constructor(props){
@@ -25,15 +13,6 @@ class Posts extends React.Component {
             posts: this.props.posts
         }
     }
-    static propTypes = {
-        count: React.PropTypes.number,
-        alias: React.PropTypes.string.isRequired
-    }
-    static defaultProps = {
-        count: 0
-    }
-
-
     componentDidMount(){
     }
 
@@ -42,13 +21,13 @@ class Posts extends React.Component {
     render() {
         var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
         var posts = this.state.posts;
-        var postsArray; 
+        var postsArray;
         if(posts) {
             postsArray = posts.map(function(post){
                 return(
-                    <Post 
+                    <Post
                         key={post.text}
-                        created_at={post.created_at} 
+                        created_at={post.created_at}
                         text={post.text}
                         id={post._id}
                         likes={post.likes}
@@ -70,8 +49,16 @@ class Posts extends React.Component {
                 </div>
             </div>
         )
-        
+
     }
+}
+
+Posts.propTypes = {
+  count: React.PropTypes.number,
+  alias: React.PropTypes.string.isRequired
+}
+Posts.defaultProps = {
+  count: 0
 }
 
 export default Posts
