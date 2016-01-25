@@ -1,16 +1,19 @@
 import { createAction, handleActions } from 'redux-actions';
-import {config} from '../config';
 import fetch from 'isomorphic-fetch';
+import { config } from '../config';
 
 export const LOAD_USER = 'LOAD_USER';
+export const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
 
-export const load = createAction(LOAD_USER);
+export const load = createAction(LOAD_USER, (value = 1) => value);
+export const update = createAction(UPDATE_POSTS_COUNTER, (value = 1) => value);
+
 export const loadUser = () => {
+  console.log('loadUser');
   return (dispatch, getState) => {
     fetch(config.http + 'api/users/abracadabra')
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
         dispatch(load(data));
       });
   }
@@ -21,22 +24,21 @@ export const actions = {
 }
 
 export default handleActions({
-  [LOAD_USER]: (state, action) => {
-    if (action.payload) {
-      return action.payload;
-    } else {
-      return state;
-    }
+  LOAD_USER: (state, { payload }) => {
+    return payload;
+  },
+  UPDATE_POSTS_COUNTER: (state, {payload}) => {
+    console.log('adsad3333s')
+    return {...state, ...{stats: {posts: payload}}};
   }
 }, {
-  username: 'Evgenii Onegin',
+  username: 'username',
   photo: '',
-  status: 'asdasd',
+  status: 'status',
   online: {},
   stats: {
-    visits: 2399,
-    followers: 443,
-    following: 234,
-    posts: 3
+    visits: 0,
+    followers: 0,
+    following: 0
   }
 });

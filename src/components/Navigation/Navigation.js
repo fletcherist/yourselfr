@@ -16,6 +16,7 @@ import Link from '../Link';
 @withStyles(s)
 
 class Navigation extends React.Component {
+<<<<<<< HEAD
     constructor (props) {
       super(props);
       this.state = {
@@ -34,6 +35,26 @@ class Navigation extends React.Component {
         'hidden': !this.state.active
       })
       return (
+=======
+    constructor(props){
+        super(props);
+        this.state = {
+            active: false
+        }
+    }
+    toggle(){
+        this.setState({
+            active: !this.state.active
+        })
+    }
+    render(){
+        var menu = s.menu;
+        var menuClass = cx({
+            menu: s.menu,
+            'hidden': !this.state.active
+        })
+        return(
+>>>>>>> parent of d418c60... LOAD_USER & LOAD_POSTS
             <div className="navbar-collapse collapse">
                 <div className="nav navbar-nav navbar-right">
                     <li><a href="../alias">Ваня</a></li>

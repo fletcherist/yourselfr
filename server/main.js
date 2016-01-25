@@ -26,7 +26,6 @@ if (config.env === 'development') {
 
   // Enable webpack-dev and webpack-hot middleware
   const { publicPath } = webpackConfig.output
-  console.log(publicPath);
 
   app.use(require('./middleware/webpack-dev')(compiler, publicPath))
   app.use(require('./middleware/webpack-hmr')(compiler))

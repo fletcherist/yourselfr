@@ -10,8 +10,8 @@ import Footer from '../Footer'
 
 
 
-function reducer (state, action) {
-  switch (action.type) {
+function reducer(state, action){
+  switch(action.type){
     case 'INCREMENT':
       return {...state, ...{count: state.count + 1}};
     default:
@@ -23,7 +23,7 @@ var store = createStore(reducer, {
   count: 0
 });
 
-store.subscribe( () => {
+store.subscribe( ()=> {
   console.log(store.getState());
 });
 
@@ -49,7 +49,7 @@ class App extends Component {
     onPageNotFound: PropTypes.func.isRequired,
   };
 
-  getChildContext () {
+  getChildContext() {
     const context = this.props.context;
     return {
       insertCss: context.insertCss || emptyFunction,
@@ -59,15 +59,15 @@ class App extends Component {
     };
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.removeCss = this.props.context.insertCss(s);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.removeCss();
   }
 
-  render () {
+  render() {
     return !this.props.error ? (
         <div>
           <Provider store={store}>
@@ -80,13 +80,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state){
   return {
     count: state.count
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch){
   return {
     increment: () => dispatch({type: 'INCREMENT'})
   }

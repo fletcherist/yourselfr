@@ -12,13 +12,13 @@ class UserVariations extends React.Component {
       var type = 'user';
       switch (type) {
         case 'preferences':
-          children = (
+                children = (
                     <Preferences/>
                 )
 
           break;
         case 'user':
-          children = (
+                children = (
                     <div>
                         <WriteBox/>
                         <Posts/>

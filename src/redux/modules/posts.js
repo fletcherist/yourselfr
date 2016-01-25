@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
-import {config} from '../config';
-import fetch from 'isomorphic-fetch';
+import {config} from '../config.js';
+import {loadUser} from './user';
+console.log(config);
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
@@ -32,6 +33,7 @@ export const sendPost = (text) => {
     .then((data) => {
       dispatch(send());
       dispatch(loadPosts());
+      dispatch(loadUser());
     });
   }
 }
@@ -44,8 +46,5 @@ export const actions = {
 export default handleActions({
   [LOAD_POSTS]: (state, { payload }) => {
     return payload;
-  },
-  [SEND_POST]: (state, { payload }) => {
-    return state;
   }
 }, []);

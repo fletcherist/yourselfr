@@ -12,7 +12,7 @@
 	}
 
 	.button {
-		// -webkit-mask: url('like.svg') no-repeat 50% 50%;
+		-webkit-mask: url('./components/Like/like.svg') no-repeat 50% 50%;
 		// mask: url('./like.svg') no-repeat 50% 50%;
 		-webkit-mask-size: cover;
 		mask-size: cover;

@@ -7,18 +7,17 @@ class WriteBox extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
-        text: ''
+        text: '',
+        created_by: this.props.alias
       }
     }
 
-    handleSendClick (e) {
-      console.log(this.textBox.value)
+    handleSubmitButton (e) {
       var text = this.textBox.value;
       this.props.sendPost(text);
 
       this.textBox.value = '';
     }
-
     attachPhoto (e) {
     }
 
@@ -34,7 +33,7 @@ class WriteBox extends React.Component {
                 <div className={s.above}>
                     <button
                         className='btn btn-yo'
-                        onClick={this.handleSendClick.bind(this)}>
+                        onClick={this.handleSubmitButton.bind(this)}>
                         оставить мнение
                     </button>
                     <div className={s.addPhoto}> </div>
@@ -48,12 +47,13 @@ class WriteBox extends React.Component {
 }
 
 WriteBox.propTypes = {
-  sendPost: React.PropTypes.func.isRequired
+  sendPost: React.PropTypes.func.isRequired,
+  alias: React.PropTypes.string
 }
 
-function mapStateToProps () {
+function mapStateToProps (state) {
   return {
-
   }
 }
+
 export default connect(mapStateToProps, postsActions)(WriteBox);

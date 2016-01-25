@@ -21,12 +21,12 @@ class NotFoundPage extends Component {
     onPageNotFound: PropTypes.func.isRequired,
   };
 
-  componentWillMount () {
+  componentWillMount() {
     this.context.onSetTitle(title);
     this.context.onPageNotFound();
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h1>{title}</h1>

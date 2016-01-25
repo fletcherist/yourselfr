@@ -16,6 +16,10 @@ class Preferences extends React.Component {
       this.setState({
         alias: e.target.value
       });
+      this.state = {
+        username: this.props.username,
+        alias: this.props.alias
+      }
     }
 
     render () {

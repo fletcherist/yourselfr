@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './User.scss';
-
 import Profile from '../Profile';
 import UserNavigation from '../UserNavigation';
 
