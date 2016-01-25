@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 import s from './Counters.scss'
 import { Link } from 'react-router'
-import {ending} from '../Tools'
+import {ending} from '../Toools'
 
 import { connect } from 'react-redux';
 

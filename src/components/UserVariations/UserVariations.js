@@ -7,8 +7,6 @@ import Preferences from '../Preferences';
 
 class UserVariations extends React.Component {
     render () {
-      const {user} = this.props;
-
       var children;
 
       var type = 'user';

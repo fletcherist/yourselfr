@@ -1,26 +1,21 @@
 import React from 'react';
-import cx from 'classnames';
 import s from './Preferences.scss';
-
-import Redux from 'redux';
 
 class Preferences extends React.Component {
     constructor (props) {
       super(props);
 
       this.state = {
-          username: this.props.username,
-          alias: this.props.alias
-        }
-
-
+        username: this.props.username,
+        alias: this.props.alias
+      }
     }
 
     handle (e) {
       console.log('sadasd');
       this.setState({
-          alias: e.target.value
-        });
+        alias: e.target.value
+      });
     }
 
     render () {
@@ -29,7 +24,7 @@ class Preferences extends React.Component {
             <div className={s.container}>
                 <h3>имя</h3>
 
-                <input placeholder="любимое моё" defaultValue={this.state.username}/>
+                <input placeholder='любимое моё' defaultValue={this.state.username}/>
                 <h3>адрес страницы</h3>
                 <small>поделитесь им с друзьями, чтобы они смогли найти вас</small>
                 <input value={this.state.alias}/>
@@ -38,7 +33,6 @@ class Preferences extends React.Component {
                     <textarea defaultValue={this.state.username}/>
                 </div>
                 <button>Сохранить</button>
-
 
                 <h2>Аватар</h2>
                 <button>Выбрать</button>

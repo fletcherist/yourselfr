@@ -29,5 +29,7 @@ class User extends React.Component {
     }
 }
 
-
+User.propTypes = {
+  children: React.PropTypes.element.isRequired
+}
 export default User;

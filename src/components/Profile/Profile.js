@@ -47,13 +47,14 @@ class Profile extends React.Component {
 Profile.propTypes = {
   username: React.PropTypes.string.isRequired,
   photo: React.PropTypes.string.isRequired,
-  online: React.PropTypes.obj,
+  online: React.PropTypes.object,
   status: React.PropTypes.string,
   stats: React.PropTypes.shape({
     visits: React.PropTypes.number.isRequired,
     followers: React.PropTypes.number.isRequired,
     following: React.PropTypes.number.isRequired
-  })
+  }),
+  loadUser: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps (state) {

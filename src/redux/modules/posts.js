@@ -12,13 +12,12 @@ export const loadPosts = () => {
     fetch(config.http + 'api/posts/abracadabra')
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
         dispatch(load(data));
       });
   }
 }
 
-export const sendPost = () => {
+export const sendPost = (text) => {
   return (dispatch, getState) => {
     var alias = getState().user.alias;
     console.log(`ALIAS ${alias}`)
@@ -27,14 +26,13 @@ export const sendPost = () => {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
-      body: 'text=hey-lalalay&created_by=' + alias
+      body: `text=${text}&created_by=${alias}`
     })
     .then((r) => r.json())
     .then((data) => {
-      console.log(data);
+      dispatch(send());
+      dispatch(loadPosts());
     });
-    dispatch(send());
-    dispatch(loadPosts());
   }
 }
 

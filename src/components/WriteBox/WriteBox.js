@@ -7,8 +7,7 @@ class WriteBox extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
-        text: '',
-        created_by: this.props.alias
+        text: ''
       }
     }
 
@@ -18,6 +17,9 @@ class WriteBox extends React.Component {
       this.props.sendPost(text);
 
       this.textBox.value = '';
+    }
+
+    attachPhoto (e) {
     }
 
     render () {
@@ -37,7 +39,7 @@ class WriteBox extends React.Component {
                     </button>
                     <div className={s.addPhoto}> </div>
                     <form id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
-                        <input type='file' name='photo' onChange='attachPhoto()' id='attach-input' className='attachPhoto-input'/>
+                        <input type='file' name='photo' onChange={this.attachPhoto} id='attach-input' className='attachPhoto-input'/>
                     </form>
                 </div>
             </div>
@@ -46,7 +48,6 @@ class WriteBox extends React.Component {
 }
 
 WriteBox.propTypes = {
-  alias: React.PropTypes.string.isRequired,
   sendPost: React.PropTypes.func.isRequired
 }
 

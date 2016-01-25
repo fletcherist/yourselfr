@@ -19,20 +19,20 @@ class Navigation extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
-          active: false
-        }
+        active: false
+      }
     }
     toggle () {
       this.setState({
-          active: !this.state.active
-        })
+        active: !this.state.active
+      })
     }
     render () {
       var menu = s.menu;
       var menuClass = cx({
-          menu: s.menu,
-          'hidden': !this.state.active
-        })
+        menu: s.menu,
+        'hidden': !this.state.active
+      })
       return (
             <div className="navbar-collapse collapse">
                 <div className="nav navbar-nav navbar-right">

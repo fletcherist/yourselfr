@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import {ending} from '../tools';
+import {ending} from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 
@@ -9,8 +9,7 @@ class Posts extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
-        count: this.props.count,
-        alias: this.props.alias
+        count: this.props.count
       }
     }
     componentDidMount () {
@@ -26,6 +25,7 @@ class Posts extends React.Component {
       var postsArray;
       if (posts) {
         postsArray = posts.map(function (post) {
+          console.log(post.likes);
           return (
             <Post
               key={post._id}
@@ -55,8 +55,8 @@ class Posts extends React.Component {
 
 Posts.propTypes = {
   count: React.PropTypes.number,
-  alias: React.PropTypes.string.isRequired,
-  posts: React.PropTypes.array
+  posts: React.PropTypes.array,
+  loadPosts: React.PropTypes.func.isRequired
 }
 Posts.defaultProps = {
   count: 0

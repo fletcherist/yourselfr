@@ -10,11 +10,10 @@ class Post extends React.Component {
       this.displayName = '';
 
       this.state = {
-          id: this.props._id,
-          created_at: this.props.created_at,
-          createdPronounce: 'сейчас',
-          isHot: false
-        }
+        created_at: this.props.created_at,
+        createdPronounce: 'сейчас',
+        isHot: false
+      }
     }
 
     tickTime () {
@@ -24,22 +23,23 @@ class Post extends React.Component {
 
       var passed = ((now - time) / 1000).toFixed(0); // Seconds
       var result;
-      if (passed < 5)
-          result = 'сейчас'
-        else if (passed < 60)
-          result = passed + 'сек'
-        else if (passed < 60 * 60)
-          result = (passed / 60).toFixed(0) + 'мин';
-        else if (passed < 60 * 60 * 24)
-          result = (passed / (60 * 60)).toFixed(0) + 'ч'
-        else if (passed < 60 * 60 * 24 * 7)
-          result = (passed / (60 * 60 * 24)).toFixed(0) + 'дн'
-        else if (passed < 60 * 60 * 24 * 7 * 4)
-          result = (passed / (60 * 60 * 24 * 7)).toFixed(0) + 'нед'
-        else if (passed < 60 * 60 * 24 * 7 * 4 * 12)
-          result = (passed / (60 * 60 * 24 * 7 * 4)).toFixed(0) + 'мес'
-        else if (passed < 60 * 60 * 24 * 7 * 30 * 12)
-          result = 'давно'
+      if (passed < 5) {
+        result = 'сейчас'
+      } else if (passed < 60) {
+        result = passed + 'сек'
+      } else if (passed < 60 * 60) {
+        result = (passed / 60).toFixed(0) + 'мин';
+      } else if (passed < 60 * 60 * 24) {
+        result = (passed / (60 * 60)).toFixed(0) + 'ч'
+      } else if (passed < 60 * 60 * 24 * 7) {
+        result = (passed / (60 * 60 * 24)).toFixed(0) + 'дн'
+      } else if (passed < 60 * 60 * 24 * 7 * 4) {
+        result = (passed / (60 * 60 * 24 * 7)).toFixed(0) + 'нед'
+      } else if (passed < 60 * 60 * 24 * 7 * 4 * 12) {
+        result = (passed / (60 * 60 * 24 * 7 * 4)).toFixed(0) + 'мес'
+      } else if (passed < 60 * 60 * 24 * 7 * 30 * 12) {
+        result = 'давно'
+      }
 
       // posts, posted <5s ago will show coloured.
       var isHot = false;
@@ -53,10 +53,10 @@ class Post extends React.Component {
       })
     }
     componentDidMount () {
-      // setInterval(this.tickTime.bind(this), 1000);
+      setInterval(this.tickTime.bind(this), 1000);
     }
     componentWillUnmount () {
-      // clearInterval(this.tickTime);
+      clearInterval(this.tickTime);
     }
     componentWillMount () {
       this.tickTime();
@@ -65,9 +65,9 @@ class Post extends React.Component {
     render () {
       let ccx = cx.bind(s);
       let postClasses = ccx({
-          post: true,
-          hot: this.state.isHot
-        })
+        post: true,
+        hot: this.state.isHot
+      })
 
       return (
         <div className={postClasses}>
@@ -87,7 +87,10 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-  text: React.PropTypes.string.isRequired
+  text: React.PropTypes.string.isRequired,
+  created_at: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
+  likes: React.PropTypes.number
 }
 
 export default Post;
