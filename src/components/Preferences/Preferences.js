@@ -5,27 +5,27 @@ import s from './Preferences.scss';
 import Redux from 'redux';
 
 class Preferences extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor (props) {
+      super(props);
 
-        this.state = {
-            username: this.props.username,
-            alias: this.props.alias
+      this.state = {
+          username: this.props.username,
+          alias: this.props.alias
         }
 
 
     }
 
-    handle(e){
-        console.log("sadasd");
-        this.setState({
-            alias: e.target.value
+    handle (e) {
+      console.log('sadasd');
+      this.setState({
+          alias: e.target.value
         });
     }
 
-    render() {
+    render () {
         // var posts
-        return(
+      return (
             <div className={s.container}>
                 <h3>имя</h3>
 

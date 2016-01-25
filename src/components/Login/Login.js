@@ -20,11 +20,11 @@ class Login extends Component {
     onSetTitle: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
+  componentWillMount () {
     this.context.onSetTitle(title);
   }
 
-  render() {
+  render () {
     return (
       <div className={s.root}>
         <div className={s.container}>

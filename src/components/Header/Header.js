@@ -19,12 +19,12 @@ import Navigation from '../Navigation';
 
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'Navbar';
+    constructor (props) {
+      super(props);
+      this.displayName = 'Navbar';
     }
-    render() {
-        return(
+    render () {
+      return (
             <header className={s.root} role="navigation">
                 <div className={s.container}>
                     <div className={s.brand}>

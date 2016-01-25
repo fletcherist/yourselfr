@@ -15,7 +15,7 @@ import Link from '../Link';
 @withStyles(s)
 class Footer extends Component {
 
-  render() {
+  render () {
     return (
       <div className={s.root}>
         <div className={s.container}>

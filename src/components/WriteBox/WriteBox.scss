@@ -79,7 +79,7 @@
 .above {
 	z-index: 9990000;
 	opacity: 0.8;
-	margin-top: -64px;
+	margin-top: -18px;
 	margin-right: 6px;
 
 	button {
@@ -126,8 +126,8 @@
 	display: inline-block;
 	transition: transform .4s, background-color .5s, opacity .1s;
 	background-color: #888B8C;
-	// -webkit-mask: url('./camera.svg') no-repeat 50% 50%;
-	// mask: url(./camera.svg) no-repeat 100% 100%;
+	-webkit-mask: url(../WriteBox/camera.svg) no-repeat 50% 50%;
+	// mask: url(./camera.svg) no-repeat 100% 100%;/
 	-webkit-mask-size: 25px;
 
 	width: 26px;

@@ -1,45 +1,46 @@
 import React from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import cx from 'classnames';
 import {ending} from '../tools';
+import {connect} from 'react-redux';
+import { actions as postsActions } from '../../redux/modules/posts';
 
 class Posts extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            count: this.props.count,
-            alias: this.props.alias,
-            posts: this.props.posts
-        }
+    constructor (props) {
+      super(props);
+      this.state = {
+        count: this.props.count,
+        alias: this.props.alias
+      }
     }
-    componentDidMount(){
+    componentDidMount () {
+      // setInterval(() => { this.props.loadPosts() }, 1000);
     }
 
-    componentWillMount(){
+    componentWillMount () {
+      this.props.loadPosts();
     }
-    render() {
-        var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
-        var posts = this.state.posts;
-        var postsArray;
-        if(posts) {
-            postsArray = posts.map(function(post){
-                return(
-                    <Post
-                        key={post.text}
-                        created_at={post.created_at}
-                        text={post.text}
-                        id={post._id}
-                        likes={post.likes}
-                    >
-                    </Post>
-                )
-            });
-        }
+    render () {
+      var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
+      var posts = this.props.posts;
+      var postsArray;
+      if (posts) {
+        postsArray = posts.map(function (post) {
+          return (
+            <Post
+              key={post._id}
+              created_at={post.created_at}
+              text={post.text}
+              id={post._id}
+              likes={post.likes}
+            />
+          )
+        });
+      }
 
-        return(
+      return (
             <div>
-                <div className={s.container_posts} id="right">
+                <div className={s.container_posts} id='right'>
                     <div className={s.header}>
                         <div className={s.counter}>
                             {this.props.count} {postsPronounce}
@@ -49,16 +50,22 @@ class Posts extends React.Component {
                 </div>
             </div>
         )
-
     }
 }
 
 Posts.propTypes = {
   count: React.PropTypes.number,
-  alias: React.PropTypes.string.isRequired
+  alias: React.PropTypes.string.isRequired,
+  posts: React.PropTypes.array
 }
 Posts.defaultProps = {
   count: 0
 }
 
-export default Posts
+function mapStateToProps (state) {
+  return {
+    posts: state.posts,
+    count: state.user.stats.posts
+  }
+}
+export default connect(mapStateToProps, postsActions)(Posts)

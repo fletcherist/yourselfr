@@ -4,14 +4,14 @@ import s from './UserNavigation.scss';
 import {Link} from 'react-router';
 
 class UserNavigation extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'UserNavigation';
+    constructor (props) {
+      super(props);
+      this.displayName = 'UserNavigation';
     }
 
-    render() {
+    render () {
         // var posts
-        return(
+      return (
             <div className={s.container}>
                 <ul className={s.path} >
 
