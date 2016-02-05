@@ -20,7 +20,7 @@ const config = {
   // Server Configuration
   // ----------------------------------
   server_host : 'localhost',
-  server_port : process.env.PORT || 3000,
+  server_port : process.env.PORT || 80,
 
   // ----------------------------------
   // Compiler Configuration
@@ -43,7 +43,7 @@ const config = {
     'react-router',
     'redux',
     'redux-actions',
-    'redux-simple-router'
+    'react-router-redux'
   ],
 
   // ----------------------------------

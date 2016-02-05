@@ -4,24 +4,33 @@ import { Link } from 'react-router';
 import Counters from '../Counters';
 import {connect} from 'react-redux';
 
+import UserNavigation from 'components/UserNavigation';
+import { isValidPhoto, isNotEmptyString } from '../Toools';
+
 import {actions as userActions} from '../../redux/modules/user';
 
 class Profile extends React.Component {
-   componentWillMount () {
-     this.props.loadUser();
-   }
+  componentWillMount () {
+    this.props.loadUser();
+  }
     render () {
+      console.log(this.props);
+
       var online;
       if (this.props.online === true) {
         online = <img className={s.online} src='css/img/icons/online.png' width='12x'></img>
       } else {
         online = '';
       }
+      var photo = isValidPhoto(this.props.photo);
+
+      var isStatus = isNotEmptyString(this.props.status);
       return (
-        <div className={s.container_user}>
+        <div>
+          <div className={s.container_user}>
                 <div className={s.avatar}>
-                    <Link to='abracadabra'>
-                        <img src={require('./avatar.png')}/>
+                    <Link to={`/${this.props.alias}`}>
+                        <img src={photo}/>
                     </Link>
                 </div>
                 <h1 className={s.username}>
@@ -30,23 +39,40 @@ class Profile extends React.Component {
                     </span>
                     {online}
                 </h1>
-                <div className={s.status}>
-                    {this.props.status}
+                <Counters
+                  visits={this.props.stats.visits}
+                  followers={this.props.stats.followers}
+                  following={this.props.stats.following}
+                  alias={this.props.alias}
+                />
                 </div>
-                <Counters/>
+                { isStatus && (
+                  <StatusBox status={this.props.status}/>
+                )}
+                <UserNavigation alias={this.props.alias}/>
+
             </div>
       )
     }
 }
 
-// <Counters
-//     visits={this.props.visits}
-//     followers={this.props.followers}
-//     following={this.props.following}
-// />
+class StatusBox extends React.Component {
+  render () {
+    return (
+      <div className={s.container_user}>
+        <div className={s.status}>
+          {this.props.status}
+          </div>
+        </div>
+    );
+  }
+}
+
 Profile.propTypes = {
   username: React.PropTypes.string.isRequired,
+  alias: React.PropTypes.string.isRequired,
   photo: React.PropTypes.string.isRequired,
+  background: React.PropTypes.string,
   online: React.PropTypes.object,
   status: React.PropTypes.string,
   stats: React.PropTypes.shape({
@@ -60,7 +86,9 @@ Profile.propTypes = {
 function mapStateToProps (state) {
   return {
     username: state.user.username,
+    alias: state.user.alias,
     photo: state.user.photo,
+    background: state.user.background,
     online: state.user.online,
     status: state.user.status,
     stats: state.user.stats

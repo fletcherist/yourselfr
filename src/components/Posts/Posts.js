@@ -25,7 +25,6 @@ class Posts extends React.Component {
       var postsArray;
       if (posts) {
         postsArray = posts.map(function (post) {
-          console.log(post.likes);
           return (
             <Post
               key={post._id}

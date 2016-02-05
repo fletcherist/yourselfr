@@ -3,18 +3,12 @@ import s from './UserNavigation.scss';
 import {Link} from 'react-router';
 
 class UserNavigation extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'UserNavigation';
-    }
-
-    render() {
-        // var posts
-        return(
+    render () {
+      return (
             <div className={s.container}>
                 <ul className={s.path} >
 
-                    <Link to='preferences'>
+                    <Link to={`/${this.props.alias}/preferences`}>
                         <li>настройки </li>
                     </Link>
                     <Link to='like'>
@@ -24,6 +18,10 @@ class UserNavigation extends React.Component {
             </div>
         );
     }
+}
+
+UserNavigation.propTypes = {
+  alias: React.PropTypes.string.isRequired
 }
 
 export default UserNavigation;

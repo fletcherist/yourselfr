@@ -1,13 +1,42 @@
 .counter {
-	width: 33.333%;
+	width: 33.333333%;
 	display: inline-block;
 	padding: 10px 0px 20px 10px;
 	text-align: center;
+	text-decoration: none;
+	color: black;
+	left: -100px;
 
-	a {
-		text-decoration: none;
-		color: black;
-	}
+	background: white;
+    /* Old browsers */
+  transition:background .5s ease;
+}
+.followersCounter {
+	background: linear-gradient(to right, white 50%, #f2fdff 50%);
+  background-size: 200% 100%;
+	background-position:left bottom;
+}
+
+.followingCounter {
+	background: linear-gradient(to left, white 50%, #f2fdff 50%);
+  background-size: 200% 100%;
+	background-position:right bottom;
+}
+
+.followersAnimationEffect {
+	background-position:right bottom;
+}
+.followingAnimationEffect {
+	background-position:left bottom;
+}
+
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
 }
 
 .counter_count {
@@ -22,7 +51,7 @@
 	font-size: 10px;
 	text-transform: uppercase;
 }
-.counter_divider {
-	// border-right: 1px solid #DCDCDC;
-	height: 30px;
+
+.highlighted {
+	background-color: #f2fdff;
 }

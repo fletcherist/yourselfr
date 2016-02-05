@@ -1,12 +1,12 @@
-// @import '../variables.scss';
+@import '../variables.scss';
 
 .container {
 	// box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 1px rgba(0,0,0,0.07);
 	// transition: box-shadow 0.2s cubic-bezier(.4,.97,.65,.61);
 	// background-color: white;
-	padding-top: 0px;
+	padding-top: 0px;;
 	margin-bottom: 0px;
-
+	background-color: #f7f7f7;
 }
 
 .path {
@@ -18,8 +18,8 @@
 		padding-left: 30px;
 		transition: color .3s;
 		&:hover {
-			// color: $yoColor;
-			// background-color: #E1EFF5;
+			color: $yoColor;
+			background-color: #E1EFF5;
 		}
 	}
 	a {

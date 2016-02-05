@@ -1,31 +1,27 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
-import {loadUser} from './user';
+import { updatePostsCounter } from './user';
 console.log(config);
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
 
-export const load = createAction(LOAD_POSTS);
+export const loadPosts = createAction(LOAD_POSTS, async id => {
+  var alias = window.location.pathname.substr(1);
+  // var alias = 'abracadabra';
+  var posts = await fetch(`${config.http}/api/posts/${alias}`);
+  posts = posts.json();
+  return posts;
+});
 export const send = createAction(SEND_POST);
-export const loadPosts = () => {
-  return (dispatch, getState) => {
-    fetch(config.http + 'api/posts/abracadabra')
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch(load(data));
-      });
-  }
-}
 
 export const sendPost = (text) => {
   return (dispatch, getState) => {
     var alias = getState().user.alias;
-    console.log(`ALIAS ${alias}`)
-    fetch(config.http + 'api/posts', {
+    fetch(`${config.http}/api/posts`, {
       method: 'POST',
       headers: {
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-type': config.post
       },
       body: `text=${text}&created_by=${alias}`
     })
@@ -33,7 +29,7 @@ export const sendPost = (text) => {
     .then((data) => {
       dispatch(send());
       dispatch(loadPosts());
-      dispatch(loadUser());
+      dispatch(updatePostsCounter());
     });
   }
 }

@@ -53,10 +53,12 @@ class Post extends React.Component {
       })
     }
     componentDidMount () {
-      setInterval(this.tickTime.bind(this), 1000);
+      this.loadInterval = setInterval(this.tickTime.bind(this), 1000);
+      // setInterval(this.tickTime.bind(this), 1000);
     }
     componentWillUnmount () {
-      clearInterval(this.tickTime);
+      this.loadInterval && clearInterval(this.loadInterval);
+      this.loadInterval = false;
     }
     componentWillMount () {
       this.tickTime();
