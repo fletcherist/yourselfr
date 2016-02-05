@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import {ending} from '../toools';
+import { ending, isEmpty } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 
@@ -9,7 +9,8 @@ class Posts extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
-        count: this.props.count
+        count: this.props.count,
+        postsLoaded: 10
       }
     }
     componentDidMount () {
@@ -23,7 +24,7 @@ class Posts extends React.Component {
       var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
       var posts = this.props.posts;
       var postsArray;
-      if (posts) {
+      if (posts && !isEmpty(posts) && Array.isArray(posts)) {
         postsArray = posts.map(function (post) {
           return (
             <Post
@@ -46,6 +47,18 @@ class Posts extends React.Component {
                         </div>
                     </div>
                     {postsArray}
+                    {this.state.count > 10 && this.state.count > this.state.postsLoaded && (
+                      <div
+                            className={s.loadMore}
+                            onClick={ () => {
+                              this.props.loadMorePosts(this.state.postsLoaded)
+                              this.setState({
+                                postsLoaded: this.state.postsLoaded + 10
+                              })
+                            }}
+                            >Загрузить ещё
+                      </div>
+                    )}
                 </div>
             </div>
         )
@@ -55,7 +68,8 @@ class Posts extends React.Component {
 Posts.propTypes = {
   count: React.PropTypes.number,
   posts: React.PropTypes.array,
-  loadPosts: React.PropTypes.func.isRequired
+  loadPosts: React.PropTypes.func.isRequired,
+  loadMorePosts: React.PropTypes.func.isRequired
 }
 Posts.defaultProps = {
   count: 0

@@ -5,6 +5,7 @@
 
 	word-wrap: break-word;
 	padding: 10px 0px 20px 5px;
+	line-height: 28px;
 	font-size: 18px;
 	justify-content: left;
 	display: flex;
@@ -18,8 +19,8 @@
 	.text {
 		width: 70%;
 		font-weight: 400;
-		color: #303030;
-		
+		color: #515151;
+
 		@media screen and (max-width: 540px) {
 			max-width: 65%;
 		}
@@ -39,7 +40,7 @@
 		max-width: 340px;
 		background-color: #EFEFEF;
 		border-radius: 2px;
-		
+
 		@media screen and (max-width: 1000px) {
 			max-width: 99%;
 		}

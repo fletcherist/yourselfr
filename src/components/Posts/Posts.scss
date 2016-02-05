@@ -1,3 +1,5 @@
+@import 'variables';
+
 .container_posts {
 	float: left;
 	background-color: white;
@@ -43,6 +45,7 @@
 	.counter, .favourite {
 		display: inline-block;
 		margin-right: 10px;
+		padding: 5px;
 	}
 	.counter {
 		font-weight: bold;
@@ -59,5 +62,13 @@
 	}
 
 	margin-bottom: 0px;
-	border-bottom: 1px solid #E7E7E7;
+	// border-bottom: 1px solid #E7E7E7;
+}
+
+.loadMore {
+	padding: 20px;
+	text-align: center;
+	color: $yoColor;
+	cursor: pointer;
+	background-color: $yoColor05;
 }

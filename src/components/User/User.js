@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './User.scss';
 import Profile from '../Profile';
+import Navigation from '../Navigation';
+
 import { connect } from 'react-redux';
 
 class User extends React.Component {

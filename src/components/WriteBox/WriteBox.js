@@ -39,7 +39,7 @@ class WriteBox extends React.Component {
         // Create a new image.
         var img = new Image();
         // Set the img src property using the data URL.
-        // formToTray();
+        formToTray();
         preview.src = reader.result;
         preview.classList.remove('hidden');
       }
@@ -50,6 +50,11 @@ class WriteBox extends React.Component {
         console.log('not working');
         preview.src = '';
       }
+
+      function formToTray () {
+        var form = document.getElementById('textForm');
+        form.style.width = '60%';
+      }
     }
 
     render () {
@@ -57,10 +62,11 @@ class WriteBox extends React.Component {
             <div className={s.container}>
                 <textarea
                     placeholder='Оставьте мнение о Ване'
+                    id='textForm'
                     ref={(ref) => this.textBox = ref}
                 >
                 </textarea>
-                <img id='attach-preview' className='attach-preview hidden'/>
+                <img id='attach-preview' className={s.attachPreview}/>
                 <div className={s.above}>
                     <button
                         className='btn btn-yo'
