@@ -4,19 +4,20 @@ import Profile from '../Profile';
 import Navigation from '../Navigation';
 
 import { connect } from 'react-redux';
+import { config } from '../../redux/config';
 
 class User extends React.Component {
     render () {
       var backround = this.props.background
         ? {
-          background: 'url(http://localhost:8000/upload/background/' + this.props.background + ')',
-          transition: 'all 2s'
+          background: `url(${config.http}/upload/background/${this.props.background})`,
+          transition: 'all 0.5s'
         }
         : {}
       return (
             <div>
                 <div
-                    className='responsive_crop'
+                    className='responsive_crop_fixed'
                     style={backround}>
                 </div>
                 <div className={s.container}>

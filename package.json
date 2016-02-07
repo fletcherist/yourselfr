@@ -18,7 +18,8 @@
     "dev:no-debug": "npm run dev -- --no_debug",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
-    "deploy": "better-npm-run deploy"
+    "deploy": "better-npm-run deploy",
+    "copy": "better-npm-run copy"
   },
   "betterScripts": {
     "dev": {
@@ -28,7 +29,7 @@
       }
     },
     "deploy": {
-      "command": "npm run clean && npm run compile",
+      "command": "npm run clean && npm run compile && better-npm-run copy",
       "env": {
         "NODE_ENV": "production"
       }
@@ -40,6 +41,12 @@
       "command": "node -r dotenv/config ./node_modules/karma/bin/karma start bin/karma.js",
       "env": {
         "NODE_ENV": "test"
+      }
+    },
+    "copy": {
+      "command": "cd .. && cd yourselfr && cd app && rm -rf dist && cp -a ~/yo/dist/. ~/yourselfr/app/dist/",
+      "env": {
+        "NODE_ENV": "development"
       }
     }
   },

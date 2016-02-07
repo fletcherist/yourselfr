@@ -6,19 +6,15 @@ import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 
 class Posts extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = {
-        count: this.props.count,
-        postsLoaded: 10
-      }
-    }
     componentDidMount () {
-      // setInterval(() => { this.props.loadPosts() }, 1000);
+      console.log(this.props);
     }
-
     componentWillMount () {
       this.props.loadPosts();
+      this.setState({
+        count: this.props.count,
+        postsLoaded: 10
+      });
     }
     render () {
       var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
@@ -47,7 +43,7 @@ class Posts extends React.Component {
                         </div>
                     </div>
                     {postsArray}
-                    {this.state.count > 10 && this.state.count > this.state.postsLoaded && (
+                    {this.props.count > 10 &&  this.props.count > this.state.postsLoaded && (
                       <div
                             className={s.loadMore}
                             onClick={ () => {
@@ -66,13 +62,10 @@ class Posts extends React.Component {
 }
 
 Posts.propTypes = {
-  count: React.PropTypes.number,
-  posts: React.PropTypes.array,
+  count: React.PropTypes.number.isRequired,
+  posts: React.PropTypes.array.isRequired,
   loadPosts: React.PropTypes.func.isRequired,
   loadMorePosts: React.PropTypes.func.isRequired
-}
-Posts.defaultProps = {
-  count: 0
 }
 
 function mapStateToProps (state) {

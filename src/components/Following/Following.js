@@ -8,6 +8,7 @@ import { Link } from 'react-router'
 import { loadUser } from '../../redux/modules/user';
 import { loadFollowing } from '../../redux/modules/followers'
 import { isValidPhoto, isEmpty } from '../Toools';
+import { config } from '../../redux/config';
 
 class Following extends React.Component {
     componentWillMount () {
@@ -24,7 +25,7 @@ class Following extends React.Component {
           var linkHref = '/' + following.alias;
           return (
             <div key={following._id}>
-                <div style={{background: 'url(http://localhost/upload/background/' + following.background + ')'}}
+                <div style={{background: `url(${config.http}/upload/background/${following.background})`}}
                   className={s.background}>
                 </div>
               <div className={s.subscription}>
@@ -47,7 +48,7 @@ class Following extends React.Component {
         followingList = 'No following';
       }
       return (
-        <div className='container--right'>
+        <div className='container--right padding-0'>
           {followingList}
         </div>
       )

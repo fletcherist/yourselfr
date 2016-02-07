@@ -62,12 +62,30 @@ button {
   background-color: #F7F7F7;
 }
 
+.responsive_crop_fixed {
+  z-index: -1;
+	position: fixed;
+	width:100%;
+	height: 100%;
+	min-height: 1620px;
+	background-size:cover;
+	background-position:center; /* IE fix */
+	background-color: #F7F7F7;
+}
+
 
 
 .container--right {
   background-color: white;
   // box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.14);
   transition: box-shadow 0.2s cubic-bezier(.4,.97,.65,.61);
+}
+
+.padding-0 {
+  padding: 0px !important;
+}
+.margin-0 {
+  margin: 0px !important;
 }
 
 .container--right {

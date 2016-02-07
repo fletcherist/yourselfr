@@ -14,10 +14,10 @@ var defUser = {
   header: '',
   online: {},
   stats: {
-    visits: 314159,
-    followers: 9392,
-    following: 228,
-    posts: 39
+    visits: 0,
+    followers: 0,
+    following: 0,
+    posts: 0
   }
 }
 // export const loadUser = createAction(LOAD_USER, async (alias) => {
