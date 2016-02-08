@@ -3,6 +3,7 @@ import s from './WriteBox.scss';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { config } from '../../redux/config';
+import cx from 'classnames';
 
 class WriteBox extends React.Component {
     constructor (props) {
@@ -85,6 +86,7 @@ class WriteBox extends React.Component {
     }
 
     render () {
+      var attachPreview = cx(s.attachPreview, 'hidden');
       return (
             <div className={s.container}>
                 <textarea
@@ -93,7 +95,7 @@ class WriteBox extends React.Component {
                     ref={(ref) => this.textBox = ref}
                 >
                 </textarea>
-                <img id='attach-preview' className={s.attachPreview}/>
+                <img id='attach-preview' className={attachPreview}/>
                 <div className={s.above}>
                     <button
                         className='btn btn-yo'
