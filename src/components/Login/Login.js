@@ -6,8 +6,8 @@ class Login extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>saddsaadsadsadsads</h1>
-          <p>...</p>
+          <h1>Login is in Developing</h1>
+          <p>Press F5 to fix thus.</p>
         </div>
       </div>
     );

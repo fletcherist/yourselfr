@@ -14,7 +14,7 @@ export function requireAuthentication (Component) {
         }
 
         checkAuth () {
-          if (!this.props.isAuthenticated) {
+          if (!this.props.authenticated) {
             // let redirectAfterLogin = this.props.location.pathname;
             this.props.dispatch(routeActions.push('/login'));
           }
@@ -23,7 +23,7 @@ export function requireAuthentication (Component) {
         render () {
           return (
                 <div>
-                    {this.props.isAuthenticated === true
+                    {this.props.authenticated === true
                         ? <Component {...this.props}/>
                         : null
                     }
@@ -33,17 +33,15 @@ export function requireAuthentication (Component) {
     }
 
   const mapStateToProps = (state) => ({
-    // token: state.auth.token,
-    // userName: state.auth.userName,
-    // isAuthenticated: state.auth.isAuthenticated
+    authenticated: state.auth.authenticated
   });
 
   AuthenticatedComponent.propTypes = {
-    isAuthenticated: React.PropTypes.bool.isRequired,
+    authenticated: React.PropTypes.bool.isRequired,
     dispatch: React.PropTypes.func.isRequired
   }
   AuthenticatedComponent.defaultProps = {
-    isAuthenticated: false
+    authenticated: false
   }
 
   return connect(mapStateToProps)(AuthenticatedComponent);

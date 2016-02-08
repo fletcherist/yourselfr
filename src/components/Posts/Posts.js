@@ -29,6 +29,7 @@ class Posts extends React.Component {
               text={post.text}
               id={post._id}
               likes={post.likes}
+              attachments={post.attachments}
             />
           )
         });

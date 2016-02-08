@@ -1,7 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
 import { updatePostsCounter } from './user';
-console.log(config);
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
@@ -35,7 +34,7 @@ export const loadMorePosts = createAction(LOAD_MORE_POSTS, async (offset) => {
 
 export const send = createAction(SEND_POST);
 
-export const sendPost = (text) => {
+export const sendPost = (text, photo) => {
   return (dispatch, getState) => {
     var alias = getState().user.alias;
     fetch(`${config.http}/api/posts`, {
@@ -43,7 +42,7 @@ export const sendPost = (text) => {
       headers: {
         'Content-type': config.post
       },
-      body: `text=${text}&created_by=${alias}`
+      body: `text=${text}&created_by=${alias}&photo=${photo}`
     })
     .then((r) => r.json())
     .then((data) => {

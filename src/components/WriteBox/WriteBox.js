@@ -2,6 +2,7 @@ import React from 'react';
 import s from './WriteBox.scss';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
+import { config } from '../../redux/config';
 
 class WriteBox extends React.Component {
     constructor (props) {
@@ -14,7 +15,8 @@ class WriteBox extends React.Component {
 
     handleSubmitButton (e) {
       var text = this.textBox.value;
-      this.props.sendPost(text);
+      var photo = this.state.photo;
+      this.props.sendPost(text, photo);
 
       this.textBox.value = '';
     }
@@ -55,6 +57,31 @@ class WriteBox extends React.Component {
         var form = document.getElementById('textForm');
         form.style.width = '60%';
       }
+
+      fetch(`${config.http}/upload/photo`, {
+        method: 'post',
+        body: fd
+      })
+      .then((r) => r.json())
+      .then((res) => {
+        console.log('its works' + res);
+        this.setState({
+          photo: res.url
+        });
+      })
+      .catch((e) => {
+        console.log('Error catched while attaching a photo', e);
+      })
+
+    //   $.ajax({
+    // 		url: 'upload/photo',
+		// type: 'POST',
+		// data: fd,
+		// processData: false,
+		// contentType: false,
+		// success: function(res){
+		// 	post.photo = res.url;
+		// }
     }
 
     render () {

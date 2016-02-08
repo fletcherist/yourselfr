@@ -14,6 +14,9 @@ class UserNavigation extends React.Component {
                     <Link to='like'>
                         <li>рассказать о профиле в соцсетях</li>
                     </Link>
+                    <a href='../auth/logout'>
+                        <li>выйти, если вошёл</li>
+                    </a>
                 </ul>
             </div>
         );

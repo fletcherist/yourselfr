@@ -16,7 +16,7 @@ import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
 
-// import { requireAuthentication } from 'components/Authenticate';
+import { requireAuthentication } from 'components/Authenticate';
 
 import Followers from 'components/Followers';
 import Following from 'components/Following';
@@ -39,7 +39,7 @@ export default (
     <Route path='/login' component={Login} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
-      <Route path='preferences' component={Preferences} />
+      <Route path='preferences' component={requireAuthentication(Preferences)} />
       <Route path='followers' component={Followers} />
       <Route path='following' component={Following} />
     </Route>

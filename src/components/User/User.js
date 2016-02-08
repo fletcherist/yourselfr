@@ -20,6 +20,7 @@ class User extends React.Component {
                     className='responsive_crop_fixed'
                     style={backround}>
                 </div>
+                <Navigation />
                 <div className={s.container}>
                     <div className={s.container_left} id='left'>
                         <div className={s.container_user}>

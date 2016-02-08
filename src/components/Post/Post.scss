@@ -53,6 +53,19 @@
 	background-color: #F2FAFF;
 }
 
+.attachmentPhoto {
+	max-width: 340px;
+	background-color: #EFEFEF;
+	border-radius: 2px;
+
+	@media screen and (max-width: 1000px) {
+		max-width: 99%;
+	}
+	@media screen and (max-width: 480px) {
+		max-width: 222px;
+	}
+}
+
 
 
 .remove-button {

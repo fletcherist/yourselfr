@@ -1,4 +1,8 @@
 @import 'variables';
+body {
+  font-family: system, -apple-system, BlinkMacSystemFont,
+      "Helvetica Neue", "Lucida Grande";
+}
 input {
   border: 1px solid #e3e3e3;
   border-radius: 0px;
@@ -38,7 +42,6 @@ button {
   cursor: pointer;
   white-space: nowrap;
   outline: none;
-  font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
   vertical-align: top;
   overflow: visible;
   line-height: 13px;

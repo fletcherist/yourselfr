@@ -68,10 +68,16 @@ class App extends Component {
   }
 
   render() {
+    var backround = this.props.background
+      ? {
+        background: `url(${config.http}/upload/background/${this.props.background})`,
+        transition: 'all 0.2s'
+      }
+      : {}
     return !this.props.error ? (
         <div>
           <Provider store={store}>
-            <div className={s.responsive_crop}></div>
+            <div className='responsive_crop_fixed' style={backround}></div>
             <Header />
             {this.props.children}
           </Provider>
@@ -82,7 +88,8 @@ class App extends Component {
 
 function mapStateToProps(state){
   return {
-    count: state.count
+    count: state.count,
+    background: state.user.background
   }
 }
 

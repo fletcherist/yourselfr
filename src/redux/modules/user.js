@@ -1,5 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-import fetch from 'isomorphic-fetch';
 import { config } from '../config';
 
 export const LOAD_USER = 'LOAD_USER';

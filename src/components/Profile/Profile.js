@@ -59,7 +59,7 @@ class Profile extends React.Component {
 class StatusBox extends React.Component {
   render () {
     return (
-      <div className={s.container_user}>
+      <div className={s.container_box}>
         <div className={s.status}>
           {this.props.status}
           </div>

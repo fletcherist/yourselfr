@@ -3,6 +3,7 @@ import Like from '../Like';
 
 import s from './Post.scss';
 import cx from 'classnames/bind';
+import { config } from '../../redux/config';
 
 class Post extends React.Component {
     constructor (props) {
@@ -78,6 +79,13 @@ class Post extends React.Component {
                 </div>
                 <div className={s.text}>
                     {this.props.text}
+                    {this.props.attachments && this.props.attachments.photo && (
+                      <div>
+                        <img src={`${config.http}/upload/photo/${this.props.attachments.photo}`}
+                            className={s.attachmentPhoto}
+                        />
+                      </div>
+                    )}
                 </div>
                 <Like
                     count={this.props.likes}
@@ -92,7 +100,8 @@ Post.propTypes = {
   text: React.PropTypes.string.isRequired,
   created_at: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
-  likes: React.PropTypes.number
+  likes: React.PropTypes.number,
+  attachments: React.PropTypes.object
 }
 
 export default Post;
