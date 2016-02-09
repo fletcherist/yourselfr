@@ -23,13 +23,21 @@ class Preferences extends React.Component {
     }
 
     uploadAvatar () {
-      var avatar = document.getElementById('avatar');
-      avatar.submit();
+      var photo = this.avatarForm;
+      console.log(photo);
+      var fd = new FormData();
+      fd.append('file', photo[0].files[0]);
+
+      this.props.loadAvatar(fd);
     }
 
     uploadBackground () {
-      var background = document.getElementById('background');
-      background.submit();
+      var photo = this.backgroundForm;
+      console.log(photo);
+      var fd = new FormData();
+      fd.append('file', photo[0].files[0]);
+
+      this.props.loadBackground(fd);
     }
 
     render () {
@@ -63,18 +71,32 @@ class Preferences extends React.Component {
                         onClick={this.savePreferences.bind(this)}>
                         {this.state.saveMessage}
                 </button>
+                <h3>приблуды</h3>
+                <button onClick={ () => this.avatarInput.click() } >Загрузить аватар</button>
+                <button onClick={ () => this.backgroundInput.click() } >Загрузить Фон</button>
 
+                <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
+                  <input
+                    type='file'
+                    onChange={this.uploadAvatar.bind(this)}
+                    name='avatar'
+                    id='file-avatar'
+                    ref={ (r) => this.avatarInput = r }
+                  />
+                </form>
+                <form ref={ (r) => this.backgroundForm = r } encType='multipart/form-data' method='post' className='hidden'>
+                  <input
+                    type='file'
+                    onChange={this.uploadBackground.bind(this)}
+                    name='background'
+                    id='file-avatar'
+                    ref={ (r) => this.backgroundInput = r }
+                  />
+                </form>
             </div>
         );
     }
 }
-
-// <form id='avatar' action={`${config.http}/upload/avatar`} encType='multipart/form-data' method='post'>
-//   <input type='file' onChange={this.uploadAvatar.bind(this)} name='avatar' id='file-avatar'/>
-// </form>
-// <form id='background' action={`${config.http}/upload/background`} encType='multipart/form-data' method='post'>
-//   <input type='file' onChange={this.uploadBackground.bind(this)} name='background' id='file-avatar'/>
-// </form>
 
 Preferences.propTypes = {
   username: React.PropTypes.string.isRequired,

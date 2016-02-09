@@ -39,7 +39,7 @@ export default (
     <Route path='/login' component={Login} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
-      <Route path='preferences' component={Preferences} />
+      <Route path='preferences' component={requireAuthentication(Preferences)} />
       <Route path='followers' component={Followers} />
       <Route path='following' component={Following} />
     </Route>

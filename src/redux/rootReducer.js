@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import { routeReducer as router } from 'redux-simple-router'
-import counter from './modules/counter'
 import user from './modules/user'
 import posts from './modules/posts'
 import auth from './modules/auth'
@@ -12,7 +11,6 @@ var subscriptions = combineReducers({
 })
 
 export default combineReducers({
-  counter,
   user,
   posts,
   router,

@@ -33,16 +33,10 @@ class WriteBox extends React.Component {
       var fd = new FormData();
       fd.append('file', photo[0].files[0]);
 
-      var file = photo[0].files[0];
-
       var preview = document.getElementById('attach-preview');
       var reader = new FileReader();
 
       reader.onload = function () {
-        console.log('dgsddsgds');
-        // Create a new image.
-        var img = new Image();
-        // Set the img src property using the data URL.
         formToTray();
         preview.src = reader.result;
         preview.classList.remove('hidden');
@@ -91,7 +85,7 @@ class WriteBox extends React.Component {
       return (
             <div className={s.container}>
                 <textarea
-                    placeholder='гоша рубчинский — это мой бест френд'
+                    placeholder='Напишите своё отношение к этому человеку.'
                     id='textForm'
                     ref={(ref) => this.textBox = ref}
                 >
