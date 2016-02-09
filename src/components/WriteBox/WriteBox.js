@@ -12,6 +12,7 @@ class WriteBox extends React.Component {
         text: '',
         created_by: this.props.alias
       }
+      // var random = Math.floor(Math.random() * phrases.length)
     }
 
     handleSubmitButton (e) {
@@ -90,7 +91,7 @@ class WriteBox extends React.Component {
       return (
             <div className={s.container}>
                 <textarea
-                    placeholder='Оставьте мнение о Ване'
+                    placeholder='гоша рубчинский — это мой бест френд'
                     id='textForm'
                     ref={(ref) => this.textBox = ref}
                 >

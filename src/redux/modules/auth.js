@@ -6,6 +6,7 @@ export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOG_IN = 'LOG_IN';
 export const SAVE_PREFERENCES = 'SAVE_PREFERENCES';
 export const START_SAVING_PREFERENCES = 'START_SAVING_PREFERENCES';
+export const LOAD_AVATAR = 'LOAD_AVATAR';
 
 var defaultMe = {
   authenticated: true,
@@ -29,6 +30,40 @@ export const authenticate = createAction(AUTHENTICATE, async (auth = {}) => {
 
   return auth;
 });
+
+export const loadAvatar = (avatar) => {
+  return (dispatch, getState) => {
+    console.log('saving uploading avatar..');
+    fetch(`${config.http}/upload/avatar`, {
+      method: 'post',
+      body: avatar
+    })
+    .then((r) => r.json())
+    .then((res) => {
+      console.log('its works' + res);
+    })
+    .catch((e) => {
+      console.log('Error catched while attaching a photo', e);
+    })
+  }
+}
+
+export const loadBackground = (background) => {
+  return (dispatch, getState) => {
+    console.log('saving uploading avatar..');
+    fetch(`${config.http}/upload/background`, {
+      method: 'post',
+      body: background
+    })
+    .then((r) => r.json())
+    .then((res) => {
+      console.log('its works' + res);
+    })
+    .catch((e) => {
+      console.log('Error catched while attaching a photo', e);
+    })
+  }
+}
 
 export const logIn = createAction(LOG_IN, async (username, password) => {
   var response = await fetch(`${config.http}/auth/login`, {
@@ -62,11 +97,8 @@ export const savePreferences = (user) => {
       headers: {
         'Content-type': config.post
       },
-      body: `
-        username=${user.username}&
-        alias=${user.alias}&
-        status=${user.status}
-      `
+      credentials: 'same-origin',
+      body: `username=${user.username}&alias=${user.alias}&status=${user.status}`
     })
     .then((r) => r.json())
     .then((res) => {
@@ -77,7 +109,9 @@ export const savePreferences = (user) => {
 
 export const actions = {
   authenticate,
-  savePreferences
+  savePreferences,
+  loadAvatar,
+  loadBackground
 }
 //
 // export default function reducer (state = defaultMe, action) {

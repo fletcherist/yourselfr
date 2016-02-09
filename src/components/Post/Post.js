@@ -78,7 +78,7 @@ class Post extends React.Component {
                     <span>{this.state.createdPronounce}</span>
                 </div>
                 <div className={s.text}>
-                    {this.props.text}
+                    <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
                     {this.props.attachments && this.props.attachments.photo && (
                       <div>
                         <img src={`${config.http}/upload/photo/${this.props.attachments.photo}`}
