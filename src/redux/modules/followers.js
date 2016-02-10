@@ -1,4 +1,4 @@
-import { createAction, handleActions, handleAction } from 'redux-actions';
+import { createAction } from 'redux-actions';
 import fetch from 'isomorphic-fetch';
 import { config } from '../config';
 

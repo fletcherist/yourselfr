@@ -1,31 +1,44 @@
 @import '../variables.scss';
 
 .container {
-	// box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 1px rgba(0,0,0,0.07);
-	// transition: box-shadow 0.2s cubic-bezier(.4,.97,.65,.61);
-	// background-color: white;
-	padding-top: 0px;;
-	margin-bottom: 0px;
-	background-color: #f7f7f7;
+		
 }
 
 .path {
+	// margin: 8px;
 	font-size: 14px;
 	padding: 0px;
+	margin-top: 0px;
 	list-style: none;
-	li {
-		padding: 8px;
-		padding-left: 30px;
-		transition: color .3s;
-		&:hover {
-			color: $yoColor;
-			background-color: #E1EFF5;
-		}
-	}
+
 	a {
 		text-decoration: none;
 		color:  #999;
 		font-weight: 300;
 		text-align: left;
+		&:first-child {
+			li {
+				padding-top: 16px;
+				// border-top-left-radius: 3px;
+				// border-top-right-radius: 3px;
+			}
+		}
+		&:last-child {
+			li {
+				padding-bottom: 15px;
+				// border-bottom-left-radius: 3px;
+				// border-bottom-right-radius: 3px;
+			}
+		}
+
+		li {
+			padding: 8px;
+			padding-left: 16px;
+			transition: color .3s;
+			&:hover {
+				color: $yoColor;
+				background-color: #E1EFF5;
+			}
+		}
 	}
 }

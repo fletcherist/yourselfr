@@ -11,12 +11,12 @@
 
 .container_left {
 	float: left;
-	margin-right: 16px;
-	
+	margin-right: 12px;
+
 	display: inline-block;
 	max-width: 300px;
 	width: 100%;
-	
+
 	@media screen and (max-width: 1000px){
 		width: 40%;
 	}

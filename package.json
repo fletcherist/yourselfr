@@ -30,7 +30,7 @@
       }
     },
     "deploy": {
-      "command": "npm run clean && npm run compile && better-npm-run copy",
+      "command": "npm run clean && PORT=80 npm run compile && better-npm-run copy",
       "env": {
         "NODE_ENV": "production"
       }

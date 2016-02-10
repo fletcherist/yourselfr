@@ -7,13 +7,15 @@ export const LOG_IN = 'LOG_IN';
 export const SAVE_PREFERENCES = 'SAVE_PREFERENCES';
 export const START_SAVING_PREFERENCES = 'START_SAVING_PREFERENCES';
 export const LOAD_AVATAR = 'LOAD_AVATAR';
+export const REMOVE_AVATAR = 'REMOVE_AVATAR';
+export const REMOVE_BACKGROUND = 'REMOVE_BACKGROUND';
 
 var defaultMe = {
   authenticated: true,
   user: {
-    username: 'hellowa',
-    alias: 'asddeee',
-    status: 'status n rock'
+    username: '',
+    alias: '',
+    status: ''
   }
 }
 
@@ -36,11 +38,12 @@ export const loadAvatar = (avatar) => {
     console.log('saving uploading avatar..');
     fetch(`${config.http}/upload/avatar`, {
       method: 'post',
+      credentials: 'same-origin',
       body: avatar
     })
     .then((r) => r.json())
     .then((res) => {
-      console.log('its works' + res);
+      console.log(res);
     })
     .catch((e) => {
       console.log('Error catched while attaching a photo', e);
@@ -53,11 +56,12 @@ export const loadBackground = (background) => {
     console.log('saving uploading avatar..');
     fetch(`${config.http}/upload/background`, {
       method: 'post',
+      credentials: 'same-origin',
       body: background
     })
     .then((r) => r.json())
     .then((res) => {
-      console.log('its works' + res);
+      console.log(res);
     })
     .catch((e) => {
       console.log('Error catched while attaching a photo', e);
@@ -67,7 +71,7 @@ export const loadBackground = (background) => {
 
 export const logIn = createAction(LOG_IN, async (username, password) => {
   var response = await fetch(`${config.http}/auth/login`, {
-    method: 'POST',
+    method: 'post',
     credentials: 'same-origin',
     headers: {
       'Content-type': config.post
@@ -84,6 +88,30 @@ export const logIn = createAction(LOG_IN, async (username, password) => {
 
   return response;
 })
+
+export const removeAvatar = () => {
+  return (dispatch, getState) => {
+    fetch(`${config.http}/upload/background/delete`, {
+      method: 'post',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': config.post
+      }
+    });
+  }
+}
+
+export const removeBackground = () => {
+  return (dispatch, getState) => {
+    fetch(`${config.http}/upload/background/delete`, {
+      method: 'post',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': config.post
+      }
+    });
+  }
+}
 
 export const savePreferencesR = createAction(SAVE_PREFERENCES);
 export const startSavingPreferences = createAction(START_SAVING_PREFERENCES);
@@ -111,19 +139,10 @@ export const actions = {
   authenticate,
   savePreferences,
   loadAvatar,
-  loadBackground
+  loadBackground,
+  removeAvatar,
+  removeBackground
 }
-//
-// export default function reducer (state = defaultMe, action) {
-//   switch (action.type) {
-//     case 'AUTHENTICATE':
-//       return {...state, ...{authenticated: true}};
-//     case 'LOGOUT':
-//       return {...state, ...{authenticated: false}};
-//     default:
-//       return state;
-//   }
-// }
 
 export default handleActions({
   AUTHENTICATE: (state, { payload }) => {

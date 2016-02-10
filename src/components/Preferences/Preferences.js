@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
 import {actions as authActions} from '../../redux/modules/auth';
-import { config } from '../../redux/config';
 
 class Preferences extends React.Component {
     constructor (props) {
@@ -72,8 +71,10 @@ class Preferences extends React.Component {
                         {this.state.saveMessage}
                 </button>
                 <h3>приблуды</h3>
-                <button onClick={ () => this.avatarInput.click() } >Загрузить аватар</button>
-                <button onClick={ () => this.backgroundInput.click() } >Загрузить Фон</button>
+                <button onClick={ () => this.avatarInput.click() }  className='btn btn-yo'> Загрузить аватар </button>
+                <button onClick={ () => this.backgroundInput.click() } className='btn btn-yo' > Загрузить Фон </button>
+                <button onClick={ () => this.props.removeAvatar() }  className='btn btn-yo'> Удалить аватар </button>
+                <button onClick={ () => this.props.removeBackground() }  className='btn btn-yo'> Удалить Фон </button>
 
                 <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
                   <input
@@ -107,7 +108,9 @@ Preferences.propTypes = {
   isFetching: React.PropTypes.bool,
 
   loadAvatar: React.PropTypes.func,
-  loadBackground: React.PropTypes.func
+  loadBackground: React.PropTypes.func,
+  removeAvatar: React.PropTypes.func,
+  removeBackground: React.PropTypes.func
 };
 
 Preferences.defaultProps = {

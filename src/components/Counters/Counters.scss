@@ -5,11 +5,10 @@
 	text-align: center;
 	text-decoration: none;
 	color: black;
-	left: -100px;
-
 	background: white;
     /* Old browsers */
   transition:background .5s ease;
+	border-radius: 3px;
 }
 .followersCounter {
 	background: linear-gradient(to right, white 50%, #f2fdff 50%);

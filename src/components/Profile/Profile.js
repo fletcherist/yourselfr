@@ -27,7 +27,7 @@ class Profile extends React.Component {
       var isStatus = isNotEmptyString(this.props.status);
       return (
         <div>
-          <div className={s.container_user}>
+          <div className='container--left'>
                 <div className={s.avatar}>
                     <Link to={`/${this.props.alias}`}>
                         <img src={photo}/>
@@ -59,7 +59,7 @@ class Profile extends React.Component {
 class StatusBox extends React.Component {
   render () {
     return (
-      <div className={s.container_box}>
+      <div className='container--left'>
         <div className={s.status}>
           {this.props.status}
           </div>

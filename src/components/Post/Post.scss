@@ -1,7 +1,23 @@
+@import 'variables';
+
 .post:first-child {
 	padding-top: 18px;
 }
 .post {
+
+	a {
+		background-color: transparent;
+		color: $yoColor;
+		border-bottom: 1px inset rgba(60, 151, 188, 0.25);
+		text-decoration: none;
+		transition: all .2s ease-out;
+	}
+
+	a:hover {
+		color: #d04000;
+		border-color: rgba(208, 64, 0, 0.51);
+		transition: 0;
+	}
 
 	word-wrap: break-word;
 	padding: 10px 0px 20px 5px;

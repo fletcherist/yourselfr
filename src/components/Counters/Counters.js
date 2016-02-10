@@ -15,7 +15,7 @@ class Counters extends React.Component {
       var pronounce = {
         visits: ending(this.props.visits, ['просмотр', 'просмотра', 'просмотров']),
         followers: ending(this.props.followers, ['подписчик', 'подписчика', 'подписчиков']),
-        following: ending(this.props.following, ['подписка', 'подписок', 'подписки'])
+        following: ending(this.props.following, ['подписка', 'подписки', 'подписок'])
       }
 
       var followersClasses = cx(s.counter, s.followersCounter);

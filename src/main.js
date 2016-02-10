@@ -6,7 +6,7 @@ import routes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 
-import { authenticate, logIn } from './redux/modules/auth';
+import { authenticate } from './redux/modules/auth';
 
 const historyConfig = { basename: __BASENAME__ }
 const history = useRouterHistory(createHistory)(historyConfig)
