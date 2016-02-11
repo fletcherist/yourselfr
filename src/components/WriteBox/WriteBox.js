@@ -83,29 +83,37 @@ class WriteBox extends React.Component {
     render () {
       var attachPreview = cx(s.attachPreview, 'hidden');
       return (
-            <div className={s.container}>
-                <textarea
-                    placeholder='Напишите своё отношение к этому человеку.'
-                    id='textForm'
-                    ref={(ref) => this.textBox = ref}
-                >
-                </textarea>
-                <img id='attach-preview' className={attachPreview}/>
-                <div className={s.above}>
-                    <button
-                        className='btn btn-yo'
-                        onClick={this.handleSubmitButton.bind(this)}>
-                        оставить мнение
-                    </button>
-                    <div className={s.addPhoto} onClick={this.selectPhoto.bind(this)}></div>
-                    <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
-                        <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>
-                    </form>
-                </div>
-            </div>
-        );
+        <div className="box feed__box box--input emerge" data-spin="true" data-spin-size="32" data-spin-color="#000" data-effect="relax" data-continue="true">
+          <textarea className="feed__input" placeholder="А что вы думаете об&nbsp;этом человеке?"></textarea>
+          <div className="feed__button button button--submit">Высказаться</div>
+          <div className="feed__button button button--photo"><img className="button__icon" width="21px" height="17px" src="assets/img/attach.png"/></div>
+        </div>
+      );
     }
 }
+
+
+
+// <div classNameName={s.container}>
+//     <textarea
+//         placeholder='Напишите своё отношение к этому человеку.'
+//         id='textForm'
+//         ref={(ref) => this.textBox = ref}
+//     >
+//     </textarea>
+//     <img id='attach-preview' className={attachPreview}/>
+//     <div className={s.above}>
+//         <button
+//             className='feed__button button button--submit'
+//             onClick={this.handleSubmitButton.bind(this)}>
+//             оставить мнение
+//         </button>
+//         <div className={s.addPhoto} onClick={this.selectPhoto.bind(this)}></div>
+//         <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
+//             <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>
+//         </form>
+//     </div>
+// </div>
 
 WriteBox.propTypes = {
   sendPost: React.PropTypes.func.isRequired,

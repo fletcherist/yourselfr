@@ -73,28 +73,38 @@ class Post extends React.Component {
       })
 
       return (
-        <div className={postClasses}>
-                <div className={s.time}>
-                    <span>{this.state.createdPronounce}</span>
-                </div>
-                <div className={s.text}>
-                    <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
-                    {this.props.attachments && this.props.attachments.photo && (
-                      <div>
-                        <img src={`${config.http}/upload/photo/${this.props.attachments.photo}`}
-                            className={s.attachmentPhoto}
-                        />
-                      </div>
-                    )}
-                </div>
-                <Like
-                    count={this.props.likes}
-                    object={this.props.id}
-                />
+        <div className="feed__post post">
+          <div className="post__date">{this.state.createdPronounce}</div>
+          <div className="post__text" dangerouslySetInnerHTML={{__html: this.props.text}}></div>
+          <div className="post__likes">
+            <span className="likes__count">9&ensp;000</span>
+            <img className="likes__image" src="/assets/img/like.png"/>
           </div>
-        );
+        </div>
+      );
     }
 }
+
+
+// <div className={postClasses}>
+//         <div className={s.time}>
+//             <span>{this.state.createdPronounce}</span>
+//         </div>
+//         <div className={s.text}>
+//             <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+//             {this.props.attachments && this.props.attachments.photo && (
+//               <div>
+//                 <img src={`${config.http}/upload/photo/${this.props.attachments.photo}`}
+//                     className={s.attachmentPhoto}
+//                 />
+//               </div>
+//             )}
+//         </div>
+//         <Like
+//             count={this.props.likes}
+//             object={this.props.id}
+//         />
+//   </div>
 
 Post.propTypes = {
   text: React.PropTypes.string.isRequired,

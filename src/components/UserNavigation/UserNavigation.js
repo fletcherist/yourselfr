@@ -7,8 +7,7 @@ class UserNavigation extends React.Component {
       return (
             <div className={s.container}>
                 <ul className={s.path} >
-
-                    <Link to={`/${this.props.alias}/preferences`}>
+                    <Link to='/preferences'>
                         <li>настройки </li>
                     </Link>
                     <Link to='like'>

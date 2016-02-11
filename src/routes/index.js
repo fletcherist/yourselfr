@@ -37,9 +37,9 @@ export default (
     <IndexRoute component={HomeView} />
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={Login} />
+    <Route path='/preferences' component={ () => <User><Preferences/></User>} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
-      <Route path='preferences' component={requireAuthentication(Preferences)} />
       <Route path='followers' component={Followers} />
       <Route path='following' component={Following} />
     </Route>

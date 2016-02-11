@@ -26,36 +26,45 @@ class Profile extends React.Component {
 
       var isStatus = isNotEmptyString(this.props.status);
       return (
-        <div>
-          <div className='container--left'>
-                <div className={s.avatar}>
-                    <Link to={`/${this.props.alias}`}>
-                        <img src={photo}/>
-                    </Link>
-                </div>
-                <h1 className={s.username}>
-                    <span>
-                        {this.props.username}
-                    </span>
-                    {online}
-                </h1>
-                <Counters
-                  visits={this.props.stats.visits}
-                  followers={this.props.stats.followers}
-                  following={this.props.stats.following}
-                  alias={this.props.alias}
-                />
-                </div>
-                { isStatus && (
-                  <StatusBox status={this.props.status}/>
-                )}
-                <UserNavigation alias={this.props.alias}/>
-
+        <div className="user">
+          <div className="box user__box box--narrow">
+            <img className="user__picture" src="https://pp.vk.me/c627521/v627521538/2d215/Gz2GvxjXh0w.jpg" width="200" height="200"/>
+            <div className="user__info">
+              <div className="user__name">{this.props.username}</div>
+              <Counters
+                stats={this.props.stats}
+                alias={this.props.alias}
+              />
             </div>
+          </div>
+          <div className="button button--subscribe">Подписаться</div>
+        </div>
       )
     }
 }
 
+// <div>
+//   <div className='box user__box box--narrow'>
+//         <div className='user__picture'>
+//             <Link to={`/${this.props.alias}`}>
+//                 <img src={photo}/>
+//             </Link>
+//         </div>
+//         <div className='user__name'>{this.props.username}</div>
+//         <Counters
+//           visits={this.props.stats.visits}
+//           followers={this.props.stats.followers}
+//           following={this.props.stats.following}
+//           alias={this.props.alias}
+//         />
+//         </div>
+//         { isStatus && (
+//           <StatusBox status={this.props.status}/>
+//         )}
+//         <div className='button button--subscribe'>Подписаться</div>
+//     </div>
+
+// <UserNavigation alias={this.props.alias}/>
 class StatusBox extends React.Component {
   render () {
     return (

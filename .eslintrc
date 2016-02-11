@@ -16,6 +16,6 @@
   },
   "rules": {
     "semi" : 0,
-    "doublequote": 0,
+    "jsx-quotes": 0
   }
 }

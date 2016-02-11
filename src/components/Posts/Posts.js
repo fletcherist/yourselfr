@@ -36,31 +36,37 @@ class Posts extends React.Component {
       }
 
       return (
-            <div>
-                <div className={s.container_posts} id='right'>
-                    <div className={s.header}>
-                        <div className={s.counter}>
-                            {this.props.count} {postsPronounce}
-                        </div>
-                    </div>
-                    {postsArray}
-                    {this.props.count > 10 &&  this.props.count > this.state.postsLoaded && (
-                      <div
-                            className={s.loadMore}
-                            onClick={ () => {
-                              this.props.loadMorePosts(this.state.postsLoaded)
-                              this.setState({
-                                postsLoaded: this.state.postsLoaded + 10
-                              })
-                            }}
-                            >Загрузить ещё
-                      </div>
-                    )}
-                </div>
-            </div>
-        )
+        <div className="box feed__box feed__box--posts emerge">
+          {postsArray}
+        </div>
+      )
     }
 }
+
+
+//
+// <div>
+//     <div className={s.container_posts} id='right'>
+//         <div className={s.header}>
+//             <div className={s.counter}>
+//                 {this.props.count} {postsPronounce}
+//             </div>
+//         </div>
+//         {postsArray}
+//         {this.props.count > 10 &&  this.props.count > this.state.postsLoaded && (
+//           <div
+//                 className={s.loadMore}
+//                 onClick={ () => {
+//                   this.props.loadMorePosts(this.state.postsLoaded)
+//                   this.setState({
+//                     postsLoaded: this.state.postsLoaded + 10
+//                   })
+//                 }}
+//                 >Загрузить ещё
+//           </div>
+//         )}
+//     </div>
+// </div>
 
 Posts.propTypes = {
   count: React.PropTypes.number.isRequired,
