@@ -15,15 +15,17 @@
 .username {
 	margin: 20px 0px 0px 0px;
 	text-align:  center;
-	font-size: 28px;
+	font-size: 32px;
+	text-transform: uppercase;
+	font-family: 'Bebas', sans-serif;
+	font-weight: bold;
 }
 .status {
 	text-align: center;
-	font-size: 16px;
-	min-height: 40px;
+	font-size: 14px;
 	text-align-last: center;
 	word-wrap: break-word;
-	padding: 5px 15px 10px 15px;
+	padding: 0px 15px 10px 15px;
 }
 
 .online {

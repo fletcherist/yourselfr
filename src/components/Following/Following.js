@@ -45,7 +45,7 @@ class Following extends React.Component {
           )
         });
       } else {
-        followingList = 'No following';
+        followingList = '';
       }
       return (
         <div className='container--right padding-0'>

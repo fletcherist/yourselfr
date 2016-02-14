@@ -4,6 +4,7 @@ import { config } from '../config';
 
 export const LOAD_FOLLOWERS = 'LOAD_FOLLOWERS';
 export const LOAD_FOLLOWING = 'LOAD_FOLLOWING';
+export const FETCHING_DATA = 'FETCHING_DATA';
 
 // export const loadPosts = createAction(LOAD_POSTS, async id => {
 //   var posts = await fetch(`${config.http}/api/posts/abracadabra`);

@@ -1,27 +1,3 @@
- /* General layout and reset */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  text-size-adjust: none;
-}
-input, textarea, button {
-  outline: none;
-  font-family: "Helvetica Neue", "Arial", sans-serif;
-  font-size: 17px;
-  line-height: 1.4em;
-
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* General UI */
-a {
-  padding-top: .2em;
-}
-
 .yourselfr {
   position: relative;
   background: #000 url(/assets/img/bg4.jpg) no-repeat center center fixed;
@@ -45,7 +21,7 @@ a {
   cursor: pointer;
 }
 .button--subscribe {
-  background: #ааа;
+  background: #CCE7F4;
   color: #175E7B;
   box-shadow: inset 0 -1px #639ab4;
   text-align: center;
@@ -60,12 +36,10 @@ a {
   box-shadow: inset 0 -1px #F9D885;
   float: right;
   position: relative;
-  right: 8px;
+  text-align: center;
 }
-.button--submit {
-  float: right;
-  position: relative;
-  right: 8px;
+.button--block {
+  width: 100%;
 }
 .button--photo {
   width: 36px;

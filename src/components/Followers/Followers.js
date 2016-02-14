@@ -46,7 +46,7 @@ class Followers extends React.Component {
           )
         });
       } else {
-        followersList = 'something '
+        followersList = ''
       }
 
       return (
