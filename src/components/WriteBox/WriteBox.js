@@ -12,14 +12,19 @@ class WriteBox extends React.Component {
         text: '',
         created_by: this.props.alias,
         isOpen: true,
-        textPlaceholder: ''
+        textPlaceholder: '',
+        photo: undefined
       }
     }
 
     componentWillMount () {
       var phrases = [
-        'Что вы думаете о ' + this.props.username + '?',
-        'Поделись мнением о ' + this.props.username + '!'
+        `Что вы думаете о  ${this.props.username}?`,
+        `Поделись мнением о ${this.props.username}!`,
+        `Хороший ли человек ${this.props.username}?`,
+        `Что объединяет Вас и ${this.props.username}`,
+        `${this.props.username} любит сериалы?`,
+        `У ${this.props.username} есть вторая половинка?`
       ];
       var random = Math.floor(Math.random() * phrases.length)
       this.setState({
@@ -30,8 +35,10 @@ class WriteBox extends React.Component {
     handleSubmitButton (e) {
       var text = this.textBox.value;
       var photo = this.state.photo;
+      if (!photo && !text) {
+        this.textBox.focus();
+      }
       this.props.sendPost(text, photo);
-
       this.textBox.value = '';
     }
 

@@ -4,6 +4,8 @@ import Like from '../Like';
 import s from './Post.scss';
 import cx from 'classnames/bind';
 import { config } from '../../redux/config';
+import { connect } from 'react-redux';
+import { actions as postsActions } from '../../redux/modules/posts';
 
 class Post extends React.Component {
     constructor (props) {
@@ -80,7 +82,8 @@ class Post extends React.Component {
       return (
         <div className={postClasses}>
                 <div className={s.time}>
-                    <span>{this.state.createdPronounce}</span>
+                    <span className={s.hideOnHover}>{this.state.createdPronounce}</span>
+                    <div className={s.removeButton} onClick={this.props.removePost()}></div>
                 </div>
                 <div className={s.text}>
                     <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
@@ -106,7 +109,12 @@ Post.propTypes = {
   created_at: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   likes: React.PropTypes.number,
-  attachments: React.PropTypes.object
+  attachments: React.PropTypes.object,
+
+  removePost: React.PropTypes.func.isRequired
 }
 
-export default Post;
+const mapStateToProps = () => {
+  return {}
+}
+export default connect(mapStateToProps, postsActions)(Post);

@@ -32,14 +32,24 @@ class defaultUser extends React.Component {
   }
 }
 
+class PreferencesFull extends React.Component {
+  render () {
+    return (
+      <User>
+        <Preferences/>
+      </User>
+    )
+  }
+}
+
 export default (
   <Route path='/' component={CoreLayout}>
     <IndexRoute component={HomeView} />
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={Login} />
+    <Route path='preferences' component={PreferencesFull} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
-      <Route path='preferences' component={requireAuthentication(Preferences)} />
       <Route path='followers' component={Followers} />
       <Route path='following' component={Following} />
     </Route>

@@ -5,11 +5,12 @@
      font-weight: bold;
 }
 
+
 :global {
   @import 'base';
   @import 'layout';
   @import 'vendor/normalize';
-
+  
   /* General layout and reset */
  * {
    box-sizing: border-box;

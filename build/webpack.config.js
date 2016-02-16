@@ -187,7 +187,7 @@ webpackConfig.postcss = [
       remove: true,
       browsers: ['last 2 versions']
     },
-    safe: true,
+    safe: false,
     discardComments: {
       removeAll: true
     }

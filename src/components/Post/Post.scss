@@ -4,7 +4,10 @@
 	padding-top: 18px;
 }
 .post {
-
+	transition: background-color .05s;
+	&:hover {
+		background-color: $yoColor05;
+	}
 	a {
 		background-color: transparent;
 		color: $yoColor;
@@ -22,7 +25,7 @@
 	word-wrap: break-word;
 	padding: 10px 0px 20px 5px;
 	line-height: 28px;
-	font-size: 18px;
+	font-size: 16px;
 	justify-content: left;
 	display: flex;
 	.time {
@@ -84,7 +87,13 @@
 
 
 
-.remove-button {
+.removeButton {
+	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;
+	background: #148BC3;
+	width: 22px;
+	height: 22px;
+	mask-size: cover;
 	position: absolute;
 	text-decoration: none;
 	font-size: 12px;
@@ -92,16 +101,16 @@
 	opacity: 0;
 	transition: all .2s;
 	display: none;
-	margin-top: -14px;
+	margin-top: -8px;
 }
-.remove-button:hover {
+.removeButton:hover {
 	opacity: 1 !important;
 }
 
-.post:hover .remove-button {
+.post:hover .removeButton {
 	display: block;
 	opacity: .6;
 }
-.post:hover .hide-onhover {
+.post:hover .hideOnHover {
 	display: none;
 }

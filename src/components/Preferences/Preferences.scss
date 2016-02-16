@@ -19,3 +19,17 @@
   background-color: $yoColor05;
   opacity: .8;
 }
+
+.fetching {
+  overflow: hidden;
+  background-size:100px 100px;
+  background-image: linear-gradient(-45deg,
+     #f9d885 25%, #fff3bb 25%,
+     #fff3bb 50%, #f9d885 50%,
+     #f9d885 75%, #fff3bb 75%);
+  animation: anim 1s linear infinite;
+}
+@keyframes anim {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 50px 50px }
+}

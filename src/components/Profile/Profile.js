@@ -52,7 +52,7 @@ class Profile extends React.Component {
                 )}
                 {
                   //<div className='button button--subscribe'>подписаться</div>
-                  //<UserNavigation alias={this.props.alias}/>
+                  <UserNavigation alias={this.props.alias}/>
                 }
 
             </div>

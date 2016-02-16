@@ -1,14 +1,21 @@
 @import 'variables';
 
+.subContainer {
+  &:first-child {
+    .background {
+      border-radius: 3px 3px 0px 0px;
+    }
+  }
+}
+
 .photo {
-  height: 100px;
+  height: 90px;
   border-radius: 50%;
   margin: 0px;
   z-index: 999;
   margin-top: 30px;
   margin-left: 20px;
   background-size: contain;
-  box-shadow: inset 2px 2px 4px rgba(0,0,0,.5);
 }
 
 .background {
@@ -17,6 +24,8 @@
 	max-height: 158px;
 	height: 140px;
   margin-bottom: -150px;
+
+
 }
 
 .subscription {

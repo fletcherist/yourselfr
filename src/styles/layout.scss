@@ -1,3 +1,5 @@
+@import 'variables';
+
 .yourselfr {
   position: relative;
   background: #000 url(/assets/img/bg4.jpg) no-repeat center center fixed;
@@ -19,6 +21,8 @@
   border-radius: 3px;
   box-shadow: inset 0 -1px #ccc;
   cursor: pointer;
+  outline: 0;
+  border: none;
 }
 .button--subscribe {
   background: #CCE7F4;
@@ -38,6 +42,24 @@
   position: relative;
   text-align: center;
 }
+.button--save {
+  color: #E98032;
+  background: #FFF3BB;
+  box-shadow: inset 0 -1px #F9D885;
+  position: relative;
+  text-align: center;
+}
+
+.button--upload {
+  margin: 10px 8px 10px 0px;
+  height: 30px;
+  background: $yoColor05;
+  color: $yoColor;
+  box-shadow: inset 0 -1px #AADCFF;
+}
+
+
+
 .button--block {
   width: 100%;
 }

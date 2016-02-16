@@ -1,5 +1,13 @@
 @import 'variables';
 
+.subContainer {
+  &:first-child {
+    .background {
+      border-radius: 3px 3px 0px 0px;
+    }
+  }
+}
+
 .photo {
   height: 90px;
   border-radius: 50%;
@@ -23,10 +31,6 @@
 .subscription {
   z-index: 99999;
   min-height: 140px;
-
-  &:first-child {
-    border-radius: 300px;
-  }
 }
 
 .info {

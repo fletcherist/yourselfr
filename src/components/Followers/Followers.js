@@ -24,7 +24,7 @@ class Followers extends React.Component {
           var photo = isValidPhoto(follower.photo);
           var linkHref = '/' + follower.alias;
           return (
-            <div key={follower._id}>
+            <div key={follower._id} className={s.subContainer}>
                 <div style={{background: `url(${config.http}/upload/background/${follower.background})`}}
                   className={s.background}>
                 </div>
