@@ -5,9 +5,8 @@ import {Link} from 'react-router';
 class UserNavigation extends React.Component {
     render () {
       return (
-            <div className={s.container}>
+            <div className='container--left'>
                 <ul className={s.path} >
-
                     <Link to={`/preferences`}>
                         <li>настройки </li>
                     </Link>

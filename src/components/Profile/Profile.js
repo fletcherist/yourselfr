@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 import UserNavigation from 'components/UserNavigation';
 import { isValidPhoto, isNotEmptyString } from '../Toools';
+import { config } from '../../redux/config';
 
 import {actions as userActions} from '../../redux/modules/user';
 
@@ -28,7 +29,10 @@ class Profile extends React.Component {
       var isStatus = isNotEmptyString(this.props.status);
       return (
         <div>
-          <div className='container--left'>
+          <div className='container--left padding-0'>
+                <div style={{background: `url(${config.http}/upload/background/${this.props.background})`}}
+                  className={s.background}>
+                </div>
                 <div className={s.avatar}>
                     <Link to={`/${this.props.alias}`}>
                         <img src={photo}/>
@@ -51,8 +55,8 @@ class Profile extends React.Component {
                   <StatusBox status={this.props.status}/>
                 )}
                 {
-                  //<div className='button button--subscribe'>подписаться</div>
-                  <UserNavigation alias={this.props.alias}/>
+                  // <div className='button button--subscribe'>подписаться</div>
+                  // <UserNavigation alias={this.props.alias}/>
                 }
 
             </div>

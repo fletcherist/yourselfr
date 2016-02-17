@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import s from './Like.scss';
 import { connect } from 'react-redux';
+import { likePost } from '../../redux/modules/posts';
 
 let cx = classNames.bind(s);
 
@@ -26,6 +27,7 @@ class Like extends React.Component {
       active: !this.state.active,
       count: this.state.count + diff
     })
+    this.props.likePost(this.state.object);
   }
   render () {
     var classes = cx({
@@ -48,7 +50,18 @@ class Like extends React.Component {
 
 Like.propTypes = {
   count: React.PropTypes.number,
-  object: React.PropTypes.string.isRequired
+  object: React.PropTypes.string.isRequired,
+  likePost: React.PropTypes.func.isRequired
 }
 
-export default connect()(Like);
+const mapStateToProps = (state) => {
+  return {
+    lol: 'lol'
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    likePost: (id) => dispatch(likePost(id))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Like);

@@ -4,6 +4,7 @@ import Post from '../Post';
 import { ending, isEmpty } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
+import Loader from '../Loader';
 
 class Posts extends React.Component {
     componentDidMount () {
@@ -43,7 +44,13 @@ class Posts extends React.Component {
                             {this.props.count} {postsPronounce}
                         </div>
                     </div>
-                    {postsArray}
+                    {this.props.isFetching && (
+                      <Loader/>
+                    )}
+                    {!this.props.isFetching && (
+                      postsArray
+                    )}
+
                     {this.props.count > 10 && this.props.count > this.state.postsLoaded && (
                       <div
                             className={s.loadMore}
@@ -66,13 +73,15 @@ Posts.propTypes = {
   count: React.PropTypes.number.isRequired,
   posts: React.PropTypes.array.isRequired,
   loadPosts: React.PropTypes.func.isRequired,
-  loadMorePosts: React.PropTypes.func.isRequired
+  loadMorePosts: React.PropTypes.func.isRequired,
+  isFetching: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
   return {
-    posts: state.posts,
-    count: state.user.stats.posts
+    posts: state.posts.posts,
+    count: state.user.stats.posts,
+    isFetching: state.posts.isFetching
   }
 }
 export default connect(mapStateToProps, postsActions)(Posts)

@@ -1,9 +1,18 @@
 @import 'variables';
 
+.blockTitle {
+  padding: 15px;
+  font-weight: lighter;
+}
 .subContainer {
   &:first-child {
     .background {
       border-radius: 3px 3px 0px 0px;
+    }
+  }
+  &:last-child {
+    .background {
+      border-radius: 0px 0px 3px 3px;
     }
   }
 }
@@ -24,8 +33,6 @@
 	max-height: 158px;
 	height: 140px;
   margin-bottom: -150px;
-
-
 }
 
 .subscription {

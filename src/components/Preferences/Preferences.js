@@ -105,15 +105,6 @@ class Preferences extends React.Component {
                   onBlur={this.handleStatus.bind(this)}
                   ref={ (r) => this.status = r }
                 />
-                <button className={
-                          this.props.isFetching
-                          ? cx('button', 'button--save', s.fetching)
-                          : cx('button', 'button--save')
-                        }
-                        onClick={this.savePreferences.bind(this)}
-                        disabled={this.props.isFetching}>
-                        {this.props.isFetching ? 'сохраняю' : 'сохранить'}
-                </button>
                 <h3>приблуды</h3>
                 <button onClick={ () => this.avatarInput.click() } className={cx('button button--upload')}> Загрузить аватар </button>
                 <button onClick={ () => this.backgroundInput.click() } className={cx('button button--upload')} > Загрузить Фон </button>

@@ -9,6 +9,7 @@ import { loadUser } from '../../redux/modules/user';
 import { loadFollowers } from '../../redux/modules/followers'
 import { isValidPhoto, isEmpty } from '../Toools';
 import { config } from '../../redux/config';
+import Loader from '../Loader';
 
 class Followers extends React.Component {
     componentWillMount () {
@@ -38,6 +39,7 @@ class Followers extends React.Component {
                 <div className={s.info}>
                   <Link
                     to={linkHref}
+                    onClick={ () => loadUser(follower.alias)}
                     className={s.username}>{follower.username}
                   </Link>
                 </div>
@@ -51,7 +53,13 @@ class Followers extends React.Component {
 
       return (
         <div className='container--right padding-0'>
-          {followersList}
+          <div className={s.blockTitle}>Подписчики</div>
+          {this.props.isFetching && (
+            <Loader/>
+          )}
+          {!this.props.isFetching && (
+            followersList
+          )}
         </div>
       )
     }
@@ -60,14 +68,16 @@ class Followers extends React.Component {
 Followers.propTypes = {
   followers: React.PropTypes.array.isRequired,
   loadFollowers: React.PropTypes.func.isRequired,
-  loadUser: React.PropTypes.func.isRequired
+  loadUser: React.PropTypes.func.isRequired,
+  isFetching: React.PropTypes.bool.isRequired
 }
 Followers.defaultProps = {
 }
 
 function mapStateToProps (state) {
   return {
-    followers: state.subscriptions.followers
+    followers: state.subscriptions.followers.followers,
+    isFetching: state.subscriptions.followers.isFetching
   }
 }
 

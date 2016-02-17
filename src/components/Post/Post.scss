@@ -34,6 +34,10 @@
 		padding: 0px 0px 0px 10px;
 		color: #B1B1B1;
 		width: 80px;
+		@media screen and (max-width: 540px) {
+			width: 50px;
+		}
+
 	}
 	.text {
 		width: 70%;

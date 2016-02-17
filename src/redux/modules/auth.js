@@ -4,21 +4,13 @@ import { config } from '../config';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOG_IN = 'LOG_IN';
-export const SAVE_PREFERENCES = 'SAVE_PREFERENCES';
-export const START_SAVING_PREFERENCES = 'START_SAVING_PREFERENCES';
-export const STOP_SAVING_PREFERENCES = 'STOP_SAVING_PREFERENCES';
 export const LOAD_AVATAR = 'LOAD_AVATAR';
 export const REMOVE_AVATAR = 'REMOVE_AVATAR';
 export const REMOVE_BACKGROUND = 'REMOVE_BACKGROUND';
 
-export const START_SAVING_USERNAME = 'START_SAVING_USERNAME';
-export const STOP_SAVING_USERNAME = 'STOP_SAVING_USERNAME';
-
-export const START_SAVING_ALIAS = 'START_SAVING_ALIAS';
-export const STOP_SAVING_ALIAS = 'STOP_SAVING_ALIAS';
-
-export const START_SAVING_STATUS = 'START_SAVING_STATUS';
-export const STOP_SAVING_STATUS = 'STOP_SAVING_STATUS';
+export const FETCH_USERNAME = 'FETCH_USERNAME';
+export const FETCH_ALIAS = 'FETCH_ALIAS';
+export const FETCH_STATUS = 'FETCH_STATUS';
 
 var defaultMe = {
   authenticated: true,
@@ -128,42 +120,39 @@ export const removeBackground = () => {
   }
 }
 
-export const savePreferencesR = createAction(SAVE_PREFERENCES);
-
-const startSavingUsername = createAction(START_SAVING_USERNAME);
-const stopSavingUsername = createAction(STOP_SAVING_USERNAME);
-const saveUsername = () => {
+const fetchUsername = createAction(FETCH_USERNAME);
+const saveUsername = (username) => {
   return (dispatch, getState) => {
-    dispatch(startSavingUsername());
+    dispatch(fetchUsername(true));
+
+    var body = createBody({username: username});
+    fetchData(body);
+    fetchData
     setTimeout(() => {
-      dispatch(stopSavingUsername());
+      dispatch(fetchUsername(false));
     }, 1000);
   }
 }
 
-const startSavingAlias = createAction(START_SAVING_ALIAS);
-const stopSavingAlias = createAction(STOP_SAVING_ALIAS);
-const saveAlias = () => {
+const fetchAlias = createAction(FETCH_ALIAS);
+const saveAlias = (alias) => {
   return (dispatch, getState) => {
-    dispatch(startSavingAlias());
+    dispatch(fetchAlias(true));
     setTimeout(() => {
-      dispatch(stopSavingAlias());
+      dispatch(fetchAlias(false));
     }, 1000);
   }
 }
 
-const startSavingStatus = createAction(START_SAVING_STATUS);
-const stopSavingStatus = createAction(STOP_SAVING_STATUS);
-const saveStatus = () => {
+const fetchStatus = createAction(FETCH_STATUS);
+const saveStatus = (status) => {
   return (dispatch, getState) => {
-    dispatch(startSavingStatus());
+    dispatch(fetchStatus(true));
     setTimeout(() => {
-      dispatch(stopSavingStatus());
+      dispatch(fetchStatus(false));
     }, 1000);
   }
 }
-
-export const stopSavingPreferences = createAction(STOP_SAVING_PREFERENCES);
 
 const createBody = (user) => {
   var body = ``;
@@ -180,38 +169,23 @@ const createBody = (user) => {
   return body;
 }
 
-export const savePreferences = (user) => {
-  return (dispatch, getState) => {
-    console.log('saving Preferences..');
-    console.log(user);
-    dispatch(savePreferencesR());
-    dispatch(startSavingPreferences());
-
-    setTimeout(() => {
-      dispatch(stopSavingPreferences());
-    }, 3000);
-
-    var body = createBody(user);
-    console.log(body);
-    //
-    // fetch(`${config.http}/api/users`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': config.post
-    //   },
-    //   credentials: 'same-origin',
-    //   body: body
-    // })
-    // .then((r) => r.json())
-    // .then((res) => {
-    //   console.log(res);
-    // })
-  }
+const fetchData = (body) => {
+  fetch(`${config.http}/api/users`, {
+    method: 'POST',
+    headers: {
+      'Content-type': config.post
+    },
+    credentials: 'same-origin',
+    body: body
+  })
+  .then((r) => r.json())
+  .then((res) => {
+    console.log(res);
+  })
 }
 
 export const actions = {
   authenticate,
-  savePreferences,
   loadAvatar,
   loadBackground,
   removeAvatar,
@@ -226,27 +200,28 @@ export default handleActions({
   AUTHENTICATE: (state, { payload }) => {
     return {...state, ...payload};
   },
-  SAVE_PREFERENCES: (state, action) => {
-    return {...state};
-  },
-  START_SAVING_USERNAME: (state, action) => {
-    return {...state, ...{isFetching: {username: true}}};
-  },
-  STOP_SAVING_USERNAME: (state, action) => {
-    return {...state, ...{isFetching: {username: false}}};
+
+  FETCH_USERNAME: (state, {payload}) => {
+    return Object.assign({}, state, {
+      isFetching: Object.assign({}, state.isFetching, {
+        username: payload
+      })
+    })
   },
 
-  START_SAVING_ALIAS: (state, action) => {
-    return {...state, ...{isFetching: {alias: true}}};
-  },
-  STOP_SAVING_ALIAS: (state, action) => {
-    return {...state, ...{isFetching: {alias: false}}};
+  FETCH_ALIAS: (state, {payload}) => {
+    return Object.assign({}, state, {
+      isFetching: Object.assign({}, state.isFetching, {
+        alias: payload
+      })
+    })
   },
 
-  START_SAVING_STATUS: (state, action) => {
-    return {...state, ...{isFetching: {status: true}}};
-  },
-  STOP_SAVING_STATUS: (state, action) => {
-    return {...state, ...{isFetching: {status: false}}};
+  FETCH_STATUS: (state, {payload}) => {
+    return Object.assign({}, state, {
+      isFetching: Object.assign({}, state.isFetching, {
+        status: payload
+      })
+    })
   }
 }, defaultMe);

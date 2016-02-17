@@ -7,12 +7,13 @@ export const SEND_POST = 'SEND_POST';
 export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS';
 export const REMOVE_POST = 'REMOVE_POST';
 export const LIKE_POST = 'LIKE_POST';
+const FETCH_POSTS = 'FETCH_POSTS';
 
 export const likePost = createAction(LIKE_POST, async (id) => {
   if (!id) {
     return false;
   }
-
+  console.log(id);
   fetch(`${config.http}/api/likes`, {
     method: 'POST',
     headers: {
@@ -21,21 +22,32 @@ export const likePost = createAction(LIKE_POST, async (id) => {
     body: `object=${id}`
   })
   .then((r) => r.json())
-  .then()
+  .then((res) => {
+    console.log(res);
+  })
 })
 
-export const loadPosts = createAction(LOAD_POSTS, async (offset) => {
-  var alias = window.location.pathname.substr(1);
-  // var alias = 'abracadabra';
-  var url = `${config.http}/api/posts/${alias}`
-  if (offset) {
-    url += `/${offset}`
+const fetchPosts = createAction(FETCH_POSTS);
+const loadPostsPatch = createAction(LOAD_POSTS);
+
+export const loadPosts = (offset) => {
+  return (dispatch, getState) => {
+    var alias = window.location.pathname.substr(1);
+    // var alias = 'abracadabra';
+    var url = `${config.http}/api/posts/${alias}`
+    if (offset) {
+      url += `/${offset}`
+    }
+    dispatch(fetchPosts(true));
+    console.log(url);
+    fetch(url)
+      .then((r) => r.json())
+      .then((posts) => {
+        dispatch(loadPostsPatch(posts));
+        dispatch(fetchPosts(false));
+      })
   }
-  console.log(url);
-  var posts = await fetch(url);
-  posts = posts.json(posts);
-  return posts;
-});
+};
 
 export const loadMorePosts = createAction(LOAD_MORE_POSTS, async (offset) => {
   var alias = window.location.pathname.substr(1);
@@ -98,14 +110,18 @@ export const actions = {
   loadPosts,
   sendPost,
   loadMorePosts,
-  removePost
+  removePost,
+  likePost
 }
 
 export default handleActions({
   [LOAD_POSTS]: (state, { payload }) => {
-    return payload;
+    return {...state, posts: payload};
   },
   [LOAD_MORE_POSTS]: (state, { payload }) => {
-    return [...state, ...payload];
+    return {...state, ...{posts: payload}};
+  },
+  [FETCH_POSTS]: (state, { payload }) => {
+    return {... state, ...{isFetching: payload}};
   }
-}, []);
+}, {});
