@@ -1,8 +1,6 @@
 import React from 'react';
-// import {ending} from '../toools';
 import {connect} from 'react-redux';
 import s from './Followers.scss';
-// import {actions as followersActions} from '../../redux/modules/followers';
 import { Link } from 'react-router'
 
 import { loadUser } from '../../redux/modules/user';
@@ -76,8 +74,8 @@ Followers.defaultProps = {
 
 function mapStateToProps (state) {
   return {
-    followers: state.subscriptions.followers.followers,
-    isFetching: state.subscriptions.followers.isFetching
+    followers: state.subscriptions.followers,
+    isFetching: state.isFetching.followers
   }
 }
 

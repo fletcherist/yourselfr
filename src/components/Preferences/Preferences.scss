@@ -7,6 +7,7 @@
   margin-bottom: 0px;
   border: 0px;
   border-bottom: 1px solid $yoGreyLight;
+  margin-bottom: 20px;
   &:focus {
 
   }
@@ -28,6 +29,17 @@
      #fff3bb 50%, #f9d885 50%,
      #f9d885 75%, #fff3bb 75%);
   animation: anim 1s linear infinite;
+}
+.fetchingForms {
+  overflow: hidden;
+  background-size:100px 100px;
+  background-image: linear-gradient(-45deg,
+     $yoColor05 25%, $yoColor 25%,
+     $yoColor 50%, $yoColor05 50%,
+     $yoColor05 75%, $yoColor 75%);
+  animation: anim 1s linear infinite;
+  opacity: 0.8;
+  overflow: hidden;
 }
 @keyframes anim {
   0% { background-position: 0px 0px; }

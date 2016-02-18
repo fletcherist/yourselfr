@@ -73,8 +73,8 @@ Following.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    following: state.subscriptions.following.following,
-    isFetching: state.subscriptions.following.isFetching
+    following: state.subscriptions.following,
+    isFetching: state.isFetching.following
   }
 }
 

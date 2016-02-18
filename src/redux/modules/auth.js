@@ -1,16 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
 import fetch from 'isomorphic-fetch';
 import { config } from '../config';
+import { fetchUsername, fetchAlias, fetchStatus, fetchAvatar, fetchBackground } from './isFetching';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOG_IN = 'LOG_IN';
 export const LOAD_AVATAR = 'LOAD_AVATAR';
 export const REMOVE_AVATAR = 'REMOVE_AVATAR';
 export const REMOVE_BACKGROUND = 'REMOVE_BACKGROUND';
-
-export const FETCH_USERNAME = 'FETCH_USERNAME';
-export const FETCH_ALIAS = 'FETCH_ALIAS';
-export const FETCH_STATUS = 'FETCH_STATUS';
 
 var defaultMe = {
   authenticated: true,
@@ -43,6 +40,7 @@ export const authenticate = createAction(AUTHENTICATE, async (auth = {}) => {
 export const loadAvatar = (avatar) => {
   return (dispatch, getState) => {
     console.log('saving uploading avatar..');
+    dispatch(fetchAvatar(true));
     fetch(`${config.http}/upload/avatar`, {
       method: 'post',
       credentials: 'same-origin',
@@ -50,6 +48,7 @@ export const loadAvatar = (avatar) => {
     })
     .then((r) => r.json())
     .then((res) => {
+      dispatch(fetchAvatar(false));
       console.log(res);
     })
     .catch((e) => {
@@ -60,7 +59,8 @@ export const loadAvatar = (avatar) => {
 
 export const loadBackground = (background) => {
   return (dispatch, getState) => {
-    console.log('saving uploading avatar..');
+    console.log('saving uploading background..');
+    dispatch(fetchBackground(true));
     fetch(`${config.http}/upload/background`, {
       method: 'post',
       credentials: 'same-origin',
@@ -68,6 +68,7 @@ export const loadBackground = (background) => {
     })
     .then((r) => r.json())
     .then((res) => {
+      dispatch(fetchBackground(false));
       console.log(res);
     })
     .catch((e) => {
@@ -120,21 +121,18 @@ export const removeBackground = () => {
   }
 }
 
-const fetchUsername = createAction(FETCH_USERNAME);
 const saveUsername = (username) => {
   return (dispatch, getState) => {
     dispatch(fetchUsername(true));
 
     var body = createBody({username: username});
     fetchData(body);
-    fetchData
     setTimeout(() => {
       dispatch(fetchUsername(false));
     }, 1000);
   }
 }
 
-const fetchAlias = createAction(FETCH_ALIAS);
 const saveAlias = (alias) => {
   return (dispatch, getState) => {
     dispatch(fetchAlias(true));
@@ -144,7 +142,6 @@ const saveAlias = (alias) => {
   }
 }
 
-const fetchStatus = createAction(FETCH_STATUS);
 const saveStatus = (status) => {
   return (dispatch, getState) => {
     dispatch(fetchStatus(true));
@@ -199,29 +196,5 @@ export const actions = {
 export default handleActions({
   AUTHENTICATE: (state, { payload }) => {
     return {...state, ...payload};
-  },
-
-  FETCH_USERNAME: (state, {payload}) => {
-    return Object.assign({}, state, {
-      isFetching: Object.assign({}, state.isFetching, {
-        username: payload
-      })
-    })
-  },
-
-  FETCH_ALIAS: (state, {payload}) => {
-    return Object.assign({}, state, {
-      isFetching: Object.assign({}, state.isFetching, {
-        alias: payload
-      })
-    })
-  },
-
-  FETCH_STATUS: (state, {payload}) => {
-    return Object.assign({}, state, {
-      isFetching: Object.assign({}, state.isFetching, {
-        status: payload
-      })
-    })
   }
 }, defaultMe);

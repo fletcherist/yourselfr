@@ -79,9 +79,9 @@ Posts.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    posts: state.posts.posts,
+    posts: state.posts,
     count: state.user.stats.posts,
-    isFetching: state.posts.isFetching
+    isFetching: state.isFetching.posts
   }
 }
 export default connect(mapStateToProps, postsActions)(Posts)

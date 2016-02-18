@@ -5,6 +5,8 @@ import { createHistory } from 'history'
 import routes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
+import ga from 'react-ga';
+import { config } from 'redux/config';
 
 import { authenticate } from './redux/modules/auth';
 
@@ -14,6 +16,10 @@ const history = useRouterHistory(createHistory)(historyConfig)
 const initialState = window.__INITIAL_STATE__
 const store = configureStore({ initialState, history })
 
+ga.initialize(config.googleAnalyticsId);
+history.listen(location => {
+  ga.pageview(window.location.pathname);
+});
 // store.dispatch(logIn('abracadabra', 'abracadabra'));
 store.dispatch(authenticate());
 // Render the React application to the DOM

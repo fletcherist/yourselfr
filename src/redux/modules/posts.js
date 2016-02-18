@@ -1,13 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
 import { updatePostsCounter } from './user';
+import { fetchPosts } from './isFetching';
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
 export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS';
 export const REMOVE_POST = 'REMOVE_POST';
 export const LIKE_POST = 'LIKE_POST';
-const FETCH_POSTS = 'FETCH_POSTS';
 
 export const likePost = createAction(LIKE_POST, async (id) => {
   if (!id) {
@@ -27,9 +27,7 @@ export const likePost = createAction(LIKE_POST, async (id) => {
   })
 })
 
-const fetchPosts = createAction(FETCH_POSTS);
 const loadPostsPatch = createAction(LOAD_POSTS);
-
 export const loadPosts = (offset) => {
   return (dispatch, getState) => {
     var alias = window.location.pathname.substr(1);
@@ -116,12 +114,9 @@ export const actions = {
 
 export default handleActions({
   [LOAD_POSTS]: (state, { payload }) => {
-    return {...state, posts: payload};
+    return [...payload];
   },
   [LOAD_MORE_POSTS]: (state, { payload }) => {
-    return {...state, ...{posts: payload}};
-  },
-  [FETCH_POSTS]: (state, { payload }) => {
-    return {... state, ...{isFetching: payload}};
+    return [...state, ...payload];
   }
-}, {});
+}, []);

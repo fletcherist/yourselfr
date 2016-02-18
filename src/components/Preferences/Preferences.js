@@ -46,7 +46,7 @@ class Preferences extends React.Component {
       if (this.state.username === this.username.value) {
 
       } else {
-        this.props.saveUsername();
+        this.props.saveUsername(this.username.value);
       }
     }
 
@@ -76,7 +76,7 @@ class Preferences extends React.Component {
                   defaultValue={this.props.username}
                   className={
                             this.props.isFetching.username
-                            ? cx(s.username, s.fetching)
+                            ? cx(s.username, s.fetchingForms)
                             : cx(s.username)
                           }
                   onBlur={this.handleUsername.bind(this)}
@@ -88,7 +88,7 @@ class Preferences extends React.Component {
                   defaultValue={this.props.alias}
                   className={
                             this.props.isFetching.alias
-                            ? cx(s.alias, s.fetching)
+                            ? cx(s.alias, s.fetchingForms)
                             : cx(s.alias)
                           }
                   onBlur={this.handleAlias.bind(this)}
@@ -99,15 +99,24 @@ class Preferences extends React.Component {
                   defaultValue={this.props.status}
                   className={
                             this.props.isFetching.status
-                            ? cx(s.status, s.fetching)
+                            ? cx(s.status, s.fetchingForms)
                             : cx(s.status)
                           }
                   onBlur={this.handleStatus.bind(this)}
                   ref={ (r) => this.status = r }
                 />
-                <h3>приблуды</h3>
-                <button onClick={ () => this.avatarInput.click() } className={cx('button button--upload')}> Загрузить аватар </button>
-                <button onClick={ () => this.backgroundInput.click() } className={cx('button button--upload')} > Загрузить Фон </button>
+                <h3>Фотографии</h3>
+                <button onClick={ () => this.avatarInput.click() }
+                  className={
+                            this.props.isFetching.avatar
+                            ? cx('button button--upload', s.fetchingForms)
+                            : cx('button button--upload')
+                          }> Загрузить аватар </button>
+                <button onClick={ () => this.backgroundInput.click() }
+                className={
+                          this.props.isFetching.background
+                          ? cx('button button--upload', s.fetchingForms)
+                          : cx('button button--upload')}> Загрузить Фон </button>
                 <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
                 <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
 
@@ -152,7 +161,7 @@ function mapStateToProps (state) {
     username: state.auth.user.username,
     alias: state.auth.user.alias,
     status: state.auth.user.status,
-    isFetching: state.auth.isFetching
+    isFetching: state.isFetching
   }
 }
 

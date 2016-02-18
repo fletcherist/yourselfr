@@ -3,6 +3,7 @@ import { routeReducer as router } from 'redux-simple-router'
 import user from './modules/user'
 import posts from './modules/posts'
 import auth from './modules/auth'
+import isFetching from './modules/isFetching';
 import {followers, following} from './modules/followers';
 
 var subscriptions = combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   posts,
   router,
   auth,
-  subscriptions
+  subscriptions,
+  isFetching
 })
