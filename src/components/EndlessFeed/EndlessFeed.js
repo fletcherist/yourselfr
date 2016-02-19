@@ -3,7 +3,7 @@ import s from './EndlessFeed.scss';
 import { connect } from 'react-redux';
 import { loadEndlessFeed } from '../../redux/modules/endlessFeed';
 import { ending, isEmpty } from '../toools';
-import Post from '../Post';
+import FeedPost from '../FeedPost';
 import Loader from '../Loader';
 
 class EndlessFeed extends React.Component {
@@ -13,12 +13,12 @@ class EndlessFeed extends React.Component {
   }
   render () {
     var endlessFeed = this.props.feed;
-    console.log(this.props.endlessFeed);
     var endlessFeedArray;
     if (endlessFeed && !isEmpty(endlessFeed) && Array.isArray(endlessFeed)) {
       endlessFeedArray = endlessFeed.map(function (post) {
         return (
-          <Post
+          <FeedPost
+            user={post.user}
             key={post._id}
             created_at={post.created_at}
             text={post.text}
@@ -31,7 +31,6 @@ class EndlessFeed extends React.Component {
     }
     return (
       <div>
-        <h1>The feed is endless</h1>
         {this.props.isFetching && (
           <Loader/>
         )}
@@ -42,6 +41,7 @@ class EndlessFeed extends React.Component {
 }
 
 EndlessFeed.propTypes = {
+  endlessFeed: React.PropTypes.func.isRequired,
   feed: React.PropTypes.array.isRequired,
   isFetching: React.PropTypes.bool.isRequired
 }

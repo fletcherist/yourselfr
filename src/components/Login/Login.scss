@@ -5,19 +5,30 @@
 }
 
 .container {
-  margin: 160px auto;
-  padding: 0 0 40px;
+  margin: 0px auto;
+  padding: 180px 0 40px;
   max-width: 800px;
+}
+
+.title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 20px;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .left {
   float: left;
-  display: inline-block;
   min-width: 400px;
-  max-width: 600px;
+  max-width: 440px;
   border: 1px solid #edeeee;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.feedBox {
   height: 450px;
-
+  overflow-y: auto;
 }
 
 .right {
@@ -26,12 +37,13 @@
   display: inline-block;
   min-width: 350px;
   max-width: 350px;
-  background-color: #fff;
+  border-radius: 3px;
 }
 
 .loginFormContainer {
   padding: 20px 40px 30px 40px;
   border: 1px solid #edeeee;
+  background-color: #fff;
   // max-width: 300px;
   margin: auto;
   border-radius: 3px;
