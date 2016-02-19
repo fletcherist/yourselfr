@@ -34,6 +34,16 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.button--register {
+  background: #CCE7F4;
+  color: #175E7B;
+  box-shadow: inset 0 -1px #639ab4;
+  text-align: center;
+  margin-top: 10px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .button--submit {
   color: #E98032;
   background: #FFF3BB;
@@ -49,13 +59,18 @@
   position: relative;
   text-align: center;
 }
-
 .button--upload {
   margin: 10px 8px 10px 0px;
   height: 30px;
   background: $yoColor05;
   color: $yoColor;
   box-shadow: inset 0 -1px #AADCFF;
+}
+.button--block {
+  width: 100%;
+}
+.button--container {
+  margin-top: 4px;
 }
 
 
@@ -253,4 +268,19 @@
   .feed__box {
     width: 100%;
   }
+}
+
+.input--form {
+  background-color: #fdfdfd;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 9px 8px 7px;
+  -webkit-appearance: none;
+}
+.input--block {
+  width: 100%;
+}
+.input--container {
+  margin-top: 6px;
 }

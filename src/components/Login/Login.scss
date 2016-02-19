@@ -1,20 +1,46 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
-@import '../variables.scss';
+@import 'variables';
 
 .root {
-
+  // height: 100%;
 }
 
 .container {
-  margin: 0 auto;
+  margin: 160px auto;
   padding: 0 0 40px;
-  max-width: $max-content-width;
+  max-width: 800px;
+}
+
+.left {
+  float: left;
+  display: inline-block;
+  min-width: 400px;
+  max-width: 600px;
+  border: 1px solid #edeeee;
+  height: 450px;
+
+}
+
+.right {
+  margin-top: 90px;
+  float: right;
+  display: inline-block;
+  min-width: 350px;
+  max-width: 350px;
+  background-color: #fff;
+}
+
+.loginFormContainer {
+  padding: 20px 40px 30px 40px;
+  border: 1px solid #edeeee;
+  // max-width: 300px;
+  margin: auto;
+  border-radius: 3px;
+}
+
+.logotype {
+  background: url('./components/Login/logo.png') no-repeat;
+  background-size: 150px;
+  height: 60px;
+  width: 300px;
+  margin: 0px 60px 10px;
 }

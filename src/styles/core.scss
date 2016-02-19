@@ -10,7 +10,7 @@
   @import 'base';
   @import 'layout';
   @import 'vendor/normalize';
-  
+
   /* General layout and reset */
  * {
    box-sizing: border-box;
@@ -21,7 +21,6 @@
  input, textarea, button {
    outline: none;
    font-size: 17px;
-   line-height: 1.4em;
  }
  table {
    border-collapse: collapse;
@@ -32,18 +31,9 @@
    font-family: system, -apple-system, BlinkMacSystemFont,
        "Helvetica Neue", "Lucida Grande";
  }
+
  input {
-   border: 1px solid #e3e3e3;
-   border-radius: 0px;
-   display: inline-block;
-   padding: 0px 0px 2px 8px;
-   position: relative;
-   font-size: 15px;
-   outline-width: 0;
-   height: 37px;
-   -webkit-box-shadow: 0px;
-   box-shadow: none;
-   transition: none;
+   font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
  }
 
  textarea {

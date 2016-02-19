@@ -88,8 +88,8 @@ class Preferences extends React.Component {
                   defaultValue={this.props.alias}
                   className={
                             this.props.isFetching.alias
-                            ? cx(s.alias, s.fetchingForms)
-                            : cx(s.alias)
+                            ? cx('input--form', s.fetchingForms)
+                            : cx('input--form')
                           }
                   onBlur={this.handleAlias.bind(this)}
                   ref={ (r) => this.alias = r }

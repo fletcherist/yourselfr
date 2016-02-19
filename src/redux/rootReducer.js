@@ -4,6 +4,7 @@ import user from './modules/user'
 import posts from './modules/posts'
 import auth from './modules/auth'
 import isFetching from './modules/isFetching';
+import endlessFeed from './modules/endlessFeed';
 import {followers, following} from './modules/followers';
 
 var subscriptions = combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
   router,
   auth,
   subscriptions,
-  isFetching
+  isFetching,
+  endlessFeed
 })
