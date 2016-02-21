@@ -48,3 +48,31 @@ export function isEmpty (obj) {
   }
   return true;
 }
+
+export function timePassed (time) {
+  var now = new Date();
+  var passed = ((now - time) / 1000).toFixed(0); // Seconds
+  var result;
+  if (passed < 5) {
+    result = 'сейчас'
+  } else if (passed < 60) {
+    result = passed + 'сек'
+  } else if (passed < 60 * 60) {
+    result = (passed / 60).toFixed(0) + 'мин';
+  } else if (passed < 60 * 60 * 24) {
+    result = (passed / (60 * 60)).toFixed(0) + 'ч'
+  } else if (passed < 60 * 60 * 24 * 7) {
+    result = (passed / (60 * 60 * 24)).toFixed(0) + 'дн'
+  } else if (passed < 60 * 60 * 24 * 7 * 4) {
+    result = (passed / (60 * 60 * 24 * 7)).toFixed(0) + 'нед'
+  } else if (passed < 60 * 60 * 24 * 7 * 4 * 12) {
+    result = (passed / (60 * 60 * 24 * 7 * 4)).toFixed(0) + 'мес'
+  } else if (passed < 60 * 60 * 24 * 7 * 30 * 12) {
+    result = 'давно'
+  }
+
+  return {
+    seconds: passed,
+    pronounce: result
+  };
+}

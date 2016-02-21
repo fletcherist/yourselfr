@@ -52,6 +52,12 @@ body {
   }
 }
 
+.titleAction {
+  text-align: center;
+  padding: 0px 0px 16px 0px;
+  color: $yoGrey;
+}
+
 .loginFormContainer {
   padding: 20px 40px 30px 40px;
   border: 1px solid #edeeee;
@@ -66,6 +72,7 @@ body {
   background-color: #fff;
   text-align: center;
   border: 1px solid #edeeee;
+  border-radius: 3px;
   padding: 20px;
 }
 
@@ -74,5 +81,5 @@ body {
   background-size: 150px;
   height: 60px;
   width: 300px;
-  margin: 0px 40px 10px;
+  margin: 0px 56px 10px;
 }

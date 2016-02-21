@@ -6,58 +6,36 @@ import cx from 'classnames/bind';
 import { config } from '../../redux/config';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
+import { timePassed } from '../Toools';
 
 class Post extends React.Component {
     constructor (props) {
       super(props);
-      this.displayName = '';
-
       this.state = {
         created_at: this.props.created_at,
         createdPronounce: 'сейчас',
-        isHot: false
+        isHot: false,
+        updateTimer: false
       }
+
+      this.timePassed = timePassed;
     }
 
-    tickTime () {
+    tickTime (flag) {
       var time = new Date(this.state.created_at);
-
-      var now = new Date();
-
-      var passed = ((now - time) / 1000).toFixed(0); // Seconds
-      var result;
-      if (passed < 5) {
-        result = 'сейчас'
-      } else if (passed < 60) {
-        result = passed + 'сек'
-      } else if (passed < 60 * 60) {
-        result = (passed / 60).toFixed(0) + 'мин';
-      } else if (passed < 60 * 60 * 24) {
-        result = (passed / (60 * 60)).toFixed(0) + 'ч'
-      } else if (passed < 60 * 60 * 24 * 7) {
-        result = (passed / (60 * 60 * 24)).toFixed(0) + 'дн'
-      } else if (passed < 60 * 60 * 24 * 7 * 4) {
-        result = (passed / (60 * 60 * 24 * 7)).toFixed(0) + 'нед'
-      } else if (passed < 60 * 60 * 24 * 7 * 4 * 12) {
-        result = (passed / (60 * 60 * 24 * 7 * 4)).toFixed(0) + 'мес'
-      } else if (passed < 60 * 60 * 24 * 7 * 30 * 12) {
-        result = 'давно'
-      }
-
+      var timePassed = this.timePassed(time);
       // posts, posted <5s ago will show coloured.
       var isHot = false;
-      if (passed < 5) {
+      if (timePassed.seconds < 60) {
         isHot = true;
       }
-
       this.setState({
-        createdPronounce: result,
+        createdPronounce: timePassed.pronounce,
         isHot: isHot
       })
     }
     componentDidMount () {
       this.loadInterval = setInterval(this.tickTime.bind(this), 1000);
-      // setInterval(this.tickTime.bind(this), 1000);
     }
     componentWillUnmount () {
       this.loadInterval && clearInterval(this.loadInterval);

@@ -31,7 +31,7 @@ class LoginForma extends React.Component {
       <div>
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
-          <div>Войдите, чтобы узнать, что думают от Вас ваши друзья.</div>
+          <div className={s.titleAction}>Войдите, чтобы узнать, что думают от Вас ваши друзья.</div>
           <div className='input--container'>
             <input className='input--form input--block' placeholder='Имя пользователя' />
           </div>

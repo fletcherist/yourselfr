@@ -153,7 +153,11 @@ Preferences.propTypes = {
   loadAvatar: React.PropTypes.func,
   loadBackground: React.PropTypes.func,
   removeAvatar: React.PropTypes.func,
-  removeBackground: React.PropTypes.func
+  removeBackground: React.PropTypes.func,
+
+  saveStatus: React.PropTypes.func,
+  saveAlias: React.PropTypes.func,
+  saveUsername: React.PropTypes.func
 };
 
 function mapStateToProps (state) {
