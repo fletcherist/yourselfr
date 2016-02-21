@@ -94,9 +94,9 @@ class Post extends React.Component {
                 </div>
                 <div className={s.text}>
                     <div>
-                      <Link to={linkHref}><b>{this.props.user.username}</b></Link>
+                      <span className={s.time}>{this.state.createdPronounce} назад о</span>
                       {' '}
-                      <span className={s.time}>{this.state.createdPronounce}</span>
+                      <Link to={linkHref}><b>{this.props.user.username}</b></Link>
                     </div>
                     <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
                     {isPhoto && (
@@ -107,10 +107,6 @@ class Post extends React.Component {
                       </div>
                     )}
                 </div>
-                <Like
-                    count={this.props.likes}
-                    object={this.props.id}
-                />
           </div>
         );
     }

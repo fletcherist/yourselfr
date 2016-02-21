@@ -181,6 +181,7 @@ const fetchData = (body) => {
   })
 }
 
+
 export const actions = {
   authenticate,
   loadAvatar,

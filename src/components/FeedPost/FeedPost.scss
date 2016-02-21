@@ -36,7 +36,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; /* Обрезаем все, что не помещается в область */
-		width: 70%;
+		width: 65%;
 		font-weight: 400;
 		color: #515151;
     text-overflow: ellipsis;
@@ -75,8 +75,8 @@
 }
 
 .photo {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   margin: 0px;
   z-index: 999;

@@ -3,17 +3,12 @@ import s from './Login.scss';
 import { connect } from 'react-redux';
 import EndlessFeed from '../EndlessFeed';
 import { logIn } from '../../redux/modules/auth';
+import { Link } from 'react-router';
 
 class Login extends React.Component {
   render () {
     return (
       <div className={s.root}>
-        <div
-          className='responsive_crop_fixed'
-          style={{
-            background: `url(${require('./background.jpg')})`
-          }}>
-        </div>
         <div className={s.container}>
           <div className={s.left}>
             <div className={s.title}>Мнения о Ваших друзьях. <br/> В реальном времени.</div>
@@ -33,23 +28,40 @@ class Login extends React.Component {
 class LoginForma extends React.Component {
   render () {
     return (
-      <div className={s.loginFormContainer}>
-        <div className={s.logotype}></div>
-        <div className='input--container'>
-          <input className='input--form input--block' placeholder='Имя пользователя' />
+      <div>
+        <div className={s.loginFormContainer}>
+          <div className={s.logotype}></div>
+          <div>Войдите, чтобы узнать, что думают от Вас ваши друзья.</div>
+          <div className='input--container'>
+            <input className='input--form input--block' placeholder='Имя пользователя' />
+          </div>
+          <div className='input--container'>
+            <input className='input--form input--block' placeholder='Пароль' type='password'/>
+          </div>
+          <button
+            className='button button--register button--block button--container'
+            disabled={this.props.isFetching}>Войти
+          </button>
         </div>
-        <div className='input--container'>
-          <input className='input--form input--block' placeholder='Пароль' type='password'/>
-        </div>
-        <button
-          className='button button--register button--block button--container'
-          onClick={this.props.logIn()}
-          disabled={this.props.isFetching}>Войти
-        </button>
+        <NoAccount/>
       </div>
     )
   }
 };
+
+const NoAccount = () => {
+  return (
+    <div className={s.containerBlock}>
+      <div>Нет аккаунта? <Link to='/signup'>Регистрация</Link></div>
+    </div>
+  )
+}
+
+const haveAccount = () => {
+  return(
+    <div>Есть аккаунт? <Link to='/login'>Вход</Link></div>
+  )
+}
 
 LoginForma.propTypes = {
   isFetching: React.PropTypes.bool.isRequired,

@@ -5,7 +5,6 @@
      font-weight: bold;
 }
 
-
 :global {
   @import 'base';
   @import 'layout';
@@ -26,10 +25,9 @@
    border-collapse: collapse;
    border-spacing: 0;
  }
-
  body {
-   font-family: system, -apple-system, BlinkMacSystemFont,
-       "Helvetica Neue", "Lucida Grande";
+   font-family: "Helvetica Neue", Helvetica;
+   color: #4b4f54;
  }
 
  input {
@@ -47,6 +45,8 @@
  /* General UI */
  a {
    padding-top: .2em;
+   text-decoration: none;
+   color: #148bc3;
  }
 
   .hidden {

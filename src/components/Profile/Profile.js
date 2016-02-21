@@ -16,7 +16,7 @@ class Profile extends React.Component {
   }
     render () {
       console.log(this.props);
-      document.title = `${this.props.username} на йорселфере`;
+      document.title = `${this.props.username} — Йорселфер`;
 
       var online;
       if (this.props.online === true) {
@@ -56,7 +56,7 @@ class Profile extends React.Component {
                 )}
                 {
                   // <div className='button button--subscribe'>подписаться</div>
-                  // <UserNavigation alias={this.props.alias}/>
+                  <UserNavigation alias={this.props.alias}/>
                 }
 
             </div>

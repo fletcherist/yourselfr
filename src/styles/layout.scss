@@ -35,14 +35,16 @@
   transform: translateX(-50%);
 }
 .button--register {
-  background: #CCE7F4;
-  color: #175E7B;
-  box-shadow: inset 0 -1px #639ab4;
+  background: #5CD987;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 0 -1px #44B66B;
   text-align: center;
-  margin-top: 10px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 20px;
+  font-size: 16px;
 }
 .button--submit {
   color: #E98032;
@@ -70,7 +72,7 @@
   width: 100%;
 }
 .button--container {
-  margin-top: 4px;
+  margin-top: 16px;
 }
 
 

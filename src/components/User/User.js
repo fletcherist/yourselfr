@@ -4,6 +4,7 @@ import Profile from '../Profile';
 
 import { connect } from 'react-redux';
 import { config } from '../../redux/config';
+import Navigation from '../Navigation';
 
 class User extends React.Component {
     render () {
@@ -18,6 +19,7 @@ class User extends React.Component {
                     className='responsive_crop_fixed'
                     style={backround}>
                 </div>
+                <Navigation/>
                 <div className={s.container}>
                     <div className={s.container_left} id='left'>
                         <Profile/>

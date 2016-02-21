@@ -47,6 +47,7 @@ export default (
     <IndexRoute component={HomeView} />
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={Login} />
+    <Route path='/signup' component={HomeView} />
     <Route path='preferences' component={PreferencesFull} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
