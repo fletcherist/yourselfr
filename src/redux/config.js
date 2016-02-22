@@ -1,5 +1,5 @@
-var http = 'http://localhost:80';
-// var http = 'http://yourselfr.com';
+// var http = 'http://localhost:80';
+var http = 'http://yourselfr.com';
 // if (__PROD__) {
   // http = 'http://yourselfr.com'
 // }

@@ -1,0 +1,92 @@
+@import 'variables';
+
+body {
+  background-color: #fafafa;
+}
+.root {
+
+}
+
+.container {
+  margin: 0px auto;
+  padding: 40px 0 40px;
+  max-width: 810px;
+}
+
+.title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.left {
+  float: left;
+  min-width: 400px;
+  max-width: 400px;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  background-color: #fff;
+  z-index: 99999;
+
+  @media screen and (max-width: 800px){
+    display: none;
+  }
+}
+.feedBox {
+  height: 550px;
+  overflow-y: auto;
+}
+
+.right {
+  float: left;
+  min-width: 350px;
+  max-width: 350px;
+  border-radius: 3px;
+  margin-left: 10px;
+
+  @media screen and (max-width: 800px){
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.titleAction {
+  text-align: center;
+  padding: 0px 0px 16px 0px;
+  color: $yoGrey;
+}
+
+.loginFormContainer {
+  padding: 20px 40px 20px 40px;
+  border: 1px solid #edeeee;
+  background-color: #fff;
+  // max-width: 300px;
+  margin: auto;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.containerBlock {
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.logotype {
+  background: url('./components/Login/logo.png') no-repeat;
+  background-size: 150px;
+  height: 60px;
+  width: 300px;
+  margin: 0px 56px 10px;
+}
+
+.errorMessage {
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}

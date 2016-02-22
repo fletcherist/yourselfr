@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Login.scss';
 import { connect } from 'react-redux';
 import { logIn } from '../../redux/modules/auth';
-import { Link } from 'react-router';
+import { NoAccount } from './Same';
 
 class LoginForm extends React.Component {
   invalidLogin () {
@@ -51,20 +51,6 @@ class LoginForm extends React.Component {
     )
   }
 };
-
-const NoAccount = () => {
-  return (
-    <div className={s.containerBlock}>
-      <div>Нет аккаунта? <Link to='/signup'>Регистрация</Link></div>
-    </div>
-  )
-}
-
-const haveAccount = () => {
-  return (
-    <div>Есть аккаунт? <Link to='/login'>Вход</Link></div>
-  )
-}
 
 LoginForm.propTypes = {
   isFetching: React.PropTypes.object.isRequired,

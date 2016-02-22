@@ -14,8 +14,9 @@ import Preferences from 'components/Preferences';
 import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
-import { RegisterForm } from 'views/HomeView/HomeView';
-import { LoginForm } from 'components/Login';
+
+import LoginForm from 'components/AuthComponents/Login';
+import SignupForm from 'components/AuthComponents/Signup';
 
 import { requireAuthentication } from 'components/Authenticate';
 
@@ -51,20 +52,20 @@ const LoginPage = () => {
   )
 }
 
-const RegisterPage = () => {
+const SignupPage = () => {
   return (
     <HomeView>
-      <RegisterForm/>
+      <SignupForm/>
     </HomeView>
   )
 }
 
 export default (
   <Route path='/' component={CoreLayout}>
-    <IndexRoute component={RegisterPage} />
+    <IndexRoute component={SignupPage} />
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={LoginPage} />
-    <Route path='/signup' component={RegisterPage} />
+    <Route path='/signup' component={SignupPage} />
     <Route path='preferences' component={PreferencesFull} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
