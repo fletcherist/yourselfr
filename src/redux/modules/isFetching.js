@@ -11,6 +11,7 @@ const FETCH_BACKGROUND = 'FETCH_BACKGROUND';
 const FETCH_LOAD_MORE_POSTS = 'FETCH_LOAD_MORE_POSTS';
 const FETCH_ENDLESS_FEED = 'FETCH_ENDLESS_FEED';
 const FETCH_LOGIN = 'FETCH_LOGIN';
+const FETCH_REGISTER = 'FETCH_REGISTER';
 
 export const fetchFollowers = createAction(FETCH_FOLLOWERS);
 export const fetchFollowing = createAction(FETCH_FOLLOWING);
@@ -23,6 +24,7 @@ export const fetchStatus = createAction(FETCH_STATUS);
 export const fetchAvatar = createAction(FETCH_AVATAR);
 export const fetchBackground = createAction(FETCH_BACKGROUND);
 export const fetchLogIn = createAction(FETCH_LOGIN);
+export const fetchRegister = createAction(FETCH_REGISTER);
 
 export const actions = {
   fetchFollowers,
@@ -61,8 +63,14 @@ export default handleActions({
   FETCH_ENDLESS_FEED: (state, { payload }) => {
     return {... state, ...{endlessFeed: payload}};
   },
-  FECH_LOGIN: (state, { payload }) => {
-    return {... state, ...{logIn: payload}};
+  FETCH_LOGIN: (state, { payload }) => {
+    return {... state, ...{logIn: {
+      status: payload[0],
+      message: payload[1] || ''
+    }}};
+  },
+  FETCH_REGISTER: (state, { payload }) => {
+    return {... state, ...{register: payload}};
   }
 }, {
   username: false,
@@ -74,5 +82,12 @@ export default handleActions({
   following: false,
   avatar: false,
   background: false,
-  logIn: false
+  logIn: {
+    status: false,
+    message: undefined
+  },
+  register: {
+    status: false,
+    message: undefined
+  }
 });

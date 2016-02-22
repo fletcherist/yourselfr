@@ -59,7 +59,7 @@ body {
 }
 
 .loginFormContainer {
-  padding: 20px 40px 30px 40px;
+  padding: 20px 40px 20px 40px;
   border: 1px solid #edeeee;
   background-color: #fff;
   // max-width: 300px;
@@ -82,4 +82,11 @@ body {
   height: 60px;
   width: 300px;
   margin: 0px 56px 10px;
+}
+
+.errorMessage {
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
 }

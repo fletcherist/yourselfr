@@ -1,31 +1,26 @@
 import React from 'react';
 import s from './Login.scss';
 import { connect } from 'react-redux';
-import EndlessFeed from '../EndlessFeed';
 import { logIn } from '../../redux/modules/auth';
 import { Link } from 'react-router';
 
-class Login extends React.Component {
-  render () {
-    return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <div className={s.left}>
-            <div className={s.title}>Мнения о Ваших друзьях. <br/> В реальном времени.</div>
-            <div className={s.feedBox}>
-              <EndlessFeed/>
-            </div>
-          </div>
-          <div className={s.right}>
-            <LoginForm/>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
 class LoginForma extends React.Component {
+  invalidLogin () {
+    this.login.focus();
+  }
+  invalidPassword () {
+    this.password.value = '';
+    this.password.focus();
+  }
+  logIn () {
+    if (this.login.value === '') {
+      return this.invalidLogin();
+    }
+    if (this.password.value === '') {
+      return this.invalidPassword();
+    }
+    this.props.logIn(this.login.value, this.password.value);
+  }
   render () {
     return (
       <div>
@@ -33,15 +28,23 @@ class LoginForma extends React.Component {
           <div className={s.logotype}></div>
           <div className={s.titleAction}>Войдите, чтобы узнать, что думают от Вас ваши друзья.</div>
           <div className='input--container'>
-            <input className='input--form input--block' placeholder='Имя пользователя' />
+            <input className='input--form input--block' placeholder='Имя пользователя'
+                    ref={(r) => this.login = r}/>
           </div>
           <div className='input--container'>
-            <input className='input--form input--block' placeholder='Пароль' type='password'/>
+            <input className='input--form input--block' placeholder='Пароль' type='password'
+                    ref={(r) => this.password = r}/>
           </div>
           <button
             className='button button--register button--block button--container'
-            disabled={this.props.isFetching}>Войти
+            onClick={ () => this.logIn()}
+            disabled={this.props.isFetching.status}>Войти
           </button>
+          {this.props.isFetching.message && (
+            <div className={s.errorMessage}>
+              {this.props.isFetching.message}
+            </div>
+          )}
         </div>
         <NoAccount/>
       </div>
@@ -58,7 +61,7 @@ const NoAccount = () => {
 }
 
 const haveAccount = () => {
-  return(
+  return (
     <div>Есть аккаунт? <Link to='/login'>Вход</Link></div>
   )
 }
@@ -74,12 +77,10 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    logIn: () => dispatch(logIn())
+    logIn: (login, password) => dispatch(logIn(login, password))
   }
 }
-const LoginForm = connect(
+export const LoginForm = connect(
   mapStateToProps,
   mapDispatchToProps
 )(LoginForma);
-
-export default Login;

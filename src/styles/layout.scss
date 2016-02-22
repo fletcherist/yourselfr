@@ -46,6 +46,10 @@
   margin-top: 20px;
   font-size: 16px;
 }
+.button:disabled {
+  background: $yoGrey;
+  box-shadow: inset 0 -1px #A0A0A0;
+}
 .button--submit {
   color: #E98032;
   background: #FFF3BB;

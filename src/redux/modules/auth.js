@@ -1,7 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
 import fetch from 'isomorphic-fetch';
 import { config } from '../config';
-import { fetchUsername, fetchAlias, fetchStatus, fetchAvatar, fetchBackground } from './isFetching';
+import { fetchUsername,
+         fetchAlias,
+         fetchStatus,
+         fetchAvatar,
+         fetchBackground,
+         fetchLogIn
+} from './isFetching';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOG_IN = 'LOG_IN';
@@ -77,25 +83,33 @@ export const loadBackground = (background) => {
   }
 }
 
-export const logIn = createAction(LOG_IN, async (username, password) => {
-  var response = await fetch(`${config.http}/auth/login`, {
-    method: 'post',
-    credentials: 'same-origin',
-    headers: {
-      'Content-type': config.post
-    },
-    body: `username=${username}&password=${password}`
-  })
-  .then((r) => r.json())
-  .catch((e) => {
-    console.log(e);
-  })
-  .then((res) => {
-    console.log(res);
-  });
-
-  return response;
-})
+// const logInAction = createAction(LOG_IN);
+export const logIn = (username, password) => {
+  return (dispatch, getState) => {
+    dispatch(fetchLogIn(true));
+    console.log('do login');
+    fetch(`${config.http}/auth/login`, {
+      method: 'post',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': config.post
+      },
+      body: `username=${username}&password=${password}`
+    })
+    .then((r) => r.json())
+    .catch((e) => {
+      console.log(e);
+    })
+    .then((res) => {
+      console.log(res);
+      if (res.state === 'failure') {
+        dispatch(fetchLogIn([false, 'Неправильный логин или пароль.']));
+      } else {
+        dispatch(fetchLogIn(false));
+      }
+    });
+  }
+}
 
 export const removeAvatar = () => {
   return (dispatch, getState) => {
@@ -181,8 +195,8 @@ const fetchData = (body) => {
   })
 }
 
-
 export const actions = {
+  logIn,
   authenticate,
   loadAvatar,
   loadBackground,

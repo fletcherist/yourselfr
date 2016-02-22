@@ -11,13 +11,13 @@ class HomeView extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <div className={s.left}>
-            <div className={s.title}>Мнения о Ваших друзьях. <br/> В реальном времени.</div>
+            <div className={s.title}>Мнения о ваших друзьях. <br/> В реальном времени.</div>
             <div className={s.feedBox}>
               <EndlessFeed/>
             </div>
           </div>
           <div className={s.right}>
-            <LoginForm/>
+            {this.props.children}
           </div>
         </div>
       </div>
@@ -43,8 +43,14 @@ class LoginForma extends React.Component {
           </div>
           <button
             className='button button--register button--block button--container'
-            disabled={this.props.isFetching}>Регистрация
+            onClick={ () => this.props.logIn()}
+            disabled={this.props.isFetching.status}>Регистрация
           </button>
+          {this.props.isFetching.message && (
+            <div className={s.errorMessage}>
+              {this.props.isFetching.message}
+            </div>
+          )}
         </div>
         <HaveAccount/>
       </div>
@@ -82,7 +88,7 @@ const mapDispatchToProps = (dispatch) => {
     logIn: () => dispatch(logIn())
   }
 }
-const LoginForm = connect(
+export const RegisterForm = connect(
   mapStateToProps,
   mapDispatchToProps
 )(LoginForma);

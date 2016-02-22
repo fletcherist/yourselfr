@@ -9,12 +9,13 @@ import { Route, IndexRoute, Redirect } from 'react-router';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 import HomeView from 'views/HomeView/HomeView';
 import NotFoundView from 'views/NotFoundView/NotFoundView';
-import Login from 'components/Login';
 import Preferences from 'components/Preferences';
 
 import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
+import { RegisterForm } from 'views/HomeView/HomeView';
+import { LoginForm } from 'components/Login';
 
 import { requireAuthentication } from 'components/Authenticate';
 
@@ -42,12 +43,28 @@ class PreferencesFull extends React.Component {
   }
 }
 
+const LoginPage = () => {
+  return (
+    <HomeView>
+      <LoginForm/>
+    </HomeView>
+  )
+}
+
+const RegisterPage = () => {
+  return (
+    <HomeView>
+      <RegisterForm/>
+    </HomeView>
+  )
+}
+
 export default (
   <Route path='/' component={CoreLayout}>
-    <IndexRoute component={HomeView} />
+    <IndexRoute component={RegisterPage} />
     <Route path='/404' component={NotFoundView} />
-    <Route path='/login' component={Login} />
-    <Route path='/signup' component={HomeView} />
+    <Route path='/login' component={LoginPage} />
+    <Route path='/signup' component={RegisterPage} />
     <Route path='preferences' component={PreferencesFull} />
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
