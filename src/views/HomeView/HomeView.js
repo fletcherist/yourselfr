@@ -1,5 +1,5 @@
 import React from 'react';
-import s from 'components/Login/Login.scss';
+import s from 'components/AuthComponents/Login.scss';
 import EndlessFeed from 'components/EndlessFeed';
 
 class HomeView extends React.Component {

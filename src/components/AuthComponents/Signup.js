@@ -1,10 +1,20 @@
 import React from 'react';
 import s from './Login.scss';
 import { connect } from 'react-redux';
-import { logIn } from '../../redux/modules/auth';
+import { logIn, register } from '../../redux/modules/auth';
 import { HaveAccount } from './Same';
 
 class SignupForm extends React.Component {
+  invalidUsername () {
+    this.username.focus();
+  }
+  invalidEmail () {
+    this.email.focus();
+  }
+  invalidPassword () {
+    this.password.focus();
+    // More than 6 symbols.
+  }
   render () {
     return (
       <div>
@@ -12,13 +22,16 @@ class SignupForm extends React.Component {
           <div className={s.logotype}></div>
           <div className={s.titleAction}>Зарегистрируйтесь, чтобы узнать, что думают от Вас ваши друзья.</div>
           <div className='input--container'>
-            <input className='input--form input--block' placeholder='Имя пользователя' />
+            <input className='input--form input--block' placeholder='Имя пользователя'
+                ref={(r) => this.username = r}/>
           </div>
           <div className='input--container'>
-            <input className='input--form input--block' placeholder='Эл. Адрес' />
+            <input className='input--form input--block' placeholder='Эл. Адрес'
+                ref={(r) => this.email = r}/>
           </div>
           <div className='input--container'>
-            <input className='input--form input--block' placeholder='Пароль' type='password'/>
+            <input className='input--form input--block' placeholder='Пароль' type='password'
+                ref={(r) => this.password = r}/>
           </div>
           <button
             className='button button--register button--block button--container'
@@ -43,12 +56,12 @@ SignupForm.propTypes = {
 }
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.isFetching.logIn
+    isFetching: state.isFetching.register
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    logIn: () => dispatch(logIn())
+    register: () => dispatch(register())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

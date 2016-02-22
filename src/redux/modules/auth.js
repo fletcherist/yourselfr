@@ -86,7 +86,34 @@ export const loadBackground = (background) => {
 // const logInAction = createAction(LOG_IN);
 export const logIn = (username, password) => {
   return (dispatch, getState) => {
-    dispatch(fetchLogIn(true));
+    dispatch(fetchLogIn([true]));
+    console.log('do login');
+    fetch(`${config.http}/auth/login`, {
+      method: 'post',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': config.post
+      },
+      body: `username=${username}&password=${password}`
+    })
+    .then((r) => r.json())
+    .catch((e) => {
+      console.log(e);
+    })
+    .then((res) => {
+      console.log(res);
+      if (res.state === 'failure') {
+        dispatch(fetchLogIn([false, 'Неправильный логин или пароль.']));
+      } else {
+        dispatch(fetchLogIn(false));
+      }
+    });
+  }
+}
+
+export const register = (username, email, password) => {
+  return (dispatch, getState) => {
+    dispatch(fetchLogIn([true]));
     console.log('do login');
     fetch(`${config.http}/auth/login`, {
       method: 'post',

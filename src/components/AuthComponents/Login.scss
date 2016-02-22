@@ -45,10 +45,12 @@ body {
   max-width: 350px;
   border-radius: 3px;
   margin-left: 10px;
+  width: 100%;
 
   @media screen and (max-width: 800px){
-    width: 500px;
-    margin: 0 auto;
+    // max-width: 900px;
+    float: none;
+    margin: 150px auto;
   }
 }
 
@@ -77,7 +79,7 @@ body {
 }
 
 .logotype {
-  background: url('./components/Login/logo.png') no-repeat;
+  background: url('./components/AuthComponents/logo.png') no-repeat;
   background-size: 150px;
   height: 60px;
   width: 300px;

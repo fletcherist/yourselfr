@@ -18,9 +18,9 @@ class Navigation extends React.Component {
     render () {
       return (
             <div className={s.navigation}>
-              <a href='../' >
+              <Link to='/' >
                 <div className={s.yoButton} title='Вернуться на главную - Йорселфер'></div>
-              </a>
+              </Link>
             </div>
         );
     }
