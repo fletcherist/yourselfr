@@ -5,30 +5,8 @@
 	text-align: center;
 	text-decoration: none;
 	color: black;
-	background: white;
-    /* Old browsers */
-  transition:background .5s ease;
 	border-radius: 3px;
 }
-.followersCounter {
-	background: linear-gradient(to right, white 50%, #f2fdff 50%);
-  background-size: 200% 100%;
-	background-position:left bottom;
-}
-
-.followingCounter {
-	background: linear-gradient(to left, white 50%, #f2fdff 50%);
-  background-size: 200% 100%;
-	background-position:right bottom;
-}
-
-.followersAnimationEffect {
-	background-position:right bottom;
-}
-.followingAnimationEffect {
-	background-position:left bottom;
-}
-
 
 @-webkit-keyframes slide {
     100% { left: 0; }

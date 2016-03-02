@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {routeActions} from 'react-router-redux';
+import LoginForm from '../AuthComponents/Login';
+import s from 'components/AuthComponents/Login.scss';
 
 export function requireAuthentication (Component) {
   class AuthenticatedComponent extends React.Component {
@@ -25,7 +27,11 @@ export function requireAuthentication (Component) {
                 <div>
                     {this.props.authenticated === true
                         ? <Component {...this.props}/>
-                        : null
+                        : <div className={s.containerSmall}>
+                            <div className={s.right}>
+                              <LoginForm continueMessage='Войдите, чтобы продолжить' />
+                            </div>
+                          </div>
                     }
                 </div>
             )

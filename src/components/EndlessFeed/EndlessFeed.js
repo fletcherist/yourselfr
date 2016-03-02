@@ -1,16 +1,30 @@
 import React from 'react';
-import s from './EndlessFeed.scss';
 import { connect } from 'react-redux';
 import { loadEndlessFeed } from '../../redux/modules/endlessFeed';
-import { ending, isEmpty } from '../toools';
+import { isEmpty } from '../toools';
 import FeedPost from '../FeedPost';
 import Loader from '../Loader';
 
 class EndlessFeed extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      feed: []
+    }
+  }
+  componentWillMount () {
+    console.log(this.props.feed.length);
+    if (this.props.feed.length > 0) {
+      return false;
+    }
     this.props.endlessFeed();
   }
+
+  // shouldComponentUpdate (nextProps, nextState) {
+    // console.log(nextProps);
+    // return !arraysEqual(this.props.feed, nextProps.feed);
+  // }
+
   render () {
     var endlessFeed = this.props.feed;
     var endlessFeedArray;

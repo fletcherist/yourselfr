@@ -1,11 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
-// NOTE: here we're making use of the `resolve.root` configuration
-// option in webpack, which allows us to specify import paths as if
-// they were from the root of the ~/src directory. This makes it
-// very easy to navigate to files regardless of how deeply nested
-// your current file is.
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 import HomeView from 'views/HomeView/HomeView';
 import NotFoundView from 'views/NotFoundView/NotFoundView';
@@ -18,10 +13,14 @@ import User from 'components/User';
 import LoginForm from 'components/AuthComponents/Login';
 import SignupForm from 'components/AuthComponents/Signup';
 
-import { requireAuthentication } from 'components/Authenticate';
+import GetStarted from 'views/GetStarted/GetStarted';
+import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
+import GetSocialized from 'views/GetSocialized/GetSocialized';
 
-import Followers from 'components/Followers';
-import Following from 'components/Following';
+// import { requireAuthentication } from 'components/Authenticate';
+
+import Followers from 'components/Subscriptions/Followers';
+import Following from 'components/Subscriptions/Following';
 
 class defaultUser extends React.Component {
   render () {
@@ -66,7 +65,12 @@ export default (
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={LoginPage} />
     <Route path='/signup' component={SignupPage} />
-    <Route path='preferences' component={PreferencesFull} />
+    <Route path='/preferences' component={PreferencesFull} />
+
+    <Route path='/i/get-started' component={GetStarted} />
+    <Route path='/i/get-personalized' component={GetPersonalized} />
+    <Route path='/i/get-socialized' component={GetSocialized} />
+
     <Route path='/:user' component={User} >
       <IndexRoute component={defaultUser}/>
       <Route path='followers' component={Followers} />
@@ -74,4 +78,4 @@ export default (
     </Route>
     <Redirect from='*' to='/404' />
   </Route>
-)
+);

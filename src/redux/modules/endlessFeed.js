@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
 import { fetchEndlessFeed } from './isFetching';
+import fetch from 'isomorphic-fetch';
 
 export const LOAD_ENDLESS_FEED = 'LOAD_ENDLESS_FEED';
 

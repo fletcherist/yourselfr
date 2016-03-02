@@ -34,13 +34,25 @@ export const actions = {
 
 export default handleActions({
   FETCH_USERNAME: (state, {payload}) => {
-    return {...state, ...{username: payload}}
+    return {...state, ...{username: {
+      status: payload.status,
+      state: payload.state,
+      message: payload.message
+    }}}
   },
   FETCH_ALIAS: (state, {payload}) => {
-    return {...state, ...{alias: payload}}
+    return {...state, ...{alias: {
+      status: payload.status,
+      state: payload.state,
+      message: payload.message
+    }}}
   },
   FETCH_STATUS: (state, {payload}) => {
-    return {...state, ...{status: payload}}
+    return {...state, ...{status: {
+      status: payload.status,
+      state: payload.state,
+      message: payload.message
+    }}}
   },
   FETCH_AVATAR: (state, {payload}) => {
     return {...state, ...{avatar: payload}}
@@ -57,8 +69,8 @@ export default handleActions({
   FETCH_POSTS: (state, { payload }) => {
     return {... state, ...{posts: payload}};
   },
-  FETCH_MORE_POSTS: (state, { payload }) => {
-    return {... state, ...{morePosts: payload}};
+  FETCH_LOAD_MORE_POSTS: (state, { payload }) => {
+    return {... state, ...{loadMorePosts: payload}};
   },
   FETCH_ENDLESS_FEED: (state, { payload }) => {
     return {... state, ...{endlessFeed: payload}};
@@ -70,14 +82,30 @@ export default handleActions({
     }}};
   },
   FETCH_REGISTER: (state, { payload }) => {
-    return {... state, ...{register: payload}};
+    return {... state, ...{register: {
+      status: payload[0],
+      message: payload[1] || ''
+    }}};
   }
 }, {
-  username: false,
-  alias: false,
+  username: {
+    status: false,
+    state: undefined,
+    message: undefined
+  },
+  alias: {
+    status: false,
+    state: undefined,
+    message: undefined
+  },
+  status: {
+    status: false,
+    state: undefined,
+    message: undefined
+  },
   posts: false,
   endlessFeed: false,
-  morePosts: false,
+  loadMorePosts: false,
   followers: false,
   following: false,
   avatar: false,

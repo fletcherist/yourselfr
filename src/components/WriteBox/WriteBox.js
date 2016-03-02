@@ -5,6 +5,16 @@ import { actions as postsActions } from '../../redux/modules/posts';
 import { config } from '../../redux/config';
 import cx from 'classnames';
 
+function formToTray () {
+  var form = document.getElementById('textForm');
+  form.style.width = '60%';
+}
+
+function formToFull () {
+  var form = document.getElementById('textForm');
+  form.style.width = '100%';
+}
+
 class WriteBox extends React.Component {
     constructor (props) {
       super(props);
@@ -40,6 +50,9 @@ class WriteBox extends React.Component {
       }
       this.props.sendPost(text, photo);
       this.textBox.value = '';
+      this.preview.src = '';
+      this.preview.classList.add('hidden')
+      formToFull();
     }
 
     selectPhoto (e) {
@@ -52,7 +65,7 @@ class WriteBox extends React.Component {
       var fd = new FormData();
       fd.append('file', photo[0].files[0]);
 
-      var preview = document.getElementById('attach-preview');
+      var preview = this.preview;
       var reader = new FileReader();
 
       reader.onload = function () {
@@ -66,11 +79,6 @@ class WriteBox extends React.Component {
       } else {
         console.log('not working');
         preview.src = '';
-      }
-
-      function formToTray () {
-        var form = document.getElementById('textForm');
-        form.style.width = '60%';
       }
 
       fetch(`${config.http}/upload/photo`, {
@@ -87,17 +95,8 @@ class WriteBox extends React.Component {
       .catch((e) => {
         console.log('Error catched while attaching a photo', e);
       })
-
-    //   $.ajax({
-    // 		url: 'upload/photo',
-		// type: 'POST',
-		// data: fd,
-		// processData: false,
-		// contentType: false,
-		// success: function(res){
-		// 	post.photo = res.url;
-		// }
     }
+
     toggle () {
       this.setState({
         isOpen: !this.state.isOpen
@@ -111,14 +110,12 @@ class WriteBox extends React.Component {
              //  <div className={s.formOpen}>+ Добавить своё мнение</div>
             // </div>
           }
-
             <div
                   className={s.container}
                   ref={(r) => this.writeBox = r }
                   style={{
                     maxHeight: this.state.isOpen ? '175px' : '0px'
                   }}>
-                <div className={s.addPhoto} onClick={this.selectPhoto.bind(this)}></div>
                 <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
                     <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>
                 </form>
@@ -131,16 +128,22 @@ class WriteBox extends React.Component {
                     }}
                 >
                 </textarea>
-                <img id='attach-preview' className={attachPreview}/>
+                <img id='attach-preview'
+                  ref={(r) => this.preview = r}
+                  className={attachPreview}/>
                 <div
                   className={s.above}
                   style={{
                     display: this.state.isOpen ? 'block' : 'none'
                   }}>
                     <div
-                        className='button button--submit button--block'
+                        className={cx('button button--submit', s.button)}
                         onClick={this.handleSubmitButton.bind(this)}>
                         Высказаться
+                    </div>
+                    <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
+                      <div className={s.photoTitle}>прикрепить</div>
+                      <div className={s.addPhoto}></div>
                     </div>
                 </div>
             </div>

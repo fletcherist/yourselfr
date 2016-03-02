@@ -1,5 +1,4 @@
 import React from 'react';
-import Like from '../Like';
 
 import s from './FeedPost.scss';
 import cx from 'classnames/bind';
@@ -96,7 +95,8 @@ Post.propTypes = {
   created_at: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   likes: React.PropTypes.number,
-  attachments: React.PropTypes.object
+  attachments: React.PropTypes.object,
+  user: React.PropTypes.object.isRequired
 }
 
 const mapStateToProps = () => {

@@ -5,10 +5,10 @@ import { Link } from 'react-router'
 import {ending} from '../Toools'
 
 const followersACTIVE = {
-  backgroundPosition: 'right bottom'
+  backgroundColor: '#f2fdff'
 }
 const followingACTIVE = {
-  backgroundPosition: 'left bottom'
+  backgroundColor: '#f2fdff'
 }
 class Counters extends React.Component {
     render () {

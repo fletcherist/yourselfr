@@ -15,16 +15,14 @@
 
 	display: inline-block;
 	max-width: 300px;
+	min-width: 250px;
 
-	@media screen and (max-width: 1000px){
-		width: 40%;
-	}
-	@media screen and (max-width: 700px){
+	@media screen and (max-width: 800px){
 		display: block;
 		max-width: 100%;
-		min-width: 96%;
+		min-width: 90%;
 		width: 90%;
-		margin: 0px 10px 5px 10px;
+		margin: 0px 25px 5px 25px;
 	}
 	@media screen and (max-width: 500px){
 		display: block;

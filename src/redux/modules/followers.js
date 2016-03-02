@@ -53,7 +53,7 @@ export const actions = {
 export function followers (state = [], action) {
   switch (action.type) {
     case LOAD_FOLLOWERS:
-      return [...state, ...action.payload];
+      return [...action.payload];
     default:
       return state;
   }
@@ -62,7 +62,7 @@ export function followers (state = [], action) {
 export function following (state = [], action) {
   switch (action.type) {
     case LOAD_FOLLOWING:
-      return [...state, ...action.payload];
+      return [...action.payload];
     default:
       return state;
   }

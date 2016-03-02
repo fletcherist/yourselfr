@@ -38,7 +38,7 @@ class Posts extends React.Component {
 
       return (
             <div>
-                <div className={s.container_posts} id='right'>
+                <div className='container--right padding-0' id='right'>
                     <div className={s.header}>
                         <div className={s.counter}>
                             {this.props.count} {postsPronounce}
@@ -60,7 +60,13 @@ class Posts extends React.Component {
                                 postsLoaded: this.state.postsLoaded + 10
                               })
                             }}
-                            >Загрузить ещё
+                            >
+                            {this.props.isFetchingLoadMore && (
+                              'Загрузка...'
+                            )}
+                            {!this.props.isFetchingLoadMore && (
+                              'Загрузить ещё'
+                            )}
                       </div>
                     )}
                 </div>
@@ -74,14 +80,16 @@ Posts.propTypes = {
   posts: React.PropTypes.array.isRequired,
   loadPosts: React.PropTypes.func.isRequired,
   loadMorePosts: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired
+  isFetching: React.PropTypes.bool.isRequired,
+  isFetchingLoadMore: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     posts: state.posts,
     count: state.user.stats.posts,
-    isFetching: state.isFetching.posts
+    isFetching: state.isFetching.posts,
+    isFetchingLoadMore: state.isFetching.loadMorePosts
   }
 }
 export default connect(mapStateToProps, postsActions)(Posts)

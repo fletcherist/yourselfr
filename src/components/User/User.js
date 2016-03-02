@@ -21,7 +21,7 @@ class User extends React.Component {
                 </div>
                 <Navigation/>
                 <div className={s.container}>
-                    <div className={s.container_left} id='left'>
+                    <div className={s.container_left}>
                         <Profile/>
                     </div>
                     <div>
@@ -35,7 +35,7 @@ class User extends React.Component {
 
 User.propTypes = {
   children: React.PropTypes.element.isRequired,
-  background: React.PropTypes.string.isRequired
+  background: React.PropTypes.string
 }
 
 function mapStateToProps (state) {

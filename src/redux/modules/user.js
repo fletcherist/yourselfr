@@ -43,14 +43,30 @@ export const loadUser = (alias) => {
       alias = window.location.pathname.substr(1);
       alias = alias.split('/')[0];
     }
-    fetch(`${config.http}/api/users/${alias}`)
-      .then((r) => r.json())
-      .catch((e) => {
-        // window.location.href = '404';
-      })
-      .then((data) => {
-        dispatch(load(data));
-      });
+
+    if (alias === 'preferences') {
+      setTimeout(() => {
+        alias = getState().auth.user.alias;
+        fetchData();
+      }, 200)
+    } else {
+      fetchData();
+    }
+
+    function fetchData () {
+      fetch(`${config.http}/api/users/${alias}`)
+        .then((r) => r.json())
+        .catch((e) => {
+          window.location.href = '404';
+        })
+        .then((data) => {
+          // if (!data || !data.alias) {
+            // window.location.href = '404';
+          // }
+          dispatch(load(data));
+        });
+    }
+    console.log(alias);
   }
 }
 

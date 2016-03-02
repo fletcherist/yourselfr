@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import s from './Followers.scss';
+import s from '../Subscriptions.scss';
 import { Link } from 'react-router'
 
-import { loadUser } from '../../redux/modules/user';
-import { loadFollowers } from '../../redux/modules/followers'
-import { isValidPhoto, isEmpty } from '../Toools';
-import { config } from '../../redux/config';
-import Loader from '../Loader';
+import { loadUser } from '../../../redux/modules/user';
+import { loadFollowers } from '../../../redux/modules/followers'
+import { isValidPhoto, isEmpty } from '../../Toools';
+import { config } from '../../../redux/config';
+import Loader from '../../Loader';
 
 class Followers extends React.Component {
     componentWillMount () {

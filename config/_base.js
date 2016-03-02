@@ -20,7 +20,7 @@ const config = {
   // Server Configuration
   // ----------------------------------
   // server_host : 'yourselfr.com',
-  server_host : 'localhost',
+  server_host : process.env.NODE_ENV === 'production' ? 'yourselfr.com' : 'localhost',
   server_port : process.env.PORT || 3000,
 
   // ----------------------------------

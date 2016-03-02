@@ -22,11 +22,17 @@ class LoginForm extends React.Component {
     this.props.logIn(this.login.value, this.password.value);
   }
   render () {
+    var tittleAction = 'Войдите, чтобы узнать, что думают о Вас ваши друзья.';
+    if (this.props.continueMessage) {
+      tittleAction = this.props.continueMessage;
+    }
     return (
       <div>
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
-          <div className={s.titleAction}>Войдите, чтобы узнать, что думают от Вас ваши друзья.</div>
+          <div className={s.titleAction}>
+            {tittleAction}
+          </div>
           <div className='input--container'>
             <input className='input--form input--block' placeholder='Имя пользователя'
                     ref={(r) => this.login = r}/>
@@ -54,7 +60,8 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   isFetching: React.PropTypes.object.isRequired,
-  logIn: React.PropTypes.func.isRequired
+  logIn: React.PropTypes.func.isRequired,
+  continueMessage: React.PropTypes.string
 }
 const mapStateToProps = (state) => {
   return {

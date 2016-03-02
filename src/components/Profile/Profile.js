@@ -25,11 +25,10 @@ class Profile extends React.Component {
         online = '';
       }
       var photo = isValidPhoto(this.props.photo);
-
       var isStatus = isNotEmptyString(this.props.status);
       return (
         <div>
-          <div className='container--left padding-0'>
+          <div className='container--left padding-0 container--transparent'>
                 <div style={{background: `url(${config.http}/upload/background/${this.props.background})`}}
                   className={s.background}>
                 </div>
@@ -54,7 +53,7 @@ class Profile extends React.Component {
                 { isStatus && (
                   <StatusBox status={this.props.status}/>
                 )}
-                {
+                {this.props.isAuthenticated &&
                   // <div className='button button--subscribe'>подписаться</div>
                   <UserNavigation alias={this.props.alias}/>
                 }
@@ -76,6 +75,10 @@ class StatusBox extends React.Component {
   }
 }
 
+StatusBox.propTypes = {
+  status: React.PropTypes.string.isRequired
+}
+
 Profile.propTypes = {
   username: React.PropTypes.string.isRequired,
   alias: React.PropTypes.string.isRequired,
@@ -88,7 +91,8 @@ Profile.propTypes = {
     followers: React.PropTypes.number.isRequired,
     following: React.PropTypes.number.isRequired
   }),
-  loadUser: React.PropTypes.func.isRequired
+  loadUser: React.PropTypes.func.isRequired,
+  isAuthenticated: React.PropTypes.bool.isRequired
 };
 
 function mapStateToProps (state) {
@@ -99,7 +103,8 @@ function mapStateToProps (state) {
     background: state.user.background,
     online: state.user.online,
     status: state.user.status,
-    stats: state.user.stats
+    stats: state.user.stats,
+    isAuthenticated: state.auth.authenticated
   }
 }
 

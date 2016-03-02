@@ -1,13 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import Slideshow from 'components/Slideshow/Slideshow';
 
 export class NotFoundView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-        <h1>This is a demo 404 page!</h1>
-        <hr />
-        <Link to='/'>Back To Home View</Link>
+        <Slideshow/>
+        <h1>404</h1>
+        <Link to='/'>Домой</Link>
       </div>
     )
   }

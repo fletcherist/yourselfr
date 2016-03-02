@@ -1,8 +1,18 @@
 import React from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
-import {actions as authActions} from '../../redux/modules/auth';
-import cx from 'classnames';
+import {
+  removeAvatar, removeBackground,
+  saveAlias, saveUsername, saveStatus
+} from '../../redux/modules/preferences';
+import { authenticate } from '../../redux/modules/auth';
+import classNames from 'classnames/bind';
+
+import UploadAvatar from './UploadAvatar';
+import UploadBackground from './UploadBackground';
+import UpdateSocialNetworks from './UpdateSocialNetworks';
+
+let cx = classNames.bind(s);
 
 class Preferences extends React.Component {
     constructor (props) {
@@ -10,40 +20,20 @@ class Preferences extends React.Component {
       this.state = {
         username: this.props.username,
         alias: this.props.alias,
-        status: this.props.status
-      }
-    }
-    savePreferences () {
-      console.log(this.username.value)
-      var user = {
-        username: this.username.value,
-        alias: this.alias.value,
-        status: this.status.value
-      }
+        status: this.props.status,
 
-      this.props.savePreferences(user);
+        usernameOld: undefined,
+        aliasOld: undefined,
+        statusOld: undefined
+      };
     }
 
-    uploadAvatar () {
-      var photo = this.avatarForm;
-      console.log(photo);
-      var fd = new FormData();
-      fd.append('file', photo[0].files[0]);
-
-      this.props.loadAvatar(fd);
-    }
-
-    uploadBackground () {
-      var photo = this.backgroundForm;
-      console.log(photo);
-      var fd = new FormData();
-      fd.append('file', photo[0].files[0]);
-
-      this.props.loadBackground(fd);
+    componentWillMount () {
+      this.props.authenticate();
     }
 
     handleUsername () {
-      if (this.state.username === this.username.value) {
+      if (this.state.usernameOld === this.username.value) {
 
       } else {
         this.props.saveUsername(this.username.value);
@@ -51,93 +41,134 @@ class Preferences extends React.Component {
     }
 
     handleAlias () {
-      if (this.state.alias === this.alias.value) {
+      if (this.state.aliasOld === this.alias.value) {
 
       } else {
-        this.props.saveAlias()
+        this.props.saveAlias(this.alias.value)
       }
     }
 
     handleStatus () {
-      if (this.state.status === this.status.value) {
+      if (this.state.statusOld === this.status.value) {
 
       } else {
-        this.props.saveStatus();
+        this.props.saveStatus(this.status.value);
       }
     }
+
+    componentWillReceiveProps (props) {
+      if (!this.state.username && !this.state.alias && !this.state.status) {
+        this.setState({
+          username: props.username,
+          alias: props.alias,
+          status: props.status
+        })
+      }
+
+      if (!this.state.usernameOld) {
+        this.setState({usernameOld: props.username});
+      }
+      if (!this.state.aliasOld) {
+        this.setState({aliasOld: props.alias});
+      }
+      if (!this.state.statusOld) {
+        this.setState({statusOld: props.status});
+      }
+
+      console.log(props);
+      if (this.props.isFetching.username.state === true) {
+        this.setState({usernameOld: this.username.value});
+      }
+      if (this.props.isFetching.alias.state === true) {
+        this.setState({aliasOld: this.alias.value});
+      }
+      if (this.props.isFetching.status.state === true) {
+        this.setState({statusOld: this.status.value});
+      }
+    }
+
+    handleChange (name, e) {
+      var change = {};
+      change[name] = e.target.value;
+      this.setState(change);
+    }
     render () {
-        // var posts
+      const {isFetching} = this.props;
       return (
             <div className='container--right'>
                 <h3>имя</h3>
-
                 <input
-                  placeholder='любимое моё'
-                  defaultValue={this.props.username}
-                  className={
-                            this.props.isFetching.username
-                            ? cx(s.username, s.fetchingForms)
-                            : cx(s.username)
-                          }
+                  value={this.state.username}
+                  onChange={this.handleChange.bind(this, 'username')}
+                  className={cx({
+                    username: true,
+                    fetchingForms: isFetching.username.status,
+                    formError: isFetching.username.state === false,
+                    formSuccess: isFetching.username.state === true
+                  })}
                   onBlur={this.handleUsername.bind(this)}
                   ref={ (r) => this.username = r }
                 />
+                {isFetching.username.message && (
+                  <div className={cx({
+                    state: true,
+                    success: isFetching.username.state === true,
+                    error: isFetching.username.state === false
+                  })}>{isFetching.username.message}</div>
+                )}
+
                 <h3>адрес страницы</h3>
                 <small>поделитесь им с друзьями, чтобы они смогли найти вас</small>
                 <input
-                  defaultValue={this.props.alias}
-                  className={
-                            this.props.isFetching.alias
-                            ? cx('input--form', s.fetchingForms)
-                            : cx('input--form')
-                          }
+                  value={this.state.alias}
+                  onChange={this.handleChange.bind(this, 'alias')}
+                  className={cx({
+                    alias: true,
+                    fetchingForms: isFetching.alias.status,
+                    formError: isFetching.alias.state === false,
+                    formSuccess: isFetching.alias.state === true
+                  })}
                   onBlur={this.handleAlias.bind(this)}
                   ref={ (r) => this.alias = r }
                 />
+                {isFetching.alias.message && (
+                  <div className={cx({
+                    state: true,
+                    success: isFetching.alias.state === true,
+                    error: isFetching.alias.state === false
+                  })}>{isFetching.alias.message}</div>
+                )}
                 <h3>о себе</h3>
                 <textarea
-                  defaultValue={this.props.status}
-                  className={
-                            this.props.isFetching.status
-                            ? cx(s.status, s.fetchingForms)
-                            : cx(s.status)
-                          }
+                  value={this.state.status}
+                  onChange={this.handleChange.bind(this, 'status')}
+                  className={cx({
+                    status: true,
+                    fetchingForms: isFetching.status.status,
+                    formError: isFetching.status.state === false,
+                    formSuccess: isFetching.status.state === true
+                  })}
                   onBlur={this.handleStatus.bind(this)}
                   ref={ (r) => this.status = r }
                 />
-                <h3>Фотографии</h3>
-                <button onClick={ () => this.avatarInput.click() }
-                  className={
-                            this.props.isFetching.avatar
-                            ? cx('button button--upload', s.fetchingForms)
-                            : cx('button button--upload')
-                          }> Загрузить аватар </button>
-                <button onClick={ () => this.backgroundInput.click() }
-                className={
-                          this.props.isFetching.background
-                          ? cx('button button--upload', s.fetchingForms)
-                          : cx('button button--upload')}> Загрузить Фон </button>
-                <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
-                <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
+                {isFetching.status.message && (
+                  <div className={cx({
+                    stateStatus: true,
+                    success: isFetching.status.state === true,
+                    error: isFetching.status.state === false
+                  })}>{isFetching.status.message}</div>
+                )}
 
-                <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
-                  <input
-                    type='file'
-                    onChange={this.uploadAvatar.bind(this)}
-                    name='avatar'
-                    id='file-avatar'
-                    ref={ (r) => this.avatarInput = r }
-                  />
-                </form>
-                <form ref={ (r) => this.backgroundForm = r } encType='multipart/form-data' method='post' className='hidden'>
-                  <input
-                    type='file'
-                    onChange={this.uploadBackground.bind(this)}
-                    name='background'
-                    id='file-avatar'
-                    ref={ (r) => this.backgroundInput = r }
-                  />
-                </form>
+                <h3>Фотографии</h3>
+                <div>
+                  <UploadAvatar/>
+                  <UploadBackground/>
+                  <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
+                  <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
+                </div>
+
+                <div>Социальные сети</div>
+                <UpdateSocialNetworks/>
             </div>
         );
     }
@@ -147,17 +178,16 @@ Preferences.propTypes = {
   username: React.PropTypes.string.isRequired,
   alias: React.PropTypes.string.isRequired,
   status: React.PropTypes.string,
-  savePreferences: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool,
+  isFetching: React.PropTypes.object,
 
-  loadAvatar: React.PropTypes.func,
-  loadBackground: React.PropTypes.func,
   removeAvatar: React.PropTypes.func,
   removeBackground: React.PropTypes.func,
 
   saveStatus: React.PropTypes.func,
   saveAlias: React.PropTypes.func,
-  saveUsername: React.PropTypes.func
+  saveUsername: React.PropTypes.func,
+
+  authenticate: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps (state) {
@@ -169,4 +199,17 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, authActions)(Preferences);
+function mapDispatchToProps (dispatch) {
+  return {
+    removeAvatar: () => dispatch(removeAvatar()),
+    removeBackground: () => dispatch(removeBackground()),
+
+    saveUsername: (username) => dispatch(saveUsername(username)),
+    saveAlias: (alias) => dispatch(saveAlias(alias)),
+    saveStatus: (status) => dispatch(saveStatus(status)),
+
+    authenticate: () => dispatch(authenticate())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preferences);

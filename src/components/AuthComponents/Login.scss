@@ -1,7 +1,9 @@
 @import 'variables';
 
 body {
-  background-color: #fafafa;
+  background-color: #fdfdfd;
+  transition: background .6s;
+
 }
 .root {
 
@@ -11,6 +13,11 @@ body {
   margin: 0px auto;
   padding: 40px 0 40px;
   max-width: 810px;
+}
+.containerSmall {
+  margin: 0px auto;
+  padding: 40px 0 40px;
+  max-width: 410px;
 }
 
 .title {
@@ -50,13 +57,18 @@ body {
   @media screen and (max-width: 800px){
     // max-width: 900px;
     float: none;
-    margin: 150px auto;
+    // max-width: 200px;
+    min-width: 300px;
+    max-width: 400px;
+    width: 90%;
+    margin: 20% auto;
   }
 }
 
 .titleAction {
   text-align: center;
   padding: 0px 0px 16px 0px;
+  font-weight: bold;
   color: $yoGrey;
 }
 
@@ -79,11 +91,12 @@ body {
 }
 
 .logotype {
-  background: url('./components/AuthComponents/logo.png') no-repeat;
+  background: url('./components/AuthComponents/logo.png') no-repeat center;
   background-size: 150px;
   height: 60px;
-  width: 300px;
-  margin: 0px 56px 10px;
+  width: 100%;
+  margin: 0px 0px 10px;
+  display: block;
 }
 
 .errorMessage {

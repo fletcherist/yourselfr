@@ -7,6 +7,8 @@
 	img {
 		display: block;
 		width: 240px;
+		max-width: 220px;
+		max-height: 220px;
 		height: 240px;
 		border-radius: 10000px;
 		margin: 0px auto;
@@ -14,7 +16,7 @@
 }
 
 .username {
-	margin: 20px 0px 0px 0px;
+	margin: 40px 0px 0px 0px;
 	text-align:  center;
 	font-size: 32px;
 	text-transform: uppercase;
@@ -49,7 +51,8 @@
 	display: none;
 
 	@media screen and (max-width: 500px){
-		border: none;
+		border: none !important;
+		background-color: transparent !important;
     display: block;
   }
 }

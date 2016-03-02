@@ -45,7 +45,7 @@
       }
     },
     "copy": {
-      "command": "cd .. && cd yourselfr && cd app && rm -rf dist && cp -a ~/yo/dist/. ~/yourselfr/app/dist/",
+      "command": "cd .. && cd yourselfr && cd app && rm -rf dist && cp -a ~/yo/dist/. ~/yourselfr/app/dist/ && gulp deploy",
       "env": {
         "NODE_ENV": "development"
       }

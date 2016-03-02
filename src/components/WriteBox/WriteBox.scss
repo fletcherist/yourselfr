@@ -1,24 +1,27 @@
-@import '../variables.scss';
+@import 'variables';
 
 .container {
 	// transition: all .2s;
 	border-radius: 3px;
 	background-color: white;
 	float: left;
-	max-width: 500px;
+	max-width: 490px;
 	width: 100%;
 	// min-height: 175px;
 	// max-height: 175px;
 	margin-bottom: 10px;
 	margin-top: 0px;
+
+	border: 1px solid $borderColor;
+
 	// box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
 	// margin: 10px;
 	textarea {
 		border-radius: 3px;
 		display: block;
-		height: 155px;
+		height: 140px;
 		line-height: 30px;
-		width: 90%;
+		width: 100%;
 
 		resize: none;
 		font-size: 17px !important;
@@ -28,7 +31,7 @@
 		&:focus {
 			outline: none;
 		}
-		@media screen and (max-width: 700px){
+		@media screen and (max-width: 800px){
 			// border-radius: 0px;
 		}
 		@media screen and (max-width: 500px){
@@ -50,14 +53,14 @@
 		min-width: 50%;
 		width: 100%;
 	}
-	@media screen and (max-width: 700px){
+	@media screen and (max-width: 800px){
 		display: block;
 		max-width: 100%;
-		min-width: 96%;
+		min-width: 90%;
 		width: 90%;
 		border-bottom: 1px solid #e7e7e7;
 
-		margin: 0px 10px 14px 10px;
+		margin: 0px 25px 14px 25px;
 	}
 	@media screen and (max-width: 500px){
 		border-radius: 0px;
@@ -107,9 +110,26 @@
 .attachPhoto {
 	// display: none;
 }
+
+.photoHolder {
+	float: right;
+	// width: 140px;
+	background-color: $yoColor05;
+	margin-top: 10px;
+	padding: 5px 7px 1px;
+	border-radius: 3px;
+	box-shadow: inset 0 -1px #ccc;
+	color: $yoColor;
+	cursor: pointer;
+}
+
+.photoTitle {
+	float: left;
+}
+
 .addPhoto {
 	position: relative;;
-	float: right;
+	display: right;
 	z-index: 99999;
 	-webkit-mask-size: cover;
 	mask-size: cover;
@@ -119,25 +139,28 @@
 	-webkit-mask-size: cover;
 	display: inline-block;
 	transition: transform .4s, background-color .5s, opacity .1s;
-	background-color: #B8B8B8;
+	background-color: $yoColor;
 	-webkit-mask: url('./components/WriteBox/camera.svg') no-repeat 50% 50%;
 	mask: url(./components/WriteBox/camera.svg) no-repeat 100% 100%;
-	-webkit-mask-size: 25px;
+	-webkit-mask-size: 20px;
 
-	width: 26px;
-	height: 26px;
+	width: 20px;
+	height: 20px;
 	cursor: pointer;
-	margin-right: 10px;
-	margin-top: 2px;
+	margin-left: 10px;
 }
 
 .attachPreview {
 		background-color: #EFEFEF;
-		padding: 10px;
 		float: right;
 		// position: absolute;
-		margin-top: -155px;
-		height: 130px;
-		width: 185px;
+		margin-top: -140px;
+		height: 120px;
+		width: 202px;
 		border-radius: 0px;
+		cursor: pointer;
+}
+
+.button {
+		margin: 10px;
 }

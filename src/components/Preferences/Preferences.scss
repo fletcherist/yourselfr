@@ -1,16 +1,74 @@
 @import 'variables';
 
+h3 {
+  margin-top: 5px;
+}
 .status, .username, .alias {
+  margin: 10px 0px 0px 0px;
+  padding: 10px;
   resize: none;
   outline: none;
   width: 100%;
   margin-bottom: 0px;
   border: 0px;
+  border: 2px solid transparent;
   border-bottom: 1px solid $yoGreyLight;
-  margin-bottom: 20px;
+
   &:focus {
 
   }
+}
+
+.avatar {
+  margin-top: 10px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid $borderColor;
+  color: $yoColor;
+  font-size: 16px;
+  text-transform: uppercase;
+  &:hover {
+    border-color: $yoColor;
+    color: $yoColor;
+  }
+  &:focus {
+    color: #336780;
+  }
+}
+.background {
+  margin-top: 10px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid $borderColor;
+  color: #90A4AE;
+  font-size: 16px;
+  text-transform: uppercase;
+  &:hover {
+    border-color: #90A4AE;
+    color: #607D8B;
+  }
+  &:focus {
+    color: #78909C;
+    border-color: #455A64;
+  }
+}
+.avatarHolder {
+  padding: 10px;
+  margin-left: 0px;;
+}
+.backgroundHolder {
+  padding: 10px;
+  margin-left: 0px;
+}
+
+.photoPlus {
+  font-size: 46px;
+  font-weight: bold;
+  margin-top: -20px;
 }
 
 .savePreferences {
@@ -30,6 +88,7 @@
      #f9d885 75%, #fff3bb 75%);
   animation: anim 1s linear infinite;
 }
+
 .fetchingForms {
   overflow: hidden;
   background-size:100px 100px;
@@ -40,8 +99,52 @@
   animation: anim 1s linear infinite;
   opacity: 0.8;
   overflow: hidden;
+  cursor: wait;
+  // border: 2px solid $yoColor;
 }
 @keyframes anim {
   0% { background-position: 0px 0px; }
   100% { background-position: 50px 50px }
+}
+
+.state {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+.stateStatus {
+  margin-top: -3px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+.success {
+  background-color: $successColor;
+  color: $white-base;
+}
+.error {
+  background-color: $errorColor;
+  color: $white-base;
+}
+
+.formError {
+  border: 2px solid $errorColor;
+}
+.formSuccess {
+  border: 2px solid $successColor;
+}
+
+.photoLeft {
+  padding: 10px;
+  float: left;
+  max-width: 50%;
+  width: 50%;
+  text-align: center;
+}
+
+.photoRight {
+  padding: 10px;
+  float: left;
+  max-width: 50%;
+  width: 50%;
+  text-align: center;
 }

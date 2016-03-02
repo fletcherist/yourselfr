@@ -1,7 +1,7 @@
 import React from 'react';
 // import cx from 'classnames';
 import s from './Navigation.scss';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 
 class Navigation extends React.Component {
     constructor (props) {
@@ -18,9 +18,9 @@ class Navigation extends React.Component {
     render () {
       return (
             <div className={s.navigation}>
-              <Link to='/' >
+              <a href='../findme' >
                 <div className={s.yoButton} title='Вернуться на главную - Йорселфер'></div>
-              </Link>
+              </a>
             </div>
         );
     }

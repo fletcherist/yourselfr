@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
 import { updatePostsCounter } from './user';
-import { fetchPosts } from './isFetching';
+import { fetchPosts, fetchLoadMorePosts } from './isFetching';
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
@@ -47,18 +47,28 @@ export const loadPosts = (offset) => {
   }
 };
 
-export const loadMorePosts = createAction(LOAD_MORE_POSTS, async (offset) => {
-  var alias = window.location.pathname.substr(1);
-  // var alias = 'abracadabra';
-  var url = `${config.http}/api/posts/${alias}`
-  if (offset) {
-    url += `/${offset}`
+export const loadMorePostsPatch = createAction(LOAD_MORE_POSTS);
+export const loadMorePosts = (offset) => {
+  return (dispatch, getState) => {
+    dispatch(fetchLoadMorePosts(true));
+    var alias = window.location.pathname.substr(1);
+    // var alias = 'abracadabra';
+    var url = `${config.http}/api/posts/${alias}`
+    if (offset) {
+      url += `/${offset}`
+    }
+    console.log(url);
+    fetch(url)
+      .then((r) => r.json())
+      .then((posts) => {
+        if (!posts) {
+
+        }
+        dispatch(fetchLoadMorePosts(false));
+        dispatch(loadMorePostsPatch(posts));
+      })
   }
-  console.log(url);
-  var posts = await fetch(url);
-  posts = posts.json(posts);
-  return posts;
-});
+}
 
 export const removePost = id => {
   return (dispatch, getState) => {

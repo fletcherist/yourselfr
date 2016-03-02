@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import 'variables.scss';
 
 .path {
 	// margin: 8px;
@@ -8,12 +8,14 @@
 	list-style: none;
 
 	a {
-		text-decoration: none;
+		// text-decoration: none;
+		height: 30px;
 		color:  #999;
 		font-weight: 300;
 		text-align: left;
 		&:first-child {
 			li {
+					margin-top: 0px;
 				// padding-top: 16px;
 				// border-top-left-radius: 3px;
 				// border-top-right-radius: 3px;
@@ -36,4 +38,13 @@
 			}
 		}
 	}
+}
+
+.link {
+	&:first-child {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+	width: 100%;
+	display: block;
 }
