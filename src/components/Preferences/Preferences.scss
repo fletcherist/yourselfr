@@ -3,7 +3,7 @@
 h3 {
   margin-top: 5px;
 }
-.status, .username, .alias {
+.status, .username, .alias, .network {
   margin: 10px 0px 0px 0px;
   padding: 10px;
   resize: none;
@@ -111,26 +111,30 @@ h3 {
   margin-top: 0px;
   margin-bottom: 20px;
   padding: 5px;
+  font-size: 11px;
 }
 .stateStatus {
   margin-top: -3px;
   margin-bottom: 20px;
   padding: 5px;
+  font-size: 11px;
 }
 .success {
   background-color: $successColor;
   color: $white-base;
+  font-weight: 500;
 }
 .error {
   background-color: $errorColor;
   color: $white-base;
+  font-weight: 500;
 }
 
 .formError {
-  border: 2px solid $errorColor;
+  border: 1px solid $errorColor;
 }
 .formSuccess {
-  border: 2px solid $successColor;
+  border: 1px solid $successColor;
 }
 
 .photoLeft {
@@ -147,4 +151,19 @@ h3 {
   max-width: 50%;
   width: 50%;
   text-align: center;
+}
+.descTitle {
+  color: #999;
+}
+.category {
+  display: inline-block;
+  font-variant: small-caps;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  a {
+    display: block;
+    padding: 8px 15px 8px 10px;
+    border-radius: 3px;
+  }
 }

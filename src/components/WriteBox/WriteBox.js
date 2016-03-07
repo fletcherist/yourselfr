@@ -19,27 +19,33 @@ class WriteBox extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
+        username: undefined,
         text: '',
-        created_by: this.props.alias,
+        created_by: undefined,
         isOpen: true,
-        textPlaceholder: '',
         photo: undefined
       }
+
+      console.log(this.state);
     }
 
-    componentWillMount () {
+    componentWillReceiveProps (props) {
       var phrases = [
-        `Что вы думаете о  ${this.props.username}?`,
-        `Поделись мнением о ${this.props.username}!`,
-        `Хороший ли человек ${this.props.username}?`,
-        `Что объединяет Вас и ${this.props.username}`,
-        `${this.props.username} любит сериалы?`,
-        `У ${this.props.username} есть вторая половинка?`
+        `Что вы думаете о  ${props.username}?`,
+        `Поделись мнением о ${props.username}!`,
+        `Хороший ли человек ${props.username}?`,
+        `${props.username} любит сериалы?`,
+        `У ${props.username} есть вторая половинка?`
       ];
       var random = Math.floor(Math.random() * phrases.length)
+
       this.setState({
+        username: props.username,
+        created_by: props.alias,
+        text: '',
+        isOpen: true,
         textPlaceholder: phrases[random]
-      });
+      })
     }
 
     handleSubmitButton (e) {
@@ -47,6 +53,9 @@ class WriteBox extends React.Component {
       var photo = this.state.photo;
       if (!photo && !text) {
         this.textBox.focus();
+      }
+      if (/^\s+$/.test(text)) {
+        return this.textBox.focus();
       }
       this.props.sendPost(text, photo);
       this.textBox.value = '';
@@ -139,7 +148,7 @@ class WriteBox extends React.Component {
                     <div
                         className={cx('button button--submit', s.button)}
                         onClick={this.handleSubmitButton.bind(this)}>
-                        Высказаться
+                        отправить
                     </div>
                     <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
                       <div className={s.photoTitle}>прикрепить</div>

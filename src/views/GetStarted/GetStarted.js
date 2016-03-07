@@ -36,10 +36,10 @@ class GetStarted extends React.Component {
             </Link>
           </div>
           <div className={s.right}>
-            <img src={photo1} />
-            <img src={photo2} />
-            <img src={photo3} />
-            <img src={photo4} />
+            <img className={s.photo} src={photo1} />
+            <img className={s.photo} src={photo2} />
+            <img className={s.photo} src={photo3} />
+            <img className={s.photo} src={photo4} />
           </div>
         </div>
       </div>

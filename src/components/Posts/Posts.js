@@ -5,6 +5,7 @@ import { ending, isEmpty } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';
+// import ShareWithSocial from '../ShareWithSocial';
 
 class Posts extends React.Component {
     componentDidMount () {
@@ -37,42 +38,62 @@ class Posts extends React.Component {
       }
 
       return (
-            <div>
-                <div className='container--right padding-0' id='right'>
-                    <div className={s.header}>
-                        <div className={s.counter}>
-                            {this.props.count} {postsPronounce}
-                        </div>
-                    </div>
-                    {this.props.isFetching && (
-                      <Loader/>
-                    )}
-                    {!this.props.isFetching && (
-                      postsArray
-                    )}
-
-                    {this.props.count > 10 && this.props.count > this.state.postsLoaded && (
-                      <div
-                            className={s.loadMore}
-                            onClick={ () => {
-                              this.props.loadMorePosts(this.state.postsLoaded)
-                              this.setState({
-                                postsLoaded: this.state.postsLoaded + 10
-                              })
-                            }}
-                            >
-                            {this.props.isFetchingLoadMore && (
-                              'Загрузка...'
-                            )}
-                            {!this.props.isFetchingLoadMore && (
-                              'Загрузить ещё'
-                            )}
-                      </div>
-                    )}
+        <div className='container--right padding-0' id='right'>
+          <div>
+            <div className={s.header}>
+                <div className={s.counter}>
+                    {this.props.count} {postsPronounce}
                 </div>
             </div>
+            {this.props.isFetching && (
+              <Loader/>
+            )}
+            {!this.props.isFetching && (
+              <div>
+                {this.props.count === 0 && (<NoPosts isAuthenticated={this.props.isAuthenticated}/>)}
+                {this.props.count > 0 && (postsArray)}
+              </div>
+            )}
+
+            {this.props.count > 10 && this.props.count > this.state.postsLoaded && (
+              <div className={s.loadMore}
+                    onClick={ () => {
+                      this.props.loadMorePosts(this.state.postsLoaded)
+                      this.setState({
+                        postsLoaded: this.state.postsLoaded + 10
+                      })
+                    }}>
+                    {this.props.isFetchingLoadMore && ('Загрузка...')}
+                    {!this.props.isFetchingLoadMore && ('Загрузить ещё')}
+              </div>
+            )}
+          </div>
+        </div>
         )
     }
+}
+
+class NoPosts extends React.Component {
+  render () {
+    return (
+      <div>
+        {this.props.isAuthenticated && (
+          <div className={s.noPostsContainer}>
+            <div className={s.noPosts}>Можем поспорить, что через 5 минут здесь будут анонимные мнения о вас.</div>
+          </div>
+        )}
+        {!this.props.isAuthenticated && (
+          <div className={s.noPostsEmpty}>
+            <div className={s.NoPosts}>Пока ничего нет. Напишите первым!</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+
+NoPosts.propTypes = {
+  isAuthenticated: React.PropTypes.bool.isRequired
 }
 
 Posts.propTypes = {
@@ -81,13 +102,15 @@ Posts.propTypes = {
   loadPosts: React.PropTypes.func.isRequired,
   loadMorePosts: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
-  isFetchingLoadMore: React.PropTypes.bool.isRequired
+  isFetchingLoadMore: React.PropTypes.bool.isRequired,
+  isAuthenticated: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     posts: state.posts,
     count: state.user.stats.posts,
+    isAuthenticated: state.auth.authenticated,
     isFetching: state.isFetching.posts,
     isFetchingLoadMore: state.isFetching.loadMorePosts
   }

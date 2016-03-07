@@ -20,12 +20,12 @@ class GetPersonalized extends React.Component {
               Загрузите фото профиля, чтобы ваши друзья смогли узнать вас.
             </div>
             <div>
-              Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br/> ваш профиль популярнее.
+              Профиль должен быть красивым, как цветок дао, и глубоким, как река.
             </div>
+            <div className='rate-empty-line-3'></div>
             <Link to='/i/get-socialized'>
-              <button className={cx('button', s.button)}>Продолжить!</button>
+              <button className={cx('button', s.button)}>Продолжить</button>
             </Link>
-            <Link to='/i/get-sozialized'>пропустить</Link>
           </div>
           <div className={s.right}>
             <UploadAvatar/>

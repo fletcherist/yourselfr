@@ -5,25 +5,26 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Navigation from 'components/Navigation';
+import ShareWithSocial from 'components/ShareWithSocial';
 
 class GetSocialized extends React.Component {
   render () {
-    const { username } = this.props.user;
+    // const { username } = this.props.user;
     return (
       <div>
         <Navigation/>
         <div className={s.container}>
           <div className={s.left}>
-            <h1 className={s.greeting}>Рады вас видеть, {username}.</h1>
+            <h1 className={s.greeting}>Последнее.<br/> Расскажите в соцсетях.</h1>
             <div className={s.info}>
-              Get Sozialized
+              Поделитесь ссылкой на страничку в ВК или в Твиттере, чтобы ваши друзья смогли найти Вас.
             </div>
-            <div>
-              Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br/> ваш профиль популярнее.
-            </div>
-            <Link to='/i/get-socialized'>
-              <button className={cx('button', s.button)}>Продолжить!</button>
+            <Link to={`/${this.props.user.alias}`}>
+              <button className={cx('button', s.button)}>Перейти к профилю!</button>
             </Link>
+          </div>
+          <div className=''>
+            <ShareWithSocial/>
           </div>
         </div>
       </div>

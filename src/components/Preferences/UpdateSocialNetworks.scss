@@ -1,0 +1,64 @@
+@import 'variables';
+
+.formControl {
+	border: 1px solid #e3e3e3;
+	border-radius: 2px;
+	display: inline-block;
+	padding: 0px 0px 2px 8px;
+	position: relative;
+	font-size: 15px;
+	outline-width: 0;
+	height: 37px;
+	-webkit-box-shadow: 0px;
+	box-shadow: none;
+	transition: none;
+}
+.input {
+  margin: 10px 0px 0px 0px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0px;
+  border: 0px;
+  border: 2px solid transparent;
+  border-bottom: 1px solid $yoGreyLight;
+  -webkit-input-placeholder {color:#c0392b;}
+}
+
+.innerAddon {
+    position: relative;
+}
+
+/* style icon */
+.innerAddon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  z-index: 9999 !important;
+}
+
+.innerAddon img {
+	position: absolute;
+	pointer-events: none;
+	z-index: 9999 !important;
+	height: 30px;
+	margin-top: 16px;
+}
+/* align icon */
+.leftAddon .fa, img  { left:  0px;}
+.rightAddon .fa { right: 0px;}
+.middleAddon .fa {
+	top: 2px;
+	left: 56%;
+};
+.alert {
+	animation: fadeIn .2s;
+	text-overflow: ellipsis;
+	padding: 10px 15px 10px 15px;
+	// min-height 37px
+}
+
+/* add padding  */
+.leftAddon input  { padding-left:  35px; }
+.rightAddon input { padding-right: 30px; }

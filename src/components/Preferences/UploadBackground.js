@@ -6,7 +6,7 @@ import { loadBackground } from '../../redux/modules/preferences';
 
 let cx = classNames.bind(s);
 
-class UploadAvatar extends React.Component {
+class UploadBackground extends React.Component {
   uploadBackground () {
     var photo = this.backgroundForm;
     var fd = new FormData();
@@ -29,7 +29,7 @@ class UploadAvatar extends React.Component {
             )}
           </button>
         </div>
-        <div>Загрузите фон.</div>
+        <div className={s.descTitle}>Загрузите фон.</div>
 
         <form ref={ (r) => this.backgroundForm = r } encType='multipart/form-data' method='post' className='hidden'>
           <input
@@ -45,7 +45,7 @@ class UploadAvatar extends React.Component {
   }
 }
 
-UploadAvatar.propTypes = {
+UploadBackground.propTypes = {
   loadBackground: React.PropTypes.func,
   isFetching: React.PropTypes.object.isRequired
 }
@@ -61,4 +61,4 @@ function mapDispatchToProps (dispatch) {
     loadBackground: (background) => dispatch(loadBackground(background))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(UploadAvatar);
+export default connect(mapStateToProps, mapDispatchToProps)(UploadBackground);

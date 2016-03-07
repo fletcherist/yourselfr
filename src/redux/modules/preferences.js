@@ -3,7 +3,8 @@ import { fetchUsername,
          fetchAlias,
          fetchStatus,
          fetchAvatar,
-         fetchBackground
+         fetchBackground,
+         fetchSocialNetworks
 } from './isFetching';
 
 export const loadBackground = (background) => {
@@ -171,6 +172,25 @@ export const saveStatus = (status) => {
           message: 'Статус успешно обновлён.'
         }));
       }, 1000);
+    })
+  }
+}
+
+export const saveSocialNetworks = (networks) => {
+  return (dispatch, getState) => {
+    dispatch(fetchSocialNetworks({vk: true}));
+    var body = createBody(networks);
+    fetch(`${config.http}/api/users`, {
+      method: 'POST',
+      headers: {
+        'Content-type': config.post
+      },
+      credentials: 'same-origin',
+      body: body
+    })
+    .then((r) => r.json())
+    .then((res) => {
+      console.log(res);
     })
   }
 }

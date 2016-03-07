@@ -1,6 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
 import { fetchLogIn, fetchRegister } from './isFetching';
+import { routeActions } from 'react-router-redux';
+import ga from 'react-ga';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOG_IN = 'LOG_IN';
@@ -60,6 +62,10 @@ export const logIn = (username, password) => {
       } else {
         dispatch(fetchLogIn([true]));
         window.location.href = '/findme';
+        ga.event({
+          category: 'User',
+          action: 'Logged In'
+        });
       }
     });
   }
@@ -67,15 +73,20 @@ export const logIn = (username, password) => {
 
 export const register = (username, email, password) => {
   return (dispatch, getState) => {
+    console.log(username, email, password);
     dispatch(fetchRegister([true]));
     console.log('do login');
-    fetch(`${config.http}/auth/login`, {
+
+    if (password.length < 6) {
+      return dispatch(fetchRegister([false, 'Допишите к паролю ещё пару символов.']))
+    }
+    fetch(`${config.http}/auth/signup`, {
       method: 'post',
       credentials: 'same-origin',
       headers: {
         'Content-type': config.post
       },
-      body: `username=${username}&password=${password}`
+      body: `username=${username}&password=${password}&email=${email}`
     })
     .then((r) => r.json())
     .catch((e) => {
@@ -87,6 +98,14 @@ export const register = (username, email, password) => {
         dispatch(fetchRegister([false, 'Загружаем ваш профиль..']));
       } else {
         dispatch(fetchRegister(false));
+        dispatch(authenticate());
+        setTimeout(() => {
+          dispatch(routeActions.push('/i/get-started'));
+        }, 1000);
+        ga.event({
+          category: 'User',
+          action: 'Created an Account'
+        });
       }
     });
   }
@@ -94,7 +113,8 @@ export const register = (username, email, password) => {
 
 export const actions = {
   logIn,
-  authenticate
+  authenticate,
+  register
 }
 
 export default handleActions({

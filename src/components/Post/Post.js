@@ -61,7 +61,7 @@ class Post extends React.Component {
         <div className={postClasses}>
                 <div className={s.time}>
                     <span className={s.hideOnHover}>{this.state.createdPronounce}</span>
-                    <div className={s.removeButton} onClick={this.props.removePost()}></div>
+                    <div className={s.removeButton} onClick={ () => this.props.removePost(this.props.id)}></div>
                 </div>
                 <div className={s.text}>
                     <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>

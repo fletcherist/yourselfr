@@ -12,6 +12,9 @@ const FETCH_LOAD_MORE_POSTS = 'FETCH_LOAD_MORE_POSTS';
 const FETCH_ENDLESS_FEED = 'FETCH_ENDLESS_FEED';
 const FETCH_LOGIN = 'FETCH_LOGIN';
 const FETCH_REGISTER = 'FETCH_REGISTER';
+const FETCH_SOCIAL_NETWORKS = 'FETCH_SOCIAL_NETWORKS';
+
+const FETCH_USER = 'FETCH_USER';
 
 export const fetchFollowers = createAction(FETCH_FOLLOWERS);
 export const fetchFollowing = createAction(FETCH_FOLLOWING);
@@ -25,6 +28,8 @@ export const fetchAvatar = createAction(FETCH_AVATAR);
 export const fetchBackground = createAction(FETCH_BACKGROUND);
 export const fetchLogIn = createAction(FETCH_LOGIN);
 export const fetchRegister = createAction(FETCH_REGISTER);
+export const fetchUser = createAction(FETCH_USER);
+export const fetchSocialNetworks = createAction(FETCH_SOCIAL_NETWORKS);
 
 export const actions = {
   fetchFollowers,
@@ -86,8 +91,28 @@ export default handleActions({
       status: payload[0],
       message: payload[1] || ''
     }}};
+  },
+  FETCH_USER: (state, { payload }) => {
+    return {...state, ...{user: {
+      status: payload.status,
+      state: payload.state
+    }}};
+  },
+  FETCH_SOCIAL_NETWORKS: (state, { payload }) => {
+    return Object.assign({}, state, {
+      socialNetworks: Object.assign({}, state, {
+        vk: payload.vk,
+        twitter: payload.twitter,
+        instagram: payload.instagram,
+        tumblr: payload.tumblr
+      })
+    })
   }
 }, {
+  user: {
+    status: false,
+    state: undefined
+  },
   username: {
     status: false,
     state: undefined,
@@ -102,6 +127,14 @@ export default handleActions({
     status: false,
     state: undefined,
     message: undefined
+  },
+  socialNetworks: {
+    vk: false,
+    twitter: false,
+    tumblr: false,
+    instagram: false,
+    google: false,
+    facebook: false
   },
   posts: false,
   endlessFeed: false,

@@ -8,12 +8,12 @@ const active = {
 class UserNavigation extends React.Component {
     render () {
       return (
-            <div className='container--left padding-0'>
+            <div className='container--left padding-0 container--user-navigation'>
                 <ul className={s.path} >
-                    <Link to={`/preferences`} activeStyle={active} className={s.link}>
+                    <Link to='/preferences' activeStyle={active} className={s.link}>
                         <div><li>настроить профиль </li></div>
                     </Link>
-                    <Link to='like' activeStyle={active} className={s.link}>
+                    <Link to='/share-with-social' activeStyle={active} className={s.link}>
                         <div><li>поделиться ссылкой на профиль</li></div>
                     </Link>
                     <a href='../auth/logout'>

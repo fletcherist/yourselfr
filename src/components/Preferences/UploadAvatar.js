@@ -29,7 +29,7 @@ class UploadAvatar extends React.Component {
               )}
             </button>
         </div>
-        <div>Добавьте фото профиля.</div>
+        <div className={s.descTitle}>Добавьте фото профиля.</div>
         <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
           <input
             type='file'

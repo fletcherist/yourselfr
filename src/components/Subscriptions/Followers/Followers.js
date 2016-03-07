@@ -46,21 +46,38 @@ class Followers extends React.Component {
           )
         });
       } else {
-        followersList = ''
+        followersList = undefined
       }
 
       return (
-        <div className='container--right padding-0'>
+        <div className='container--right padding-0 container--subscriptions'>
           <div className={s.blockTitle}>Подписчики</div>
           {this.props.isFetching && (
             <Loader/>
           )}
           {!this.props.isFetching && (
-            followersList
+            <div>
+              {followersList && (
+                followersList
+              )}
+              {!followersList && (
+                <NoFollowers/>
+              )}
+            </div>
           )}
         </div>
       )
     }
+}
+
+class NoFollowers extends React.Component {
+  render () {
+    return (
+      <div>
+        <div className={s.noSubscriptions}>Пока нет ни одного<br/> подписчика</div>
+      </div>
+    )
+  }
 }
 
 Followers.propTypes = {
@@ -68,8 +85,6 @@ Followers.propTypes = {
   loadFollowers: React.PropTypes.func.isRequired,
   loadUser: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired
-}
-Followers.defaultProps = {
 }
 
 function mapStateToProps (state) {

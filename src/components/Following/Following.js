@@ -26,9 +26,9 @@ class Following extends React.Component {
           var linkHref = '/' + following.alias;
           return (
             <div key={following._id} className={s.subContainer}>
-                <div style={{background: `url(${config.http}/upload/background/${following.background})`}}
-                  className={s.background}>
-                </div>
+              <div style={{background: `url(${config.http}/upload/background/${following.background})`}}
+                className={s.background}>
+              </div>
               <div className={s.subscription}>
                 <Link to={linkHref}>
                   <img
@@ -48,20 +48,37 @@ class Following extends React.Component {
           )
         });
       } else {
-        followingList = '';
+        followingList = undefined;
       }
       return (
-        <div className='container--right padding-0'>
+        <div className='container--right padding-0 container--subscriptions'>
         <div className={s.blockTitle}>Подписки</div>
           {this.props.isFetching && (
             <Loader/>
           )}
           {!this.props.isFetching && (
-            followingList
+            <div>
+              {followingList && (
+                followingList
+              )}
+              {!followingList & (
+                <NoFollowing/>
+              )}
+            </div>
           )}
         </div>
       )
     }
+}
+
+class NoFollowing extends React.Component {
+  render () {
+    return (
+      <div>
+        <div className={s.noSubscriptions}>Пользователь пока ни на кого не подписался</div>
+      </div>
+    )
+  }
 }
 
 Following.propTypes = {

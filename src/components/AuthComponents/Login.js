@@ -12,7 +12,8 @@ class LoginForm extends React.Component {
     this.password.value = '';
     this.password.focus();
   }
-  logIn () {
+  logIn (e) {
+    e.preventDefault();
     if (this.login.value === '') {
       return this.invalidLogin();
     }
@@ -33,19 +34,21 @@ class LoginForm extends React.Component {
           <div className={s.titleAction}>
             {tittleAction}
           </div>
-          <div className='input--container'>
-            <input className='input--form input--block' placeholder='Имя пользователя'
-                    ref={(r) => this.login = r}/>
-          </div>
-          <div className='input--container'>
-            <input className='input--form input--block' placeholder='Пароль' type='password'
-                    ref={(r) => this.password = r}/>
-          </div>
-          <button
-            className='button button--register button--block button--container'
-            onClick={ () => this.logIn()}
-            disabled={this.props.isFetching.status}>Войти
-          </button>
+          <form onSubmit={ this.logIn.bind(this)}>
+            <div className='input--container'>
+              <input className='input--form input--block' placeholder='Имя пользователя'
+                      ref={(r) => this.login = r}/>
+            </div>
+            <div className='input--container'>
+              <input className='input--form input--block' placeholder='Пароль' type='password'
+                      ref={(r) => this.password = r}/>
+            </div>
+            <button
+              type='submit'
+              className='button button--register button--block button--container'
+              disabled={this.props.isFetching.status}>Войти
+            </button>
+          </form>
           {this.props.isFetching.message && (
             <div className={s.errorMessage}>
               {this.props.isFetching.message}

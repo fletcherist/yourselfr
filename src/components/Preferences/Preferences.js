@@ -7,12 +7,55 @@ import {
 } from '../../redux/modules/preferences';
 import { authenticate } from '../../redux/modules/auth';
 import classNames from 'classnames/bind';
-
+import User from '../User';
+import { Link } from 'react-router';
 import UploadAvatar from './UploadAvatar';
 import UploadBackground from './UploadBackground';
-import UpdateSocialNetworks from './UpdateSocialNetworks';
+// import UpdateSocialNetworks from './UpdateSocialNetworks';
 
 let cx = classNames.bind(s);
+export class PreferencesContainer extends React.Component {
+  render () {
+    var activeStyle = {
+      backgroundColor: '#f2fdff'
+    }
+    return (
+      <User>
+        <div className='container--right'>
+          <div>
+            <div className={s.category}><Link to='/preferences/'>общие</Link></div>
+            <div className={s.category}><Link to='/preferences/photos' activeStyle={activeStyle}>фотографии</Link></div>
+            <div className={s.category}><Link to='/preferences/social' activeStyle={activeStyle}>социальные сети</Link></div>
+          </div>
+          {this.props.children}
+        </div>
+      </User>
+    )
+  }
+}
+PreferencesContainer.propTypes = {
+  children: React.PropTypes.element.isRequired
+}
+
+export class PreferencesPhotos extends React.Component {
+  render () {
+    return (
+      <div>
+        <h3>Фотографии</h3>
+        <div>
+          <UploadAvatar/>
+          <UploadBackground/>
+          <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
+          <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
+        </div>
+      </div>
+    )
+  }
+}
+PreferencesPhotos.propTypes = {
+  removeAvatar: React.PropTypes.func,
+  removeBackground: React.PropTypes.func
+}
 
 class Preferences extends React.Component {
     constructor (props) {
@@ -95,7 +138,7 @@ class Preferences extends React.Component {
     render () {
       const {isFetching} = this.props;
       return (
-            <div className='container--right'>
+            <div>
                 <h3>имя</h3>
                 <input
                   value={this.state.username}
@@ -158,17 +201,6 @@ class Preferences extends React.Component {
                     error: isFetching.status.state === false
                   })}>{isFetching.status.message}</div>
                 )}
-
-                <h3>Фотографии</h3>
-                <div>
-                  <UploadAvatar/>
-                  <UploadBackground/>
-                  <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
-                  <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
-                </div>
-
-                <div>Социальные сети</div>
-                <UpdateSocialNetworks/>
             </div>
         );
     }
@@ -179,9 +211,6 @@ Preferences.propTypes = {
   alias: React.PropTypes.string.isRequired,
   status: React.PropTypes.string,
   isFetching: React.PropTypes.object,
-
-  removeAvatar: React.PropTypes.func,
-  removeBackground: React.PropTypes.func,
 
   saveStatus: React.PropTypes.func,
   saveAlias: React.PropTypes.func,

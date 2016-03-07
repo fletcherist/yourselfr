@@ -1,0 +1,27 @@
+.social {
+	// margin 15px
+	text-align: left;
+  padding: 0px 0px 10px 5px;
+	img {
+		width: 25px;
+    height: 30px;
+		margin-right: 10px;
+		margin-left: 5px;
+  }
+	ul {
+		li {
+			a {
+				font-weight: bold;
+      }
+			padding: 4px;
+    }
+  }
+  span {
+    position: absolute;
+    margin-top: 7px;
+		white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		max-width: 200px;
+  }
+}

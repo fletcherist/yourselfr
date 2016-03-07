@@ -2,6 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
 import { updatePostsCounter } from './user';
 import { fetchPosts, fetchLoadMorePosts } from './isFetching';
+import ga from 'react-ga';
 
 export const LOAD_POSTS = 'LOAD_POSTS';
 export const SEND_POST = 'SEND_POST';
@@ -66,18 +67,29 @@ export const loadMorePosts = (offset) => {
         }
         dispatch(fetchLoadMorePosts(false));
         dispatch(loadMorePostsPatch(posts));
+        ga.event({
+          category: 'Posts',
+          action: 'More Posts Loaded'
+        });
       })
   }
 }
 
+const removePostPatch = createAction(REMOVE_POST);
 export const removePost = id => {
   return (dispatch, getState) => {
-    fetch(`${config.http}/api/posts/remove${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-type': config.post
-      }
-    })
+    console.log(id);
+    fetch(`${config.http}/api/posts/remove/${id}`)
+      .then((r) => r.json())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
+    dispatch(removePostPatch(id));
+    ga.event({
+      category: 'Posts',
+      action: 'Removed Post'
+    });
   }
 }
 
@@ -110,6 +122,10 @@ export const sendPost = (text, photo) => {
 
       }
       dispatch(send());
+      ga.event({
+        category: 'Posts',
+        action: 'Created Post'
+      });
     });
   }
 }
@@ -128,5 +144,18 @@ export default handleActions({
   },
   [LOAD_MORE_POSTS]: (state, { payload }) => {
     return [...state, ...payload];
+  },
+  [REMOVE_POST]: (state, { payload }) => {
+    // Find a post with that ID and slice it.
+    for (var i = 0; i < state.length; i++) {
+      var postID = state[i]._id;
+      if (postID === payload) {
+        break;
+      }
+    }
+    return [
+      ...state.slice(0, i),
+      ...state.slice(i + 1)
+    ];
   }
 }, []);

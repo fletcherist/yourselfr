@@ -1,5 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
+import { fetchUser } from './isFetching';
+import ga from 'react-ga';
 
 export const LOAD_USER = 'LOAD_USER';
 export const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
@@ -39,6 +41,8 @@ export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER, (value = 1)
 
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
+    dispatch(fetchUser({status: true}));
+
     if (!alias) {
       alias = window.location.pathname.substr(1);
       alias = alias.split('/')[0];
@@ -60,10 +64,13 @@ export const loadUser = (alias) => {
           window.location.href = '404';
         })
         .then((data) => {
-          // if (!data || !data.alias) {
-            // window.location.href = '404';
-          // }
+          dispatch(fetchUser({status: false}));
           dispatch(load(data));
+
+          ga.event({
+            category: 'User',
+            action: 'Userpage Loaded'
+          });
         });
     }
     console.log(alias);
