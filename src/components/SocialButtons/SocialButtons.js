@@ -2,13 +2,14 @@ import React from 'react';
 import s from './SocialButtons.scss';
 import cx from 'classnames';
 import vkWhite from './vk_white.png';
+import Translate from 'react-translate-component';
 
 const VkAuthButton = () => {
   return (
       <div className={cx(s.button, s.vk)}>
         <a href='auth/vk'>
           <img src={vkWhite}/>
-          <span>Войти через вконтакте</span>
+          <Translate content='socialButtons.authViaVK' component='span'/>
         </a>
       </div>
   )

@@ -102,3 +102,17 @@ export function isValidEmail (email) {
     return false;
   }
 }
+
+export function getLocale () {
+  if (navigator) {
+    if (navigator.language) {
+      return navigator.language;
+    } else if (navigator.browserLanguage) {
+      return navigator.browserLanguage;
+    } else if (navigator.systemLanguage) {
+      return navigator.systemLanguage;
+    } else if (navigator.userLanguage) {
+      return navigator.userLanguage;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "signup": {
+    "message": "Yourselfr is such a kind of service, with which you get to know, what your friends thinking about you.",
+    "username": "Username",
+    "email": "E-mail",
+    "password": "Password",
+    "button": "Signup"
+  },
+  "same": {
+    "noAccount": "No account?",
+    "haveAccount": "Have account?",
+    "register": "Sign Up",
+    "login": "Log In"
+  },
+  "forms": {
+
+  },
+  "socialButtons": {
+    "authViaVK": "Authenticate via VK"
+  },
+  "counters": {
+    "followers": {
+      "zero": "followers",
+      "one": "follower",
+      "other": "followers"
+    },
+    "following": {
+      "zero": "following",
+      "one": "following",
+      "other": "following"
+    },
+    "visits": {
+      "zero": "visits",
+      "one": "visit",
+      "other": "visits"
+    }
+  }
+}

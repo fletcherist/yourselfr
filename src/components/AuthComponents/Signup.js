@@ -7,6 +7,9 @@ import { isValidEmail } from '../Toools';
 import { routeActions } from 'react-router-redux';
 import VkAuthButton from '../SocialButtons';
 
+import Translate from 'react-translate-component';
+import cp from 'counterpart';
+
 class SignupForm extends React.Component {
   constructor () {
     super();
@@ -87,24 +90,25 @@ class SignupForm extends React.Component {
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
           <VkAuthButton />
-          <div className={s.titleAction}>Зарегистрируйтесь, чтобы узнать, что думают от Вас ваши друзья.</div>
+          <Translate content="signup.message" className={s.titleAction} component='div'/>
           <form onSubmit={ this.register.bind(this) }>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder='Имя пользователя'
+              <input className='input--form input--block' placeholder={ cp.translate('signup.username') }
                   ref={(r) => this.username = r}/>
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder='Эл. Адрес'
+              <input className='input--form input--block' placeholder={ cp.translate('signup.email') }
                   ref={(r) => this.email = r}/>
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder='Пароль' type='password'
+              <input className='input--form input--block' placeholder={ cp.translate('signup.password') }
                   ref={(r) => this.password = r}/>
             </div>
             <button
               type='submit'
               className='button button--register button--block button--container'
-              disabled={this.props.isFetching.status}>Регистрация
+              disabled={this.props.isFetching.status}>
+              <Translate content="signup.button"/>
             </button>
           </form>
           {this.state.message && (

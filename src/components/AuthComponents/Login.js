@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { logIn } from '../../redux/modules/auth';
 import { NoAccount } from './Same';
 
+import Translate from 'react-translate-component';
+
 class LoginForm extends React.Component {
   invalidLogin () {
     this.login.focus();

@@ -1,8 +1,10 @@
-import React from 'react'
-import cx from 'classnames/bind'
-import s from './Counters.scss'
-import { Link } from 'react-router'
-import {ending} from '../Toools'
+import React from 'react';
+import cx from 'classnames/bind';
+import s from './Counters.scss';
+import { Link } from 'react-router';
+import {ending} from '../Toools';
+
+import Translate from 'react-translate-component';
 
 const followersACTIVE = {
   backgroundColor: '#f2fdff'
@@ -24,7 +26,7 @@ class Counters extends React.Component {
             <div>
                 <div className={s.counter}>
                     <div className={s.counter_count}>{this.props.visits}</div>
-                    <div className={s.counter_title}>{pronounce.visits}</div>
+                    <Translate content='counters.visits.one' className={s.counter_title}/>
                 </div>
 
                 <Link to={`/${this.props.alias}/followers`} className={followersClasses} activeStyle={followersACTIVE}>
