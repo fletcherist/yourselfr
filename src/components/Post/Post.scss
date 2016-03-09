@@ -23,26 +23,34 @@
 	}
 
 	word-wrap: break-word;
-	padding: 10px 0px 20px 5px;
-	line-height: 28px;
+	padding: 10px 0px 15px 5px;
+	line-height: 20px;
 	font-size: 16px;
 	justify-content: left;
 	display: flex;
 	.time {
+		font-weight: 300;
 		font-size: 14px;
 		align-self: center;
 		padding: 0px 0px 0px 10px;
 		color: #B1B1B1;
-		width: 80px;
-		@media screen and (max-width: 540px) {
-			width: 50px;
-		}
+		width: 55px;
 
 	}
 	.text {
-		width: 70%;
+		width: 75%;
 		font-weight: 400;
 		color: #515151;
+
+		@media screen and (max-width: 800px) {
+			width: 83%;
+		}
+		@media screen and (max-width: 700px) {
+			width: 79%;
+		}
+		@media screen and (max-width: 580px) {
+			width: 72%;
+		}
 	}
 	.like {
 		align-self: center;

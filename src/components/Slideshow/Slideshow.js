@@ -1,10 +1,16 @@
-import lay1 from './Layout1.jpg';
-import lay2 from './Layout2.jpg';
-import lay3 from './Layout3.jpg';
-import lay4 from './Layout4.jpg';
+// import lay1 from './Layout1.jpg';
+// import lay2 from './Layout2.jpg';
+// import lay3 from './Layout3.jpg';
+// import lay4 from './Layout4.jpg';
+
+import lay1 from './Layouts2/Layout1.jpg';
+import lay2 from './Layouts2/Layout2.jpg';
+import lay3 from './Layouts2/Layout3.jpg';
+import lay4 from './Layouts2/Layout4.jpg';
+
 import React from 'react';
 
-var backgrounds = [lay4, lay3, lay1, lay2];
+var backgrounds = [lay1, lay2, lay3, lay4];
 
 class Slideshow extends React.Component {
   constructor () {

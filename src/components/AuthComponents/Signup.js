@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Login.scss';
 import { connect } from 'react-redux';
 import { register } from '../../redux/modules/auth';
-import { HaveAccount } from './Same';
+import { HaveAccount, LocaleSwitcher } from './Same';
 import { isValidEmail } from '../Toools';
 import { routeActions } from 'react-router-redux';
 import VkAuthButton from '../SocialButtons';
@@ -118,6 +118,7 @@ class SignupForm extends React.Component {
           )}
         </div>
         <HaveAccount/>
+        <LocaleSwitcher/>
       </div>
     )
   }

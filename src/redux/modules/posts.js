@@ -79,7 +79,7 @@ const removePostPatch = createAction(REMOVE_POST);
 export const removePost = id => {
   return (dispatch, getState) => {
     console.log(id);
-    fetch(`${config.http}/api/posts/remove/${id}`)
+    fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'same-origin'})
       .then((r) => r.json())
       .then((res) => {
         console.log(res);

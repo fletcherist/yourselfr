@@ -1,5 +1,45 @@
 {
-  "example": {
-    "greeting": "Привет, мир!"
+  "yourselfr": "Йорселфер",
+  "signup": {
+    "message": "Йорселфер — это сервис, который позволяет узнать, что думают о вас ваши друзья.",
+    "username": "Имя пользователя",
+    "email": "Адрес эл. почты",
+    "password": "Пароль",
+    "button": "Регистрация"
+  },
+  "login": {
+    "message": "Войдите, чтобы узнать, что думают о вас ваши друзья",
+    "login": "Логин",
+    "password": "Пароль",
+    "button": "Войти"
+  },
+  "same": {
+    "noAccount": "Нет аккаунта?",
+    "haveAccount": "Есть аккаунт?",
+    "register": "Регистрация",
+    "login": "Вход"
+  },
+  "forms": {
+
+  },
+  "socialButtons": {
+    "authViaVK": "Войти"
+  },
+  "counters": {
+    "followers": {
+      "zero": "подписчиков",
+      "one": "подписчик",
+      "other": "подписчиков"
+    },
+    "following": {
+      "zero": "following",
+      "one": "following",
+      "other": "following"
+    },
+    "visits": {
+      "zero": "visits",
+      "one": "visit",
+      "other": "visits"
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './SocialButtons.scss';
 import cx from 'classnames';
-import vkWhite from './vk_white.png';
+import vkWhite from './vkint.svg';
 import Translate from 'react-translate-component';
 
 const VkAuthButton = () => {

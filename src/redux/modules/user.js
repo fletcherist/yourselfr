@@ -1,42 +1,15 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
 import { fetchUser } from './isFetching';
+import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
 
-export const LOAD_USER = 'LOAD_USER';
-export const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
+const LOAD_USER = 'LOAD_USER';
+const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
+const SUBSCRIBE = 'SUBSCRIBE';
+const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER';
 
-var defUser = {
-  username: 'Jesus Christ',
-  // photo: 'http://images2.fanpop.com/image/photos/10700000/Jesus-Christ-clarklover-10737807-363-391.jpg',
-  photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
-  alias: 'asd',
-  status: '',
-  header: '',
-  online: {},
-  stats: {
-    visits: 0,
-    followers: 0,
-    following: 0,
-    posts: 0
-  }
-}
-// export const loadUser = createAction(LOAD_USER, async (alias) => {
-//   // if (!alias) {
-//   //
-//   // } else {
-//   //   alias = 'sdadsa___';
-//   // }
-//
-//   console.log('alias: ' + alias);
-//
-//   var result = await fetch(`${config.http}/api/users/${alias}`);
-//   result = result.json();
-//   return result;
-// });
 export const load = createAction(LOAD_USER);
-
-// fetch(`${config.http}api/users/${alias}`)
 export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER, (value = 1) => value);
 
 export const loadUser = (alias) => {
@@ -58,7 +31,7 @@ export const loadUser = (alias) => {
     }
 
     function fetchData () {
-      fetch(`${config.http}/api/users/${alias}`)
+      fetch(`${config.http}/api/users/${alias}`, {credentials: 'same-origin'})
         .then((r) => r.json())
         .catch((e) => {
           window.location.href = '404';
@@ -67,6 +40,10 @@ export const loadUser = (alias) => {
           dispatch(fetchUser({status: false}));
           dispatch(load(data));
 
+          if (!data.alias) {
+            dispatch(routeActions.push('/404'));
+          }
+
           ga.event({
             category: 'User',
             action: 'Userpage Loaded'
@@ -74,6 +51,36 @@ export const loadUser = (alias) => {
         });
     }
     console.log(alias);
+  }
+}
+
+const subscribePatch = createAction(SUBSCRIBE);
+const updateSubscriptionCounter = createAction(UPDATE_SUBSCRIPTION_COUNTER);
+export const subscribe = (alias) => {
+  return (dispatch, getState) => {
+    fetch(`${config.http}/api/subscriptions/follow`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': config.post
+      },
+      body: `following=${alias}`
+    })
+    .then((r) => r.json())
+    .then((res) => {
+      res.count;
+      var status = false;
+      if (res.status === 1) {
+        status = true;
+      } else if (res.status === 2) {
+        status = false;
+      } else if (res.status === -1) {
+        dispatch(routeActions.push('/login'));
+      }
+      console.log(res);
+      dispatch(subscribePatch(status));
+      dispatch(updateSubscriptionCounter(res.current));
+    })
   }
 }
 
@@ -91,5 +98,28 @@ export default handleActions({
         posts: state.stats.posts + 1
       })
     })
+  },
+  SUBSCRIBE: (state, { payload }) => {
+    return {...state, ...{isFollowing: payload}}
+  },
+  UPDATE_SUBSCRIPTION_COUNTER: (state, { payload }) => {
+    return Object.assign({}, state, {
+      stats: Object.assign({}, state.stats, {
+        followers: payload
+      })
+    })
   }
-}, defUser);
+}, {
+  username: 'Jesus Christ',
+  photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
+  alias: 'asd',
+  status: '',
+  online: {},
+  stats: {
+    visits: 0,
+    followers: 0,
+    following: 0,
+    posts: 0
+  },
+  isFollowing: false
+});

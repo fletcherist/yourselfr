@@ -2,13 +2,14 @@ import React from 'react';
 import s from './Login.scss';
 import { Link } from 'react-router';
 import cp from 'counterpart';
+import Translate from 'react-translate-component';
 
 export const NoAccount = () => {
   return (
     <div className={s.containerBlock}>
-      { cp.translate('same.noAccount') }
+      <Translate content='same.noAccount' />
       {' '}
-      <Link to='/signup'>{ cp.translate('same.register') }</Link>
+      <Link to='/signup'><Translate content='same.register' /></Link>
     </div>
   )
 }
@@ -16,9 +17,27 @@ export const NoAccount = () => {
 export const HaveAccount = () => {
   return (
     <div className={s.containerBlock}>
-        { cp.translate('same.haveAccount') }
+        <Translate content='same.haveAccount' />
         {' '}
-        <Link to='/login'>{ cp.translate('same.login') }</Link>
+        <Link to='/login'><Translate content='same.login' /></Link>
     </div>
   )
+}
+
+export class LocaleSwitcher extends React.Component {
+  handleChange (locale) {
+    cp.setLocale(locale);
+  }
+
+  render () {
+    return (
+      <div className={s.footer}>
+        <span><a><Translate content='yourselfr'/> © 2016</a></span>
+        {' '}
+        <a onClick={ () => this.handleChange('ru')} className={s.footerA}>Русский</a>
+        {' '}
+        <a onClick={ () => this.handleChange('en')} className={s.footerA}>English</a>
+      </div>
+    );
+  }
 }

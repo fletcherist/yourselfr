@@ -49,30 +49,46 @@ class Following extends React.Component {
         followingList = '';
       }
       return (
-        <div className='container--right padding-0'>
+        <div className='container--right padding-0 container--subscriptions'>
         <div className={s.blockTitle}>Подписки</div>
           {this.props.isFetching && (
             <Loader/>
           )}
           {!this.props.isFetching && (
-            followingList
+            <NoFollowing username={this.props.user.username}/>
           )}
         </div>
       )
     }
 }
 
+class NoFollowing extends React.Component {
+  render () {
+    return (
+      <div>
+        <div className={s.noSubscriptions}>{this.props.username} пока ни на кого <br/> не подписался</div>
+      </div>
+    )
+  }
+}
+
+NoFollowing.propTypes = {
+  username: React.PropTypes.object
+}
+
 Following.propTypes = {
   following: React.PropTypes.array.isRequired,
   loadFollowing: React.PropTypes.func.isRequired,
   loadUser: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired
+  isFetching: React.PropTypes.bool.isRequired,
+  user: React.PropTypes.object
 }
 
 function mapStateToProps (state) {
   return {
     following: state.subscriptions.following,
-    isFetching: state.isFetching.following
+    isFetching: state.isFetching.following,
+    user: state.user
   }
 }
 

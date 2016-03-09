@@ -5,6 +5,7 @@ import { logIn } from '../../redux/modules/auth';
 import { NoAccount } from './Same';
 
 import Translate from 'react-translate-component';
+import cp from 'counterpart';
 
 class LoginForm extends React.Component {
   invalidLogin () {
@@ -25,30 +26,29 @@ class LoginForm extends React.Component {
     this.props.logIn(this.login.value, this.password.value);
   }
   render () {
-    var tittleAction = 'Войдите, чтобы узнать, что думают о Вас ваши друзья.';
-    if (this.props.continueMessage) {
-      tittleAction = this.props.continueMessage;
-    }
+    // var tittleAction = 'Войдите, чтобы узнать, что думают о Вас ваши друзья.';
+    // if (this.props.continueMessage) {
+    //   tittleAction = this.props.continueMessage;
+    // }
     return (
       <div>
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
-          <div className={s.titleAction}>
-            {tittleAction}
-          </div>
+          <Translate className={s.titleAction} content='login.message' component='div'/>
           <form onSubmit={ this.logIn.bind(this)}>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder='Имя пользователя'
+              <input className='input--form input--block' placeholder={ cp.translate('login.login') }
                       ref={(r) => this.login = r}/>
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder='Пароль' type='password'
+              <input className='input--form input--block' type='password' placeholder={ cp.translate('login.password') }
                       ref={(r) => this.password = r}/>
             </div>
             <button
               type='submit'
               className='button button--register button--block button--container'
-              disabled={this.props.isFetching.status}>Войти
+              disabled={this.props.isFetching.status}>
+              <Translate content='login.button'/>
             </button>
           </form>
           {this.props.isFetching.message && (

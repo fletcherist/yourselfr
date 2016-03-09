@@ -1,18 +1,17 @@
 @import 'variables';
 .navigation {
   height: 50px;
-  margin-bottom: 60px;
-  // margin-top: 10px;
-  background-color: #fff;
-  border-bottom: 1px solid $borderColor;
+  margin-bottom: 10px;
+  background-color: transparent;
 }
 
 .yoButton {
   padding: 25px;
   background: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
-  background-size: 100px;
+  background-size: 160px;
   background-position: center;
   cursor: pointer;
+  padding-top: 70px;
 }
 
 // .root {

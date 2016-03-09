@@ -5,6 +5,7 @@ import Counters from '../Counters';
 import {connect} from 'react-redux';
 import Loader from '../Loader';
 
+import SubscribeButton from '../SubscribeButton';
 import UserNavigation from '../UserNavigation';
 import SocialNetworks from '../SocialNetworks';
 
@@ -14,12 +15,13 @@ import { config } from '../../redux/config';
 import {actions as userActions} from '../../redux/modules/user';
 import onlinePic from './online.png';
 
+import avatar from './avatar.jpg'
+
 class Profile extends React.Component {
   componentWillMount () {
     this.props.loadUser();
   }
     render () {
-      console.log(this.props);
       document.title = `${this.props.username} — Йорселфер`;
 
       var ifSocial = false;
@@ -39,9 +41,17 @@ class Profile extends React.Component {
               <div>
                 <div style={{background: `url(${config.http}/upload/background/${this.props.background})`}} className={s.background}></div>
                 <div className={s.avatar}>
+                  {photo === 'http://yourselfr.com/upload/avatar/nophoto.png' && (
+                    <Link to={`/${this.props.alias}`}>
+                        <img src={avatar}/>
+                    </Link>
+                  )}
+                  {photo !== 'http://yourselfr.com/upload/avatar/nophoto.png' && (
                     <Link to={`/${this.props.alias}`}>
                         <img src={photo}/>
                     </Link>
+                  )}
+
                 </div>
                 <h1 className={s.username}>
                     <span>
@@ -51,6 +61,9 @@ class Profile extends React.Component {
                       <img className={s.online} src={onlinePic} width='12x'></img>
                     )}
                 </h1>
+                {this.props.alias !== this.props.me.alias && (
+                    <SubscribeButton />
+                )}
                 <Counters
                   visits={this.props.stats.visits}
                   followers={this.props.stats.followers}
@@ -66,8 +79,9 @@ class Profile extends React.Component {
           <SocialNetworks networks={this.props.social}/>
         )}
         {this.props.isAuthenticated &&
-          // <div className='button button--subscribe'>подписаться</div>
-          <UserNavigation alias={this.props.alias}/>
+          <div>
+            <UserNavigation alias={this.props.alias}/>
+          </div>
         }
       </div>)
     }
@@ -109,7 +123,9 @@ Profile.propTypes = {
   }),
   loadUser: React.PropTypes.func.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
-  isFetching: React.PropTypes.object.isRequired
+  isFetching: React.PropTypes.object.isRequired,
+
+  me: React.PropTypes.object
 };
 
 function mapStateToProps (state) {
@@ -123,7 +139,9 @@ function mapStateToProps (state) {
     stats: state.user.stats,
     social: state.user.social,
     isAuthenticated: state.auth.authenticated,
-    isFetching: state.isFetching.user
+    isFetching: state.isFetching.user,
+
+    me: state.auth.user
   }
 }
 

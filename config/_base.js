@@ -23,6 +23,9 @@ const config = {
   server_host : process.env.NODE_ENV === 'production' ? 'yourselfr.com' : 'localhost',
   server_port : process.env.PORT || 3000,
 
+  // server_host : 'yourselfr.com',
+  // server_port : 80,
+
   // ----------------------------------
   // Compiler Configuration
   // ----------------------------------

@@ -147,7 +147,7 @@ export const saveAlias = (alias) => {
 export const saveStatus = (status) => {
   return (dispatch, getState) => {
     dispatch(fetchStatus({status: true}));
-    if (status.length > 150) {
+    if (status.length > 250) {
       dispatch(fetchStatus({
         status: false,
         state: false,
