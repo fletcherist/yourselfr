@@ -55,7 +55,14 @@ class Following extends React.Component {
             <Loader/>
           )}
           {!this.props.isFetching && (
-            <NoFollowing username={this.props.user.username}/>
+            <div>
+              {followingList && (
+                followingList
+              )}
+              {!followingList && (
+                <NoFollowing username={this.props.user.username}/>
+              )}
+            </div>
           )}
         </div>
       )

@@ -12,7 +12,13 @@ var defaultMe = {
   user: {
     username: '%username%',
     alias: undefined,
-    status: undefined
+    status: undefined,
+    social: {
+      vk: 'undefined',
+      twitter: 'undefined',
+      tumblr: 'undefined',
+      instagram: 'undefined'
+    }
   }
 }
 

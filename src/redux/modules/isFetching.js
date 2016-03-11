@@ -99,14 +99,13 @@ export default handleActions({
     }}};
   },
   FETCH_SOCIAL_NETWORKS: (state, { payload }) => {
-    return Object.assign({}, state, {
-      socialNetworks: Object.assign({}, state, {
-        vk: payload.vk,
-        twitter: payload.twitter,
-        instagram: payload.instagram,
-        tumblr: payload.tumblr
-      })
-    })
+    return {...state, ...{socialNetworks: {
+      ...state.socialNetworks,
+      vk: payload.vk || {status: false, state: false},
+      twitter: payload.vk || {status: false, state: false},
+      tumblr: payload.tumblr || {status: false, state: false},
+      instagram: payload.instagram || {status: false, state: false}
+    }}}
   }
 }, {
   user: {
@@ -129,12 +128,30 @@ export default handleActions({
     message: undefined
   },
   socialNetworks: {
-    vk: false,
-    twitter: false,
-    tumblr: false,
-    instagram: false,
-    google: false,
-    facebook: false
+    vk: {
+      status: false,
+      state: undefined
+    },
+    twitter: {
+      status: false,
+      state: undefined
+    },
+    tumblr: {
+      status: false,
+      state: undefined
+    },
+    instagram: {
+      status: false,
+      state: undefined
+    },
+    google: {
+      status: false,
+      state: undefined
+    },
+    facebook: {
+      status: false,
+      state: undefined
+    }
   },
   posts: false,
   endlessFeed: false,

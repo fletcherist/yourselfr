@@ -31,11 +31,19 @@ class WriteBox extends React.Component {
 
     componentWillReceiveProps (props) {
       var phrases = [
-        `Что вы думаете о  ${props.username}?`,
+        `Что вы думаете о ${props.username}?`,
         `Поделись мнением о ${props.username}!`,
-        `Хороший ли человек ${props.username}?`,
-        `${props.username} любит сериалы?`,
-        `У ${props.username} есть вторая половинка?`
+        `${props.username} владеет искусством матанализа?`,
+        `Когда Вы первый раз познакомились с ${props.username}?`,
+        `Расскажите смешную историю с ${props.username}`,
+        `Опишите черты лица ${props.username}?`,
+        `Сможете рассказать смешную историю с участием ${props.username}?`,
+        `Напишите, например, какую музыку любит ${props.username}?`,
+        `Вы были с ${props.username} наедине?`,
+        `Когда Вы в последний раз виделись с ${props.username}?`,
+        `Расскажите, любит ли ${props.username} животных?`,
+        `${props.username} — тварь дрожащая или право имеет?`,
+        `Расскажите всем, как вы познакомились с ${props.username}?`
       ];
       var random = Math.floor(Math.random() * phrases.length)
 

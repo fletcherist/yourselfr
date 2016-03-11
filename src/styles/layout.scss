@@ -280,3 +280,16 @@
 .input--container {
   margin-top: 6px;
 }
+
+.input {
+  margin: 10px 0px 0px 0px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0px;
+  border: 0px;
+  border: 2px solid transparent;
+  border-bottom: 1px solid $yoGreyLight;
+  -webkit-input-placeholder {color:#c0392b;}
+}

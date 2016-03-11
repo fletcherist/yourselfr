@@ -7,7 +7,7 @@ export class NotFoundView extends React.Component {
     return (
       <div className='container text-center'>
         <Slideshow/>
-        <h1>404</h1>
+        <div>Это не та страница, которую Вы хотели бы увидеть. Воспользуйтесь поиском, который мы скоро добавим. Наверное</div>
         <Link to='/'>Домой</Link>
       </div>
     )

@@ -178,7 +178,16 @@ export const saveStatus = (status) => {
 
 export const saveSocialNetworks = (networks) => {
   return (dispatch, getState) => {
-    dispatch(fetchSocialNetworks({vk: true}));
+    if (networks.vk) {
+      dispatch(fetchSocialNetworks({vk: {status: true}}));
+    } else if (networks.twitter) {
+      dispatch(fetchSocialNetworks({twitter: {status: true}}));
+    } else if (networks.tumblr) {
+      dispatch(fetchSocialNetworks({tumblr: {status: true}}));
+    } else if (networks.instagram) {
+      dispatch(fetchSocialNetworks({vk: {status: true}, instagram: {status: true}}));
+    }
+
     var body = createBody(networks);
     fetch(`${config.http}/api/users`, {
       method: 'POST',
@@ -197,15 +206,13 @@ export const saveSocialNetworks = (networks) => {
 
 const createBody = (user) => {
   var body = ``;
-  if (user.username) {
-    body += `username=${user.username}&`;
-  }
-  if (user.alias) {
-    body += `alias=${user.alias}&`;
-  }
-  if (user.status) {
-    body += `status=${user.status}`;
-  }
+  if (user.username) { body += `username=${user.username}&`; }
+  if (user.alias) { body += `alias=${user.alias}&`; }
+  if (user.status) { body += `status=${user.status}`; }
+  if (body.vk) { body += `vk=${user.vk}&`; }
+  if (body.twitter) { body += `twitter=${user.twitter}&`; }
+  if (body.tumblr) { body += `tumblr=${user.tumblr}&`; }
+  if (body.instagram) { body += `instagram=${user.instagram}`; }
 
   return body;
 }

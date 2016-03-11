@@ -41,17 +41,9 @@ class Profile extends React.Component {
               <div>
                 <div style={{background: `url(${config.http}/upload/background/${this.props.background})`}} className={s.background}></div>
                 <div className={s.avatar}>
-                  {photo === 'http://yourselfr.com/upload/avatar/nophoto.png' && (
-                    <Link to={`/${this.props.alias}`}>
-                        <img src={avatar}/>
-                    </Link>
-                  )}
-                  {photo !== 'http://yourselfr.com/upload/avatar/nophoto.png' && (
                     <Link to={`/${this.props.alias}`}>
                         <img src={photo}/>
                     </Link>
-                  )}
-
                 </div>
                 <h1 className={s.username}>
                     <span>

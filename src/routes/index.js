@@ -29,6 +29,8 @@ import { requireAuthentication } from 'components/Authenticate';
 import Followers from 'components/Subscriptions/Followers';
 import Following from 'components/Subscriptions/Following';
 
+import UserNavigation from 'components/UserNavigation';
+
 class defaultUser extends React.Component {
   render () {
     return (
@@ -88,6 +90,7 @@ export default (
       <Route path='social' component={UpdateSocialNetworks} />
       <Route path='photos' component={PreferencesPhotos} />
     </Route>
+    <Route path='/nav' component={UserNavigation} />
       <Route path='/share-with-social' component={ShareWithSocialContainer} />
 
     <Route path='/i/get-started' component={requireAuthentication(GetStarted)} />
