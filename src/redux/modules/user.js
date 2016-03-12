@@ -80,6 +80,10 @@ export const subscribe = (alias) => {
       console.log(res);
       dispatch(subscribePatch(status));
       dispatch(updateSubscriptionCounter(res.current));
+      ga.event({
+        category: 'Subscriptions',
+        action: 'User Subscribed'
+      });
     })
   }
 }
@@ -121,5 +125,5 @@ export default handleActions({
     following: 0,
     posts: 0
   },
-  isFollowing: false
+  isFollowing: true
 });

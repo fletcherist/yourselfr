@@ -208,11 +208,11 @@ const createBody = (user) => {
   var body = ``;
   if (user.username) { body += `username=${user.username}&`; }
   if (user.alias) { body += `alias=${user.alias}&`; }
-  if (user.status) { body += `status=${user.status}`; }
-  if (body.vk) { body += `vk=${user.vk}&`; }
-  if (body.twitter) { body += `twitter=${user.twitter}&`; }
-  if (body.tumblr) { body += `tumblr=${user.tumblr}&`; }
-  if (body.instagram) { body += `instagram=${user.instagram}`; }
+  if (user.status) { body += `status=${user.status}&`; }
+  if (user.vk) { body += `vk=${user.vk}&`; }
+  if (user.twitter) { body += `twitter=${user.twitter}&`; }
+  if (user.tumblr) { body += `tumblr=${user.tumblr}&`; }
+  if (user.instagram) { body += `instagram=${user.instagram}&`; }
 
   return body;
 }

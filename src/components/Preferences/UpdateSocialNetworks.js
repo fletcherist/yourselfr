@@ -26,16 +26,28 @@ class UpdateSocialNetworks extends React.Component {
   }
 
   handleVK () {
-    this.props.saveSocialNetworks({vk: this.vk.value});
+    // this.props.saveSocialNetworks({vk: this.vk.value});
+    this.handleSocialNetworks();
   }
   handleTumblr () {
-    this.props.saveSocialNetworks({tumblr: this.tumblr.value});
+    // this.props.saveSocialNetworks({tumblr: this.tumblr.value});
+    this.handleSocialNetworks();
   }
   handleTwitter () {
-    this.props.saveSocialNetworks({twitter: this.twitter.value});
+    // this.props.saveSocialNetworks({twitter: this.twitter.value});
+    this.handleSocialNetworks();
   }
   handleInsta () {
-    this.props.saveSocialNetworks({instagram: this.instagram.value});
+    // this.props.saveSocialNetworks({instagram: this.instagram.value});
+    this.handleSocialNetworks();
+  }
+  handleSocialNetworks () {
+    this.props.saveSocialNetworks({
+      vk: this.vk.value,
+      tumblr: this.tumblr.value,
+      twitter: this.twitter.value,
+      instagram: this.instagram.value
+    })
   }
   handleChange (name, e) {
     var change = {};
@@ -60,7 +72,7 @@ class UpdateSocialNetworks extends React.Component {
           <img src={vkPicture}/>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.tumblr = r} placholder='тамблер' value={this.state.tumblr}
+          <input ref={(r) => this.tumblr = r} placeholder='тамблер' value={this.state.tumblr}
                   className={c({
                     'input': true,
                     fetchingForms: isFetching.tumblr.status,

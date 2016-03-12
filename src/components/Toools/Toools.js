@@ -54,11 +54,11 @@ export function timePassed (time) {
   var passed = ((now - time) / 1000).toFixed(0); // Seconds
   var result;
   if (passed < 5) {
-    result = 'сейчас'
+    result = 'now'
   } else if (passed < 60) {
-    result = passed + 'сек'
+    result = passed + 'с'
   } else if (passed < 60 * 60) {
-    result = (passed / 60).toFixed(0) + 'мин';
+    result = (passed / 60).toFixed(0) + 'м';
   } else if (passed < 60 * 60 * 24) {
     result = (passed / (60 * 60)).toFixed(0) + 'ч'
   } else if (passed < 60 * 60 * 24 * 7) {

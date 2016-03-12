@@ -154,7 +154,7 @@ class WriteBox extends React.Component {
                     display: this.state.isOpen ? 'block' : 'none'
                   }}>
                     <div
-                        className={cx('button button--submit', s.button)}
+                        className={cx('button', s.buttonSubmit, s.button)}
                         onClick={this.handleSubmitButton.bind(this)}>
                         отправить
                     </div>

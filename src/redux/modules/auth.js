@@ -14,10 +14,10 @@ var defaultMe = {
     alias: undefined,
     status: undefined,
     social: {
-      vk: 'undefined',
-      twitter: 'undefined',
-      tumblr: 'undefined',
-      instagram: 'undefined'
+      vk: undefined,
+      twitter: undefined,
+      tumblr: undefined,
+      instagram: undefined
     }
   }
 }

@@ -9,7 +9,7 @@ class ShareWithSocial extends React.Component {
       <div>
         <div className='rate-empty-line-2'></div>
         <div>
-          <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&amp;image=http://yourselfr.com/images/logo/yo-vk.jpg&amp;title=Узнайте обо мне больше на yourselfr!`} target='_vk'>
+          <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&image=http://yourselfr.com/images/logo/yo-vk.jpg&title=Узнайте обо мне больше на Йорселфере!`} target='_vk'>
             <img src={vk} alt='Рассказать Вконтакте' className={s.network}/>
           </a>
           <div className={s.description}>Нажмите на кнопку, чтобы разместить запись Вконтакте со ссылкой на вашу страницу.</div>

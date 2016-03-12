@@ -24,7 +24,7 @@
 		width: 100%;
 
 		resize: none;
-		font-size: 17px !important;
+		font-size: 15px !important;
 		border: 0;
 		padding: 10px 10px 10px 16px;
 
@@ -67,7 +67,7 @@
 		display: block;
 		max-width: 100%;
 		min-width: 100%;
-		margin: 0px;
+		margin: 10px 0px 10px 0px;
 
 		border-top-right-radius: 0px;
 		border-top-left-radius: 0px;
@@ -117,14 +117,19 @@
 	background-color: $yoColor05;
 	margin-top: 10px;
 	padding: 4px 7px 1px;
-	border-radius: 3px;
+	border-radius: 5px;
 	box-shadow: inset 0 -1px #E8EFFF;
 	color: $yoColor;
 	cursor: pointer;
+	margin-right: 10px;
 }
 
 .photoTitle {
 	float: left;
+	margin-top: 2px;
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .addPhoto {
@@ -142,10 +147,10 @@
 	background-color: $yoColor;
 	-webkit-mask: url('./components/WriteBox/camera.svg') no-repeat 50% 50%;
 	mask: url(./components/WriteBox/camera.svg) no-repeat 100% 100%;
-	-webkit-mask-size: 20px;
+	-webkit-mask-size: 16px;
 
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
 	cursor: pointer;
 	margin-left: 10px;
 }
@@ -163,4 +168,17 @@
 
 .button {
 		margin: 10px;
+}
+
+.buttonSubmit {
+	color: #E98032;
+	background: #FFF3BB;
+	box-shadow: inset 0 -1px #F9D885;
+	// float: left;
+	text-align: center;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 5px;
+	// width: 150px;
 }

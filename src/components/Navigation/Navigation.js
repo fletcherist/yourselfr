@@ -21,8 +21,8 @@ class Navigation extends React.Component {
       return (
             <div className={s.navigation}>
               {this.props.user.alias && (
-                <Link to={`/${this.props.user.alias}`}>
-                  <div className={s.yoButton} title='Вернуться на главную - Йорселфер' onClick={ () => this.props.loadUser(this.props.user.alias) }></div>
+                <Link to='/nav'>
+                  <div className={s.yoButton} title='Вернуться на главную - Йорселфер'></div>
                 </Link>
               )}
               {!this.props.user.alias && (
@@ -52,5 +52,6 @@ const mapDispatchToProps = (dispatch) => {
     loadUser: (alias) => dispatch(loadUser(alias))
   }
 }
+// onClick={ () => this.props.loadUser(this.props.user.alias) }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

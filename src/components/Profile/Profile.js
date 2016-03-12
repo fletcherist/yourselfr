@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import Loader from '../Loader';
 
 import SubscribeButton from '../SubscribeButton';
-import UserNavigation from '../UserNavigation';
 import SocialNetworks from '../SocialNetworks';
 
 import { isValidPhoto, isNotEmptyString } from '../Toools';
@@ -15,7 +14,7 @@ import { config } from '../../redux/config';
 import {actions as userActions} from '../../redux/modules/user';
 import onlinePic from './online.png';
 
-import avatar from './avatar.jpg'
+// import avatar from './avatar.jpg'
 
 class Profile extends React.Component {
   componentWillMount () {
@@ -72,7 +71,6 @@ class Profile extends React.Component {
         )}
         {this.props.isAuthenticated &&
           <div>
-            <UserNavigation alias={this.props.alias}/>
           </div>
         }
       </div>)
