@@ -20,19 +20,10 @@
 	@media screen and (max-width: 800px){
 		display: block;
 		max-width: 100%;
-		min-width: 90%;
-		width: 90%;
-		margin: 0px 25px 5px 25px;
-	}
-	@media screen and (max-width: 500px){
-		display: block;
-		max-width: 100%;
 		min-width: 100%;
-		margin: 0px;
-
-		border-radius: 0px;
-		min-height: 133px;
-		margin-bottom: -10px;
+		width: 100%;
+		margin: 0 auto;
+		float: none;
 	}
 }
 

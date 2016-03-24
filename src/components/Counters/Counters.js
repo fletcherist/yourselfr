@@ -6,11 +6,8 @@ import {ending} from '../Toools';
 
 // import Translate from 'react-translate-component';
 
-const followersACTIVE = {
-  backgroundColor: '#f2fdff'
-}
-const followingACTIVE = {
-  backgroundColor: '#f2fdff'
+const active = {
+  backgroundColor: 'rgb(246, 246, 246)',
 }
 class Counters extends React.Component {
     render () {
@@ -29,12 +26,12 @@ class Counters extends React.Component {
                     <div className={s.counter_title}>{pronounce.visits}</div>
                 </div>
 
-                <Link to={`/${this.props.alias}/followers`} className={followersClasses} activeStyle={followersACTIVE}>
+                <Link to={`/${this.props.alias}/followers`} className={followersClasses} activeStyle={active}>
                     <div className={s.counter_count}>{this.props.followers}</div>
                     <div className={s.counter_title}>{pronounce.followers}</div>
                 </Link>
 
-                <Link to={`/${this.props.alias}/following`} className={followingClasses} activeStyle={followingACTIVE}>
+                <Link to={`/${this.props.alias}/following`} className={followingClasses} activeStyle={active}>
                   <div className={s.counter_count}>{this.props.following}</div>
                   <div className={s.counter_title}>{pronounce.following}</div>
                 </Link>

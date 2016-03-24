@@ -10,7 +10,7 @@ import classNames from 'classnames/bind';
 import User from '../User';
 import { Link } from 'react-router';
 import UploadAvatar from './UploadAvatar';
-import UploadBackground from './UploadBackground';
+import UploadBackground from './uploadBackground.js';
 // import UpdateSocialNetworks from './UpdateSocialNetworks';
 
 let cx = classNames.bind(s);

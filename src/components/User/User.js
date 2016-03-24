@@ -15,14 +15,11 @@ class User extends React.Component {
         : {}
       return (
             <div>
-                <div
-                    className='responsive_crop_fixed'
-                    style={backround}>
-                </div>
+                <div className='responsive_crop_fixed' style={backround}></div>
                 <Navigation/>
                 <div className={s.container}>
                     <div className={s.container_left}>
-                        <Profile/>
+                      <Profile/>
                     </div>
                     <div>
                         {this.props.children}

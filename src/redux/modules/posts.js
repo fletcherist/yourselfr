@@ -9,6 +9,7 @@ export const SEND_POST = 'SEND_POST';
 export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS';
 export const REMOVE_POST = 'REMOVE_POST';
 export const LIKE_POST = 'LIKE_POST';
+export const ENDLESS_LOAD = 'ENDLESS_LOAD';
 
 export const likePost = createAction(LIKE_POST, async (id) => {
   if (!id) {
@@ -33,12 +34,11 @@ export const loadPosts = (offset) => {
   return (dispatch, getState) => {
     var alias = window.location.pathname.substr(1);
     // var alias = 'abracadabra';
-    var url = `${config.http}/api/posts/${alias}`
+    var url = `${config.http}/api/posts/${alias}`;
     if (offset) {
       url += `/${offset}`
     }
     dispatch(fetchPosts(true));
-    console.log(url);
     fetch(url)
       .then((r) => r.json())
       .then((posts) => {
@@ -47,6 +47,23 @@ export const loadPosts = (offset) => {
       })
   }
 };
+
+const endlessLoadPatch = createAction(ENDLESS_LOAD);
+export const endlessLoad = () => {
+  return (dispatch, getState) => {
+    var lastPostID = getState().posts[0]._id;
+    var alias = getState().user.alias;
+    fetch(`${config.http}/api/posts/new/${alias}/${lastPostID}`)
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.posts) {
+          dispatch(endlessLoadPatch(res.posts));
+        } else {
+          console.log('new posts are not ready yet for patching');
+        }
+      })
+  }
+}
 
 export const loadMorePostsPatch = createAction(LOAD_MORE_POSTS);
 export const loadMorePosts = (offset) => {
@@ -135,7 +152,8 @@ export const actions = {
   sendPost,
   loadMorePosts,
   removePost,
-  likePost
+  likePost,
+  endlessLoad
 }
 
 export default handleActions({
@@ -144,6 +162,9 @@ export default handleActions({
   },
   [LOAD_MORE_POSTS]: (state, { payload }) => {
     return [...state, ...payload];
+  },
+  [ENDLESS_LOAD]: (state, { payload }) => {
+    return [...payload, ...state];
   },
   [REMOVE_POST]: (state, { payload }) => {
     // Find a post with that ID and slice it.

@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
-import { fetchUser } from './isFetching';
+import { fetchUser, fetchSubscribe } from './isFetching';
 import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
 
@@ -21,7 +21,7 @@ export const loadUser = (alias) => {
       alias = alias.split('/')[0];
     }
 
-    if (alias === 'preferences') {
+    if (alias === 'preferences' || alias === 'share-with-social') {
       setTimeout(() => {
         alias = getState().auth.user.alias;
         fetchData();
@@ -31,7 +31,7 @@ export const loadUser = (alias) => {
     }
 
     function fetchData () {
-      fetch(`${config.http}/api/users/${alias}`, {credentials: 'same-origin'})
+      fetch(`${config.http}/api/users/${alias}`, {credentials: 'include'})
         .then((r) => r.json())
         .catch((e) => {
           window.location.href = '404';
@@ -41,7 +41,12 @@ export const loadUser = (alias) => {
           dispatch(load(data));
 
           if (!data.alias) {
-            dispatch(routeActions.push('/404'));
+            var dev = confirm('Are you for dev here?');
+            if (!dev) {
+              dispatch(routeActions.push('/404'));
+            } else {
+              return false;
+            }
           }
 
           ga.event({
@@ -50,7 +55,6 @@ export const loadUser = (alias) => {
           });
         });
     }
-    console.log(alias);
   }
 }
 
@@ -58,9 +62,10 @@ const subscribePatch = createAction(SUBSCRIBE);
 const updateSubscriptionCounter = createAction(UPDATE_SUBSCRIPTION_COUNTER);
 export const subscribe = (alias) => {
   return (dispatch, getState) => {
+    dispatch(fetchSubscribe(true));
     fetch(`${config.http}/api/subscriptions/follow`, {
       method: 'POST',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {
         'Content-type': config.post
       },
@@ -78,6 +83,7 @@ export const subscribe = (alias) => {
         dispatch(routeActions.push('/login'));
       }
       console.log(res);
+      dispatch(fetchSubscribe(false));
       dispatch(subscribePatch(status));
       dispatch(updateSubscriptionCounter(res.current));
       ga.event({
@@ -114,9 +120,9 @@ export default handleActions({
     })
   }
 }, {
-  username: 'Jesus Christ',
+  username: ' ',
   photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
-  alias: 'asd',
+  alias: ' ',
   status: '',
   online: {},
   stats: {

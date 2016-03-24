@@ -62,31 +62,42 @@ class Post extends React.Component {
       var photo = isValidPhoto(this.props.user.photo);
       var linkHref = '/' + this.props.user.alias;
       return (
-        <div className={postClasses}>
-                <div className={s.time}>
+        <div>
+          {!isPhoto && (
+            <div className={postClasses}>
+                    <div className={s.time}>
+                        <Link to={linkHref}>
+                          <img
+                            src={photo}
+                            className={s.photo}/>
+                        </Link>
+                    </div>
+                    <div className={s.text}>
+                        <div>
+                          <span className={s.time}>{this.state.createdPronounce} назад о</span>
+                          {' '}
+                          <Link to={linkHref}><b>{this.props.user.username}</b></Link>
+                        </div>
+                        <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+                    </div>
+              </div>
+          )}
+          {isPhoto && (
+            <div className={s.photoPost} style={{background: `url(${config.http}/upload/photo/${this.props.attachments.photo})`}}>
+                <div className={s.photoAvatar}>
                     <Link to={linkHref}>
                       <img
                         src={photo}
                         className={s.photo}/>
                     </Link>
                 </div>
-                <div className={s.text}>
-                    <div>
-                      <span className={s.time}>{this.state.createdPronounce} назад о</span>
-                      {' '}
-                      <Link to={linkHref}><b>{this.props.user.username}</b></Link>
-                    </div>
-                    <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
-                    {isPhoto && (
-                      <div>
-                        <img src={`${config.http}/upload/photo/${this.props.attachments.photo}`}
-                            className={s.attachmentPhoto}
-                        />
-                      </div>
-                    )}
+                <div className={s.photoText}>
+                  <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
                 </div>
-          </div>
-        );
+            </div>
+          )}
+        </div>
+      );
     }
 }
 

@@ -3,15 +3,21 @@ import s from './UserNavigation.scss';
 import {Link} from 'react-router';
 import Navigation from '../Navigation';
 import { connect } from 'react-redux';
+import { config } from '../../redux/config';
 
 const active = {
   backgroundColor: '#f2fdff'
 }
 class UserNavigation extends React.Component {
     render () {
+      var backround = this.props.background
+        ? {
+          background: `url(${config.http}/upload/background/${this.props.background})`
+        }
+        : {}
       return (
         <div>
-          <div className='responsive_crop_fixed'></div>
+          <div className='responsive_crop_fixed' style={backround}></div>
           <Navigation/>
             <div className={s.container}>
               <ul className={s.path} >
@@ -24,6 +30,9 @@ class UserNavigation extends React.Component {
                   <Link to='/share-with-social' activeStyle={active} className={s.link}>
                     <div><li>поделиться ссылкой</li></div>
                   </Link>
+                  <Link to='/preferences' activeStyle={active} className={s.link}>
+                    <div><li>лента </li></div>
+                  </Link>
                   <a className={s.link} href='../auth/logout'>
                     <li>выйти</li>
                   </a>
@@ -35,12 +44,14 @@ class UserNavigation extends React.Component {
 }
 
 UserNavigation.propTypes = {
-  alias: React.PropTypes.string.isRequired
+  alias: React.PropTypes.string.isRequired,
+  background: React.PropTypes.string
 }
 
 const mapStateToProps = (state) => {
   return {
-    alias: state.auth.user.alias
+    alias: state.auth.user.alias,
+    background: state.auth.user.background
   }
 }
 export default connect(mapStateToProps)(UserNavigation);

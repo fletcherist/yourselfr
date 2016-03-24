@@ -21,14 +21,12 @@ import SignupForm from 'components/AuthComponents/Signup';
 import GetStarted from 'views/GetStarted/GetStarted';
 import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
 import GetSocialized from 'views/GetSocialized/GetSocialized';
-
 import ShareWithSocial from 'components/ShareWithSocial';
 
 import { requireAuthentication } from 'components/Authenticate';
 
 import Followers from 'components/Subscriptions/Followers';
 import Following from 'components/Subscriptions/Following';
-
 import UserNavigation from 'components/UserNavigation';
 
 class defaultUser extends React.Component {
@@ -87,11 +85,11 @@ export default (
     <Route path='/signup' component={SignupPage} />
     <Route path='/preferences' component={PreferencesContainer}>
       <IndexRoute component={Preferences} />
-      <Route path='social' component={UpdateSocialNetworks} />
       <Route path='photos' component={PreferencesPhotos} />
+      <Route path='social' component={UpdateSocialNetworks} />
     </Route>
     <Route path='/nav' component={UserNavigation} />
-      <Route path='/share-with-social' component={ShareWithSocialContainer} />
+    <Route path='/share-with-social' component={ShareWithSocialContainer} />
 
     <Route path='/i/get-started' component={requireAuthentication(GetStarted)} />
     <Route path='/i/get-personalized' component={requireAuthentication(GetPersonalized)} />

@@ -13,7 +13,7 @@ const FETCH_ENDLESS_FEED = 'FETCH_ENDLESS_FEED';
 const FETCH_LOGIN = 'FETCH_LOGIN';
 const FETCH_REGISTER = 'FETCH_REGISTER';
 const FETCH_SOCIAL_NETWORKS = 'FETCH_SOCIAL_NETWORKS';
-
+const FETCH_SUBSCRIBE = 'FETCH_SUBSCRIBE';
 const FETCH_USER = 'FETCH_USER';
 
 export const fetchFollowers = createAction(FETCH_FOLLOWERS);
@@ -30,6 +30,7 @@ export const fetchLogIn = createAction(FETCH_LOGIN);
 export const fetchRegister = createAction(FETCH_REGISTER);
 export const fetchUser = createAction(FETCH_USER);
 export const fetchSocialNetworks = createAction(FETCH_SOCIAL_NETWORKS);
+export const fetchSubscribe = createAction(FETCH_SUBSCRIBE);
 
 export const actions = {
   fetchFollowers,
@@ -106,6 +107,9 @@ export default handleActions({
       tumblr: payload.tumblr || {status: false, state: false},
       instagram: payload.instagram || {status: false, state: false}
     }}}
+  },
+  FETCH_SUBSCRIBE: (state, { payload }) => {
+    return {...state, ...{subscribe: payload}}
   }
 }, {
   user: {
@@ -160,6 +164,7 @@ export default handleActions({
   following: false,
   avatar: false,
   background: false,
+  subscribe: false,
   logIn: {
     status: false,
     message: undefined

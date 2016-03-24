@@ -40,6 +40,9 @@ class Followers extends React.Component {
                     onClick={ () => loadUser(follower.alias)}
                     className={s.username}>{follower.username}
                   </Link>
+                  <div className={s.alias}>
+                    @{follower.alias}
+                  </div>
                 </div>
               </div>
             </div>
@@ -51,7 +54,10 @@ class Followers extends React.Component {
 
       return (
         <div className='container--right padding-0 container--subscriptions'>
-          <div className={s.blockTitle}>Подписчики</div>
+          <FollowersHeader
+            alias={this.props.user.alias}
+            username={this.props.user.username}
+          />
           {this.props.isFetching && (
             <Loader/>
           )}
@@ -70,12 +76,20 @@ class Followers extends React.Component {
     }
 }
 
+const FollowersHeader = ({alias, username}) => {
+  return (
+    <div className={s.blockTitle}>
+      <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
+      <span className={s.separator}></span>
+      <span className={s.navItem}>Подписчики</span>
+    </div>
+  )
+}
+
 class NoFollowers extends React.Component {
   render () {
     return (
-      <div>
-        <div className={s.noSubscriptions}>Пока нет ни одного<br/> подписчика</div>
-      </div>
+      <div className={s.noSubscriptions}>Пока нет ни одного<br/> подписчика</div>
     )
   }
 }
@@ -84,13 +98,15 @@ Followers.propTypes = {
   followers: React.PropTypes.array.isRequired,
   loadFollowers: React.PropTypes.func.isRequired,
   loadUser: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired
+  isFetching: React.PropTypes.bool.isRequired,
+  user: React.PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     followers: state.subscriptions.followers,
-    isFetching: state.isFetching.followers
+    isFetching: state.isFetching.followers,
+    user: state.user
   }
 }
 

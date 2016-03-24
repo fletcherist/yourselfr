@@ -1,87 +1,29 @@
-.container {
-	position: relative;
-	width: 97px;
-	height: 334px;
-	overflow: hidden;
-	margin:0px auto;
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
-.container .moon {
-  margin: auto;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	width: 49px;
-	height: 49px;
-	background-color: rgb(255,255,255);
-	box-sizing: border-box;
-		-o-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-	box-shadow: 0 0 8px 1px rgba(189,189,189,0.25);
-		-o-box-shadow: 0 0 8px 1px rgba(189,189,189,0.25);
-		-ms-box-shadow: 0 0 8px 1px rgba(189,189,189,0.25);
-		-webkit-box-shadow: 0 0 8px 1px rgba(189,189,189,0.25);
-		-moz-box-shadow: 0 0 8px 1px rgba(189,189,189,0.25);
-	border-bottom: 10px solid rgb(20,140,195);
-	border-radius: 50%;
-		-o-border-radius: 50%;
-		-ms-border-radius: 50%;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-	animation: spin 1.15s ease infinite;
-		-o-animation: spin 1.15s ease infinite;
-		-ms-animation: spin 1.15s ease infinite;
-		-webkit-animation: spin 1.15s ease infinite;
-		-moz-animation: spin 1.15s ease infinite;
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
 }
 
-
-
-@keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-@-o-keyframes spin {
-	from {
-		-o-transform: rotate(0deg);
-	}
-	to {
-		-o-transform: rotate(360deg);
-	}
-}
-
-@-ms-keyframes spin {
-	from {
-		-ms-transform: rotate(0deg);
-	}
-	to {
-		-ms-transform: rotate(360deg);
-	}
-}
-
-@-webkit-keyframes spin {
-	from {
-		-webkit-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@-moz-keyframes spin {
-	from {
-		-moz-transform: rotate(0deg);
-	}
-	to {
-		-moz-transform: rotate(360deg);
-	}
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }

@@ -7,18 +7,18 @@ import { fetchUsername,
          fetchSocialNetworks
 } from './isFetching';
 
-export const loadBackground = (background) => {
+export const loadAvatar = (avatar) => {
   return (dispatch, getState) => {
-    console.log('saving uploading background..');
-    dispatch(fetchBackground(true));
-    fetch(`${config.http}/upload/background`, {
+    console.log('saving uploading avatar..');
+    dispatch(fetchAvatar(true));
+    fetch(`${config.http}/upload/avatar`, {
       method: 'post',
-      credentials: 'same-origin',
-      body: background
+      credentials: 'include',
+      body: avatar
     })
     .then((r) => r.json())
     .then((res) => {
-      dispatch(fetchBackground(false));
+      dispatch(fetchAvatar(false));
       console.log(res);
     })
     .catch((e) => {
@@ -27,18 +27,18 @@ export const loadBackground = (background) => {
   }
 }
 
-export const loadAvatar = (avatar) => {
+export const loadBackground = (background) => {
   return (dispatch, getState) => {
-    console.log('saving uploading avatar..');
-    dispatch(fetchAvatar(true));
-    fetch(`${config.http}/upload/avatar`, {
+    console.log('saving uploading background..');
+    dispatch(fetchBackground(true));
+    fetch(`${config.http}/upload/background`, {
       method: 'post',
-      credentials: 'same-origin',
-      body: avatar
+      credentials: 'include',
+      body: background
     })
     .then((r) => r.json())
     .then((res) => {
-      dispatch(fetchAvatar(false));
+      dispatch(fetchBackground(false));
       console.log(res);
     })
     .catch((e) => {

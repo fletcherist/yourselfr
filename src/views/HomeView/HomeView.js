@@ -1,7 +1,7 @@
 import React from 'react';
-import s from 'components/AuthComponents/Login.scss';
-import EndlessFeed from 'components/EndlessFeed';
-import Slideshow from 'components/Slideshow/Slideshow';
+import s from '../../components/AuthComponents/Login.scss';
+import EndlessFeed from '../../components/EndlessFeed';
+import Slideshow from '../../components/Slideshow/Slideshow';
 
 class HomeView extends React.Component {
   render () {

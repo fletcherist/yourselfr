@@ -18,10 +18,17 @@
 .username {
 	margin: 40px 0px 0px 0px;
 	text-align:  center;
-	font-size: 32px;
-	text-transform: uppercase;
-	font-family: 'Bebas', sans-serif;
-	font-weight: bold;
+	font-size: 22px;
+	// text-transform: uppercase;
+	// font-family: 'Bebas', sans-serif;
+	font-weight: normal;
+	line-height: 130%;
+	word-wrap: break-word;
+}
+.alias {
+	text-align: center;
+	color: #999;
+	font-size: 18px;
 }
 .status {
 	text-align: center;
@@ -50,7 +57,7 @@
   margin-bottom: -250px;
 	display: none;
 
-	@media screen and (max-width: 500px){
+	@media screen and (max-width: 800px){
 		border: none !important;
 		background-color: transparent !important;
     display: block;

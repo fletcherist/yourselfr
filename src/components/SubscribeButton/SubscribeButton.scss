@@ -1,28 +1,28 @@
 .subscribe {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: bold;
-  width: 120px;
-  width: 120px;
+  background: #52c25d;
+  color: #fff;
+  border-radius: 40px;
+  height: 38px;
+  font-size: 14px;
+  line-height: 36px;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-top: 6px;
-  height: 27px;
+  margin: 20px auto 0px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+  margin-bottom: 15px;
+  max-width: 130px;
 }
 
 .follow {
   background: white;
   border: 1px solid #639ab4;
   color: #175E7B;
-  box-shadow: inset 0 -1px #639ab4;
+  box-shadow: inset 0 0px #639ab4;
 }
 
 .following {
-  background: #66bd2b;
+  background: #52c25d;
   color: #ffffff;
   box-shadow: none;
 }

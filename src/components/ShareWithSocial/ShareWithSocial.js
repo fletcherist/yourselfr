@@ -3,12 +3,20 @@ import vk from '../SocialButtons/vk.svg';
 import twitter from '../SocialButtons/twitter.svg';
 import s from './ShareWithSocial.scss';
 import { connect } from 'react-redux';
+import { selectText } from '../Toools';
+
 class ShareWithSocial extends React.Component {
   render () {
     return (
       <div>
         <div className='rate-empty-line-2'></div>
         <div>
+          <div>
+            <div className={s.linkTitle}>Разместите ссылку на ваш профиль (@{this.props.alias})</div>
+            <div id='selectable' className={s.link} ref={(r) => this.link = r}
+                onClick={ () => selectText('selectable') }>http://yourselfr.com/<b>{this.props.alias}</b></div>
+          </div>
+          <div className='groupSeparator grey'><p>или</p></div>
           <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&image=http://yourselfr.com/images/logo/yo-vk.jpg&title=Узнайте обо мне больше на Йорселфере!`} target='_vk'>
             <img src={vk} alt='Рассказать Вконтакте' className={s.network}/>
           </a>

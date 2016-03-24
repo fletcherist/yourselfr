@@ -293,3 +293,42 @@
   border-bottom: 1px solid $yoGreyLight;
   -webkit-input-placeholder {color:#c0392b;}
 }
+
+
+.groupSeparator {
+	margin-top: 4px;
+	color: white;
+	p {
+		overflow: hidden;
+		margin-bottom: 10px;
+		text-align: center;
+  }
+	p:before {
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 40%;
+		background: rgba(0,0,0,0.2);
+		-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		margin-right: 10px;
+  }
+	p:after {
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 40%;
+		background: rgba(0,0,0,0.2);
+		-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		margin-left: 10px;
+  }
+}
+
+.grey {
+	color: $yoGrey !important;
+}

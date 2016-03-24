@@ -7,26 +7,33 @@ import classNames from 'classnames/bind';
 let cx = classNames.bind(s);
 
 class SubscribeButton extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      isFollowing: this.props.isFollowing
+    }
+  }
   subscribe () {
     this.props.subscribe(this.props.alias);
+    this.setState({
+      isFollowing: !this.state.isFollowing
+    })
   }
   render () {
-    console.log(this.props.isFollowing);
     return (
       <div>
         <div
             className={cx({
-              'button': true,
               subscribe: true,
-              follow: !this.props.isFollowing,
-              following: this.props.isFollowing
+              follow: !this.state.isFollowing,
+              following: this.state.isFollowing
             })}
             onClick={ () => this.subscribe() }>
-          {this.props.isFollowing === true && (
-            'подписки'
+          {this.state.isFollowing === true && (
+            'Отписаться'
           )}
-          {this.props.isFollowing === false && (
-            'подписаться'
+          {this.state.isFollowing === false && (
+            'Подписаться'
           )}
         </div>
       </div>
@@ -43,7 +50,8 @@ SubscribeButton.propTypes = {
 const mapStateToProps = (state) => {
   return {
     alias: state.user.alias,
-    isFollowing: state.user.isFollowing
+    isFollowing: state.user.isFollowing,
+    isFetching: state.isFetching.subscribe
   }
 }
 

@@ -1,20 +1,12 @@
 .social {
-	// margin 15px
-	text-align: left;
-  padding: 0px 0px 10px 5px;
+	text-align: center;
+	padding: 5px;
+	margin: 0 auto;
 	img {
-		width: 25px;
-    height: 30px;
-		margin-right: 10px;
-		margin-left: 5px;
-  }
-	ul {
-		li {
-			a {
-				font-weight: bold;
-      }
-			padding: 4px;
-    }
+		width: 35px;
+    height: 35px;
+		margin-right: 8px;
+		margin-left: 4px;
   }
   span {
     position: absolute;
@@ -24,4 +16,8 @@
     text-overflow: ellipsis;
 		max-width: 200px;
   }
+}
+
+.inactive {
+	filter:  grayscale(100%);
 }

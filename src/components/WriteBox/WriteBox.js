@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { config } from '../../redux/config';
 import cx from 'classnames';
+// import SmileBox from '../SmileBox';
 
 function formToTray () {
   var form = document.getElementById('textForm');
@@ -25,8 +26,6 @@ class WriteBox extends React.Component {
         isOpen: true,
         photo: undefined
       }
-
-      console.log(this.state);
     }
 
     componentWillReceiveProps (props) {
@@ -123,10 +122,11 @@ class WriteBox extends React.Component {
       var attachPreview = cx(s.attachPreview, 'hidden');
       return (
         <div>
-            { // <div className={s.form} onClick={this.toggle.bind(this)}>
-             //  <div className={s.formOpen}>+ Добавить своё мнение</div>
+            {  // <div className={s.form} onClick={this.toggle.bind(this)}>
+              // <div className={s.formOpen}>+ Добавить своё мнение</div>
             // </div>
-          }
+             }
+          {!this.props.isYourPage && (
             <div
                   className={s.container}
                   ref={(r) => this.writeBox = r }
@@ -158,27 +158,34 @@ class WriteBox extends React.Component {
                         onClick={this.handleSubmitButton.bind(this)}>
                         отправить
                     </div>
+                    {
+                      // <div className={s.SmileBoxContainer}>
+                        // <SmileBox/>
+                      // </div>
+                    }
                     <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
                       <div className={s.photoTitle}>прикрепить</div>
                       <div className={s.addPhoto}></div>
                     </div>
                 </div>
             </div>
-        </div>
-        );
+          )}
+        </div>);
     }
 }
 
 WriteBox.propTypes = {
   sendPost: React.PropTypes.func.isRequired,
   alias: React.PropTypes.string.isRequired,
-  username: React.PropTypes.string.isRequired
+  username: React.PropTypes.string.isRequired,
+  isYourPage: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     alias: state.user.alias,
-    username: state.user.username
+    username: state.user.username,
+    isYourPage: state.auth.isYourPage
   }
 }
 

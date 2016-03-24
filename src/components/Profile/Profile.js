@@ -3,7 +3,6 @@ import s from './Profile.scss';
 import { Link } from 'react-router';
 import Counters from '../Counters';
 import {connect} from 'react-redux';
-import Loader from '../Loader';
 
 import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
@@ -20,6 +19,9 @@ class Profile extends React.Component {
   componentWillMount () {
     this.props.loadUser();
   }
+  componentDidMount () {
+    document.body.style.minHeight = '101vh';
+  }
     render () {
       document.title = `${this.props.username} — Йорселфер`;
 
@@ -33,10 +35,6 @@ class Profile extends React.Component {
       return (
         <div>
           <div className='container--left padding-0 container--transparent container--user'>
-            {this.props.isFetching.status && (
-              <Loader/>
-            )}
-            {this.props.isFetching.status === false && (
               <div>
                 <div style={{background: `url(${config.http}/upload/background/${this.props.background})`}} className={s.background}></div>
                 <div className={s.avatar}>
@@ -62,7 +60,6 @@ class Profile extends React.Component {
                   alias={this.props.alias}
                 />
               </div>
-            )}
         </div>
 
         <StatusBox status={this.props.status}/>
@@ -103,9 +100,9 @@ Profile.propTypes = {
   alias: React.PropTypes.string.isRequired,
   photo: React.PropTypes.string.isRequired,
   background: React.PropTypes.string,
-  online: React.PropTypes.object,
+  online: React.PropTypes.bool,
   status: React.PropTypes.string,
-  social: React.PropTypes.object.isRequired,
+  social: React.PropTypes.object,
   stats: React.PropTypes.shape({
     visits: React.PropTypes.number.isRequired,
     followers: React.PropTypes.number.isRequired,
@@ -124,12 +121,13 @@ function mapStateToProps (state) {
     alias: state.user.alias,
     photo: state.user.photo,
     background: state.user.background,
-    online: state.user.online,
+    online: state.user.online.status,
     status: state.user.status,
     stats: state.user.stats,
     social: state.user.social,
     isAuthenticated: state.auth.authenticated,
     isFetching: state.isFetching.user,
+    isYourProfile: state.auth.isYourProfile,
 
     me: state.auth.user
   }

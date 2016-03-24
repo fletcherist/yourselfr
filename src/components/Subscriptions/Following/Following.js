@@ -40,6 +40,9 @@ class Following extends React.Component {
                     onClick={ () => loadUser(following.alias)}
                     className={s.username}>{following.username}
                   </Link>
+                  <div className={s.alias}>
+                    @{following.alias}
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,7 +53,10 @@ class Following extends React.Component {
       }
       return (
         <div className='container--right padding-0 container--subscriptions'>
-        <div className={s.blockTitle}>Подписки</div>
+        <FollowingHeader
+          alias={this.props.user.alias}
+          username={this.props.user.username}
+        />
           {this.props.isFetching && (
             <Loader/>
           )}
@@ -69,12 +75,20 @@ class Following extends React.Component {
     }
 }
 
+const FollowingHeader = ({alias, username}) => {
+  return (
+    <div className={s.blockTitle}>
+      <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
+      <span className={s.separator}></span>
+      <span className={s.navItem}>Подписки</span>
+    </div>
+  )
+}
+
 class NoFollowing extends React.Component {
   render () {
     return (
-      <div>
         <div className={s.noSubscriptions}>{this.props.username} пока ни на кого <br/> не подписался</div>
-      </div>
     )
   }
 }

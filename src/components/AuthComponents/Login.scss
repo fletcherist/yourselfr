@@ -32,7 +32,6 @@ body {
   float: left;
   min-width: 400px;
   max-width: 400px;
-  border: 1px solid #edeeee;
   border-radius: 3px;
   background-color: #fff;
   z-index: 99999;
@@ -42,7 +41,7 @@ body {
   }
 }
 .feedBox {
-  height: 550px;
+  height: 650px;
   overflow-y: auto;
 }
 
@@ -74,7 +73,6 @@ body {
 
 .loginFormContainer {
   padding: 20px 40px 20px 40px;
-  border: 1px solid #edeeee;
   background-color: #fff;
   // max-width: 300px;
   margin: auto;
@@ -85,7 +83,6 @@ body {
 .containerBlock {
   background-color: #fff;
   text-align: center;
-  border: 1px solid #edeeee;
   border-radius: 3px;
   padding: 20px;
 }

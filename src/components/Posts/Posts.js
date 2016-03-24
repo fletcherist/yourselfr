@@ -8,15 +8,19 @@ import Loader from '../Loader';
 // import ShareWithSocial from '../ShareWithSocial';
 
 class Posts extends React.Component {
-    componentDidMount () {
-      console.log(this.props);
-    }
     componentWillMount () {
       this.props.loadPosts();
       this.setState({
         count: this.props.count,
-        postsLoaded: 10
+        postsLoaded: 25
       });
+    }
+    componentDidMount () {
+      this.endlessFeed = setInterval(() => this.props.endlessLoad(), 5000);
+    }
+    componentWillUnmount () {
+      this.endlessFeed && clearInterval(this.endlessFeed);
+      this.endlessFeed = false;
     }
     render () {
       var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
@@ -32,13 +36,15 @@ class Posts extends React.Component {
               id={post._id}
               likes={post.likes}
               attachments={post.attachments}
+              comments={post.comments}
+              isLiked={post.isLiked}
             />
           )
         });
       }
 
       return (
-        <div className='container--right padding-0' id='right'>
+        <div className='container--right padding-0 container--posts' id='right'>
           <div>
             <div className={s.header}>
                 <div className={s.counter}>
@@ -100,6 +106,7 @@ Posts.propTypes = {
   count: React.PropTypes.number.isRequired,
   posts: React.PropTypes.array.isRequired,
   loadPosts: React.PropTypes.func.isRequired,
+  endlessLoad: React.PropTypes.func.isRequired,
   loadMorePosts: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
   isFetchingLoadMore: React.PropTypes.bool.isRequired,

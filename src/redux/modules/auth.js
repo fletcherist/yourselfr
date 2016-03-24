@@ -3,14 +3,17 @@ import { config } from '../config';
 import { fetchLogIn, fetchRegister } from './isFetching';
 import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
+import cookie from 'react-cookie';
 
-export const AUTHENTICATE = 'AUTHENTICATE';
-export const LOG_IN = 'LOG_IN';
+const AUTHENTICATE = 'AUTHENTICATE';
+// const LOG_IN = 'LOG_IN';
+const IS_YOUR_PAGE = 'IS_YOUR_PAGE';
 
 var defaultMe = {
-  authenticated: true,
+  authenticated: false,
+  isYourPage: true,
   user: {
-    username: '%username%',
+    username: undefined,
     alias: undefined,
     status: undefined,
     social: {
@@ -22,25 +25,34 @@ var defaultMe = {
   }
 }
 
+const isYourPagePatch = createAction(IS_YOUR_PAGE);
+export const isYourPage = () => {
+  return (dispatch, getState) => {
+    var isYourPage = false;
+    var alias = window.location.pathname.substr(1);
+    alias = alias.split('/')[0];
+
+    var authenticated = cookie.load('authenticated');
+    var userAlias = cookie.load('alias');
+    console.log(authenticated, userAlias);
+    if (authenticated === true && userAlias === alias) {
+      isYourPage = true;
+    }
+    dispatch(isYourPagePatch(isYourPage));
+  }
+}
+
 export const authenticatePatch = createAction(AUTHENTICATE);
 export const authenticate = () => {
   return (dispatch, getState) => {
-    fetch(`${config.http}/auth`, {credentials: 'same-origin'})
+    fetch(`${config.http}/auth`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
-        console.log(res);
         var auth = res;
-        // if (res.authenticated === false) {
-        //   auth = {
-        //     authenticated: true,
-        //     user: {
-        //       username: 'John R.Ruel Tolkien',
-        //       alias: 'tolkien',
-        //       status: 'I am a kind of an idol'
-        //     }
-        //   }
-        // }
-        return dispatch(authenticatePatch(auth));
+
+        cookie.save('authenticated', auth.authenticated, { path: '/' });
+        cookie.save('alias', auth.user.alias, { path: '/' });
+        dispatch(authenticatePatch(auth));
       });
   }
 }
@@ -51,9 +63,9 @@ export const logIn = (username, password) => {
     dispatch(fetchLogIn([true]));
     fetch(`${config.http}/auth/login`, {
       method: 'post',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {
-        'Content-type': config.post
+        'Content-type': 'application/x-www-form-urlencoded'
       },
       body: `username=${username}&password=${password}`
     })
@@ -126,5 +138,8 @@ export const actions = {
 export default handleActions({
   AUTHENTICATE: (state, { payload }) => {
     return {...state, ...payload};
+  },
+  IS_YOUR_PAGE: (state, { payload }) => {
+    return {...state, isYourPage: payload}
   }
 }, defaultMe);

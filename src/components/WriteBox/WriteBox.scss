@@ -12,21 +12,20 @@
 	margin-bottom: 10px;
 	margin-top: 0px;
 
-	border: 1px solid $borderColor;
-
 	// box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
+	border: 1px solid $borderColor;
 	// margin: 10px;
 	textarea {
 		border-radius: 3px;
 		display: block;
 		height: 140px;
-		line-height: 30px;
+		line-height: 20px;
 		width: 100%;
 
 		resize: none;
 		font-size: 15px !important;
 		border: 0;
-		padding: 10px 10px 10px 16px;
+		padding: 10px 10px 10px 16px;;
 
 		&:focus {
 			outline: none;
@@ -35,7 +34,6 @@
 			// border-radius: 0px;
 		}
 		@media screen and (max-width: 500px){
-			border-radius: 0px;
 			// margin-bottom: 50px;
 		}
 	}
@@ -48,30 +46,17 @@
 		border-radius: 3px;
 	}
 
-	@media screen and (max-width: 1000px){
-		max-width: 56%;
-		min-width: 50%;
-		width: 100%;
-	}
 	@media screen and (max-width: 800px){
 		display: block;
 		max-width: 100%;
-		min-width: 90%;
-		width: 90%;
+		width: 80%;
 		border-bottom: 1px solid #e7e7e7;
-
-		margin: 0px 25px 14px 25px;
+		margin: 10px auto;
+		float: none;
 	}
-	@media screen and (max-width: 500px){
-		border-radius: 0px;
-		display: block;
-		max-width: 100%;
-		min-width: 100%;
-		margin: 10px 0px 10px 0px;
-
-		border-top-right-radius: 0px;
-		border-top-left-radius: 0px;
-	}
+	@media screen and (max-width: 600px){
+    width: 97%;
+  }
 
 	textarea:focus::-webkit-input-placeholder { color:transparent; }
 	textarea:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
@@ -181,4 +166,8 @@
 	font-weight: bold;
 	border-radius: 5px;
 	// width: 150px;
+}
+
+.SmileBoxContainer {
+	display: inline-block;
 }

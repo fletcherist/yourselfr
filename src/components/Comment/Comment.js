@@ -1,17 +1,16 @@
 import React from 'react';
 import Like from '../Like';
-import Comment from '../Comment';
 
-import s from './Post.scss';
+import s from '../Post/Post.scss';
 import cx from 'classnames/bind';
-import { config } from '../../redux/config';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { timePassed } from '../Toools';
-import { isEmpty } from '../toools';
+
+import { UserAvatar } from '../Post/UserAvatar';
 
 let ccx = cx.bind(s);
-class Post extends React.Component {
+class Comment extends React.Component {
     constructor (props) {
       super(props);
       this.state = {
@@ -39,7 +38,7 @@ class Post extends React.Component {
       })
     }
     componentDidMount () {
-      this.loadInterval = setInterval(this.tickTime.bind(this), 10000);
+      this.loadInterval = setInterval(this.tickTime.bind(this), 1000);
     }
     componentWillUnmount () {
       this.loadInterval && clearInterval(this.loadInterval);
@@ -52,43 +51,15 @@ class Post extends React.Component {
     render () {
       let postClasses = ccx({
         post: true,
+        comment: true,
         hot: this.state.isHot,
         isLiked: this.state.isLiked
       })
 
-      var isPhoto;
-      this.props.attachments &&
-      this.props.attachments.photo &&
-      this.props.attachments.photo !== undefined ? isPhoto = true : isPhoto = false
-
-      var comments = this.props.comments;
-      var commentsArray;
-      if (comments && !isEmpty(comments) && Array.isArray(comments)) {
-        commentsArray = comments.map(function (comment) {
-          return (
-            <Comment
-              key={comment._id}
-              id={comment._id}
-              text={comment.text}
-              created_at={comment.created_at}
-              user={comment.user}
-              isLiked={comment.isLiked}
-            />
-          )
-        });
-      }
       return (
         <div>
-          {!isPhoto && (
             <div className={postClasses}>
-              <div className={s.time}>
-                  <span className={ccx({
-                    hideOnHover: this.props.isYourPage})
-                  }>{this.state.createdPronounce}</span>
-                  {this.props.isYourPage && (
-                      <div className={s.removeButton} onClick={ () => this.props.removePost(this.props.id)}></div>
-                  )}
-              </div>
+              <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias}/>
               <div className={s.text}>
                   <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
               </div>
@@ -97,34 +68,22 @@ class Post extends React.Component {
                   object={this.props.id}
               />
             </div>
-        )}
-        {isPhoto && (
-          <div className={s.photoPost} style={{background: `url(${config.http}/upload/photo/${this.props.attachments.photo})`}}>
-              {this.props.isYourPage && (
-                <div className={s.removePhotoPost} onClick={ () => this.props.removePost(this.props.id)}></div>
-              )}
-              <div className={s.photoText}>
-                <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
-              </div>
-          </div>
-        )}
-        {commentsArray}
       </div>
       );
     }
 }
 
-Post.propTypes = {
+Comment.propTypes = {
   text: React.PropTypes.string.isRequired,
   created_at: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   likes: React.PropTypes.number,
   attachments: React.PropTypes.object,
   isLiked: React.PropTypes.bool,
-  comments: React.PropTypes.array,
   isYourPage: React.PropTypes.bool.isRequired,
+  user: React.PropTypes.object.isRequired
 
-  removePost: React.PropTypes.func.isRequired
+  // removePost: React.PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -132,4 +91,4 @@ const mapStateToProps = (state) => {
     isYourPage: state.auth.isYourPage
   }
 }
-export default connect(mapStateToProps, postsActions)(Post);
+export default connect(mapStateToProps, postsActions)(Comment);

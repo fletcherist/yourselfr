@@ -1,7 +1,7 @@
 @import 'variables';
 
-.post:first-child {
-	padding-top: 18px;
+.post:last-child {
+	// padding-bottom: 10px;
 }
 .post {
 	transition: background-color .05s;
@@ -23,7 +23,7 @@
 	}
 
 	word-wrap: break-word;
-	padding: 10px 0px 15px 5px;
+	padding: 10px 0px 10px 5px;
 	line-height: 20px;
 	font-size: 16px;
 	justify-content: left;
@@ -33,9 +33,8 @@
 		font-size: 14px;
 		align-self: center;
 		padding: 0px 0px 0px 10px;
-		color: #B1B1B1;
+		color: $yoGrey;
 		width: 55px;
-
 	}
 	.text {
 		width: 75%;
@@ -49,7 +48,10 @@
 			width: 79%;
 		}
 		@media screen and (max-width: 580px) {
-			width: 72%;
+			width: 68%;
+		}
+		@media screen and (max-width: 550px) {
+			width: 63%;
 		}
 	}
 	.like {
@@ -58,38 +60,40 @@
 	.fav {
 		align-self: center;
 	}
-	.attachment-photo-back {
-		margin-top: 10px;
-		// width: 402px;
-		// background-color: #FCFCFC;
-	}
-	.attachment-photo {
-		max-width: 340px;
-		background-color: #EFEFEF;
-		border-radius: 2px;
-
-		@media screen and (max-width: 1000px) {
-			max-width: 99%;
-		}
-		@media screen and (max-width: 480px) {
-			max-width: 222px;
-		}
-	}
 }
 .hot {
 	background-color: #F2FAFF;
 }
 
+
+.comment {
+	margin-left: 50px;
+	// width: 350px;
+	padding: 20px 0px 10px 0px;
+	height: 50px;
+
+	.time {
+		width: 40px;
+	}
+
+}
+.photo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 0px;
+  z-index: 999;
+  margin-left: 0px;
+  background-size: contain;
+}
+
 .attachmentPhoto {
-	max-width: 340px;
+	max-width: 490px;
 	background-color: #EFEFEF;
 	border-radius: 2px;
 
 	@media screen and (max-width: 1000px) {
-		max-width: 99%;
-	}
-	@media screen and (max-width: 480px) {
-		max-width: 222px;
+		max-width: 100%;
 	}
 }
 
@@ -110,6 +114,7 @@
 	transition: all .2s;
 	display: none;
 	margin-top: -8px;
+	z-index: 99999999;
 }
 .removeButton:hover {
 	opacity: 1 !important;
@@ -121,4 +126,57 @@
 }
 .post:hover .hideOnHover {
 	display: none;
+}
+
+.photoPost {
+	border-radius: 0px;
+	justify-content: left;
+	display: flex;
+	min-height: 250px;
+	width: auto;
+	overflow: hidden;
+	background-size:cover !important;
+	background-position:center !important; /* IE fix */
+	background-color: #F7F7F7;
+	margin-left: -1px;
+	width: 100.4%;
+}
+
+.photoPost:hover .removePhotoPost {
+	display: block;
+	opacity: .8;
+}
+.photoText {
+	text-align: center;
+	max-width: 495px;
+	width: 100%;
+	font-size: 26px;
+	color: white;
+	font-family: Courier, monospace;
+	letter-spacing: 3px;
+	text-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
+	align-self: center;
+}
+.removePhotoPost {
+	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;
+	background: white;
+	width: 28px;
+	height: 28px;
+	mask-size: cover;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .2s;
+	margin-top: -8px;
+	z-index: 99999999;
+	align-self: center;
+	text-align: left;
+	width: 20px;
+	margin-left: 15px;
+
+	&:hover {
+		opacity: 1 !important;
+	}
 }
