@@ -60,7 +60,7 @@ export const loadUser = (alias) => {
 
 const subscribePatch = createAction(SUBSCRIBE);
 const updateSubscriptionCounter = createAction(UPDATE_SUBSCRIPTION_COUNTER);
-export const subscribe = (alias) => {
+export const subscribe = (alias, updateCounters) => {
   return (dispatch, getState) => {
     dispatch(fetchSubscribe(true));
     fetch(`${config.http}/api/subscriptions/follow`, {
@@ -85,7 +85,11 @@ export const subscribe = (alias) => {
       console.log(res);
       dispatch(fetchSubscribe(false));
       dispatch(subscribePatch(status));
-      dispatch(updateSubscriptionCounter(res.current));
+
+      console.log('updateCounters', updateCounters);
+      if (updateCounters) {
+        dispatch(updateSubscriptionCounter(res.current));
+      }
       ga.event({
         category: 'Subscriptions',
         action: 'User Subscribed'
@@ -130,6 +134,5 @@ export default handleActions({
     followers: 0,
     following: 0,
     posts: 0
-  },
-  isFollowing: true
+  }
 });

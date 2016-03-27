@@ -23,7 +23,6 @@ class Posts extends React.Component {
       this.endlessFeed = false;
     }
     render () {
-      var postsPronounce = ending(this.props.count, ['мнение', 'мнения', 'мнений']);
       var posts = this.props.posts;
       var postsArray;
       if (posts && !isEmpty(posts) && Array.isArray(posts)) {
@@ -46,11 +45,7 @@ class Posts extends React.Component {
       return (
         <div className='container--right padding-0 container--posts' id='right'>
           <div>
-            <div className={s.header}>
-                <div className={s.counter}>
-                    {this.props.count} {postsPronounce}
-                </div>
-            </div>
+            <PostsHeader count={this.props.count} username={this.props.username}/>
             {this.props.isFetching && (
               <Loader/>
             )}
@@ -102,6 +97,19 @@ NoPosts.propTypes = {
   isAuthenticated: React.PropTypes.bool.isRequired
 }
 
+const PostsHeader = ({count, username}) => {
+  var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений']);
+  if (!username) {
+    username = 'Пользователь';
+  }
+  return (
+    <div className='blockTitle'>
+      <span className='navLink'>{username}</span>
+      <span className='separator'></span>
+      <span className='navItem'>{ count } {postsPronounce}</span>
+    </div>
+  )
+}
 Posts.propTypes = {
   count: React.PropTypes.number.isRequired,
   posts: React.PropTypes.array.isRequired,
@@ -110,7 +118,8 @@ Posts.propTypes = {
   loadMorePosts: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
   isFetchingLoadMore: React.PropTypes.bool.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired
+  isAuthenticated: React.PropTypes.bool.isRequired,
+  username: React.PropTypes.string.isRequired
 }
 
 function mapStateToProps (state) {
@@ -119,7 +128,8 @@ function mapStateToProps (state) {
     count: state.user.stats.posts,
     isAuthenticated: state.auth.authenticated,
     isFetching: state.isFetching.posts,
-    isFetchingLoadMore: state.isFetching.loadMorePosts
+    isFetchingLoadMore: state.isFetching.loadMorePosts,
+    username: state.user.username
   }
 }
 export default connect(mapStateToProps, postsActions)(Posts)

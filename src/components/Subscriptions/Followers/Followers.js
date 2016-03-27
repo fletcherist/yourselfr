@@ -8,6 +8,7 @@ import { loadFollowers } from '../../../redux/modules/followers'
 import { isValidPhoto, isEmpty } from '../../Toools';
 import { config } from '../../../redux/config';
 import Loader from '../../Loader';
+import SubscribeButton from '../../SubscribeButton';
 
 class Followers extends React.Component {
     componentWillMount () {
@@ -15,6 +16,8 @@ class Followers extends React.Component {
     }
     render () {
       const loadUser = this.props.loadUser.bind(this);
+      const isAuthenticated = this.props.auth.authenticated;
+      const myUserId = this.props.auth.user._id;
 
       var followersList;
       if (!isEmpty(this.props.followers)) {
@@ -22,6 +25,7 @@ class Followers extends React.Component {
         followersList = followers.map(function (follower) {
           var photo = isValidPhoto(follower.photo);
           var linkHref = '/' + follower.alias;
+          const myPageInList = follower._id === myUserId;
           return (
             <div key={follower._id} className={s.subContainer}>
                 <div style={{background: `url(${config.http}/upload/background/${follower.background})`}}
@@ -35,14 +39,25 @@ class Followers extends React.Component {
                     onClick={ () => loadUser(follower.alias) }/>
                 </Link>
                 <div className={s.info}>
-                  <Link
-                    to={linkHref}
-                    onClick={ () => loadUser(follower.alias)}
-                    className={s.username}>{follower.username}
-                  </Link>
-                  <div className={s.alias}>
-                    @{follower.alias}
+                  <div className={s.left_info}>
+                    <Link
+                      to={linkHref}
+                      onClick={ () => loadUser(follower.alias)}
+                      className={s.username}>{follower.username}
+                    </Link>
+                    <div className={s.alias}>
+                      @{follower.alias}
+                    </div>
                   </div>
+                  {isAuthenticated && !myPageInList && (
+                    <div className={s.SubscribeButton}>
+                      <SubscribeButton
+                        alias={ follower.alias }
+                        isFollowing={ follower.isFollowing }
+                        updateCounters={false}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -78,10 +93,10 @@ class Followers extends React.Component {
 
 const FollowersHeader = ({alias, username}) => {
   return (
-    <div className={s.blockTitle}>
-      <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
-      <span className={s.separator}></span>
-      <span className={s.navItem}>Подписчики</span>
+    <div className='blockTitle'>
+      <Link to={`/${alias}`} className='navLink'>{username}</Link>
+      <span className='separator'></span>
+      <span className='navItem'>Подписчики</span>
     </div>
   )
 }
@@ -99,13 +114,15 @@ Followers.propTypes = {
   loadFollowers: React.PropTypes.func.isRequired,
   loadUser: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired
+  user: React.PropTypes.object.isRequired,
+  auth: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     followers: state.subscriptions.followers,
     isFetching: state.isFetching.followers,
+    auth: state.auth,
     user: state.user
   }
 }

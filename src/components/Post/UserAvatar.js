@@ -12,7 +12,7 @@ export class UserAvatar extends React.Component {
       }
     }
     return (
-      <div className={s.time}>
+      <div className={s.time} style={{marginRight: '15px'}}>
         <Link to={`/${this.props.alias}`} style={styles.link}>
           <img
             src={photo}

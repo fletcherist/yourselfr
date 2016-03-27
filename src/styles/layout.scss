@@ -332,3 +332,57 @@
 .grey {
 	color: $yoGrey !important;
 }
+
+
+.blockTitle {
+  padding: 15px;
+  padding-left: 0px;
+  background: #fafbfc;
+  height: 51px;
+  line-height: 25px;
+  border-bottom: 1px solid $borderColor;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.separator {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  margin: 1px 7px;
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+}
+.separator:before {
+  display: block;
+  content: '';
+  width: 1px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  background: #C3C4C7;
+  transform: rotate(-49deg);
+}
+.separator:after {
+  display: block;
+  content: '';
+  width: 1px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  background: #C3C4C7;
+  transform: rotate(-132deg);
+  margin-top: 5px;
+}
+
+.navLink {
+  color: #65686C;
+  padding: 15px 3px 15px 17px;
+  height: 51px;
+}
+.navItem {
+  padding: 15px 3px 15px 17px;
+  height: 51px;
+}

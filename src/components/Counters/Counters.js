@@ -7,7 +7,7 @@ import {ending} from '../Toools';
 // import Translate from 'react-translate-component';
 
 const active = {
-  backgroundColor: 'rgb(246, 246, 246)',
+  backgroundColor: 'rgb(246, 246, 246)'
 }
 class Counters extends React.Component {
     render () {

@@ -5,11 +5,6 @@ import { fetchFollowers, fetchFollowing } from './isFetching';
 export const LOAD_FOLLOWERS = 'LOAD_FOLLOWERS';
 export const LOAD_FOLLOWING = 'LOAD_FOLLOWING';
 
-// export const loadPosts = createAction(LOAD_POSTS, async id => {
-//   var posts = await fetch(`${config.http}/api/posts/abracadabra`);
-//   posts = posts.json();
-//   return posts;
-// });
 const loadFollowersPatch = createAction(LOAD_FOLLOWERS);
 export const loadFollowers = () => {
   return (dispatch, getState) => {
@@ -17,7 +12,7 @@ export const loadFollowers = () => {
     alias = alias.split('/')[0];
 
     dispatch(fetchFollowers(true));
-    fetch(`${config.http}/api/subscriptions/followers/${alias}`)
+    fetch(`${config.http}/api/subscriptions/followers/${alias}`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
         var followers = res.followers;
@@ -34,7 +29,7 @@ export const loadFollowing = () => {
     alias = alias.split('/')[0];
 
     dispatch(fetchFollowing(true));
-    fetch(`${config.http}/api/subscriptions/following/${alias}`)
+    fetch(`${config.http}/api/subscriptions/following/${alias}`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
         var following = res.following;

@@ -60,6 +60,9 @@ class Comment extends React.Component {
         <div>
             <div className={postClasses}>
               <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias}/>
+              <span className={ccx({
+                hideOnHover: this.props.isYourPage})
+              }>{this.state.createdPronounce}</span>
               <div className={s.text}>
                   <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
               </div>

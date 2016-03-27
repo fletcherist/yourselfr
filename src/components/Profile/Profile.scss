@@ -16,7 +16,7 @@
 }
 
 .username {
-	margin: 40px 0px 0px 0px;
+	margin: 40px auto 0px;
 	text-align:  center;
 	font-size: 22px;
 	// text-transform: uppercase;
@@ -24,6 +24,7 @@
 	font-weight: normal;
 	line-height: 130%;
 	word-wrap: break-word;
+	width: 215px;
 }
 .alias {
 	text-align: center;
@@ -39,11 +40,12 @@
 }
 
 .online {
-	margin-bottom: 5px;
+	margin-bottom: 1px;
 	margin-left: 7px;
 	opacity: .5;
 	transition: all .3s;
 	cursor: pointer;
+	width: 12px;
 	:hover {
 		opacity: 1;
 	}
@@ -51,14 +53,18 @@
 
 .background {
 	z-index: 1;
-	width: 100%;
+	width: 100.4%;
 	max-height: 280px;
 	height: 280px;
   margin-bottom: -250px;
+	margin-left: -1px;
+	margin-top: -5px;
 	display: none;
+	border-radius: 10px 10px 0px 0px;
+	border: 1px solid $borderColor;
 
 	@media screen and (max-width: 800px){
-		border: none !important;
+		// border: none !important;
 		background-color: transparent !important;
     display: block;
   }

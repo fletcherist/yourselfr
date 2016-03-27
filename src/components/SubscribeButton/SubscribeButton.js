@@ -14,10 +14,16 @@ class SubscribeButton extends React.Component {
     }
   }
   subscribe () {
-    this.props.subscribe(this.props.alias);
+    this.props.subscribe(this.props.alias, this.props.updateCounters);
     this.setState({
       isFollowing: !this.state.isFollowing
-    })
+    });
+  }
+  componentWillReceiveProps (props) {
+    console.log(props);
+    this.setState({
+      isFollowing: props.isFollowing
+    });
   }
   render () {
     return (
@@ -35,6 +41,9 @@ class SubscribeButton extends React.Component {
           {this.state.isFollowing === false && (
             'Подписаться'
           )}
+          {this.state.isFollowing === undefined && (
+            'Привет!'
+          )}
         </div>
       </div>
     );
@@ -44,20 +53,18 @@ class SubscribeButton extends React.Component {
 SubscribeButton.propTypes = {
   alias: React.PropTypes.string.isRequired,
   subscribe: React.PropTypes.func.isRequired,
-  isFollowing: React.PropTypes.bool.isRequired
+  isFollowing: React.PropTypes.bool.isRequired,
+  updateCounters: React.PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
   return {
-    alias: state.user.alias,
-    isFollowing: state.user.isFollowing,
-    isFetching: state.isFetching.subscribe
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    subscribe: (alias) => dispatch(subscribe(alias))
+    subscribe: (alias, updateCounters) => dispatch(subscribe(alias, updateCounters))
   }
 }
 

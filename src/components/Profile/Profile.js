@@ -16,9 +16,13 @@ import onlinePic from './online.png';
 // import avatar from './avatar.jpg'
 
 class Profile extends React.Component {
-  componentWillMount () {
+  constructor (props) {
+    super(props);
     this.props.loadUser();
   }
+  // componentWillMount () {
+    // this.props.loadUser();
+  // }
   componentDidMount () {
     document.body.style.minHeight = '101vh';
   }
@@ -32,6 +36,7 @@ class Profile extends React.Component {
         }
       }
       var photo = isValidPhoto(this.props.photo);
+      console.log('asdasd', this.props.isFollowing);
       return (
         <div>
           <div className='container--left padding-0 container--transparent container--user'>
@@ -47,11 +52,17 @@ class Profile extends React.Component {
                         {this.props.username}
                     </span>
                     {this.props.online === true && (
-                      <img className={s.online} src={onlinePic} width='12x'></img>
+                      <img className={s.online} src={onlinePic}></img>
                     )}
                 </h1>
                 {this.props.alias !== this.props.me.alias && (
-                    <SubscribeButton />
+                  <div style={{marginTop: '20px'}}>
+                    <SubscribeButton
+                      alias={this.props.alias}
+                      isFollowing={this.props.isFollowing}
+                      updateCounters
+                    />
+                  </div>
                 )}
                 <Counters
                   visits={this.props.stats.visits}
@@ -111,6 +122,7 @@ Profile.propTypes = {
   loadUser: React.PropTypes.func.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
   isFetching: React.PropTypes.object.isRequired,
+  isFollowing: React.PropTypes.bool.isRequired,
 
   me: React.PropTypes.object
 };
@@ -128,6 +140,7 @@ function mapStateToProps (state) {
     isAuthenticated: state.auth.authenticated,
     isFetching: state.isFetching.user,
     isYourProfile: state.auth.isYourProfile,
+    isFollowing: state.user.isFollowing,
 
     me: state.auth.user
   }
