@@ -5,9 +5,6 @@ body {
   transition: background .6s;
 
 }
-.root {
-
-}
 
 .container {
   margin: 0px auto;
@@ -26,23 +23,6 @@ body {
   font-size: 16px;
   padding: 20px;
   border-bottom: 1px solid #e7e7e7;
-}
-
-.left {
-  float: left;
-  min-width: 400px;
-  max-width: 400px;
-  border-radius: 3px;
-  background-color: #fff;
-  z-index: 99999;
-
-  @media screen and (max-width: 800px){
-    display: none;
-  }
-}
-.feedBox {
-  height: 650px;
-  overflow-y: auto;
 }
 
 .right {
@@ -72,28 +52,21 @@ body {
 }
 
 .loginFormContainer {
-  padding: 20px 40px 20px 40px;
+  padding: 20px 10px 10px 10px;
+
   background-color: #fff;
-  // max-width: 300px;
+  max-width: 260px;
   margin: auto;
   border-radius: 3px;
   margin-bottom: 10px;
+  margin-top: 200px;
 }
 
 .containerBlock {
-  background-color: #fff;
+  // background-color: #fff;
   text-align: center;
   border-radius: 3px;
   padding: 20px;
-}
-
-.logotype {
-  background: url('./components/AuthComponents/logo.png') no-repeat center;
-  background-size: 150px;
-  height: 60px;
-  width: 100%;
-  margin: 0px 0px 10px;
-  display: block;
 }
 
 .errorMessage {

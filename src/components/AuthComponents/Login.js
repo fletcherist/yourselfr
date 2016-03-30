@@ -6,6 +6,7 @@ import { NoAccount } from './Same';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
+import Slideshow from '../Slideshow/Slideshow.js';
 
 class LoginForm extends React.Component {
   invalidLogin () {
@@ -26,12 +27,9 @@ class LoginForm extends React.Component {
     this.props.logIn(this.login.value, this.password.value);
   }
   render () {
-    // var tittleAction = 'Войдите, чтобы узнать, что думают о Вас ваши друзья.';
-    // if (this.props.continueMessage) {
-    //   tittleAction = this.props.continueMessage;
-    // }
     return (
       <div>
+        <Slideshow />
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
           <Translate className={s.titleAction} content='login.message' component='div'/>

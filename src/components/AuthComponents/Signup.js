@@ -10,6 +10,8 @@ import VkAuthButton from '../SocialButtons';
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
 
+import Slideshow from '../Slideshow/Slideshow.js';
+
 class SignupForm extends React.Component {
   constructor () {
     super();
@@ -87,6 +89,7 @@ class SignupForm extends React.Component {
   render () {
     return (
       <div>
+        <Slideshow />
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
           <VkAuthButton />

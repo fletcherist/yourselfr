@@ -50,22 +50,3 @@
 		opacity: 1;
 	}
 }
-
-.background {
-	z-index: 1;
-	width: 100.4%;
-	max-height: 280px;
-	height: 280px;
-  margin-bottom: -250px;
-	margin-left: -1px;
-	margin-top: -5px;
-	display: none;
-	border-radius: 10px 10px 0px 0px;
-	border: 1px solid $borderColor;
-
-	@media screen and (max-width: 800px){
-		// border: none !important;
-		background-color: transparent !important;
-    display: block;
-  }
-}

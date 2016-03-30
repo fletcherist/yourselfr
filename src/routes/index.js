@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
-import HomeView from 'views/HomeView/HomeView';
 import NotFoundView from 'views/NotFoundView/NotFoundView';
 import Preferences from 'components/Preferences';
 
@@ -15,8 +14,9 @@ import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
 
-import LoginForm from 'components/AuthComponents/Login';
-import SignupForm from 'components/AuthComponents/Signup';
+import Main from 'components/AuthComponents/Main'
+import Login from 'components/AuthComponents/Login';
+import Signup from 'components/AuthComponents/Signup';
 
 import GetStarted from 'views/GetStarted/GetStarted';
 import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
@@ -53,22 +53,6 @@ class ShareWithSocialContainer extends React.Component {
   }
 }
 
-const LoginPage = () => {
-  return (
-    <HomeView>
-      <LoginForm/>
-    </HomeView>
-  )
-}
-
-const SignupPage = () => {
-  return (
-    <HomeView>
-      <SignupForm/>
-    </HomeView>
-  )
-}
-
 // <Route path='/i/get-started' component={requireAuthentication(GetStarted)} />
 // <Route path='/i/get-personalized' component={requireAuthentication(GetPersonalized)} />
 // <Route path='/i/get-socialized' component={requireAuthentication(GetSocialized)} />
@@ -79,10 +63,10 @@ const SignupPage = () => {
 
 export default (
   <Route path='/' component={CoreLayout}>
-    <IndexRoute component={SignupPage} />
+    <IndexRoute component={Main} />
     <Route path='/404' component={NotFoundView} />
-    <Route path='/login' component={LoginPage} />
-    <Route path='/signup' component={SignupPage} />
+    <Route path='/login' component={Login} />
+    <Route path='/signup' component={Signup} />
     <Route path='/preferences' component={PreferencesContainer}>
       <IndexRoute component={Preferences} />
       <Route path='photos' component={PreferencesPhotos} />

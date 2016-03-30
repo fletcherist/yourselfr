@@ -51,7 +51,10 @@ export const authenticate = () => {
         var auth = res;
 
         cookie.save('authenticated', auth.authenticated, { path: '/' });
-        cookie.save('alias', auth.user.alias, { path: '/' });
+
+        if (auth.user) {
+          cookie.save('alias', auth.user.alias, { path: '/' });
+        }
         dispatch(authenticatePatch(auth));
       });
   }

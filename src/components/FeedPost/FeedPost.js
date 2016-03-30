@@ -62,7 +62,7 @@ class Post extends React.Component {
       var photo = isValidPhoto(this.props.user.photo);
       var linkHref = '/' + this.props.user.alias;
       return (
-        <div>
+        <div className={s.postOne}>
           {!isPhoto && (
             <div className={postClasses}>
                     <div className={s.time}>
