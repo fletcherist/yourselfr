@@ -9,7 +9,6 @@ const FETCH_STATUS = 'FETCH_STATUS';
 const FETCH_AVATAR = 'FETCH_AVATAR';
 const FETCH_BACKGROUND = 'FETCH_BACKGROUND';
 const FETCH_LOAD_MORE_POSTS = 'FETCH_LOAD_MORE_POSTS';
-const FETCH_ENDLESS_FEED = 'FETCH_ENDLESS_FEED';
 const FETCH_LOGIN = 'FETCH_LOGIN';
 const FETCH_REGISTER = 'FETCH_REGISTER';
 const FETCH_SOCIAL_NETWORKS = 'FETCH_SOCIAL_NETWORKS';
@@ -20,7 +19,6 @@ const FETCH_FEED = 'FETCH_FEED';
 export const fetchFollowers = createAction(FETCH_FOLLOWERS);
 export const fetchFollowing = createAction(FETCH_FOLLOWING);
 export const fetchPosts = createAction(FETCH_POSTS);
-export const fetchEndlessFeed = createAction(FETCH_ENDLESS_FEED);
 export const fetchLoadMorePosts = createAction(FETCH_LOAD_MORE_POSTS);
 export const fetchUsername = createAction(FETCH_USERNAME);
 export const fetchAlias = createAction(FETCH_ALIAS);
@@ -79,9 +77,6 @@ export default handleActions({
   },
   FETCH_LOAD_MORE_POSTS: (state, { payload }) => {
     return {... state, ...{loadMorePosts: payload}};
-  },
-  FETCH_ENDLESS_FEED: (state, { payload }) => {
-    return {... state, ...{endlessFeed: payload}};
   },
   FETCH_LOGIN: (state, { payload }) => {
     return {... state, ...{logIn: {

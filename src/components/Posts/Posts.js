@@ -107,6 +107,7 @@ const PostsHeader = ({count, username}) => {
       <span className='navLink'>{username}</span>
       <span className='separator'></span>
       <span className='navItem'>{ count } {postsPronounce}</span>
+      <span className='blockTitle--right'>Оставить своё мнение</span>
     </div>
   )
 }

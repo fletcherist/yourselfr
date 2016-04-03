@@ -149,6 +149,16 @@
   border-bottom: 1px solid $borderColor;
   border-radius: 3px 3px 0px 0px;
 }
+.blockTitle--right {
+  color: $yoColor;
+  float: right;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: #1477A6;
+  }
+}
 
 .separator {
   width: 10px;

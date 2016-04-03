@@ -34,14 +34,11 @@ export const loadFeed = (offset) => {
     }
     dispatch(fetchFeed(true));
     fetch(url, {credentials: 'include'})
-      .then((r) => r.json)
+      .then((r) => r.json())
       .then((posts) => {
         console.log(posts);
-        dispatch(loadFeedPatch());
-        dispatch(fetchFeed(false));
-      })
-      .catch((e) => {
-        console.log(e);
+        dispatch(loadFeedPatch(posts));
+        dispatch(fetchEndlessFeed(false));
       })
   }
 }

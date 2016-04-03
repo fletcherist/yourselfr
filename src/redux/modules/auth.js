@@ -53,6 +53,7 @@ export const authenticate = () => {
 
         if (auth.user) {
           cookie.save('alias', auth.user.alias, { path: '/' });
+          cookie.save('background', auth.user.background, { path: '/' });
         }
         dispatch(authenticatePatch(auth));
       });

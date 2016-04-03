@@ -26,6 +26,8 @@ class Feed extends React.Component {
     this.setState({
       selected: selector
     })
+    if (selector === 1) this.props.loadEndlessFeed();
+    else this.props.loadFeed();
   }
   render () {
     return (
