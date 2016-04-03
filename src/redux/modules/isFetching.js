@@ -15,6 +15,7 @@ const FETCH_REGISTER = 'FETCH_REGISTER';
 const FETCH_SOCIAL_NETWORKS = 'FETCH_SOCIAL_NETWORKS';
 const FETCH_SUBSCRIBE = 'FETCH_SUBSCRIBE';
 const FETCH_USER = 'FETCH_USER';
+const FETCH_FEED = 'FETCH_FEED';
 
 export const fetchFollowers = createAction(FETCH_FOLLOWERS);
 export const fetchFollowing = createAction(FETCH_FOLLOWING);
@@ -31,6 +32,7 @@ export const fetchRegister = createAction(FETCH_REGISTER);
 export const fetchUser = createAction(FETCH_USER);
 export const fetchSocialNetworks = createAction(FETCH_SOCIAL_NETWORKS);
 export const fetchSubscribe = createAction(FETCH_SUBSCRIBE);
+export const fetchFeed = createAction(FETCH_FEED);
 
 export const actions = {
   fetchFollowers,
@@ -110,6 +112,9 @@ export default handleActions({
   },
   FETCH_SUBSCRIBE: (state, { payload }) => {
     return {...state, ...{subscribe: payload}}
+  },
+  FETCH_FEED: (state, { payload }) => {
+    return {...state, ...{feed: payload}}
   }
 }, {
   user: {

@@ -34,7 +34,6 @@ export const isYourPage = () => {
 
     var authenticated = cookie.load('authenticated');
     var userAlias = cookie.load('alias');
-    console.log(authenticated, userAlias);
     if (authenticated === true && userAlias === alias) {
       isYourPage = true;
     }

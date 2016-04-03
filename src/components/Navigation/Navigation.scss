@@ -16,7 +16,7 @@
 
 .menu {
   position: absolute;
-  margin: 50px auto;
+  margin: 0px auto;
   text-align: center;
   background-color: white;
   padding: 10px;
@@ -28,7 +28,6 @@
   z-index: 999999999999999999999999999999999999999999999999999999999;
   border-top: 3px solid $yoColor;
   border-radius: 4px;
-  top: 50px;
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
 }
@@ -53,8 +52,6 @@
 .hiddenMenu {
   visibility: hidden;
   opacity: 0;
-  top: 20px;
-  transition: top .2s ease-in-out, opacity .3s, visibility .3s;
 }
 
 .element {

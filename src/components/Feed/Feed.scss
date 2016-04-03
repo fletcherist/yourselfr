@@ -1,0 +1,36 @@
+@import 'variables';
+
+.container {
+  margin: 30px auto;
+  max-width: 450px;
+}
+
+.pick {
+
+}
+
+.param {
+  width: 200px;
+  display: inline-block;
+  border: 1px solid $borderColor;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+
+  &:first-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  &:last-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-left: -1px;
+  }
+}
+
+.selected {
+  background-color: $yoGrey;
+  color: white;
+}

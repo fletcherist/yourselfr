@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { config } from '../../redux/config';
 import cx from 'classnames';
+import Modal from 'react-modal';
 // import SmileBox from '../SmileBox';
 
 function formToTray () {
@@ -120,39 +121,40 @@ class WriteBox extends React.Component {
     }
     render () {
       var attachPreview = cx(s.attachPreview, 'hidden');
+      const customStyles = {
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(to left, #4B79A1 , #283E51); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */',
+          overflowY: 'hidden'
+        },
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          border: 'none',
+          minWidth: '500px',
+          background: 'transparent',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          trasnition: 'opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25)'
+        }
+      };
       return (
-        <div>
-            {  // <div className={s.form} onClick={this.toggle.bind(this)}>
-              // <div className={s.formOpen}>+ Добавить своё мнение</div>
-            // </div>
-             }
-          {!this.props.isYourPage && (
-            <div
-                  className={s.container}
-                  ref={(r) => this.writeBox = r }
-                  style={{
-                    maxHeight: this.state.isOpen ? '175px' : '0px'
-                  }}>
+        <Modal isOpen={this.state.isOpen} style={customStyles} onRequestClose={this.toggle.bind(this)}>
+            <div className={s.container} ref={(r) => this.writeBox = r }>
                 <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
                     <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>
                 </form>
-                <textarea
-                    placeholder={this.state.textPlaceholder}
-                    id='textForm'
-                    ref={(ref) => this.textBox = ref}
-                    style={{
-                      visibility: this.state.isOpen ? 'visible' : 'hidden'
-                    }}
-                >
+                <textarea placeholder={this.state.textPlaceholder} id='textForm' ref={(ref) => this.textBox = ref} style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
                 </textarea>
-                <img id='attach-preview'
-                  ref={(r) => this.preview = r}
-                  className={attachPreview}/>
-                <div
-                  className={s.above}
-                  style={{
-                    display: this.state.isOpen ? 'block' : 'none'
-                  }}>
+                <img id='attach-preview' ref={(r) => this.preview = r} className={attachPreview}/>
+                <div className={s.above}>
                     <div
                         className={cx('button', s.buttonSubmit, s.button)}
                         onClick={this.handleSubmitButton.bind(this)}>
@@ -169,8 +171,7 @@ class WriteBox extends React.Component {
                     </div>
                 </div>
             </div>
-          )}
-        </div>);
+        </Modal>);
     }
 }
 

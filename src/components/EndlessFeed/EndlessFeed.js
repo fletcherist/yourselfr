@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { loadEndlessFeed } from '../../redux/modules/endlessFeed';
 import { isEmpty } from '../toools';
 import FeedPost from '../FeedPost';
 import Loader from '../Loader';
@@ -12,18 +10,6 @@ class EndlessFeed extends React.Component {
       feed: []
     }
   }
-  componentWillMount () {
-    console.log(this.props.feed.length);
-    if (this.props.feed.length > 0) {
-      return false;
-    }
-    this.props.endlessFeed();
-  }
-
-  // shouldComponentUpdate (nextProps, nextState) {
-    // console.log(nextProps);
-    // return !arraysEqual(this.props.feed, nextProps.feed);
-  // }
 
   render () {
     var endlessFeed = this.props.feed;
@@ -55,19 +41,7 @@ class EndlessFeed extends React.Component {
 }
 
 EndlessFeed.propTypes = {
-  endlessFeed: React.PropTypes.func.isRequired,
   feed: React.PropTypes.array.isRequired,
   isFetching: React.PropTypes.bool.isRequired
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    endlessFeed: () => dispatch(loadEndlessFeed())
-  }
-}
-const mapStateToProps = (state) => {
-  return {
-    feed: state.endlessFeed,
-    isFetching: state.isFetching.endlessFeed
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(EndlessFeed);
+export default EndlessFeed;

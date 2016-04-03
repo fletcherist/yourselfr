@@ -38,8 +38,10 @@ class Navigation extends React.Component {
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
+                      <Link to='/feed'>
                         <div title='перейти к ленте' className={cx(s.icon, s.iconFeed)}/>
                         лента
+                      </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <Link to='/preferences'>

@@ -13,6 +13,7 @@ import { PreferencesPhotos } from 'components/Preferences';
 import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
+import Feed from 'components/Feed';
 
 import Main from 'components/AuthComponents/Main'
 import Login from 'components/AuthComponents/Login';
@@ -53,20 +54,13 @@ class ShareWithSocialContainer extends React.Component {
   }
 }
 
-// <Route path='/i/get-started' component={requireAuthentication(GetStarted)} />
-// <Route path='/i/get-personalized' component={requireAuthentication(GetPersonalized)} />
-// <Route path='/i/get-socialized' component={requireAuthentication(GetSocialized)} />
-
-// <Route path='/i/get-started' component={GetStarted} />
-// <Route path='/i/get-personalized' component={GetPersonalized} />
-// <Route path='/i/get-socialized' component={GetSocialized} />
-
 export default (
   <Route path='/' component={CoreLayout}>
     <IndexRoute component={Main} />
     <Route path='/404' component={NotFoundView} />
     <Route path='/login' component={Login} />
     <Route path='/signup' component={Signup} />
+    <Route path='/feed' component={Feed} />
     <Route path='/preferences' component={PreferencesContainer}>
       <IndexRoute component={Preferences} />
       <Route path='photos' component={PreferencesPhotos} />
