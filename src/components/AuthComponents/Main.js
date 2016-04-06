@@ -5,11 +5,16 @@ import Slideshow from '../Slideshow/Slideshow.js';
 import EndlessFeed from '../EndlessFeed';
 import { LocaleSwitcher } from './Same';
 import WantToRegister from './WantToRegister';
+import { actions as feed } from '../../redux/modules/endlessFeed';
+import { connect } from 'react-redux';
 
 // import Translate from 'react-translate-component';
 // import cp from 'counterpart';
 
 class SignupForm extends React.Component {
+  componentWillMount () {
+    this.props.loadEndlessFeed();
+  }
   render () {
     return (
       <div>
@@ -19,7 +24,7 @@ class SignupForm extends React.Component {
           <div className={s.description}>Сервис анонимных мнений, <br/> позволяющий вполне узнать, <br/> что думают о Вас ваши друзья.</div>
           <div className={s.left}>
             <WantToRegister />
-            <EndlessFeed />
+            <EndlessFeed feed={this.props.feed}/>
           </div>
           <LocaleSwitcher />
         </div>
@@ -27,5 +32,13 @@ class SignupForm extends React.Component {
     )
   }
 };
-
-export default SignupForm;
+SignupForm.propTypes = {
+  loadEndlessFeed: React.PropTypes.func.isRequired,
+  feed: React.PropTypes.array.isRequired
+}
+const mapStateToProps = (state) => {
+  return {
+    feed: state.feed
+  }
+}
+export default connect(mapStateToProps, feed)(SignupForm);

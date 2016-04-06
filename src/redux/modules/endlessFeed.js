@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import {config} from '../config.js';
-import { fetchEndlessFeed, fetchFeed } from './isFetching';
+import { fetchFeed } from './isFetching';
 import fetch from 'isomorphic-fetch';
 
 export const LOAD_ENDLESS_FEED = 'LOAD_ENDLESS_FEED';
@@ -13,13 +13,14 @@ export const loadEndlessFeed = (offset) => {
     if (offset) {
       url += `/${offset}`
     }
-    dispatch(fetchEndlessFeed(true));
+    dispatch(fetchFeed(true));
     console.log(url);
     fetch(url)
       .then((r) => r.json())
       .then((posts) => {
+        console.log(posts);
         dispatch(loadEndlessFeedPatch(posts));
-        dispatch(fetchEndlessFeed(false));
+        dispatch(fetchFeed(false));
       })
   }
 };
@@ -38,7 +39,7 @@ export const loadFeed = (offset) => {
       .then((posts) => {
         console.log(posts);
         dispatch(loadFeedPatch(posts));
-        dispatch(fetchEndlessFeed(false));
+        dispatch(fetchFeed(false));
       })
   }
 }
@@ -50,9 +51,9 @@ export const actions = {
 
 export default handleActions({
   [LOAD_ENDLESS_FEED]: (state, { payload }) => {
-    return [...payload];
+    return payload;
   },
   [LOAD_FEED]: (state, { payload }) => {
-    return [...payload];
+    return payload;
   }
 }, []);

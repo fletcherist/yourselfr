@@ -24,7 +24,7 @@ class WriteBox extends React.Component {
         username: undefined,
         text: '',
         created_by: undefined,
-        isOpen: true,
+        isOpen: false,
         photo: undefined
       }
     }
@@ -51,7 +51,7 @@ class WriteBox extends React.Component {
         username: props.username,
         created_by: props.alias,
         text: '',
-        isOpen: true,
+        isOpen: props.show || false,
         textPlaceholder: phrases[random]
       })
     }
@@ -128,7 +128,7 @@ class WriteBox extends React.Component {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(to left, #4B79A1 , #283E51); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */',
+          background: 'rgba(0,0,0,0.7)',
           overflowY: 'hidden'
         },
         content: {
@@ -146,7 +146,7 @@ class WriteBox extends React.Component {
         }
       };
       return (
-        <Modal isOpen={this.state.isOpen} style={customStyles} onRequestClose={this.toggle.bind(this)}>
+        <Modal isOpen={this.state.isOpen} style={customStyles} onRequestClose={this.toggle.bind(this)} closeTimeoutMS={300}>
             <div className={s.container} ref={(r) => this.writeBox = r }>
                 <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
                     <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>

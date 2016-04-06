@@ -5,6 +5,7 @@ import { ending, isEmpty } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';
+import WriteBox from '../WriteBox';
 // import ShareWithSocial from '../ShareWithSocial';
 
 class Posts extends React.Component {
@@ -97,20 +98,41 @@ NoPosts.propTypes = {
   isAuthenticated: React.PropTypes.bool.isRequired
 }
 
-const PostsHeader = ({count, username}) => {
-  var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений']);
-  if (!username) {
-    username = 'Пользователь';
+class PostsHeader extends React.Component {
+  componentWillMount () {
+    this.setState({
+      show: false
+    })
   }
-  return (
-    <div className='blockTitle'>
-      <span className='navLink'>{username}</span>
-      <span className='separator'></span>
-      <span className='navItem'>{ count } {postsPronounce}</span>
-      <span className='blockTitle--right'>Оставить своё мнение</span>
-    </div>
-  )
+
+  openModalBox () {
+    setTimeout(() => {
+      this.setState({show: !this.state.show})
+    }, 300);
+  }
+
+  render () {
+    var {count, username} = this.props;
+    var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений']);
+    if (!username) {
+      username = 'Пользователь';
+    }
+    return (
+      <div className='blockTitle'>
+        <span className='navLink'>{username}</span>
+        <span className='separator'></span>
+        <span className='navItem'>{ count } {postsPronounce}</span>
+        <span className='blockTitle--right' onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
+        <WriteBox show={this.state.show}/>
+      </div>
+    )
+  }
 }
+PostsHeader.propTypes = {
+  count: React.PropTypes.number.isRequired,
+  username: React.PropTypes.string.isRequired
+}
+
 Posts.propTypes = {
   count: React.PropTypes.number.isRequired,
   posts: React.PropTypes.array.isRequired,

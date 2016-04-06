@@ -50,16 +50,27 @@ export const authenticate = () => {
         var auth = res;
 
         cookie.save('authenticated', auth.authenticated, { path: '/' });
-
         if (auth.user) {
           cookie.save('alias', auth.user.alias, { path: '/' });
           cookie.save('background', auth.user.background, { path: '/' });
+
+          // Redirect in case of authenticate status
+          console.log(window.location)
+          var path = window.location.pathname;
+          if (auth.authenticated) {
+            if (path === '/') {
+              dispatch(routeActions.push(auth.user.alias));
+            }
+          } else {
+            if (path === '/feed' || path === '/preferences') {
+              dispatch(routeActions.push('/'));
+            }
+          }
         }
         dispatch(authenticatePatch(auth));
       });
   }
 }
-
 // const logInAction = createAction(LOG_IN);
 export const logIn = (username, password) => {
   return (dispatch, getState) => {

@@ -15,7 +15,7 @@ class Feed extends React.Component {
     }
   }
   componentWillMount () {
-    if (this.state.selected === 1) {
+    if (this.state.selected === 2) {
       this.props.loadEndlessFeed();
     } else {
       this.props.loadFeed();
@@ -26,7 +26,7 @@ class Feed extends React.Component {
     this.setState({
       selected: selector
     })
-    if (selector === 1) this.props.loadEndlessFeed();
+    if (this.state.selected === 1) this.props.loadEndlessFeed();
     else this.props.loadFeed();
   }
   render () {
@@ -38,7 +38,7 @@ class Feed extends React.Component {
             <div className={cx({param: true, selected: this.state.selected === 1})} onClick={ () => this.changeSelector(1) }>Моя личная</div>
             <div className={cx({param: true, selected: this.state.selected === 2})} onClick={ () => this.changeSelector(2) }>Всеобщая</div>
           </div>
-          <EndlessFeed feed={this.props.feed}/>
+          <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching}/>
         </div>
       </div>
     )
@@ -48,12 +48,14 @@ class Feed extends React.Component {
 Feed.propTypes = {
   loadEndlessFeed: React.PropTypes.func.isRequired,
   loadFeed: React.PropTypes.func.isRequired,
-  feed: React.PropTypes.array.isRequired
+  feed: React.PropTypes.array.isRequired,
+  isFetching: React.PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
   return {
-    feed: state.feed
+    feed: state.feed,
+    isFetching: state.isFetching.feed
   }
 }
 

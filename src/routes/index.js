@@ -10,7 +10,6 @@ import UpdateSocialNetworks from 'components/Preferences/UpdateSocialNetworks';
 import { PreferencesContainer } from 'components/Preferences';
 import { PreferencesPhotos } from 'components/Preferences';
 
-import WriteBox from 'components/WriteBox';
 import Posts from 'components/Posts';
 import User from 'components/User';
 import Feed from 'components/Feed';
@@ -33,10 +32,7 @@ import UserNavigation from 'components/UserNavigation';
 class defaultUser extends React.Component {
   render () {
     return (
-      <div>
-          <WriteBox/>
-          <Posts/>
-      </div>
+      <Posts/>
     )
   }
 }

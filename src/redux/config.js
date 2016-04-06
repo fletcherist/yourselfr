@@ -1,5 +1,5 @@
-var http = 'http://localhost:80';
-// var http = 'http://yourselfr.com';
+// var http = 'http://localhost:80';
+var http = 'http://yourselfr.com';
 
 // var http = process.env.NODE_ENV === 'development' ? 'http://localhost:80' : 'http://yourselfr.com';
 // if (__PROD__) {
