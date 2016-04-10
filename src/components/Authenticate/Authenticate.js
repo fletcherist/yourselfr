@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {routeActions} from 'react-router-redux';
-import LoginForm from '../AuthComponents/Login';
-import s from 'components/AuthComponents/Login.scss';
+import LoginForm from '../AuthComponents/Login/LoginForm';
+import s from 'components/AuthComponents/AuthComponents.scss';
 
 export function requireAuthentication (Component) {
   class AuthenticatedComponent extends React.Component {

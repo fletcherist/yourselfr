@@ -1,20 +1,15 @@
 @import 'variables';
 
 .container {
-	// transition: all .2s;
+	transition: all .2s;
 	border-radius: 3px;
 	background-color: white;
-	float: left;
 	max-width: 490px;
 	width: 100%;
-	// min-height: 175px;
-	// max-height: 175px;
-	margin-bottom: 10px;
-	margin-top: 0px;
+	margin: auto;
 
-	// box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
 	border: 1px solid $borderColor;
-	// margin: 10px;
 	textarea {
 		border-radius: 3px;
 		display: block;
@@ -25,15 +20,17 @@
 		resize: none;
 		font-size: 15px !important;
 		border: 0;
-		padding: 10px 10px 10px 16px;;
+		padding: 10px 10px 10px 10px;;
 
 		&:focus {
 			outline: none;
 		}
 		@media screen and (max-width: 800px){
+			// max-width: 500px;
 			// border-radius: 0px;
 		}
 		@media screen and (max-width: 500px){
+
 			// margin-bottom: 50px;
 		}
 	}
@@ -52,11 +49,15 @@
 		width: 80%;
 		border-bottom: 1px solid #e7e7e7;
 		margin: 10px auto;
-		float: none;
+		width: 400px !important;
 	}
 	@media screen and (max-width: 600px){
-    width: 97%;
+    width: 385px !important;
   }
+	@media screen and (max-width: 400px){
+		width: 285px !important;
+	}
+
 
 	textarea:focus::-webkit-input-placeholder { color:transparent; }
 	textarea:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */

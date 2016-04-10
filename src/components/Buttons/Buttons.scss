@@ -1,0 +1,25 @@
+@import 'variables';
+.container {
+  height: 80px;
+}
+.AuthenticateButton {
+  padding: 15px 0px 10px;
+  text-align: center;
+  border-radius: 45px;
+  background-color: $yoColor;
+  color: white !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 180px;
+  margin-left: -90px;
+  margin-top: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+
+
+  &:active {
+    margin-top: 32px;
+    background-color: #1279AA;
+  }
+}

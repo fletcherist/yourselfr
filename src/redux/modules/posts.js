@@ -10,6 +10,7 @@ export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS';
 export const REMOVE_POST = 'REMOVE_POST';
 export const LIKE_POST = 'LIKE_POST';
 export const ENDLESS_LOAD = 'ENDLESS_LOAD';
+export const POST_COMMENT = 'POST_COMMENT';
 
 export const likePost = createAction(LIKE_POST, async (id) => {
   if (!id) {
@@ -96,7 +97,7 @@ const removePostPatch = createAction(REMOVE_POST);
 export const removePost = id => {
   return (dispatch, getState) => {
     console.log(id);
-    fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'same-origin'})
+    fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
         console.log(res);
@@ -124,6 +125,7 @@ export const sendPost = (text, photo) => {
     }
     fetch(`${config.http}/api/posts`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-type': config.post
       },
@@ -142,6 +144,38 @@ export const sendPost = (text, photo) => {
       ga.event({
         category: 'Posts',
         action: 'Created Post'
+      });
+    });
+  }
+}
+
+export const postComment = (text, post_id) => {
+  return (dispatch, getState) => {
+    if (!text) {
+      console.log('no text');
+      return false;
+    }
+    console.log(post_id);
+    var authenticated = getState().auth.authenticated;
+    if (!authenticated) {
+      return console.log('Only authenticated users can write comments');
+    }
+    var alias = getState().auth.user.alias;
+    var body = `text=${text}&created_by=${alias}&post_id=${post_id}`;
+    fetch(`${config.http}/api/comments`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-type': config.post
+      },
+      body: body
+    })
+    .then((r) => r.json())
+    .then((data) => {
+      console.log(data);
+      ga.event({
+        category: 'Comments',
+        action: 'Comment created'
       });
     });
   }

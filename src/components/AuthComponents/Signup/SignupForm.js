@@ -1,16 +1,14 @@
 import React from 'react';
-import s from './Login.scss';
+import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
-import { register } from '../../redux/modules/auth';
-import { HaveAccount, LocaleSwitcher } from './Same';
-import { isValidEmail } from '../Toools';
+import { register } from 'redux/modules/auth';
+
+import { isValidEmail } from 'components/Toools';
 import { routeActions } from 'react-router-redux';
-import VkAuthButton from '../SocialButtons';
+import VkAuthButton from 'components/Buttons/SocialButtons';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
-
-import Slideshow from '../Slideshow/Slideshow.js';
 
 class SignupForm extends React.Component {
   constructor () {
@@ -73,7 +71,6 @@ class SignupForm extends React.Component {
   register (e) {
     if (this.checkUsername() && this.checkEmail() && this.checkPassword()) {
       this.props.register(this.username.value, this.email.value, this.password.value);
-      // this.props.routeActions.push('/login');
       e.preventDefault();
       return false;
     }
@@ -89,7 +86,6 @@ class SignupForm extends React.Component {
   render () {
     return (
       <div>
-        <Slideshow />
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
           <VkAuthButton />
@@ -120,8 +116,6 @@ class SignupForm extends React.Component {
             </div>
           )}
         </div>
-        <HaveAccount/>
-        <LocaleSwitcher/>
       </div>
     )
   }

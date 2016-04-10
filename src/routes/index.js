@@ -15,8 +15,7 @@ import User from 'components/User';
 import Feed from 'components/Feed';
 
 import Main from 'components/AuthComponents/Main'
-import Login from 'components/AuthComponents/Login';
-import Signup from 'components/AuthComponents/Signup';
+import { Signup, Login } from 'components/AuthComponents/SignupAndLogin';
 
 import GetStarted from 'views/GetStarted/GetStarted';
 import GetPersonalized from 'views/GetPersonalized/GetPersonalized';

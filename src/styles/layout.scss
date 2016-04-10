@@ -160,6 +160,13 @@
   }
 }
 
+
+.postsUser {
+  display: inline-block;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+}
 .separator {
   width: 10px;
   height: 10px;

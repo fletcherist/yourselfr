@@ -119,9 +119,11 @@ class PostsHeader extends React.Component {
     }
     return (
       <div className='blockTitle'>
-        <span className='navLink'>{username}</span>
-        <span className='separator'></span>
-        <span className='navItem'>{ count } {postsPronounce}</span>
+        <div className='postsUser'>
+          <span className='navLink'>{username}</span>
+          <span className='separator'></span>
+          <span className='navItem'>{ count } {postsPronounce}</span>
+        </div>
         <span className='blockTitle--right' onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
         <WriteBox show={this.state.show}/>
       </div>

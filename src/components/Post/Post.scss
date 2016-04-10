@@ -1,15 +1,17 @@
 @import 'variables';
 
-.post:last-child {
-	// padding-bottom: 10px;
+.first:first-child {
+	padding-top: 10px;
 }
+
 .post {
 	word-wrap: break-word;
-	padding: 10px 0px 10px 5px;
+	padding: 10px 15px 10px 5px;
 	line-height: 20px;
 	font-size: 16px;
 	justify-content: left;
 	display: flex;
+	width: 100%;
 	a {
 		background-color: transparent;
 		color: $yoColor;
@@ -34,22 +36,10 @@
 		width: 55px;
 	}
 	.text {
-		width: 75%;
+		width: 100%;
 		font-weight: 400;
 		color: #515151;
-
-		@media screen and (max-width: 800px) {
-			width: 83%;
-		}
-		@media screen and (max-width: 700px) {
-			width: 79%;
-		}
-		@media screen and (max-width: 580px) {
-			width: 68%;
-		}
-		@media screen and (max-width: 550px) {
-			width: 63%;
-		}
+		padding-left: 3px;
 	}
 	.like {
 		align-self: center;
@@ -62,18 +52,31 @@
 	background-color: #F2FAFF;
 }
 
-
 .comment {
 	margin-left: 50px;
-	// width: 350px;
-	padding: 20px 0px 10px 0px;
-	height: 50px;
-
+	min-height: 55px;
+	max-width: 438px;
 	.time {
-		width: 40px;
+		width: 50px;
 	}
-
+	@media screen and (max-width: 500px) {
+		margin-left: 20px;
+	}
 }
+.commentText {
+	margin-top: 0px;
+}
+.commentTime {
+	font-weight: 300;
+	font-size: 14px;
+	color: #8d96a2;
+	// width: 150px;
+}
+.commentAuthor {
+	font-weight: bold;
+	border-bottom: none !important;
+}
+
 .photo {
   height: 40px;
   width: 40px;

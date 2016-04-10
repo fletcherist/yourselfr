@@ -1,0 +1,18 @@
+@import 'variables';
+.form {
+  margin-left: 60px;
+}
+.input {
+  font-size: 13px;
+  max-width: 80%;
+  padding-right: 120px;
+}
+
+.button {
+  margin-left: -100px;
+  font-weight: bold;
+  display: inline-block;
+  color: $yoColor;
+  cursor: pointer;
+  z-index: 999999999;
+}

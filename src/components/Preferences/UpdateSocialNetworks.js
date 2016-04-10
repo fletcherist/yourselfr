@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import classNames from 'classnames/bind';
 
-import vkPicture from '../SocialButtons/vk.svg';
-import twitterPicture from '../SocialButtons/twitter.svg';
-import instagramPicture from '../SocialButtons/instagram.png';
-import tumblrPicture from '../SocialButtons/tumblr.svg';
+import vkPicture from 'components/Buttons/SocialButtons/vk.svg';
+import twitterPicture from 'components/Buttons/SocialButtons/twitter.svg';
+import instagramPicture from 'components/Buttons/SocialButtons/instagram.png';
+import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg';
 
-import { saveSocialNetworks } from '../../redux/modules/preferences';
+import { saveSocialNetworks } from 'redux/modules/preferences';
 
 let c = classNames.bind(x);
 

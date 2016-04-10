@@ -12,13 +12,23 @@ const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER';
 export const load = createAction(LOAD_USER);
 export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER, (value = 1) => value);
 
+function getAlias () {
+  var alias = window.location.pathname.substr(1);
+  alias = alias.split('/')[0];
+  return alias;
+}
+
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
     dispatch(fetchUser({status: true}));
 
+    var currentAlias = getAlias();
     if (!alias) {
-      alias = window.location.pathname.substr(1);
-      alias = alias.split('/')[0];
+      alias = currentAlias;
+    } else {
+      if (alias === currentAlias) {
+        return false;
+      }
     }
 
     if (alias === 'preferences' || alias === 'share-with-social') {

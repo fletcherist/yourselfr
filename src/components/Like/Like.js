@@ -38,12 +38,12 @@ class Like extends React.Component {
     return (
       <div style={{float: 'right'}}>
         <div className={s.like} onClick={this.toggle.bind(this)}>
+          <div className={classes}></div>
           <div className={s.count}>
             {this.state.count > 0 && (
                this.state.count
             )}
           </div>
-          <div className={classes}></div>
         </div>
       </div>
     );

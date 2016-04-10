@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { timePassed } from '../Toools';
 import { isEmpty } from '../toools';
+import CommentForm from '../Comment/CommentForm';
 
 let ccx = cx.bind(s);
 class Post extends React.Component {
@@ -19,7 +20,8 @@ class Post extends React.Component {
         createdPronounce: 'сейчас',
         isHot: false,
         updateTimer: false,
-        isLiked: this.props.isLiked
+        isLiked: this.props.isLiked,
+        showCommentForm: false
       }
 
       this.timePassed = timePassed;
@@ -49,6 +51,11 @@ class Post extends React.Component {
       this.tickTime();
     }
 
+    openCommentForm () {
+      this.setState({
+        showCommentForm: !this.state.showCommentForm
+      })
+    }
     render () {
       let postClasses = ccx({
         post: true,
@@ -78,9 +85,9 @@ class Post extends React.Component {
         });
       }
       return (
-        <div>
+        <div className={s.first}>
           {!isPhoto && (
-            <div className={postClasses}>
+            <div className={postClasses} onDoubleClick={ this.openCommentForm.bind(this) }>
               <div className={s.time}>
                   <span className={ccx({
                     hideOnHover: this.props.isYourPage})
@@ -108,7 +115,15 @@ class Post extends React.Component {
               </div>
           </div>
         )}
-        {commentsArray}
+        {commentsArray && (
+          <div>
+            {commentsArray}
+            <CommentForm post_id={this.props.id}/>
+          </div>
+        )}
+        {this.state.showCommentForm && (
+          <CommentForm post_id={this.props.id}/>
+        )}
       </div>
       );
     }

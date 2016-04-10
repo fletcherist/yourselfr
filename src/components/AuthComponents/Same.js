@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Login.scss';
+import s from './AuthComponents.scss';
 import { Link } from 'react-router';
 import cp from 'counterpart';
 import Translate from 'react-translate-component';

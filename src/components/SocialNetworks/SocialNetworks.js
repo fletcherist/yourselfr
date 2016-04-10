@@ -3,10 +3,10 @@ import s from './SocialNetworks.scss';
 import cx from 'classnames';
 import classNames from 'classnames/bind';
 
-import vkPic from '../SocialButtons/vk.svg';
-import twitterPic from '../SocialButtons/twitter.svg';
-import instagramPic from '../SocialButtons/instagram.png';
-import tumblrPic from '../SocialButtons/tumblr.svg';
+import vkPic from 'components/Buttons/SocialButtons/vk.svg';
+import twitterPic from 'components/Buttons/SocialButtons/twitter.svg';
+import instagramPic from 'components/Buttons/SocialButtons/instagram.png';
+import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg';
 
 let c = classNames.bind(s);
 

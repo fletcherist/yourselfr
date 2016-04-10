@@ -4,10 +4,11 @@ import Like from '../Like';
 import s from '../Post/Post.scss';
 import cx from 'classnames/bind';
 import { connect } from 'react-redux';
-import { actions as postsActions } from '../../redux/modules/posts';
+import { loadUser } from '../../redux/modules/user';
 import { timePassed } from '../Toools';
+import { Link } from 'react-router';
 
-import { UserAvatar } from '../Post/UserAvatar';
+import UserAvatar from '../Post/UserAvatar';
 
 let ccx = cx.bind(s);
 class Comment extends React.Component {
@@ -62,9 +63,14 @@ class Comment extends React.Component {
               <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias}/>
               <span className={ccx({
                 hideOnHover: this.props.isYourPage})
-              }>{this.state.createdPronounce}</span>
-              <div className={s.text}>
-                  <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+              }></span>
+              <div className={ccx(s.text, s.commentText)}>
+                <div className={s.commentTime}>
+                  <Link onClick={ () => this.props.loadUser(this.props.user.alias)} className={s.commentAuthor} to={`/${this.props.user.alias}`}>{this.props.user.username}</Link>
+                  {' '}
+                  {this.state.createdPronounce}
+                </div>
+                <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
               </div>
               <Like
                   count={this.props.likes}
@@ -84,9 +90,9 @@ Comment.propTypes = {
   attachments: React.PropTypes.object,
   isLiked: React.PropTypes.bool,
   isYourPage: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired
+  user: React.PropTypes.object.isRequired,
 
-  // removePost: React.PropTypes.func.isRequired
+  loadUser: React.PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -94,4 +100,9 @@ const mapStateToProps = (state) => {
     isYourPage: state.auth.isYourPage
   }
 }
-export default connect(mapStateToProps, postsActions)(Comment);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadUser: (alias) => dispatch(loadUser(alias))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);

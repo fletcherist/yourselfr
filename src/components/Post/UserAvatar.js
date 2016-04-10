@@ -2,8 +2,10 @@ import React from 'react';
 import s from './Post.scss';
 import { isValidPhoto } from '../Toools';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { loadUser } from '../../redux/modules/user';
 
-export class UserAvatar extends React.Component {
+class UserAvatar extends React.Component {
   render () {
     var photo = isValidPhoto(this.props.photo);
     var styles = {
@@ -26,3 +28,14 @@ UserAvatar.propTypes = {
   photo: React.PropTypes.string.isRequired,
   alias: React.PropTypes.string.isRequired
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadUser: (alias) => dispatch(loadUser(alias))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserAvatar);

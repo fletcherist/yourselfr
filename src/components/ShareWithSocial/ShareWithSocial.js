@@ -1,6 +1,6 @@
 import React from 'react';
-import vk from '../SocialButtons/vk.svg';
-import twitter from '../SocialButtons/twitter.svg';
+import vk from 'components/Buttons/SocialButtons/vk.svg';
+import twitter from 'components/Buttons/SocialButtons/twitter.svg';
 import s from './ShareWithSocial.scss';
 import { connect } from 'react-redux';
 import { selectText } from '../Toools';

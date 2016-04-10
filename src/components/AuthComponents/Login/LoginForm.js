@@ -1,14 +1,18 @@
-import React from 'react';
-import s from './Login.scss';
+import React, { PropTypes } from 'react';
+import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
-import { logIn } from '../../redux/modules/auth';
-import { NoAccount } from './Same';
+import { logIn } from '../../../redux/modules/auth';
+import VkAuthButton from 'components/Buttons/SocialButtons';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
-import Slideshow from '../Slideshow/Slideshow.js';
 
 class LoginForm extends React.Component {
+  static propTypes = {
+    isFetching: PropTypes.object.isRequired,
+    logIn: PropTypes.func.isRequired,
+    continueMessage: PropTypes.string
+  };
   invalidLogin () {
     this.login.focus();
   }
@@ -29,9 +33,9 @@ class LoginForm extends React.Component {
   render () {
     return (
       <div>
-        <Slideshow />
         <div className={s.loginFormContainer}>
           <div className={s.logotype}></div>
+          <VkAuthButton />
           <Translate className={s.titleAction} content='login.message' component='div'/>
           <form onSubmit={ this.logIn.bind(this)}>
             <div className='input--container'>
@@ -55,17 +59,10 @@ class LoginForm extends React.Component {
             </div>
           )}
         </div>
-        <NoAccount/>
       </div>
     )
   }
 };
-
-LoginForm.propTypes = {
-  isFetching: React.PropTypes.object.isRequired,
-  logIn: React.PropTypes.func.isRequired,
-  continueMessage: React.PropTypes.string
-}
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching.logIn
