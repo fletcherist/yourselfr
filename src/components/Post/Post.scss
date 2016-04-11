@@ -34,6 +34,9 @@
 		padding: 0px 0px 0px 10px;
 		color: $yoGrey;
 		width: 55px;
+		@media screen and (max-width: 500px) {
+			padding: 0px 0px 0px 3px;
+		}
 	}
 	.text {
 		width: 100%;
@@ -46,6 +49,9 @@
 	}
 	.fav {
 		align-self: center;
+	}
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
 	}
 }
 .hot {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Like from '../Like';
+// import Like from '../Like';
 
 import s from '../Post/Post.scss';
 import cx from 'classnames/bind';
@@ -72,10 +72,11 @@ class Comment extends React.Component {
                 </div>
                 <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
               </div>
-              <Like
-                  count={this.props.likes}
-                  object={this.props.id}
-              />
+              {// <Like
+                //  count={this.props.likes}
+                  // object={this.props.id}
+              // >
+            }
             </div>
       </div>
       );
