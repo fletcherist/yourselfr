@@ -26,6 +26,9 @@ class Profile extends React.Component {
   componentDidMount () {
     document.body.style.minHeight = '101vh';
   }
+  componentWillUnmount () {
+    document.body.style.minHeight = '400px';
+  }
     render () {
       document.title = `${this.props.username} — Йорселфер`;
 

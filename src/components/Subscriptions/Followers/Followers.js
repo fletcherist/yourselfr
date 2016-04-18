@@ -60,6 +60,9 @@ class Followers extends React.Component {
                   )}
                 </div>
               </div>
+              {!follower.background && (
+                <div className={s.borderBottom}></div>
+              )}
             </div>
           )
         });

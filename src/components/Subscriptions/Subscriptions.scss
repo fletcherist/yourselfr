@@ -17,10 +17,18 @@
 
 .background {
 	z-index: 1;
-	width: 100.4%;
-	height: 100px;
+	width: 100.6%;
+	height: 98px;
   margin-bottom: -160px;
   margin-left: -1px;
+  margin-top: -2px;
+  z-index: 999999999999;
+  &:last-child {
+    border-radius: 30px;
+  }
+}
+
+.borderBottom {
   border-bottom: 1px solid $borderColor;
 }
 
