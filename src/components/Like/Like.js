@@ -10,7 +10,7 @@ class Like extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      active: false,
+      active: this.props.isLiked,
       count: this.props.count,
       object: this.props.object
     }
@@ -33,17 +33,15 @@ class Like extends React.Component {
     var classes = cx({
       button: true,
       inactive: !this.state.active,
-      active: this.state.active
+      active: this.state.active || this.props.isLiked
     });
     return (
-      <div style={{float: 'right'}}>
-        <div className={s.like} onClick={this.toggle.bind(this)}>
-          <div className={classes}></div>
-          <div className={s.count}>
-            {this.state.count > 0 && (
-               this.state.count
-            )}
-          </div>
+      <div className={s.like} onClick={this.toggle.bind(this)}>
+        <div className={classes}></div>
+        <div className={s.count}>
+          {this.state.count > 0 && (
+             this.state.count
+          )}
         </div>
       </div>
     );
@@ -53,13 +51,12 @@ class Like extends React.Component {
 Like.propTypes = {
   count: React.PropTypes.number,
   object: React.PropTypes.string.isRequired,
-  likePost: React.PropTypes.func.isRequired
+  likePost: React.PropTypes.func.isRequired,
+  isLiked: React.PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
-  return {
-    lol: 'lol'
-  }
+  return {}
 }
 const mapDispatchToProps = (dispatch) => {
   return {

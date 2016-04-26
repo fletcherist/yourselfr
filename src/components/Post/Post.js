@@ -1,55 +1,40 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Like from '../Like';
 import Comment from '../Comment';
 
 import s from './Post.scss';
 import cx from 'classnames/bind';
-import { config } from '../../redux/config';
+// import { config } from '../../redux/config';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
-import { timePassed } from '../Toools';
 import { isEmpty } from '../toools';
 import CommentForm from '../Comment/CommentForm';
+import Photopost from '../Photopost';
+import TickTime from './TickTime';
 
 let ccx = cx.bind(s);
-class Post extends React.Component {
+class Post extends Component {
+    static propTypes = {
+      text: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      likes: PropTypes.number,
+      attachments: PropTypes.object,
+      isLiked: PropTypes.bool,
+      comments: PropTypes.array,
+      isYourPage: PropTypes.bool.isRequired,
+      removePost: React.PropTypes.func.isRequired
+    };
     constructor (props) {
       super(props);
       this.state = {
         created_at: this.props.created_at,
         createdPronounce: 'сейчас',
         isHot: false,
-        updateTimer: false,
-        isLiked: this.props.isLiked,
         showCommentForm: false
       }
-
-      this.timePassed = timePassed;
     }
 
-    tickTime (flag) {
-      var time = new Date(this.state.created_at);
-      var timePassed = this.timePassed(time);
-      // posts, posted <5s ago will show coloured.
-      var isHot = false;
-      if (timePassed.seconds < 60) {
-        isHot = true;
-      }
-      this.setState({
-        createdPronounce: timePassed.pronounce,
-        isHot: isHot
-      })
-    }
-    componentDidMount () {
-      this.loadInterval = setInterval(this.tickTime.bind(this), 10000);
-    }
-    componentWillUnmount () {
-      this.loadInterval && clearInterval(this.loadInterval);
-      this.loadInterval = false;
-    }
-    componentWillMount () {
-      this.tickTime();
-    }
 
     openCommentForm () {
       this.setState({
@@ -87,11 +72,11 @@ class Post extends React.Component {
       return (
         <div className={s.first}>
           {!isPhoto && (
-            <div className={postClasses} onDoubleClick={ this.openCommentForm.bind(this) }>
+            <div className={postClasses} onClick={ this.openCommentForm.bind(this) }>
               <div className={s.time}>
-                  <span className={ccx({
-                    hideOnHover: this.props.isYourPage})
-                  }>{this.state.createdPronounce}</span>
+                  <span className={ccx({hideOnHover: this.props.isYourPage})}>
+                    <TickTime time={this.props.created_at}/>
+                  </span>
                   {this.props.isYourPage && (
                       <div className={s.removeButton} onClick={ () => this.props.removePost(this.props.id)}></div>
                   )}
@@ -102,18 +87,18 @@ class Post extends React.Component {
               <Like
                   count={this.props.likes}
                   object={this.props.id}
+                  isLiked={this.props.isLiked}
               />
             </div>
         )}
         {isPhoto && (
-          <div className={s.photoPost} style={{background: `url(${config.http}/upload/photo/${this.props.attachments.photo})`}}>
-              {this.props.isYourPage && (
-                <div className={s.removePhotoPost} onClick={ () => this.props.removePost(this.props.id)}></div>
-              )}
-              <div className={s.photoText}>
-                <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
-              </div>
-          </div>
+          <Photopost
+            id={this.props.id}
+            isYourPage={this.props.isYourPage}
+            removePost={this.props.removePost}
+            photo={this.props.attachments.photo}
+            text={this.props.text}
+          />
         )}
         {commentsArray && (
           <div>
@@ -129,22 +114,8 @@ class Post extends React.Component {
     }
 }
 
-Post.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  created_at: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  likes: React.PropTypes.number,
-  attachments: React.PropTypes.object,
-  isLiked: React.PropTypes.bool,
-  comments: React.PropTypes.array,
-  isYourPage: React.PropTypes.bool.isRequired,
-
-  removePost: React.PropTypes.func.isRequired
-}
-
 const mapStateToProps = (state) => {
   return {
-    isYourPage: state.auth.isYourPage
   }
 }
 export default connect(mapStateToProps, postsActions)(Post);

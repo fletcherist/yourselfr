@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import { ending, isEmpty } from '../toools';
+import { ending, isEmpty, arraysEqual } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';
@@ -16,6 +16,15 @@ class Posts extends React.Component {
         postsLoaded: 25
       });
     }
+
+    componentWillUpdate (nextProps) {
+      if (arraysEqual(this.props.posts, nextProps.posts)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     componentDidMount () {
       this.endlessFeed = setInterval(() => this.props.endlessLoad(), 5000);
     }

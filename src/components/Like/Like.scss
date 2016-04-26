@@ -1,16 +1,11 @@
 .like {
-	position: relative;
-	float: right;
+	display: flex;
 	width: 50px;
 	.count {
 		font-weight: 700;
 		font-size: 13px;
 		color:  #148BC3;
-		// float: right;
 		margin-top: -2px;
-		margin-right: 8px;
-		display: inline-block;
-		float: right;
 		text-align: right;
 		width: 20px;
 	}
