@@ -1,9 +1,6 @@
 @import 'variables';
 
 .postOne {
-	&:first-child {
-		padding-top: 15px;
-	}
 	&:last-child {
 		padding-bottom: 10px;
 	}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
 import {
@@ -14,7 +14,7 @@ import UploadBackground from './uploadBackground.js';
 // import UpdateSocialNetworks from './UpdateSocialNetworks';
 
 let cx = classNames.bind(s);
-export class PreferencesContainer extends React.Component {
+export class PreferencesContainer extends Component {
   render () {
     var activeStyle = {
       backgroundColor: '#f2fdff'
@@ -37,7 +37,7 @@ PreferencesContainer.propTypes = {
   children: React.PropTypes.element.isRequired
 }
 
-export class PreferencesPhotos extends React.Component {
+export class PreferencesPhotos extends Component {
   render () {
     return (
       <div>
@@ -63,11 +63,7 @@ class Preferences extends React.Component {
       this.state = {
         username: this.props.username,
         alias: this.props.alias,
-        status: this.props.status,
-
-        usernameOld: undefined,
-        aliasOld: undefined,
-        statusOld: undefined
+        status: this.props.status
       };
     }
 
@@ -84,19 +80,11 @@ class Preferences extends React.Component {
     }
 
     handleAlias () {
-      if (this.state.aliasOld === this.alias.value) {
-
-      } else {
-        this.props.saveAlias(this.alias.value)
-      }
+      this.props.saveAlias(this.alias.value)
     }
 
     handleStatus () {
-      if (this.state.statusOld === this.status.value) {
-
-      } else {
-        this.props.saveStatus(this.status.value);
-      }
+      this.props.saveStatus(this.status.value);
     }
 
     componentWillReceiveProps (props) {
@@ -106,27 +94,6 @@ class Preferences extends React.Component {
           alias: props.alias,
           status: props.status
         })
-      }
-
-      if (!this.state.usernameOld) {
-        this.setState({usernameOld: props.username});
-      }
-      if (!this.state.aliasOld) {
-        this.setState({aliasOld: props.alias});
-      }
-      if (!this.state.statusOld) {
-        this.setState({statusOld: props.status});
-      }
-
-      console.log(props);
-      if (this.props.isFetching.username.state === true) {
-        this.setState({usernameOld: this.username.value});
-      }
-      if (this.props.isFetching.alias.state === true) {
-        this.setState({aliasOld: this.alias.value});
-      }
-      if (this.props.isFetching.status.state === true) {
-        this.setState({statusOld: this.status.value});
       }
     }
 
@@ -207,16 +174,16 @@ class Preferences extends React.Component {
 }
 
 Preferences.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  alias: React.PropTypes.string.isRequired,
-  status: React.PropTypes.string,
-  isFetching: React.PropTypes.object,
+  username: PropTypes.string.isRequired,
+  alias: PropTypes.string.isRequired,
+  status: PropTypes.string,
+  isFetching: PropTypes.object,
 
-  saveStatus: React.PropTypes.func,
-  saveAlias: React.PropTypes.func,
-  saveUsername: React.PropTypes.func,
+  saveStatus: PropTypes.func,
+  saveAlias: PropTypes.func,
+  saveUsername: PropTypes.func,
 
-  authenticate: React.PropTypes.func.isRequired
+  authenticate: PropTypes.func.isRequired
 };
 
 function mapStateToProps (state) {

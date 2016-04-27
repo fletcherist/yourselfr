@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './UpdateSocialNetworks.scss';
 import x from '../Preferences/Preferences';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import { saveSocialNetworks } from 'redux/modules/preferences';
 
 let c = classNames.bind(x);
 
-class UpdateSocialNetworks extends React.Component {
+class UpdateSocialNetworks extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -113,12 +113,12 @@ class UpdateSocialNetworks extends React.Component {
 }
 
 UpdateSocialNetworks.propTypes = {
-  saveSocialNetworks: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.object,
-  vk: React.PropTypes.string,
-  twitter: React.PropTypes.string,
-  tumblr: React.PropTypes.string,
-  instagram: React.PropTypes.string
+  saveSocialNetworks: PropTypes.func.isRequired,
+  isFetching: PropTypes.object,
+  vk: PropTypes.string,
+  twitter: PropTypes.string,
+  tumblr: PropTypes.string,
+  instagram: PropTypes.string
 }
 
 function mapStateToProps (state) {

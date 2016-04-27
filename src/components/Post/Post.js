@@ -5,8 +5,6 @@ import Comment from '../Comment';
 import s from './Post.scss';
 import cx from 'classnames/bind';
 // import { config } from '../../redux/config';
-import { connect } from 'react-redux';
-import { actions as postsActions } from '../../redux/modules/posts';
 import { isEmpty } from '../toools';
 import CommentForm from '../Comment/CommentForm';
 import Photopost from '../Photopost';
@@ -34,7 +32,6 @@ class Post extends Component {
         showCommentForm: false
       }
     }
-
 
     openCommentForm () {
       this.setState({
@@ -114,8 +111,4 @@ class Post extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-export default connect(mapStateToProps, postsActions)(Post);
+export default Post;

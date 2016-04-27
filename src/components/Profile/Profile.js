@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './Profile.scss';
 import { Link } from 'react-router';
 import Counters from '../Counters';
@@ -6,23 +6,19 @@ import {connect} from 'react-redux';
 
 import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
+import StatusBox from './StatusBox';
 
-import { isValidPhoto, isNotEmptyString } from '../Toools';
-// import { config } from '../../redux/config';
+import { isValidPhoto } from '../Toools';
 
 import {actions as userActions} from '../../redux/modules/user';
 import onlinePic from './online.png';
 
-// import avatar from './avatar.jpg'
-
-class Profile extends React.Component {
+class Profile extends Component {
   constructor (props) {
     super(props);
     this.props.loadUser();
   }
-  // componentWillMount () {
-    // this.props.loadUser();
-  // }
+
   componentDidMount () {
     document.body.style.minHeight = '101vh';
   }
@@ -87,46 +83,25 @@ class Profile extends React.Component {
     }
 }
 
-class StatusBox extends React.Component {
-  render () {
-    var isStatus = isNotEmptyString(this.props.status);
-    return (
-      <div>
-        { isStatus && (
-          <div className='container--left'>
-            <div className={s.status}>
-              {this.props.status}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-
-StatusBox.propTypes = {
-  status: React.PropTypes.string.isRequired
-}
-
 Profile.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  alias: React.PropTypes.string.isRequired,
-  photo: React.PropTypes.string.isRequired,
-  background: React.PropTypes.string,
-  online: React.PropTypes.bool,
-  status: React.PropTypes.string,
-  social: React.PropTypes.object,
-  stats: React.PropTypes.shape({
-    visits: React.PropTypes.number.isRequired,
-    followers: React.PropTypes.number.isRequired,
-    following: React.PropTypes.number.isRequired
+  username: PropTypes.string.isRequired,
+  alias: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  background: PropTypes.string,
+  online: PropTypes.bool,
+  status: PropTypes.string,
+  social: PropTypes.object,
+  stats: PropTypes.shape({
+    visits: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired
   }),
-  loadUser: React.PropTypes.func.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  isFetching: React.PropTypes.object.isRequired,
-  isFollowing: React.PropTypes.bool.isRequired,
+  loadUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isFetching: PropTypes.object.isRequired,
+  isFollowing: PropTypes.bool.isRequired,
 
-  me: React.PropTypes.object
+  me: PropTypes.object
 };
 
 function mapStateToProps (state) {

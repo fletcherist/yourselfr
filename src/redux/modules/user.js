@@ -1,16 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
-import { fetchUser, fetchSubscribe } from './isFetching';
+import { fetchUser, fetchSubscribe, fetchPosts } from './isFetching';
+import { loadPostsPatch } from './posts';
 import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
 
 const LOAD_USER = 'LOAD_USER';
-const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
 const SUBSCRIBE = 'SUBSCRIBE';
 const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER';
-
-export const load = createAction(LOAD_USER);
-export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER, (value = 1) => value);
 
 function getAlias () {
   var alias = window.location.pathname.substr(1);
@@ -18,9 +15,11 @@ function getAlias () {
   return alias;
 }
 
+const loadUserPatch = createAction(LOAD_USER);
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
     dispatch(fetchUser({status: true}));
+    fetchPosts(fetchPosts(true));
 
     var currentAlias = getAlias();
     if (!alias) {
@@ -41,23 +40,19 @@ export const loadUser = (alias) => {
     }
 
     function fetchData () {
-      fetch(`${config.http}/api/users/${alias}`, {credentials: 'include'})
+      fetch(`${config.http}/api/all/user/${alias}`, {credentials: 'include'})
         .then((r) => r.json())
         .catch((e) => {
           window.location.href = '404';
         })
         .then((data) => {
           dispatch(fetchUser({status: false}));
-          dispatch(load(data));
-
-          if (!data.alias) {
-            var dev = confirm('Are you for dev here?');
-            if (!dev) {
-              dispatch(routeActions.push('/404'));
-            } else {
-              return false;
-            }
+          fetchPosts(fetchPosts(false));
+          if (!data.user) {
+            return dispatch(routeActions.push('/404'));
           }
+          dispatch(loadUserPatch(data.user));
+          dispatch(loadPostsPatch(data.posts));
 
           ga.event({
             category: 'User',

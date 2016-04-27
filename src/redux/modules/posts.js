@@ -30,7 +30,7 @@ export const likePost = createAction(LIKE_POST, async (id) => {
   })
 })
 
-const loadPostsPatch = createAction(LOAD_POSTS);
+export const loadPostsPatch = createAction(LOAD_POSTS);
 export const loadPosts = (offset) => {
   return (dispatch, getState) => {
     var alias = window.location.pathname.substr(1);

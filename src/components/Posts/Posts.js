@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import { ending, isEmpty, arraysEqual } from '../toools';
+import { isEmpty, arraysEqual } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';
-import WriteBox from '../WriteBox';
-// import ShareWithSocial from '../ShareWithSocial';
+import NoPosts from './NoPosts';
+import PostsHeader from './PostsHeader';
 
-class Posts extends React.Component {
+class Posts extends Component {
     componentWillMount () {
-      this.props.loadPosts();
       this.setState({
         count: this.props.count,
         postsLoaded: 25
@@ -26,13 +25,14 @@ class Posts extends React.Component {
     }
 
     componentDidMount () {
-      this.endlessFeed = setInterval(() => this.props.endlessLoad(), 5000);
+      this.endlessFeed = setInterval(() => this.props.endlessLoad(), 15000);
     }
     componentWillUnmount () {
       this.endlessFeed && clearInterval(this.endlessFeed);
       this.endlessFeed = false;
     }
     render () {
+      var self = this;
       var posts = this.props.posts;
       var postsArray;
       if (posts && !isEmpty(posts) && Array.isArray(posts)) {
@@ -47,6 +47,8 @@ class Posts extends React.Component {
               attachments={post.attachments}
               comments={post.comments}
               isLiked={post.isLiked}
+              isYourPage={self.props.isYourPage}
+              removePost={self.props.removePost}
             />
           )
         });
@@ -84,76 +86,17 @@ class Posts extends React.Component {
     }
 }
 
-class NoPosts extends React.Component {
-  render () {
-    return (
-      <div>
-        {this.props.isAuthenticated && (
-          <div className={s.noPostsContainer}>
-            <div className={s.noPosts}>Можем поспорить, что через 5 минут здесь будут анонимные мнения о вас.</div>
-          </div>
-        )}
-        {!this.props.isAuthenticated && (
-          <div className={s.noPostsEmpty}>
-            <div className={s.NoPosts}>Пока ничего нет. Напишите первым!</div>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-
-NoPosts.propTypes = {
-  isAuthenticated: React.PropTypes.bool.isRequired
-}
-
-class PostsHeader extends React.Component {
-  componentWillMount () {
-    this.setState({
-      show: false
-    })
-  }
-
-  openModalBox () {
-    setTimeout(() => {
-      this.setState({show: !this.state.show})
-    }, 300);
-  }
-
-  render () {
-    var {count, username} = this.props;
-    var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений']);
-    if (!username) {
-      username = 'Пользователь';
-    }
-    return (
-      <div className='blockTitle'>
-        <div className='postsUser'>
-          <span className='navLink'>{username}</span>
-          <span className='separator'></span>
-          <span className='navItem'>{ count } {postsPronounce}</span>
-        </div>
-        <span className='blockTitle--right' onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
-        <WriteBox show={this.state.show}/>
-      </div>
-    )
-  }
-}
-PostsHeader.propTypes = {
-  count: React.PropTypes.number.isRequired,
-  username: React.PropTypes.string.isRequired
-}
-
 Posts.propTypes = {
-  count: React.PropTypes.number.isRequired,
-  posts: React.PropTypes.array.isRequired,
-  loadPosts: React.PropTypes.func.isRequired,
-  endlessLoad: React.PropTypes.func.isRequired,
-  loadMorePosts: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
-  isFetchingLoadMore: React.PropTypes.bool.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  username: React.PropTypes.string.isRequired
+  count: PropTypes.number.isRequired,
+  posts: PropTypes.array.isRequired,
+  loadPosts: PropTypes.func.isRequired,
+  endlessLoad: PropTypes.func.isRequired,
+  loadMorePosts: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  isFetchingLoadMore: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+  isYourPage: PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {
@@ -161,6 +104,7 @@ function mapStateToProps (state) {
     posts: state.posts,
     count: state.user.stats.posts,
     isAuthenticated: state.auth.authenticated,
+    isYourPage: state.auth.isYourPage,
     isFetching: state.isFetching.posts,
     isFetchingLoadMore: state.isFetching.loadMorePosts,
     username: state.user.username

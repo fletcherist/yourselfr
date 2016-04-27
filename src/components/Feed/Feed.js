@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import EndlessFeed from '../EndlessFeed';
 import Navigation from '../Navigation';
@@ -7,7 +7,7 @@ import classNames from 'classnames/bind';
 import { actions as feed } from '../../redux/modules/endlessFeed';
 let cx = classNames.bind(s);
 
-class Feed extends React.Component {
+class Feed extends Component {
   constructor () {
     super();
     this.state = {
@@ -46,10 +46,10 @@ class Feed extends React.Component {
 }
 
 Feed.propTypes = {
-  loadEndlessFeed: React.PropTypes.func.isRequired,
-  loadFeed: React.PropTypes.func.isRequired,
-  feed: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool
+  loadEndlessFeed: PropTypes.func.isRequired,
+  loadFeed: PropTypes.func.isRequired,
+  feed: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

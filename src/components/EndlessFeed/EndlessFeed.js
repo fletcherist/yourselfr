@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { isEmpty } from '../toools';
 import FeedPost from '../FeedPost';
 import Loader from '../Loader';
 
-class EndlessFeed extends React.Component {
+class EndlessFeed extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -41,7 +41,7 @@ class EndlessFeed extends React.Component {
 }
 
 EndlessFeed.propTypes = {
-  feed: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool.isRequired
+  feed: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired
 }
 export default EndlessFeed;
