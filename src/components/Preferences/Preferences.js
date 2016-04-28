@@ -7,100 +7,57 @@ import {
 } from '../../redux/modules/preferences';
 import { authenticate } from '../../redux/modules/auth';
 import classNames from 'classnames/bind';
-import User from '../User';
-import { Link } from 'react-router';
-import UploadAvatar from './UploadAvatar';
-import UploadBackground from './uploadBackground.js';
-// import UpdateSocialNetworks from './UpdateSocialNetworks';
 
 let cx = classNames.bind(s);
-export class PreferencesContainer extends Component {
-  render () {
-    var activeStyle = {
-      backgroundColor: '#f2fdff'
-    }
-    return (
-      <User>
-        <div className='container--right'>
-          <div>
-            <div className={s.category}><Link to='/preferences/'>общие</Link></div>
-            <div className={s.category}><Link to='/preferences/photos' activeStyle={activeStyle}>фотографии</Link></div>
-            <div className={s.category}><Link to='/preferences/social' activeStyle={activeStyle}>социальные сети</Link></div>
-          </div>
-          {this.props.children}
-        </div>
-      </User>
-    )
-  }
-}
-PreferencesContainer.propTypes = {
-  children: React.PropTypes.element.isRequired
-}
 
-export class PreferencesPhotos extends Component {
-  render () {
-    return (
-      <div>
-        <h3>Фотографии</h3>
-        <div>
-          <UploadAvatar/>
-          <UploadBackground/>
-          <button onClick={ () => this.props.removeAvatar() } className={cx('button button--upload')}> Удалить аватар </button>
-          <button onClick={ () => this.props.removeBackground() } className={cx('button button--upload')}> Удалить Фон </button>
-        </div>
-      </div>
-    )
-  }
-}
-PreferencesPhotos.propTypes = {
-  removeAvatar: React.PropTypes.func,
-  removeBackground: React.PropTypes.func
-}
+class Preferences extends Component {
+    static propTypes = {
+      username: PropTypes.string,
+      alias: PropTypes.string,
+      status: PropTypes.string,
+      isFetching: PropTypes.object.isRequired,
 
-class Preferences extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = {
-        username: this.props.username,
-        alias: this.props.alias,
-        status: this.props.status
-      };
-    }
+      saveStatus: PropTypes.func.isRequired,
+      saveAlias: PropTypes.func.isRequired,
+      saveUsername: PropTypes.func.isRequired,
+
+      authenticate: PropTypes.func.isRequired
+    };
 
     componentWillMount () {
-      this.props.authenticate();
+      this.setState({
+        username: '',
+        alias: '',
+        status: ''
+      });
     }
 
     handleUsername () {
-      if (this.state.usernameOld === this.username.value) {
-
-      } else {
-        this.props.saveUsername(this.username.value);
-      }
+      console.log('change username', this.state.username);
+      this.props.saveUsername(this.state.username);
     }
 
     handleAlias () {
-      this.props.saveAlias(this.alias.value)
+      this.props.saveAlias(this.state.alias)
     }
 
     handleStatus () {
-      this.props.saveStatus(this.status.value);
+      this.props.saveStatus(this.state.status);
     }
 
     componentWillReceiveProps (props) {
-      if (!this.state.username && !this.state.alias && !this.state.status) {
-        this.setState({
-          username: props.username,
-          alias: props.alias,
-          status: props.status
-        })
-      }
+      this.setState({
+        username: props.username,
+        alias: props.alias,
+        status: props.status
+      });
     }
 
     handleChange (name, e) {
       var change = {};
       change[name] = e.target.value;
       this.setState(change);
+      console.log(this.state);
     }
     render () {
       const {isFetching} = this.props;
@@ -172,19 +129,6 @@ class Preferences extends React.Component {
         );
     }
 }
-
-Preferences.propTypes = {
-  username: PropTypes.string.isRequired,
-  alias: PropTypes.string.isRequired,
-  status: PropTypes.string,
-  isFetching: PropTypes.object,
-
-  saveStatus: PropTypes.func,
-  saveAlias: PropTypes.func,
-  saveUsername: PropTypes.func,
-
-  authenticate: PropTypes.func.isRequired
-};
 
 function mapStateToProps (state) {
   return {

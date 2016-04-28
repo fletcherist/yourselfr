@@ -35,7 +35,6 @@ class Profile extends Component {
         }
       }
       var photo = isValidPhoto(this.props.photo);
-      console.log('asdasd', this.props.isFollowing);
       return (
         <div>
           <div className='container--left padding-0 container--transparent container--user'>
@@ -54,13 +53,11 @@ class Profile extends Component {
                     )}
                 </h1>
                 {this.props.alias !== this.props.me.alias && (
-                  <div style={{marginTop: '20px'}}>
-                    <SubscribeButton
-                      alias={this.props.alias}
-                      isFollowing={this.props.isFollowing}
-                      updateCounters
-                    />
-                  </div>
+                  <SubscribeButton
+                    alias={this.props.alias}
+                    isFollowing={this.props.isFollowing}
+                    updateCounters
+                  />
                 )}
                 <Counters
                   visits={this.props.stats.visits}

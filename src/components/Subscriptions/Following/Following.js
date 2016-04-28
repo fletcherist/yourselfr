@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import s from '../Subscriptions.scss';
 import { Link } from 'react-router'
@@ -10,7 +10,16 @@ import { config } from '../../../redux/config';
 import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
 
-class Following extends React.Component {
+class Following extends Component {
+    static propTypes = {
+      following: React.PropTypes.array.isRequired,
+      loadFollowing: React.PropTypes.func.isRequired,
+      loadUser: React.PropTypes.func.isRequired,
+      isFetching: React.PropTypes.bool.isRequired,
+      user: React.PropTypes.object.isRequired,
+      auth: React.PropTypes.object.isRequired
+    };
+
     componentWillMount () {
       this.props.loadFollowing();
     }
@@ -104,24 +113,17 @@ const FollowingHeader = ({alias, username}) => {
 }
 
 class NoFollowing extends React.Component {
+  static propTypes = {
+    username: PropTypes.string.isRequired
+  };
+
   render () {
     return (
-        <div className={s.noSubscriptions}>{this.props.username} пока ни на кого <br/> не подписался</div>
+        <div className={s.noSubscriptions}>
+          {this.props.username} пока ни на кого <br/> не подписался
+        </div>
     )
   }
-}
-
-NoFollowing.propTypes = {
-  username: React.PropTypes.object
-}
-
-Following.propTypes = {
-  following: React.PropTypes.array.isRequired,
-  loadFollowing: React.PropTypes.func.isRequired,
-  loadUser: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired,
-  auth: React.PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {

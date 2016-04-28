@@ -118,7 +118,7 @@ Followers.propTypes = {
   loadUser: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
   user: React.PropTypes.object.isRequired,
-  auth: React.PropTypes.bool.isRequired
+  auth: React.PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {

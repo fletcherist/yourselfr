@@ -8,6 +8,17 @@ import cookie from 'react-cookie';
 const AUTHENTICATE = 'AUTHENTICATE';
 // const LOG_IN = 'LOG_IN';
 const IS_YOUR_PAGE = 'IS_YOUR_PAGE';
+const CHANGE_USERNAME = 'CHANGE_USERNAME';
+const CHANGE_ALIAS = 'CHANGE_ALIAS';
+const CHANGE_STATUS = 'CHANGE_STATUS';
+
+export const changeUsername = createAction(CHANGE_USERNAME);
+export const changeAlias = createAction(CHANGE_ALIAS, (alias) => {
+  cookie.remove('alias', { path: '/' });
+  cookie.save('alias', alias, { path: '/' });
+  return alias;
+});
+export const changeStatus = createAction(CHANGE_STATUS);
 
 var defaultMe = {
   authenticated: false,
@@ -155,5 +166,14 @@ export default handleActions({
   },
   IS_YOUR_PAGE: (state, { payload }) => {
     return {...state, isYourPage: payload}
+  },
+  CHANGE_USERNAME: (state, { payload }) => {
+    return {...state, user: {...state.user, username: payload}}
+  },
+  CHANGE_ALIAS: (state, { payload }) => {
+    return {...state, user: {...state.user, alias: payload}}
+  },
+  CHANGE_STATUS: (state, { payload }) => {
+    return {...state, user: {...state.user, status: payload}}
   }
 }, defaultMe);

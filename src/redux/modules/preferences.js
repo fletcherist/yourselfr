@@ -7,6 +7,8 @@ import { fetchUsername,
          fetchSocialNetworks
 } from './isFetching';
 
+import {changeUsername, changeAlias, changeStatus} from './auth';
+
 export const loadAvatar = (avatar) => {
   return (dispatch, getState) => {
     console.log('saving uploading avatar..');
@@ -88,15 +90,18 @@ export const saveUsername = (username) => {
       }))
     }
 
+    dispatch(changeUsername(username));
     var body = createBody({username: username});
+    console.log(username);
     fetch(`${config.http}/api/users`, {
       method: 'POST',
       headers: {'Content-type': config.post},
-      credentials: 'same-origin',
+      credentials: 'include',
       body: body
     })
     .then((r) => r.json())
     .then((res) => {
+      console.log(res);
       if (res.status) {
       }
       setTimeout(() => {
@@ -124,11 +129,12 @@ export const saveAlias = (alias) => {
       }))
     }
 
+    dispatch(changeAlias(alias));
     var body = createBody({alias: alias});
     fetch(`${config.http}/api/users`, {
       method: 'POST',
       headers: {'Content-type': config.post},
-      credentials: 'same-origin',
+      credentials: 'include',
       body: body
     })
     .then((r) => r.json())
@@ -154,13 +160,15 @@ export const saveStatus = (status) => {
         message: 'Пожалуйста, не пишите себе так много!'
       }));
     }
+    dispatch(changeStatus(status));
+
     var body = createBody({status: status});
     fetch(`${config.http}/api/users`, {
       method: 'POST',
       headers: {
         'Content-type': config.post
       },
-      credentials: 'same-origin',
+      credentials: 'include',
       body: body
     })
     .then((r) => r.json())
@@ -194,7 +202,7 @@ export const saveSocialNetworks = (networks) => {
       headers: {
         'Content-type': config.post
       },
-      credentials: 'same-origin',
+      credentials: 'include',
       body: body
     })
     .then((r) => r.json())
@@ -216,21 +224,6 @@ const createBody = (user) => {
 
   return body;
 }
-
-// const fetchData = (body) => {
-//   fetch(`${config.http}/api/users`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-type': config.post
-//     },
-//     credentials: 'same-origin',
-//     body: body
-//   })
-//   .then((r) => r.json())
-//   .then((res) => {
-//     console.log(res);
-//   })
-// }
 
 export const actions = {
   loadAvatar,

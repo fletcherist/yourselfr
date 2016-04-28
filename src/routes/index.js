@@ -6,9 +6,9 @@ import NotFoundView from 'views/NotFoundView/NotFoundView';
 import Preferences from 'components/Preferences';
 
 // Preferences Components
+import PreferencesContainer from 'components/Preferences/Container';
 import UpdateSocialNetworks from 'components/Preferences/UpdateSocialNetworks';
-import { PreferencesContainer } from 'components/Preferences';
-import { PreferencesPhotos } from 'components/Preferences';
+import PreferencesPhotos from 'components/Preferences/Photos';
 
 import Posts from 'components/Posts';
 import User from 'components/User';

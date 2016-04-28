@@ -4,6 +4,7 @@ import { fetchUser, fetchSubscribe, fetchPosts } from './isFetching';
 import { loadPostsPatch } from './posts';
 import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
+import cookie from 'react-cookie';
 
 const LOAD_USER = 'LOAD_USER';
 const SUBSCRIBE = 'SUBSCRIBE';
@@ -31,10 +32,12 @@ export const loadUser = (alias) => {
     }
 
     if (alias === 'preferences' || alias === 'share-with-social') {
-      setTimeout(() => {
-        alias = getState().auth.user.alias;
-        fetchData();
-      }, 200)
+      var authenticated = cookie.load('authenticated');
+      if (!authenticated) {
+        window.location.href = '404';
+      }
+      alias = cookie.load('alias');
+      fetchData();
     } else {
       fetchData();
     }
@@ -107,6 +110,21 @@ export const actions = {
   loadUser
 }
 
+var standartUser = {
+  isFollowing: false,
+  username: ' ',
+  photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
+  alias: ' ',
+  status: '',
+  online: {},
+  stats: {
+    visits: 0,
+    followers: 0,
+    following: 0,
+    posts: 0
+  }
+}
+
 export default handleActions({
   LOAD_USER: (state, { payload }) => {
     return {...state, ...{status: '', background: ''}, ...payload};
@@ -128,16 +146,4 @@ export default handleActions({
       })
     })
   }
-}, {
-  username: ' ',
-  photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
-  alias: ' ',
-  status: '',
-  online: {},
-  stats: {
-    visits: 0,
-    followers: 0,
-    following: 0,
-    posts: 0
-  }
-});
+}, standartUser);
