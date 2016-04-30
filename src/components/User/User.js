@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './User.scss';
 import Profile from '../Profile';
 
@@ -6,7 +6,12 @@ import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 import Background from '../Background';
 
-class User extends React.Component {
+class User extends Component {
+    static propTypes = {
+      children: PropTypes.element.isRequired,
+      background: PropTypes.string
+    };
+
     render () {
       return (
             <div>
@@ -23,11 +28,6 @@ class User extends React.Component {
             </div>
         );
     }
-}
-
-User.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  background: React.PropTypes.string
 }
 
 function mapStateToProps (state) {

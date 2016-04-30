@@ -9,6 +9,7 @@ import { isValidPhoto, isEmpty } from '../../Toools';
 import { config } from '../../../redux/config';
 import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
+import FollowingHeader from '../../Headers/FollowingHeader';
 
 class Following extends Component {
     static propTypes = {
@@ -80,10 +81,7 @@ class Following extends Component {
       }
       return (
         <div className='container--right padding-0 container--subscriptions'>
-        <FollowingHeader
-          alias={this.props.user.alias}
-          username={this.props.user.username}
-        />
+        <FollowingHeader alias={this.props.user.alias} username={this.props.user.username}/>
           {this.props.isFetching && (
             <Loader/>
           )}
@@ -100,16 +98,6 @@ class Following extends Component {
         </div>
       )
     }
-}
-
-const FollowingHeader = ({alias, username}) => {
-  return (
-    <div className='blockTitle'>
-      <Link to={`/${alias}`} className='navLink'>{username}</Link>
-      <span className='separator'></span>
-      <span className='navItem'>Подписки</span>
-    </div>
-  )
 }
 
 class NoFollowing extends React.Component {

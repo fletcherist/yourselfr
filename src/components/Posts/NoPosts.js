@@ -10,20 +10,16 @@ class NoPosts extends Component {
 
   }
   render () {
-    return (
-      <div>
-        {this.props.isAuthenticated && (
-          <div className={s.noPostsContainer}>
-            <div className={s.noPosts}>Можем поспорить, что через 5 минут здесь будут анонимные мнения о вас.</div>
-          </div>
-        )}
-        {!this.props.isAuthenticated && (
-          <div className={s.noPostsEmpty}>
-            <div className={s.NoPosts}>Пока ничего нет. Напишите первым!</div>
-          </div>
-        )}
-      </div>
-    );
+    const { isAuthenticated } = this.props;
+    if (isAuthenticated) {
+      return (
+        <div className={s.noPosts}>Здесь будет показываться то,<br/> что ваши друзья думают о Вас.</div>
+      )
+    } else {
+      return (
+        <div className={s.noPosts}>Пока ничего нет. Напишите первым!</div>
+      )
+    }
   }
 }
 

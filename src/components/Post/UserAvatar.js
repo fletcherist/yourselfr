@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './Post.scss';
 import { isValidPhoto } from '../Toools';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import { loadUser } from '../../redux/modules/user';
 
-class UserAvatar extends React.Component {
+class UserAvatar extends Component {
+  static propTypes = {
+    photo: React.PropTypes.string.isRequired,
+    alias: React.PropTypes.string.isRequired,
+    loadUser: PropTypes.func.isRequired
+  };
+
+  shouldComponentUpdate () {
+    return true;
+  }
+
   render () {
     var photo = isValidPhoto(this.props.photo);
     var styles = {
@@ -13,9 +21,10 @@ class UserAvatar extends React.Component {
         border: '0px'
       }
     }
+    const { alias, loadUser } = this.props;
     return (
       <div className={s.time} style={{marginRight: '15px'}}>
-        <Link to={`/${this.props.alias}`} style={styles.link}>
+        <Link to={`/${alias}`} style={styles.link} onClick={ () => loadUser(alias)}>
           <img
             src={photo}
             className={s.photo}/>
@@ -24,18 +33,5 @@ class UserAvatar extends React.Component {
     );
   }
 }
-UserAvatar.propTypes = {
-  photo: React.PropTypes.string.isRequired,
-  alias: React.PropTypes.string.isRequired
-}
 
-const mapStateToProps = (state) => {
-  return {}
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadUser: (alias) => dispatch(loadUser(alias))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserAvatar);
+export default UserAvatar;

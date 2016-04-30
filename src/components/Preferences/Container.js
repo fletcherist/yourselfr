@@ -16,7 +16,7 @@ export class PreferencesContainer extends Component {
       <User>
         <div className='container--right'>
           <div>
-            <div className={s.category}><Link to='/preferences/'>общие</Link></div>
+            <div className={s.category}><Link to='/preferences/' activeStyle={activeStyle}>общие</Link></div>
             <div className={s.category}><Link to='/preferences/photos' activeStyle={activeStyle}>фотографии</Link></div>
             <div className={s.category}><Link to='/preferences/social' activeStyle={activeStyle}>социальные сети</Link></div>
           </div>

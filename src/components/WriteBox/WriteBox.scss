@@ -1,5 +1,17 @@
 @import 'variables';
 
+.header {
+	text-align: center;
+	font-weight: 300;
+	font-size: 14px;
+	padding: 10px;
+	background-color: $greyBackground;
+	border-bottom: 1px solid $borderColor;
+	border-radius: 3px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
 .container {
 	transition: all .2s;
 	border-radius: 3px;
@@ -9,7 +21,6 @@
 	margin: auto;
 
 	box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
-	border: 1px solid $borderColor;
 	textarea {
 		border-radius: 3px;
 		display: block;
@@ -24,14 +35,6 @@
 
 		&:focus {
 			outline: none;
-		}
-		@media screen and (max-width: 800px){
-			// max-width: 500px;
-			// border-radius: 0px;
-		}
-		@media screen and (max-width: 500px){
-
-			// margin-bottom: 50px;
 		}
 	}
 	.preview {
@@ -57,7 +60,6 @@
 	@media screen and (max-width: 400px){
 		width: 285px !important;
 	}
-
 
 	textarea:focus::-webkit-input-placeholder { color:transparent; }
 	textarea:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
@@ -99,23 +101,30 @@
 
 .photoHolder {
 	float: right;
-	// width: 140px;
-	background-color: $yoColor05;
-	margin-top: 10px;
-	padding: 4px 7px 1px;
-	border-radius: 5px;
-	box-shadow: inset 0 -1px #E8EFFF;
-	color: $yoColor;
+	width: 110px;
+	background-color: #CFEFD0;
+	padding: 10px 10px 4px;
+	border-radius: 3px;
+	color: #36802B;
 	cursor: pointer;
-	margin-right: 10px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	transition: .2s background;
+
+	&:hover {
+		background: #D5EFF9;
+		color: $yoColor;
+	}
+
+	&:active {
+		color: $yoColor;
+	}
 }
 
 .photoTitle {
 	float: left;
 	margin-top: 2px;
 	font-size: 10px;
-	text-transform: uppercase;
-	font-weight: bold;
 }
 
 .addPhoto {
@@ -126,11 +135,10 @@
 	mask-size: cover;
 	outline: 0px;
 	outline-width: 0px;
-	mask-size: cover;
 	-webkit-mask-size: cover;
 	display: inline-block;
 	transition: transform .4s, background-color .5s, opacity .1s;
-	background-color: $yoColor;
+	background-color: white;
 	-webkit-mask: url('./components/WriteBox/camera.svg') no-repeat 50% 50%;
 	mask: url(./components/WriteBox/camera.svg) no-repeat 100% 100%;
 	-webkit-mask-size: 16px;
@@ -144,7 +152,6 @@
 .attachPreview {
 		background-color: #EFEFEF;
 		float: right;
-		// position: absolute;
 		margin-top: -140px;
 		height: 120px;
 		width: 202px;
@@ -157,18 +164,20 @@
 }
 
 .buttonSubmit {
-	color: #E98032;
-	background: #FFF3BB;
-	box-shadow: inset 0 -1px #F9D885;
-	// float: left;
+	color: $yoColor;
+	background: $yoColor05;
 	text-align: center;
 	font-size: 11px;
-	text-transform: uppercase;
-	font-weight: bold;
-	border-radius: 5px;
-	// width: 150px;
-}
-
-.SmileBoxContainer {
+	border-radius: 3px;
 	display: inline-block;
+	padding: 10px;
+	width: 160px;
+	cursor: pointer;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	transition: .2s background;
+
+	&:hover {
+		background: #D5EFF9;
+	}
 }

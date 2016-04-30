@@ -151,8 +151,12 @@ export const saveAlias = (alias) => {
 }
 
 export const saveStatus = (status) => {
+  console.log(status);
   return (dispatch, getState) => {
     dispatch(fetchStatus({status: true}));
+    if (!status) {
+      status = '';
+    }
     if (status.length > 250) {
       dispatch(fetchStatus({
         status: false,
@@ -173,6 +177,7 @@ export const saveStatus = (status) => {
     })
     .then((r) => r.json())
     .then((res) => {
+      console.log(res);
       setTimeout(() => {
         dispatch(fetchStatus({
           status: false,

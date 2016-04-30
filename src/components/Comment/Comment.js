@@ -60,7 +60,7 @@ class Comment extends React.Component {
       return (
         <div>
             <div className={postClasses}>
-              <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias}/>
+              <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias} loadUser={this.props.loadUser} />
               <span className={ccx({
                 hideOnHover: this.props.isYourPage})
               }></span>

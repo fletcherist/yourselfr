@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import s from './Navigation.scss';
 import { Link } from 'react-router';
@@ -7,7 +7,12 @@ import { loadUser } from '../../redux/modules/user';
 
 let cx = classNames.bind(s);
 
-class Navigation extends React.Component {
+class Navigation extends Component {
+    static propTypes = {
+      isAuthenticated: PropTypes.bool.isRequired,
+      user: PropTypes.object,
+      loadUser: PropTypes.func.isRequired
+    };
     constructor (props) {
       super(props);
       this.state = {
@@ -80,12 +85,6 @@ class Navigation extends React.Component {
     }
 }
 
-Navigation.propTypes = {
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object,
-  loadUser: React.PropTypes.func.isRequired
-}
-
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.authenticated,
@@ -97,6 +96,4 @@ const mapDispatchToProps = (dispatch) => {
     loadUser: (alias) => dispatch(loadUser(alias))
   }
 }
-// onClick={ () => this.props.loadUser(this.props.user.alias) }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

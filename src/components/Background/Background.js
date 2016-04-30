@@ -6,7 +6,7 @@ class Background extends Component {
     background: PropTypes.string
   };
 
-  componentWillUpdate (nextProps) {
+  shouldComponentUpdate (nextProps) {
     return nextProps.background !== this.props.background;
   }
 

@@ -28,14 +28,6 @@ import Followers from 'components/Subscriptions/Followers';
 import Following from 'components/Subscriptions/Following';
 import UserNavigation from 'components/UserNavigation';
 
-class defaultUser extends React.Component {
-  render () {
-    return (
-      <Posts/>
-    )
-  }
-}
-
 class ShareWithSocialContainer extends React.Component {
   render () {
     return (
@@ -69,7 +61,7 @@ export default (
     <Route path='/i/get-socialized' component={requireAuthentication(GetSocialized)} />
 
     <Route path='/:user' component={User} >
-      <IndexRoute component={defaultUser}/>
+      <IndexRoute component={Posts}/>
       <Route path='followers' component={Followers} />
       <Route path='following' component={Following} />
     </Route>

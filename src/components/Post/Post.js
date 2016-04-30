@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import Like from '../Like';
-import Comment from '../Comment';
+// import Comment from '../Comment';
 
 import s from './Post.scss';
 import cx from 'classnames/bind';
 // import { config } from '../../redux/config';
-import { isEmpty } from '../toools';
-import CommentForm from '../Comment/CommentForm';
+// import { isEmpty } from '../toools';
+// import CommentForm from '../Comment/CommentForm';
 import Photopost from '../Photopost';
 import TickTime from './TickTime';
 
@@ -33,6 +33,10 @@ class Post extends Component {
       }
     }
 
+    componentWillUpdate (nextProps) {
+      return false;
+    }
+
     openCommentForm () {
       this.setState({
         showCommentForm: !this.state.showCommentForm
@@ -50,22 +54,22 @@ class Post extends Component {
       this.props.attachments.photo &&
       this.props.attachments.photo !== undefined ? isPhoto = true : isPhoto = false
 
-      var comments = this.props.comments;
-      var commentsArray;
-      if (comments && !isEmpty(comments) && Array.isArray(comments)) {
-        commentsArray = comments.map(function (comment) {
-          return (
-            <Comment
-              key={comment._id}
-              id={comment._id}
-              text={comment.text}
-              created_at={comment.created_at}
-              user={comment.user}
-              isLiked={comment.isLiked}
-            />
-          )
-        });
-      }
+      // var comments = this.props.comments;
+      // var commentsArray;
+      // if (comments && !isEmpty(comments) && Array.isArray(comments)) {
+      //   commentsArray = comments.map(function (comment) {
+      //     return (
+      //       <Comment
+      //         key={comment._id}
+      //         id={comment._id}
+      //         text={comment.text}
+      //         created_at={comment.created_at}
+      //         user={comment.user}
+      //         isLiked={comment.isLiked}
+      //       />
+      //     )
+      //   });
+      // }
       return (
         <div className={s.first}>
           {!isPhoto && (
@@ -97,15 +101,18 @@ class Post extends Component {
             text={this.props.text}
           />
         )}
-        {commentsArray && (
-          <div>
-            {commentsArray}
-            <CommentForm post_id={this.props.id}/>
-          </div>
-        )}
-        {this.state.showCommentForm && (
-          <CommentForm post_id={this.props.id}/>
-        )}
+        {
+          // {commentsArray && (
+          //   // <div>
+          //   //   {commentsArray}
+          //   //   <CommentForm post_id={this.props.id}/>
+          //   // </div>
+          // )}
+          //
+          // {this.state.showCommentForm && (
+          //   // <CommentForm post_id={this.props.id}/>
+          // )}
+        }
       </div>
       );
     }

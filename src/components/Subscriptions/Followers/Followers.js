@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import s from '../Subscriptions.scss';
 import { Link } from 'react-router'
 
 import { loadUser } from '../../../redux/modules/user';
 import { loadFollowers } from '../../../redux/modules/followers'
-import { isValidPhoto, isEmpty } from '../../Toools';
+import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
 import { config } from '../../../redux/config';
 import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
+import FollowersHeader from '../../Headers/FollowersHeader';
 
-class Followers extends React.Component {
+class Followers extends Component {
+    static propTypes = {
+      followers: PropTypes.array.isRequired,
+      loadFollowers: PropTypes.func.isRequired,
+      loadUser: PropTypes.func.isRequired,
+      isFetching: PropTypes.bool.isRequired,
+      user: PropTypes.object.isRequired,
+      auth: PropTypes.object.isRequired
+    };
+
     componentWillMount () {
       this.props.loadFollowers();
     }
+    componentWillUpdate (nextProps) {
+      return !arraysEqual(this.props.followers, nextProps.followers)
+    }
+
     render () {
       const loadUser = this.props.loadUser.bind(this);
       const isAuthenticated = this.props.auth.authenticated;
@@ -94,31 +108,12 @@ class Followers extends React.Component {
     }
 }
 
-const FollowersHeader = ({alias, username}) => {
-  return (
-    <div className='blockTitle'>
-      <Link to={`/${alias}`} className='navLink'>{username}</Link>
-      <span className='separator'></span>
-      <span className='navItem'>Подписчики</span>
-    </div>
-  )
-}
-
 class NoFollowers extends React.Component {
   render () {
     return (
       <div className={s.noSubscriptions}>Пока нет ни одного<br/> подписчика</div>
     )
   }
-}
-
-Followers.propTypes = {
-  followers: React.PropTypes.array.isRequired,
-  loadFollowers: React.PropTypes.func.isRequired,
-  loadUser: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired,
-  auth: React.PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {

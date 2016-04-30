@@ -7,6 +7,10 @@ class StatusBox extends Component {
     status: PropTypes.string.isRequired
   };
 
+  shouldComponentUpdate (nextProps) {
+    return this.props.status !== nextProps.status;
+  }
+
   render () {
     var isStatus = isNotEmptyString(this.props.status);
     return (

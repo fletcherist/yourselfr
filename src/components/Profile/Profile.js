@@ -14,12 +14,29 @@ import {actions as userActions} from '../../redux/modules/user';
 import onlinePic from './online.png';
 
 class Profile extends Component {
-  constructor (props) {
-    super(props);
-    this.props.loadUser();
-  }
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    alias: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+    background: PropTypes.string,
+    online: PropTypes.bool,
+    status: PropTypes.string,
+    social: PropTypes.object,
+    stats: PropTypes.shape({
+      visits: PropTypes.number.isRequired,
+      followers: PropTypes.number.isRequired,
+      following: PropTypes.number.isRequired
+    }),
+    loadUser: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    isFetching: PropTypes.object.isRequired,
+    isFollowing: PropTypes.bool.isRequired,
 
-  componentDidMount () {
+    me: PropTypes.object
+  };
+
+  componentWillMount () {
+    this.props.loadUser();
     document.body.style.minHeight = '101vh';
   }
   componentWillUnmount () {
@@ -79,27 +96,6 @@ class Profile extends Component {
       </div>)
     }
 }
-
-Profile.propTypes = {
-  username: PropTypes.string.isRequired,
-  alias: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-  background: PropTypes.string,
-  online: PropTypes.bool,
-  status: PropTypes.string,
-  social: PropTypes.object,
-  stats: PropTypes.shape({
-    visits: PropTypes.number.isRequired,
-    followers: PropTypes.number.isRequired,
-    following: PropTypes.number.isRequired
-  }),
-  loadUser: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  isFetching: PropTypes.object.isRequired,
-  isFollowing: PropTypes.bool.isRequired,
-
-  me: PropTypes.object
-};
 
 function mapStateToProps (state) {
   return {

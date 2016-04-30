@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { ending } from '../toools';
 import WriteBox from '../WriteBox';
+import s from './Headers.scss';
 
 class PostsHeader extends Component {
   static propTypes = {
@@ -15,9 +16,7 @@ class PostsHeader extends Component {
   }
 
   openModalBox () {
-    setTimeout(() => {
-      this.setState({show: !this.state.show})
-    }, 300);
+    this.setState({show: !this.state.show})
   }
 
   render () {
@@ -27,13 +26,13 @@ class PostsHeader extends Component {
       username = 'Пользователь';
     }
     return (
-      <div className='blockTitle'>
-        <div className='postsUser'>
-          <span className='navLink'>{username}</span>
-          <span className='separator'></span>
-          <span className='navItem'>{ count } {postsPronounce}</span>
+      <div className={s.blockTitle}>
+        <div className={s.postsUser}>
+          <span className={s.navLink}>{username}</span>
+          <span className={s.separator}></span>
+          <span className={s.navItem}>{ count } {postsPronounce}</span>
         </div>
-        <span className='blockTitle--right' onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
+        <span className={s.blockTitleRight} onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
         <WriteBox show={this.state.show}/>
       </div>
     )

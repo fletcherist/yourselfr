@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './WriteBox.scss';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import { config } from '../../redux/config';
 import cx from 'classnames';
 import Modal from 'react-modal';
-// import SmileBox from '../SmileBox';
 
 function formToTray () {
   var form = document.getElementById('textForm');
@@ -17,7 +16,14 @@ function formToFull () {
   form.style.width = '100%';
 }
 
-class WriteBox extends React.Component {
+class WriteBox extends Component {
+    static propTypes = {
+      sendPost: PropTypes.func.isRequired,
+      alias: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+      isYourPage: PropTypes.bool.isRequired
+    };
+
     constructor (props) {
       super(props);
       this.state = {
@@ -70,6 +76,7 @@ class WriteBox extends React.Component {
       this.preview.src = '';
       this.preview.classList.add('hidden')
       formToFull();
+      this.toggle();
     }
 
     selectPhoto (e) {
@@ -136,6 +143,7 @@ class WriteBox extends React.Component {
           left: '50%',
           right: 'auto',
           border: 'none',
+          height: '400px',
           minWidth: '500px',
           background: 'transparent',
           overflow: 'auto',
@@ -148,17 +156,18 @@ class WriteBox extends React.Component {
       return (
         <Modal isOpen={this.state.isOpen} style={customStyles} onRequestClose={this.toggle.bind(this)} closeTimeoutMS={300}>
             <div className={s.container} ref={(r) => this.writeBox = r }>
+                <div className={s.header}>Написать анонимное мнение</div>
                 <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
-                    <input type='file' name='photo' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input' className='attachPhoto-input'/>
+                    <input type='file' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input'/>
                 </form>
                 <textarea placeholder={this.state.textPlaceholder} id='textForm' ref={(ref) => this.textBox = ref} style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
                 </textarea>
                 <img id='attach-preview' ref={(r) => this.preview = r} className={attachPreview}/>
                 <div className={s.above}>
                     <div
-                        className={cx('button', s.buttonSubmit, s.button)}
+                        className={s.buttonSubmit}
                         onClick={this.handleSubmitButton.bind(this)}>
-                        отправить
+                        Отправить
                     </div>
                     {
                       // <div className={s.SmileBoxContainer}>
@@ -166,20 +175,13 @@ class WriteBox extends React.Component {
                       // </div>
                     }
                     <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
-                      <div className={s.photoTitle}>прикрепить</div>
+                      <div className={s.photoTitle}>Прикрепить</div>
                       <div className={s.addPhoto}></div>
                     </div>
                 </div>
             </div>
         </Modal>);
     }
-}
-
-WriteBox.propTypes = {
-  sendPost: React.PropTypes.func.isRequired,
-  alias: React.PropTypes.string.isRequired,
-  username: React.PropTypes.string.isRequired,
-  isYourPage: React.PropTypes.bool.isRequired
 }
 
 function mapStateToProps (state) {

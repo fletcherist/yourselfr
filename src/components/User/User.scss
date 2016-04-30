@@ -1,5 +1,4 @@
 .container {
-	transition: box-shadow 0.2s cubic-bezier(.4,.97,.65,.61);
 	padding-top: 50px;
 	margin-bottom: 10px;
 	margin-left: auto;
@@ -25,42 +24,4 @@
 		margin: 0 auto;
 		float: none;
 	}
-}
-
-@keyframes slideOutUp {
-  0% {
-  	opacity: 1;
-  }
-
-  100% {
-  	visibility: collapse;
-  	opacity: 0;
-   transform: translate3d(50%, -50%, 0);
-   // transform: translate3d(0, -100%, 0);
-  }
-}
-
-@keyframes slideIn {
-  0% {
-  	visibility: collapse;
-  	opacity: 0;
-  	transform: translate3d(-50%, -50%, 0);
-  }
-
-  100% {
-  	visibility: visible;
-  	opacity: 1;
-    transform: translate3d(0, 0, 0);
-   // transform: translate3d(0, -100%, 0);
-  }
-}
-
-.smash {
-	// overflow: hidden;
-	animation: slideOutUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.smashNew {
-	display: none;
-	animation: slideIn 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

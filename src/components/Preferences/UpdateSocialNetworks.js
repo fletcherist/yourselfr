@@ -122,7 +122,6 @@ UpdateSocialNetworks.propTypes = {
 }
 
 function mapStateToProps (state) {
-  console.log(state.auth.user);
   return {
     isFetching: state.isFetching.socialNetworks,
     vk: state.auth.user.social.vk,

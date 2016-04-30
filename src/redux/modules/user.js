@@ -20,7 +20,7 @@ const loadUserPatch = createAction(LOAD_USER);
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
     dispatch(fetchUser({status: true}));
-    fetchPosts(fetchPosts(true));
+    dispatch(fetchPosts(true));
 
     var currentAlias = getAlias();
     if (!alias) {
@@ -31,7 +31,7 @@ export const loadUser = (alias) => {
       }
     }
 
-    if (alias === 'preferences' || alias === 'share-with-social') {
+    if (alias === 'preferences' || alias === 'share-with-social' || alias === 'feed') {
       var authenticated = cookie.load('authenticated');
       if (!authenticated) {
         window.location.href = '404';
@@ -50,7 +50,7 @@ export const loadUser = (alias) => {
         })
         .then((data) => {
           dispatch(fetchUser({status: false}));
-          fetchPosts(fetchPosts(false));
+          dispatch(fetchPosts(false));
           if (!data.user) {
             return dispatch(routeActions.push('/404'));
           }

@@ -1,11 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
-import {
-  removeAvatar, removeBackground,
-  saveAlias, saveUsername, saveStatus
-} from '../../redux/modules/preferences';
-import { authenticate } from '../../redux/modules/auth';
+import { actions } from '../../redux/modules/preferences';
 import classNames from 'classnames/bind';
 
 let cx = classNames.bind(s);
@@ -19,21 +15,19 @@ class Preferences extends Component {
 
       saveStatus: PropTypes.func.isRequired,
       saveAlias: PropTypes.func.isRequired,
-      saveUsername: PropTypes.func.isRequired,
-
-      authenticate: PropTypes.func.isRequired
+      saveUsername: PropTypes.func.isRequired
     };
 
-    componentWillMount () {
-      this.setState({
-        username: '',
-        alias: '',
-        status: ''
-      });
+    constructor (props) {
+      super(props);
+      this.state = {
+        username: this.props.username,
+        alias: this.props.alias,
+        status: this.props.status
+      };
     }
 
     handleUsername () {
-      console.log('change username', this.state.username);
       this.props.saveUsername(this.state.username);
     }
 
@@ -57,7 +51,6 @@ class Preferences extends Component {
       var change = {};
       change[name] = e.target.value;
       this.setState(change);
-      console.log(this.state);
     }
     render () {
       const {isFetching} = this.props;
@@ -139,17 +132,4 @@ function mapStateToProps (state) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    removeAvatar: () => dispatch(removeAvatar()),
-    removeBackground: () => dispatch(removeBackground()),
-
-    saveUsername: (username) => dispatch(saveUsername(username)),
-    saveAlias: (alias) => dispatch(saveAlias(alias)),
-    saveStatus: (status) => dispatch(saveStatus(status)),
-
-    authenticate: () => dispatch(authenticate())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Preferences);
+export default connect(mapStateToProps, actions)(Preferences);
