@@ -17,38 +17,43 @@
 
 .menu {
   position: absolute;
-  margin: 0px auto;
   text-align: center;
   background-color: white;
-  padding: 10px;
+  padding-top: 10px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
-  width: 350px;
-  height: 235px !important;
+  width: 320px;
+  height: 200px !important;
   left: 50%;
   margin-left: -175px;
-  z-index: 999999999999999999999999999999999999999999999999999999999;
-  border-top: 3px solid $yoColor;
+  z-index: 9999;
   border-radius: 4px;
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
 }
-.menu:after {
-  bottom: 100%;
-	left: 50%;
+
+.menu:after, .menu:before {
 	border: solid transparent;
-	content: " ";
+	content: ' ';
 	height: 0;
-	width: 0;
+	left: 50%;
 	position: absolute;
-	pointer-events: none;
+	width: 0;
+  bottom: 100%;
+  margin-left: -10px;
 }
 
 .menu:after {
-  border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: $yoColor;
-	border-width: 10px;
-	margin-left: -10px;
+	border-width: 9px;
+	border-bottom-color: white;
+	left: 50%;
 }
+
+// .menu:before {
+// 	border-width: 11px;
+// 	border-bottom-color: #eee;
+//   left: 50%;
+//   margin-left: -12px;
+// }
 
 .hiddenMenu {
   visibility: hidden;
@@ -57,22 +62,22 @@
 
 .element {
   cursor: pointer;
-  height: 100px;
+  height: 90px;
   width: 100px;
   display: inline-block;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  border: 1px solid rgba(0,0,0, .05);
+
+  border-left: 1px solid rgba(0,0,0, .05);
+  &:nth-child(1), &:nth-child(4) {
+      border-left: 0px;
+  }
   color: #999;
-  // text-transform: uppercase;
   font-size: 12px;
 
   a {
     color: #999;
   }
   &:hover {
-    background-color: rgba(0,0,0, .01);
+    background-color: $yoColor05;
   }
 }
 
@@ -83,8 +88,8 @@
   margin: 10px auto;
   width: 50px;
   img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 100px;
   }
 }
@@ -100,30 +105,30 @@
 .iconProfile {
   -webkit-mask: url('./components/Navigation/icons/preferences.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 80px;
+  -webkit-mask-size: 70px;
 }
 .iconFeed {
   -webkit-mask: url('./components/Navigation/icons/feed.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 35px;
+  -webkit-mask-size: 30px;
 }
 .iconPreferences {
   -webkit-mask: url('./components/Navigation/icons/preferences.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 60px;
+  -webkit-mask-size: 40px;
 }
 .iconFollowers {
   -webkit-mask: url('./components/Navigation/icons/followers.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 30px;
+  -webkit-mask-size: 20px;
 }
 .iconFollowing {
   -webkit-mask: url('./components/Navigation/icons/following.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 40px;
+  -webkit-mask-size: 30px;
 }
 .iconLogout {
   -webkit-mask: url('./components/Navigation/icons/logout.svg') no-repeat 50% 50%;
   background: #DFDFDF;
-  -webkit-mask-size: 30px;
+  -webkit-mask-size: 20px;
 }

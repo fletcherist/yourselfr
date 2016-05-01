@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import cx from 'classnames/bind';
 import s from './Counters.scss';
 import { Link } from 'react-router';
-import {ending} from '../Toools';
+import { ending } from '../Toools';
 
 const active = {
   backgroundColor: 'rgb(246, 246, 246)'
@@ -21,9 +20,6 @@ class Counters extends Component {
       followers: ending(this.props.followers, ['подписчик', 'подписчика', 'подписчиков']),
       following: ending(this.props.following, ['подписка', 'подписки', 'подписок'])
     }
-
-    var followersClasses = cx(s.counter, s.followersCounter);
-    var followingClasses = cx(s.counter, s.followingCounter);
     return (
           <div>
               <div className={s.counter}>
@@ -31,12 +27,12 @@ class Counters extends Component {
                   <div className={s.counter_title}>{pronounce.visits}</div>
               </div>
 
-              <Link to={`/${this.props.alias}/followers`} className={followersClasses} activeStyle={active}>
+              <Link to={`/${this.props.alias}/followers`} className={s.counter} activeStyle={active}>
                   <div className={s.counter_count}>{this.props.followers}</div>
                   <div className={s.counter_title}>{pronounce.followers}</div>
               </Link>
 
-              <Link to={`/${this.props.alias}/following`} className={followingClasses} activeStyle={active}>
+              <Link to={`/${this.props.alias}/following`} className={s.counter} activeStyle={active}>
                 <div className={s.counter_count}>{this.props.following}</div>
                 <div className={s.counter_title}>{pronounce.following}</div>
               </Link>

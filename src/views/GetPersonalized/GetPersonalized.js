@@ -1,6 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
-import s from './GetPersonalized.scss';
+import s from '../GetSomething.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -24,7 +23,7 @@ class GetPersonalized extends React.Component {
             </div>
             <div className='rate-empty-line-3'></div>
             <Link to='/i/get-socialized'>
-              <button className={cx('button', s.button)}>Продолжить</button>
+              <div className={s.button}>Продолжить</div>
             </Link>
           </div>
           <div className={s.right}>

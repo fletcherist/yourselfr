@@ -22,8 +22,6 @@ import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
 import GetSocialized from 'views/GetSocialized/GetSocialized';
 import ShareWithSocial from 'components/ShareWithSocial';
 
-import { requireAuthentication } from 'components/Authenticate';
-
 import Followers from 'components/Subscriptions/Followers';
 import Following from 'components/Subscriptions/Following';
 import UserNavigation from 'components/UserNavigation';
@@ -56,9 +54,9 @@ export default (
     <Route path='/nav' component={UserNavigation} />
     <Route path='/share-with-social' component={ShareWithSocialContainer} />
 
-    <Route path='/i/get-started' component={requireAuthentication(GetStarted)} />
-    <Route path='/i/get-personalized' component={requireAuthentication(GetPersonalized)} />
-    <Route path='/i/get-socialized' component={requireAuthentication(GetSocialized)} />
+    <Route path='/i/get-started' component={GetStarted} />
+    <Route path='/i/get-personalized' component={GetPersonalized} />
+    <Route path='/i/get-socialized' component={GetSocialized} />
 
     <Route path='/:user' component={User} >
       <IndexRoute component={Posts}/>

@@ -2,7 +2,8 @@
 
 .container {
   max-width: 800px;
-  margin: 0px auto;
+  margin: 40px auto;
+  display: flex;
 }
 
 .left {
@@ -58,27 +59,28 @@
   @media screen and (max-width: 800px){
     display: none;
   }
-  img {
-    opacity: 0;
-    animation-fill-mode: forwards;
-    animation: StartCongratulationsFadeIn 1s forwards;
-    height: 150px;
-    width: 100%;
-  }
-  img:nth-child(1) {
-    animation-delay: .6s;
-    margin-left: 75px;
-  }
-  img:nth-child(2) {
-    animation-delay: .8s;
-  }
-  img:nth-child(3) {
-    animation-delay: 1s;
-    margin-left: 75px;
-  }
-  img:nth-child(4) {
-    animation-delay: 1.2s;
-  }
+}
+
+.photo {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation: StartCongratulationsFadeIn 1s forwards;
+  height: 150px;
+  width: 100%;
+}
+.photo:nth-child(1) {
+  animation-delay: .6s;
+  margin-left: 75px;
+}
+.photo:nth-child(2) {
+  animation-delay: .8s;
+}
+.photo:nth-child(3) {
+  animation-delay: 1s;
+  margin-left: 75px;
+}
+.photo:nth-child(4) {
+  animation-delay: 1.2s;
 }
 
 .greeting {
@@ -97,5 +99,8 @@
   margin-top: 20px;
   background-color: $yoColor;
   color: white;
-  padding: 10px 60px 10px 60px;
+  padding: 10px 30px 10px 30px;
+  width: 200px;
+  text-align: center;
+  border-radius: 3px;
 }

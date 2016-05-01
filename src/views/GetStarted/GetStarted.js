@@ -1,6 +1,5 @@
-import React from 'react';
-import cx from 'classnames';
-import s from './GetStarted.scss';
+import React, { Component, PropTypes } from 'react';
+import s from '../GetSomething.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -12,7 +11,10 @@ import photo3 from './photo3.jpg';
 import photo4 from './photo4.jpg';
 // import photo5 from './photo6.jpg';
 
-class GetStarted extends React.Component {
+class GetStarted extends Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  };
   render () {
     const { username } = this.props.user;
     return (
@@ -32,7 +34,7 @@ class GetStarted extends React.Component {
               Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br/> ваш профиль популярнее.
             </div>
             <Link to='/i/get-personalized'>
-              <button className={cx('button', s.button)}>Продолжить!</button>
+              <div className={s.button}>Продолжить!</div>
             </Link>
           </div>
           <div className={s.right}>
@@ -47,20 +49,10 @@ class GetStarted extends React.Component {
   }
 }
 
-GetStarted.propTypes = {
-  user: React.PropTypes.object.isRequired
-}
-
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GetStarted);
+export default connect(mapStateToProps)(GetStarted);

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { isEmpty } from '../toools';
 import FeedPost from '../FeedPost';
 import Loader from '../Loader';
+import { isEmpty, arraysEqual } from '../toools';
 
 class EndlessFeed extends Component {
   constructor (props) {
@@ -9,6 +9,10 @@ class EndlessFeed extends Component {
     this.state = {
       feed: []
     }
+  }
+
+  componentWillUpdate (nextProps) {
+    return !arraysEqual(this.props.feed, nextProps.feed);
   }
 
   render () {

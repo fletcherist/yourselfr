@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import vk from 'components/Buttons/SocialButtons/vk.svg';
 import twitter from 'components/Buttons/SocialButtons/twitter.svg';
 import s from './ShareWithSocial.scss';
 import { connect } from 'react-redux';
 import { selectText } from '../Toools';
 
-class ShareWithSocial extends React.Component {
+class ShareWithSocial extends Component {
+  static propTypes = {
+    alias: PropTypes.string.isRequired
+  };
+  doS () {
+
+  }
   render () {
     return (
       <div>
@@ -30,18 +36,11 @@ class ShareWithSocial extends React.Component {
     );
   }
 }
-ShareWithSocial.propTypes = {
-  alias: React.PropTypes.string.isRequired
-}
+
 function mapStateToProps (state) {
   return {
     alias: state.auth.user.alias
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
 
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShareWithSocial);
+export default connect(mapStateToProps)(ShareWithSocial);

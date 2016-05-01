@@ -5,7 +5,7 @@ import { isEmpty, arraysEqual } from '../toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';
-import NoPosts from './NoPosts';
+import NoPosts from '../NoData/NoPosts';
 import PostsHeader from '../Headers/PostsHeader';
 
 class Posts extends Component {

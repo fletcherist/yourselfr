@@ -10,6 +10,7 @@ import { config } from '../../../redux/config';
 import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
 import FollowersHeader from '../../Headers/FollowersHeader';
+import NoFollowers from 'components/NoData/NoFollowers';
 
 class Followers extends Component {
     static propTypes = {
@@ -42,7 +43,7 @@ class Followers extends Component {
           const myPageInList = follower._id === myUserId;
           return (
             <div key={follower._id} className={s.subContainer}>
-                <div style={{background: `url(${config.http}/upload/background/${follower.background})`}}
+                <div style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
                   className={s.background}>
                 </div>
               <div className={s.subscription}>
@@ -99,21 +100,13 @@ class Followers extends Component {
                 followersList
               )}
               {!followersList && (
-                <NoFollowers/>
+                <NoFollowers username={this.props.user.username}/>
               )}
             </div>
           )}
         </div>
       )
     }
-}
-
-class NoFollowers extends React.Component {
-  render () {
-    return (
-      <div className={s.noSubscriptions}>Пока нет ни одного<br/> подписчика</div>
-    )
-  }
 }
 
 function mapStateToProps (state) {

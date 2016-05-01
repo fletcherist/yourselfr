@@ -1,6 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
-import s from './GetSocialized.scss';
+import s from '../GetSomething.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -20,12 +19,10 @@ class GetSocialized extends React.Component {
               Поделитесь ссылкой на страничку в ВК или в Твиттере, чтобы ваши друзья смогли найти Вас.
             </div>
             <Link to={`/${this.props.user.alias}`}>
-              <button className={cx('button', s.button)}>Перейти к профилю!</button>
+              <div className={s.button}>Перейти к профилю!</div>
             </Link>
           </div>
-          <div className=''>
-            <ShareWithSocial/>
-          </div>
+          <ShareWithSocial/>
         </div>
       </div>
     )

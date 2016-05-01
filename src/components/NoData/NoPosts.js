@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import s from './Posts.scss';
+import s from './NoData.scss';
 
 class NoPosts extends Component {
   static propTypes = {
