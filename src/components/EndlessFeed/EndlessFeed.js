@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import FeedPost from '../FeedPost';
 import Loader from '../Loader';
-import { isEmpty, arraysEqual } from '../toools';
+import { isEmpty, arraysEqual } from '../Toools';
 
 class EndlessFeed extends Component {
   constructor (props) {

@@ -15,7 +15,7 @@ export const Avatar = ({photo, alias}) => (
 export const Username = ({username, online}) => {
   var fontSize = {fontSize: 22}
   if (username.length > 15) {
-    var fontSize = {fontSize: 18}
+    fontSize = {fontSize: 18}
   }
   return (
     <div className={s.username}>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ending } from '../toools';
+import { ending } from '../Toools';
 import WriteBox from '../WriteBox';
 import s from './Headers.scss';
 

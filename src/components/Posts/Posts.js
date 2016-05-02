@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from './Posts.scss';
 import Post from '../Post';
-import { isEmpty, arraysEqual } from '../toools';
+import { isEmpty, arraysEqual } from '../Toools';
 import {connect} from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
 import Loader from '../Loader';

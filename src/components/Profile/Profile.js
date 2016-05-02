@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import s from './Profile.scss';
 import Counters from '../Counters';
 import {connect} from 'react-redux';
 

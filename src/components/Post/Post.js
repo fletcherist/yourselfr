@@ -5,7 +5,6 @@ import Like from '../Like';
 import s from './Post.scss';
 import cx from 'classnames/bind';
 // import { config } from '../../redux/config';
-// import { isEmpty } from '../toools';
 // import CommentForm from '../Comment/CommentForm';
 import Photopost from '../Photopost';
 import TickTime from './TickTime';
