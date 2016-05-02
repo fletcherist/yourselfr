@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
 import { register } from 'redux/modules/auth';
@@ -10,7 +10,12 @@ import VkAuthButton from 'components/Buttons/SocialButtons';
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
 
-class SignupForm extends React.Component {
+class SignupForm extends Component {
+  static propTypes = {
+    isFetching: PropTypes.object.isRequired,
+    register: PropTypes.func.isRequired,
+    routeActions: PropTypes.func.isRequired
+  };
   constructor () {
     super();
     this.state = {
@@ -121,12 +126,6 @@ class SignupForm extends React.Component {
   }
 };
 
-SignupForm.propTypes = {
-  isFetching: React.PropTypes.object.isRequired,
-  register: React.PropTypes.func.isRequired,
-  dispatch: React.PropTypes.func,
-  routeActions: React.PropTypes.func
-}
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching.register

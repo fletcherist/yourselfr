@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import {config} from '../config.js';
+import { config } from '../config.js';
 import { updatePostsCounter } from './user';
 import { fetchPosts, fetchLoadMorePosts } from './isFetching';
 import ga from 'react-ga';

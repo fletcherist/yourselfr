@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import s from './Footer.scss';
+import cp from 'counterpart';
+import Translate from 'react-translate-component';
 
-export default class Footer extends Component {
+class Footer extends Component {
+  handleChange (locale) {
+    cp.setLocale(locale);
+  }
+
   render () {
     return (
-      <div className='rate-empty-line-5'></div>
+      <div className={s.footer}>
+        <span><a><Translate content='yourselfr'/> © 2016</a></span>
+        {' '}
+        <a onClick={ () => this.handleChange('ru')} className={s.footerA}>Русский</a>
+        {' '}
+        <a onClick={ () => this.handleChange('en')} className={s.footerA}>English</a>
+      </div>
     );
   }
 }
+
+export default Footer;

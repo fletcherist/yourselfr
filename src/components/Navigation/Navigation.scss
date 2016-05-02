@@ -20,7 +20,8 @@
   text-align: center;
   background-color: white;
   padding-top: 10px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
+  // box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid $borderColor;
   width: 320px;
   height: 200px !important;
   left: 50%;
@@ -48,12 +49,12 @@
 	left: 50%;
 }
 
-// .menu:before {
-// 	border-width: 11px;
-// 	border-bottom-color: #eee;
-//   left: 50%;
-//   margin-left: -12px;
-// }
+.menu:before {
+	border-width: 11px;
+	border-bottom-color: $borderColor;
+  left: 50%;
+  margin-left: -12px;
+}
 
 .hiddenMenu {
   visibility: hidden;
@@ -65,6 +66,7 @@
   height: 90px;
   width: 100px;
   display: inline-block;
+  transition: all .2s;
 
   border-left: 1px solid rgba(0,0,0, .05);
   &:nth-child(1), &:nth-child(4) {

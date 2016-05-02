@@ -7,6 +7,9 @@ import { loadUser } from '../../redux/modules/user';
 
 let cx = classNames.bind(s);
 
+const active = {
+  backgroundColor: 'rgb(246, 246, 246)'
+}
 class Navigation extends Component {
     static propTypes = {
       isAuthenticated: PropTypes.bool.isRequired,
@@ -43,25 +46,25 @@ class Navigation extends Component {
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
-                      <Link to='/feed'>
+                      <Link to='/feed' activeStyle={active}>
                         <div title='перейти к ленте' className={cx(s.icon, s.iconFeed)}/>
                         лента
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
-                      <Link to='/preferences'>
+                      <Link to='/preferences' activeStyle={active}>
                         <div title='перейти к настройкам' className={cx(s.icon, s.iconPreferences)}/>
                         настройки
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
-                      <Link to={`/${this.props.user.alias}/followers`}>
+                      <Link to={`/${this.props.user.alias}/followers`} activeStyle={active}>
                         <div title='перейти к подписчикам' className={cx(s.icon, s.iconFollowers)}/>
                         подписчики
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
-                      <Link to={`/${this.props.user.alias}/following`}>
+                      <Link to={`/${this.props.user.alias}/following`} activeStyle={active}>
                         <div title='перейти к подпискам' className={cx(s.icon, s.iconFollowing)}/>
                         подписки
                       </Link>

@@ -92,22 +92,6 @@ body {
   color: red;
 }
 
-
-.footer {
-  margin-top: 15px;
-  text-align: center;
-}
-.footerA {
-  padding: 2px 5px;
-  // color: $yoColor;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $yoColor05;
-  }
-}
-
 .logotype {
   background: url('./components/AuthComponents/yo.png') no-repeat center;
   background-size: 150px;
