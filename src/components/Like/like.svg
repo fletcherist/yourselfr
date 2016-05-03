@@ -1,41 +1,14 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 451.216 451.216" style="enable-background:new 0 0 451.216 451.216;" xml:space="preserve">
-<g>
-	<path d="M328.32,20.418c-42.959,0-80.738,22.093-102.711,55.516c-21.975-33.422-59.754-55.516-102.713-55.516
-		C55.024,20.418,0,75.442,0,143.307c0,158.893,179.885,287.491,225.609,287.491c45.794,0,225.607-128.599,225.607-287.491
-		C451.216,75.442,396.193,20.418,328.32,20.418z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="980px" height="893px" viewBox="0 0 980 893" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>e-commerce-like-heart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="e-commerce-like-heart" sketch:type="MSLayerGroup" fill="#000000">
+            <g id="Capa_1" sketch:type="MSShapeGroup">
+                <path d="M964.616,184.519 C948.986,139.924 921.534,99.695 885.227,68.181 C848.886,36.638 805.176,15.133 758.823,5.993 C741.359,2.549 723.402,0.803 705.452,0.803 C653.081,0.803 602.146,15.612 558.156,43.63 C531.674,60.497 508.411,81.652 489.248,106.114 C470.09,81.699 446.843,60.584 420.389,43.75 C376.42,15.773 325.52,0.985 273.189,0.985 C273.186,0.985 273.19,0.985 273.188,0.985 C229.584,0.985 185.821,11.755 146.642,32.128 C107.492,52.486 73.538,82.106 48.454,117.786 C22.752,154.343 7.096,195.278 1.92,239.453 C-2.612,278.14 0.888,319.67 12.325,362.889 C34.981,448.504 85.128,526.596 123.207,577.031 C206.002,686.69 319.843,786.227 471.235,881.332 L489.32,892.692 L507.406,881.332 C693.624,764.35 823.602,640.842 904.764,503.749 C951.442,424.905 975.758,354.665 979.107,289.016 C980.972,252.429 976.096,217.271 964.616,184.519 L964.616,184.519 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
 </svg>

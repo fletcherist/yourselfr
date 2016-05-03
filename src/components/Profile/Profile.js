@@ -2,10 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import Counters from '../Counters';
 import {connect} from 'react-redux';
 
-import { Avatar, Username } from './Elements';
+import { Avatar, Username, Status } from './Elements';
 import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
-import StatusBox from './StatusBox';
 import Footer from '../Footer';
 
 import {actions as userActions} from '../../redux/modules/user';
@@ -32,6 +31,10 @@ class Profile extends Component {
     me: PropTypes.object
   };
 
+  shouldComponentUpdate (nextProps) {
+    return nextProps.alias !== this.props.alias;
+  }
+
   componentWillMount () {
     this.props.loadUser();
     document.body.style.minHeight = '101vh';
@@ -40,6 +43,7 @@ class Profile extends Component {
     document.body.style.minHeight = '400px';
   }
   render () {
+    console.log('mounted');
     document.title = `${this.props.username} — Йорселфер`;
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
@@ -48,6 +52,7 @@ class Profile extends Component {
         <div className='container--left padding-0 container--transparent container--user'>
           <Avatar photo={photo} alias={alias}/>
           <Username online={online} username={username}/>
+          <Status status={status}/>
           {alias !== this.props.me.alias && (
             <SubscribeButton
               alias={alias}
@@ -62,10 +67,10 @@ class Profile extends Component {
             alias={alias}
           />
       </div>
-
-      <StatusBox status={status}/>
       <SocialNetworks networks={social}/>
-      <Footer/>
+      <div className='hide-on-mobile'>
+        <Footer/>
+      </div>
     </div>)
   }
 }

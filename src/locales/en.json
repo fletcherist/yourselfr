@@ -27,8 +27,8 @@
   },
   "counters": {
     "followers": {
-      "zero": "followers",
-      "one": "follower",
+      "zero": "follower",
+      "one": "followers",
       "other": "followers"
     },
     "following": {
@@ -37,9 +37,16 @@
       "other": "following"
     },
     "visits": {
-      "zero": "visits",
-      "one": "visit",
+      "zero": "visit",
+      "one": "visits",
       "other": "visits"
+    }
+  },
+  "interface": {
+    "counters": {
+      "visits": "visits",
+      "followers": "followers",
+      "following": "following"
     }
   }
 }

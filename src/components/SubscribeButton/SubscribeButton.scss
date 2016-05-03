@@ -1,26 +1,32 @@
+@import 'variables';
+
 .subscribe {
   background: #52c25d;
   color: #fff;
   border-radius: 40px;
-  height: 38px;
-  font-size: 14px;
-  line-height: 36px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 28px;
   text-align: center;
   margin: 0px auto 0px;
   cursor: pointer;
   border: 1px solid transparent;
   transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
   margin-bottom: 15px;
-  max-width: 130px;
-  min-width: 130px;
-  z-index: 9999999999999999999999999999;
+  max-width: 120px;
+  min-width: 120px;
+  z-index: 99999999999999999;
 }
 
 .follow {
   background: white;
-  border: 1px solid #639ab4;
-  color: #175E7B;
-  box-shadow: inset 0 0px #639ab4;
+  border: 1px solid $yoColor;
+  color: $yoBlue;
+
+  &:hover {
+    color: white;
+    background-color: $yoBlue;
+  }
 }
 
 .following {

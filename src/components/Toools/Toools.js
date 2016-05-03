@@ -16,6 +16,25 @@ export function ending (iNumber, aEndings) {
   return sEnding
 }
 
+export function cpEnding (iNumber, str) {
+  var types = ['.zero', '.one', '.other'];
+  var i;
+  iNumber = iNumber % 100
+  if (iNumber >= 11 && iNumber <= 19) {
+    str += types[2];
+  } else {
+    i = iNumber % 10;
+    switch (i) {
+      case (1): str += types[0]; break
+      case (2):
+      case (3):
+      case (4): str += types[1]; break
+      default: str += types[2]
+    }
+  }
+  return str
+}
+
 export function isValidPhoto (photo) {
   return photo && photo === 'http://yourselfr.com/upload/avatar/null'
   ? 'http://i.forbesimg.com/media/lists/companies/facebook_416x416.jpg'

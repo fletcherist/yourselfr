@@ -136,3 +136,9 @@
 .rate-empty-line-5 {
   height: 50px;
 }
+
+.hide-on-mobile {
+  @media screen and (max-width: 800px){
+    display: none;
+  }
+}

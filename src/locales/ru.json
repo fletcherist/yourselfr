@@ -27,19 +27,26 @@
   },
   "counters": {
     "followers": {
-      "zero": "подписчиков",
-      "one": "подписчик",
+      "zero": "подписчик",
+      "one": "подписчика",
       "other": "подписчиков"
     },
     "following": {
-      "zero": "following",
-      "one": "following",
-      "other": "following"
+      "zero": "подписка",
+      "one": "подписки",
+      "other": "подписок"
     },
     "visits": {
-      "zero": "visits",
-      "one": "visit",
-      "other": "visits"
+      "zero": "просмотр",
+      "one": "просмотра",
+      "other": "просмотров"
+    }
+  },
+  "interface": {
+    "counters": {
+      "visits": "просмотры",
+      "followers": "подписчики",
+      "following": "читает"
     }
   }
 }

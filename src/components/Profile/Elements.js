@@ -26,3 +26,7 @@ export const Username = ({username, online}) => {
     </div>
   )
 }
+
+export const Status = ({status}) => (
+  <div className={s.status}>{status}</div>
+)

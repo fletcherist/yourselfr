@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 import { loadUser } from '../../../redux/modules/user';
 import { loadFollowing } from '../../../redux/modules/followers'
-import { isValidPhoto, isEmpty } from '../../Toools';
+import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
 import { config } from '../../../redux/config';
 import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
@@ -25,6 +25,11 @@ class Following extends Component {
     componentWillMount () {
       this.props.loadFollowing();
     }
+
+    componentWillUpdate (nextProps) {
+      return !arraysEqual(this.props.following, nextProps.following)
+    }
+
     render () {
       const loadUser = this.props.loadUser.bind(this);
       const isAuthenticated = this.props.auth.authenticated;

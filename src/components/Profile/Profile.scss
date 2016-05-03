@@ -18,6 +18,7 @@
 .username {
 	height: 30px;
 	margin: 15px auto;
+	margin-bottom: 0px;
 	text-align:  center;
 	font-size: 22px;
 	font-weight: normal;
@@ -37,16 +38,18 @@
 	text-align-last: center;
 	word-wrap: break-word;
 	padding: 0px 15px 10px 15px;
+	margin: auto;
+	max-width: 230px;
 }
 
 .online {
-	margin-bottom: 1px;
-	margin-left: 7px;
+	margin-bottom: 2px;
+	margin-left: 4px;
 	opacity: .5;
 	transition: all .3s;
 	cursor: pointer;
-	width: 12px;
-	:hover {
+	width: 10px;
+	&:hover {
 		opacity: 1;
 	}
 }
