@@ -29,7 +29,7 @@
 
 	.time {
 		font-weight: 300;
-		font-size: 14px;
+		font-size: 13px;
 		align-self: center;
 		padding: 0px 0px 0px 10px;
 		color: $yoGrey;
@@ -56,17 +56,18 @@
 }
 .hot {
 	background-color: #F2FAFF;
+	transition: background-color 2s;
+}
+.hotYellow {
+	transition: background-color 2s;
+	background-color: #FFFCE7;
 }
 
 .comment {
-	margin-left: 50px;
+	// margin-left: 50px;
 	min-height: 55px;
-	max-width: 438px;
 	.time {
 		width: 50px;
-	}
-	@media screen and (max-width: 500px) {
-		margin-left: 20px;
 	}
 }
 .commentText {
@@ -76,11 +77,19 @@
 	font-weight: 300;
 	font-size: 14px;
 	color: #8d96a2;
-	// width: 150px;
 }
 .commentAuthor {
 	font-weight: bold;
 	border-bottom: none !important;
+}
+.removeComment {
+	font-size: 11px;
+	color: $yoGrey;
+	padding: 21px;
+	border-top: 1px solid $borderColor;
+	float: right;
+	max-width: 440px;
+	width: 100%;
 }
 
 .photo {

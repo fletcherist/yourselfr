@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import s from './Like.scss';
 import { connect } from 'react-redux';
@@ -6,12 +6,19 @@ import { likePost } from '../../redux/modules/posts';
 
 let cx = classNames.bind(s);
 
-class Like extends React.Component {
+class Like extends Component {
+  static propTypes = {
+    count: PropTypes.number,
+    object: PropTypes.string.isRequired,
+    likePost: PropTypes.func.isRequired,
+    isLiked: PropTypes.bool.isRequired,
+    type: PropTypes.string.isRequired
+  };
   constructor (props) {
     super(props);
     this.state = {
-      active: this.props.isLiked,
-      count: this.props.count,
+      active: this.props.isLiked || false,
+      count: this.props.count || 0,
       object: this.props.object
     }
   }
@@ -27,7 +34,8 @@ class Like extends React.Component {
       active: !this.state.active,
       count: this.state.count + diff
     })
-    this.props.likePost(this.state.object);
+    this.props.likePost(this.state.object, this.props.type);
+    console.log(this.props);
   }
   render () {
     var classes = cx({
@@ -48,19 +56,12 @@ class Like extends React.Component {
   }
 }
 
-Like.propTypes = {
-  count: React.PropTypes.number,
-  object: React.PropTypes.string.isRequired,
-  likePost: React.PropTypes.func.isRequired,
-  isLiked: React.PropTypes.bool.isRequired
-}
-
 const mapStateToProps = (state) => {
   return {}
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    likePost: (id) => dispatch(likePost(id))
+    likePost: (id, type) => dispatch(likePost(id, type))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Like);

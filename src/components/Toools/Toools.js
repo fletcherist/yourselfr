@@ -148,3 +148,15 @@ export function selectText (containerid) {
     window.getSelection().addRange(range);
   }
 }
+
+export function isHot (created_at) {
+  var now = new Date();
+  var time = new Date(created_at);
+  var passed = ((now - time) / 1000 / 60 / 60);
+  console.log(passed);
+  if (passed < 1) {
+    return true;
+  } else {
+    return false;
+  }
+}

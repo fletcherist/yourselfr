@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from './CommentForm.scss';
 import cx from 'classnames';
 import { connect } from 'react-redux';
-import { postComment } from '../../redux/modules/posts';
+import { postComment } from '../../redux/modules/comments';
 
-class CommentForm extends React.Component {
+class CommentForm extends Component {
+  static propTypes = {
+    postComment: PropTypes.func.isRequired,
+    post_id: PropTypes.string.isRequired
+  };
   constructor () {
     super();
     this.state = {
@@ -21,7 +25,7 @@ class CommentForm extends React.Component {
       this.setState({
         selected: false
       })
-    }, 300);
+    }, 200);
   }
 
   postComment () {
@@ -39,11 +43,6 @@ class CommentForm extends React.Component {
       </div>
     )
   }
-}
-
-CommentForm.propTypes = {
-  postComment: React.PropTypes.func.isRequired,
-  post_id: React.PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => {

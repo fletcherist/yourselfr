@@ -43,7 +43,6 @@ class Profile extends Component {
     document.body.style.minHeight = '400px';
   }
   render () {
-    console.log('mounted');
     document.title = `${this.props.username} — Йорселфер`;
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;

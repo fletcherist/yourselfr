@@ -1,52 +1,42 @@
-import React from 'react';
-// import Like from '../Like';
-
+import React, { Component, PropTypes } from 'react';
 import s from '../Post/Post.scss';
 import cx from 'classnames/bind';
-import { connect } from 'react-redux';
-import { loadUser } from '../../redux/modules/user';
-import { timePassed } from '../Toools';
 import { Link } from 'react-router';
+import { isHot } from '../Toools';
 
 import UserAvatar from '../Post/UserAvatar';
+import TickTime from '../Post/TickTime';
+import Like from '../Like';
 
 let ccx = cx.bind(s);
-class Comment extends React.Component {
+class Comment extends Component {
+    static propTypes = {
+      text: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      likes: PropTypes.number,
+      attachments: PropTypes.object,
+      isLiked: PropTypes.bool,
+      isYourPage: PropTypes.bool.isRequired,
+      user: PropTypes.object.isRequired,
+      loadUser: PropTypes.func.isRequired,
+      removeComment: PropTypes.func.isRequired
+    };
     constructor (props) {
       super(props);
       this.state = {
-        created_at: this.props.created_at,
-        createdPronounce: 'сейчас',
-        isHot: false,
-        updateTimer: false,
-        isLiked: this.props.isLiked
+        isHot: isHot(this.props.created_at),
+        deleted: false
       }
-
-      this.timePassed = timePassed;
     }
 
-    tickTime (flag) {
-      var time = new Date(this.state.created_at);
-      var timePassed = this.timePassed(time);
-      // posts, posted <5s ago will show coloured.
-      var isHot = false;
-      if (timePassed.seconds < 60) {
-        isHot = true;
-      }
-      this.setState({
-        createdPronounce: timePassed.pronounce,
-        isHot: isHot
-      })
+    shouldComponentUpdate (nextProps) {
+      return true;
     }
-    componentDidMount () {
-      this.loadInterval = setInterval(this.tickTime.bind(this), 1000);
-    }
-    componentWillUnmount () {
-      this.loadInterval && clearInterval(this.loadInterval);
-      this.loadInterval = false;
-    }
-    componentWillMount () {
-      this.tickTime();
+
+    removeComment (id) {
+      this.props.removeComment(id);
+      this.setState({deleted: true});
     }
 
     render () {
@@ -56,54 +46,42 @@ class Comment extends React.Component {
         hot: this.state.isHot,
         isLiked: this.state.isLiked
       })
+      const { text, created_at, id, likes, isLiked, user, loadUser } = this.props;
 
-      return (
-        <div>
-            <div className={postClasses}>
-              <UserAvatar photo={this.props.user.photo} alias={this.props.user.alias} loadUser={this.props.loadUser} />
-              <span className={ccx({
-                hideOnHover: this.props.isYourPage})
-              }></span>
-              <div className={ccx(s.text, s.commentText)}>
-                <div className={s.commentTime}>
-                  <Link onClick={ () => this.props.loadUser(this.props.user.alias)} className={s.commentAuthor} to={`/${this.props.user.alias}`}>{this.props.user.username}</Link>
-                  {' '}
-                  {this.state.createdPronounce}
+      if (this.state.deleted === false) {
+        return (
+          <div>
+              <div className={postClasses}>
+                <div className={s.time}>
+                    {this.props.isYourPage && (
+                        <div className={s.removeButton} onClick={ this.removeComment.bind(this, id)}></div>
+                    )}
                 </div>
-                <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+                <UserAvatar photo={user.photo} alias={user.alias} loadUser={loadUser} />
+                <div className={ccx(s.text, s.commentText)}>
+                  <div className={s.commentTime}>
+                    <Link onClick={ () => loadUser(user.alias)} className={s.commentAuthor} to={`/${user.alias}`}>
+                      {user.username}
+                    </Link>
+                    {' '}
+                    <TickTime time={created_at}/>
+                  </div>
+                  <span dangerouslySetInnerHTML={{__html: text}}></span>
+                </div>
+                <Like
+                   count={likes}
+                   object={id}
+                   isLiked={isLiked}
+                   type='comment'
+                />
               </div>
-              {// <Like
-                //  count={this.props.likes}
-                  // object={this.props.id}
-              // >
-            }
-            </div>
-      </div>
-      );
+        </div>
+        );
+      } else {
+        return (
+          <div className={s.removeComment}>Комментарий был успешно удалён.</div>
+        )
+      }
     }
 }
-
-Comment.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  created_at: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  likes: React.PropTypes.number,
-  attachments: React.PropTypes.object,
-  isLiked: React.PropTypes.bool,
-  isYourPage: React.PropTypes.bool.isRequired,
-  user: React.PropTypes.object.isRequired,
-
-  loadUser: React.PropTypes.func.isRequired
-}
-
-const mapStateToProps = (state) => {
-  return {
-    isYourPage: state.auth.isYourPage
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadUser: (alias) => dispatch(loadUser(alias))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Comment);
+export default Comment;

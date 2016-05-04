@@ -2,6 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config.js';
 import { updatePostsCounter } from './user';
 import { fetchPosts, fetchLoadMorePosts } from './isFetching';
+import { LOAD_COMMENTS } from './comments';
 import ga from 'react-ga';
 
 export const LOAD_POSTS = 'LOAD_POSTS';
@@ -10,14 +11,18 @@ export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS';
 export const REMOVE_POST = 'REMOVE_POST';
 export const LIKE_POST = 'LIKE_POST';
 export const ENDLESS_LOAD = 'ENDLESS_LOAD';
-export const POST_COMMENT = 'POST_COMMENT';
 
-export const likePost = createAction(LIKE_POST, async (id) => {
+export const likePost = createAction(LIKE_POST, async (id, type) => {
   if (!id) {
     return false;
   }
-  console.log(id);
-  fetch(`${config.http}/api/likes`, {
+  const url = {
+    post: `${config.http}/api/likes`,
+    comment: `${config.http}/api/likes/comment`
+  }
+  var request = type === 'comment' ? url.comment : url.post
+  console.log(type, request);
+  fetch(request, {
     method: 'POST',
     headers: {
       'Content-type': config.post
@@ -112,7 +117,6 @@ export const removePost = id => {
 }
 
 export const send = createAction(SEND_POST);
-
 export const sendPost = (text, photo) => {
   return (dispatch, getState) => {
     var alias = getState().user.alias;
@@ -149,38 +153,6 @@ export const sendPost = (text, photo) => {
   }
 }
 
-export const postComment = (text, post_id) => {
-  return (dispatch, getState) => {
-    if (!text) {
-      console.log('no text');
-      return false;
-    }
-    console.log(post_id);
-    var authenticated = getState().auth.authenticated;
-    if (!authenticated) {
-      return console.log('Only authenticated users can write comments');
-    }
-    var alias = getState().auth.user.alias;
-    var body = `text=${text}&created_by=${alias}&post_id=${post_id}`;
-    fetch(`${config.http}/api/comments`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-type': config.post
-      },
-      body: body
-    })
-    .then((r) => r.json())
-    .then((data) => {
-      console.log(data);
-      ga.event({
-        category: 'Comments',
-        action: 'Comment created'
-      });
-    });
-  }
-}
-
 export const actions = {
   loadPosts,
   sendPost,
@@ -188,6 +160,16 @@ export const actions = {
   removePost,
   likePost,
   endlessLoad
+}
+
+const findPostById = (state, id) => {
+  for (var i = 0; i < state.length; i++) {
+    var postID = state[i]._id;
+    if (postID === id) {
+      return i;
+    }
+  }
+  return false;
 }
 
 export default handleActions({
@@ -202,15 +184,29 @@ export default handleActions({
   },
   [REMOVE_POST]: (state, { payload }) => {
     // Find a post with that ID and slice it.
-    for (var i = 0; i < state.length; i++) {
-      var postID = state[i]._id;
-      if (postID === payload) {
-        break;
-      }
-    }
+    var postNumber = findPostById(state, payload);
     return [
-      ...state.slice(0, i),
-      ...state.slice(i + 1)
+      ...state.slice(0, postNumber),
+      ...state.slice(postNumber + 1)
     ];
+  },
+  [LOAD_COMMENTS]: (state, { payload }) => {
+    const { post_id, comments } = payload;
+    var postNumber = findPostById(state, post_id);
+    var post = state[postNumber];
+    post.comments = comments;
+    return [...state, ...post];
   }
+  // [REMOVE_COMMENT]: (state, { payload }) => {
+  //   for (var i = 0; i < state.length; i++) {
+  //     var comments = state[i].comments;
+  //     for (var e = 0; e < comments.length; e++) {
+  //       var commentID = comments[e]._id;
+  //       if (commentID === payload) {
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   return [...state]
+  // }
 }, []);
