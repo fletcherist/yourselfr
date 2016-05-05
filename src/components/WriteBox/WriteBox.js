@@ -2,17 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import s from './WriteBox.scss';
 import { connect } from 'react-redux';
 import { actions as postsActions } from '../../redux/modules/posts';
-import { config } from '../../redux/config';
 import cx from 'classnames';
 import Modal from 'react-modal';
-
-function formToTray () {
-  var form = document.getElementById('textForm');
-  form.style.width = '60%';
-}
+import AttachPhoto from './AttachPhoto';
+import ModalStyles from './ModalStyles.js';
 
 function formToFull () {
-  var form = document.getElementById('textForm');
+  var form = document.getElementById('text-form');
   form.style.width = '100%';
 }
 
@@ -63,62 +59,22 @@ class WriteBox extends Component {
     }
 
     handleSubmitButton (e) {
-      var text = this.textBox.value;
-      var photo = this.state.photo;
+      var textBox = document.querySelector('#text-form')
+      var photo = document.querySelector('#input-value').value;
+      var preview = document.querySelector('#attach-preview');
+      var text = textBox.value;
       if (!photo && !text) {
-        this.textBox.focus();
+        textBox.focus();
       }
       if (/^\s+$/.test(text)) {
-        return this.textBox.focus();
+        return textBox.focus();
       }
       this.props.sendPost(text, photo);
-      this.textBox.value = '';
-      this.preview.src = '';
-      this.preview.classList.add('hidden')
+      textBox.value = '';
+      preview.src = '';
+      preview.classList.add('hidden')
       formToFull();
       this.toggle();
-    }
-
-    selectPhoto (e) {
-      this.photoInput.click();
-    }
-
-    attachPhoto (e) {
-      var photo = this.photoForm;
-      console.log(photo);
-      var fd = new FormData();
-      fd.append('file', photo[0].files[0]);
-
-      var preview = this.preview;
-      var reader = new FileReader();
-
-      reader.onload = function () {
-        formToTray();
-        preview.src = reader.result;
-        preview.classList.remove('hidden');
-      }
-
-      if (photo[0].files[0]) {
-        reader.readAsDataURL(photo[0].files[0]);
-      } else {
-        console.log('not working');
-        preview.src = '';
-      }
-
-      fetch(`${config.http}/upload/photo`, {
-        method: 'post',
-        body: fd
-      })
-      .then((r) => r.json())
-      .then((res) => {
-        console.log('its works' + res);
-        this.setState({
-          photo: res.url
-        });
-      })
-      .catch((e) => {
-        console.log('Error catched while attaching a photo', e);
-      })
     }
 
     toggle () {
@@ -128,56 +84,23 @@ class WriteBox extends Component {
     }
     render () {
       var attachPreview = cx(s.attachPreview, 'hidden');
-      const customStyles = {
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.7)',
-          overflowY: 'hidden'
-        },
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          border: 'none',
-          height: '400px',
-          minWidth: '500px',
-          background: 'transparent',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-51%, -50%)',
-          trasnition: 'opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25)'
-        }
-      };
       return (
-        <Modal isOpen={this.state.isOpen} style={customStyles} onRequestClose={this.toggle.bind(this)} closeTimeoutMS={300}>
-            <div className={s.container} ref={(r) => this.writeBox = r }>
+        <Modal isOpen={this.state.isOpen} style={ModalStyles} onRequestClose={this.toggle.bind(this)} closeTimeoutMS={300}>
+            <div className={s.container}>
                 <div className={s.header}>Написать анонимное мнение</div>
-                <form ref={ (r) => this.photoForm = r } id='attach-photo' encType='multipart/form-data' method='post' className={s.attachForm}>
-                    <input type='file' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r } id='attach-input'/>
-                </form>
-                <textarea placeholder={this.state.textPlaceholder} id='textForm' ref={(ref) => this.textBox = ref} style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
+                <textarea
+                  placeholder={this.state.textPlaceholder}
+                  id='text-form'
+                  style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
                 </textarea>
-                <img id='attach-preview' ref={(r) => this.preview = r} className={attachPreview}/>
+                <img id='attach-preview' className={attachPreview}/>
                 <div className={s.above}>
                     <div
                         className={s.buttonSubmit}
                         onClick={this.handleSubmitButton.bind(this)}>
                         Отправить
                     </div>
-                    {
-                      // <div className={s.SmileBoxContainer}>
-                        // <SmileBox/>
-                      // </div>
-                    }
-                    <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
-                      <div className={s.photoTitle}>Прикрепить</div>
-                      <div className={s.addPhoto}></div>
-                    </div>
+                    <AttachPhoto />
                 </div>
             </div>
         </Modal>);

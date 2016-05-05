@@ -9,6 +9,9 @@ import cookie from 'react-cookie';
 const LOAD_USER = 'LOAD_USER';
 const SUBSCRIBE = 'SUBSCRIBE';
 const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER';
+const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
+
+export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER);
 
 function getAlias () {
   var alias = window.location.pathname.substr(1);

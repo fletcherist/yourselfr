@@ -66,7 +66,6 @@ export const authenticate = () => {
           cookie.save('background', auth.user.background, { path: '/' });
 
           // Redirect in case of authenticate status
-          console.log(window.location)
           var path = window.location.pathname;
           if (auth.authenticated) {
             if (path === '/') {
