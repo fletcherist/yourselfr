@@ -42,37 +42,37 @@ class Navigation extends Component {
                         <div title='перейти к профилю' className={s.photo} onClick={ () => this.props.loadUser(this.props.user.alias)}>
                           <img src={this.props.user.photo}/>
                         </div>
-                        профиль
+                        <div>профиль</div>
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <Link to='/feed' activeStyle={active}>
                         <div title='перейти к ленте' className={cx(s.icon, s.iconFeed)}/>
-                        лента
+                        <div>лента</div>
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <Link to='/preferences' activeStyle={active}>
                         <div title='перейти к настройкам' className={cx(s.icon, s.iconPreferences)}/>
-                        настройки
+                        <div>настройки</div>
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <Link to={`/${this.props.user.alias}/followers`} activeStyle={active}>
                         <div title='перейти к подписчикам' className={cx(s.icon, s.iconFollowers)}/>
-                        подписчики
+                        <div>подписчики</div>
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <Link to={`/${this.props.user.alias}/following`} activeStyle={active}>
                         <div title='перейти к подпискам' className={cx(s.icon, s.iconFollowing)}/>
-                        подписки
+                        <div>подписки</div>
                       </Link>
                     </div>
                     <div className={s.element} onClick={ this.toggle.bind(this) }>
                       <a href='../auth/logout'>
                         <div title='вечно возвратиться' className={cx(s.icon, s.iconLogout)}/>
-                        выход
+                        <div>выход</div>
                       </a>
                     </div>
                   </div>

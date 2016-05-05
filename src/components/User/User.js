@@ -3,7 +3,6 @@ import s from './User.scss';
 import Profile from '../Profile';
 
 import { connect } from 'react-redux';
-import Navigation from '../Navigation';
 import Background from '../Background';
 
 class User extends Component {
@@ -16,7 +15,6 @@ class User extends Component {
       return (
             <div>
                 <Background background={this.props.background}/>
-                <Navigation/>
                 <div className={s.container}>
                     <div className={s.container_left}>
                       <Profile/>

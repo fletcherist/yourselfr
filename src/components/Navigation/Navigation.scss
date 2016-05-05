@@ -1,59 +1,67 @@
 @import 'variables';
 .navigation {
-  height: 80px;
-  margin-bottom: 10px;
-  z-index: 99999;
-  // background-color: #ffffff;
+  height: 70px;
+  z-index: 99999999999999999999;
 }
 
 .yoButton {
-  padding: 25px;
-  background: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
-  background-size: 200px;
-  background-position: center;
+  padding: 15px;
+  background: url('./components/Navigation/yo.png') no-repeat 50% 50%;
+  background-size: 90px;
+  background-position: left;
   cursor: pointer;
-  padding-top: 85px;
+  padding-top: 50px;
 }
 
 .menu {
-  position: absolute;
+  position: relative;
   text-align: center;
   background-color: white;
-  padding-top: 10px;
   // box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
   border: 1px solid $borderColor;
-  width: 320px;
-  height: 200px !important;
+  width: 242px;
+  // height: 180px !important;
   left: 50%;
-  margin-left: -175px;
-  z-index: 9999;
+  z-index: 99999999999999999999;
   border-radius: 4px;
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
+  margin-top: -60px;
+  margin-left: -40px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 800px) {
+    width: 162px;
+  }
 }
 
 .menu:after, .menu:before {
+  display: block;
 	border: solid transparent;
 	content: ' ';
 	height: 0;
-	left: 50%;
+	bottom: 80%;
 	position: absolute;
 	width: 0;
-  bottom: 100%;
+  left: 0px;
   margin-left: -10px;
 }
 
 .menu:after {
 	border-width: 9px;
-	border-bottom-color: white;
-	left: 50%;
+	border-right-color: white;
+  margin-left: -18px;
+	left: 0%;
 }
 
 .menu:before {
+  margin-bottom: -2px;
 	border-width: 11px;
-	border-bottom-color: $borderColor;
-  left: 50%;
-  margin-left: -12px;
+	border-right-color: $borderColor;
+  left: 0%;
+  margin-left: -22px;
+
 }
 
 .hiddenMenu {
@@ -62,11 +70,11 @@
 }
 
 .element {
+  width: 80px;
+  padding-bottom: 20px;
   cursor: pointer;
-  height: 90px;
-  width: 100px;
-  display: inline-block;
   transition: all .2s;
+  z-index: 9999999;
 
   border-left: 1px solid rgba(0,0,0, .05);
   &:nth-child(1), &:nth-child(4) {
@@ -93,7 +101,7 @@
 .photo {
   height: 50px;
   border-radius: 100px;
-  margin: 10px auto;
+  margin: 5px auto;
   width: 50px;
   img {
     height: 40px;
@@ -105,7 +113,7 @@
 .icon {
   cursor: pointer;
   height: 50px;
-  margin: 10px 0px 10px 0px;
+  margin: 5px 0px 5px 0px;
   width: 100%;
   max-height: 50px;
   transition: all .2s;

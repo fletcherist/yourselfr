@@ -6,6 +6,7 @@ import { Avatar, Username, Status } from './Elements';
 import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
+import Navigation from '../Navigation';
 
 import {actions as userActions} from '../../redux/modules/user';
 
@@ -49,6 +50,7 @@ class Profile extends Component {
     return (
       <div>
         <div className='container--left padding-0 container--transparent container--user'>
+          <Navigation/>
           <Avatar photo={photo} alias={alias}/>
           <Username online={online} username={username}/>
           <Status status={status}/>
