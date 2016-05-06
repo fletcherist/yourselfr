@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
+  "name": "Yourselfr",
   "version": "1.0.0",
-  "description": "Get started with React, Redux, and React-Router!",
+  "description": "Social Network Web App Based on React.",
   "main": "index.js",
   "engines": {
     "node": ">=4.2.0",
@@ -61,10 +61,11 @@
     "type": "git",
     "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "author": "Phil Romanov <romanovexports@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "better-npm-run": "0.0.5",
+    "classnames": "^2.2.5",
     "counterpart": "^0.17.2",
     "debug": "^2.2.0",
     "dotenv": "^2.0.0",
@@ -77,6 +78,7 @@
     "react": "^0.14.0",
     "react-cookie": "^0.4.5",
     "react-dom": "^0.14.0",
+    "react-ga": "^1.4.1",
     "react-interpolate-component": "^0.8.1",
     "react-modal": "^0.6.1",
     "react-motion": "^0.4.3",
@@ -91,7 +93,9 @@
     "request": "^2.69.0",
     "url": "^0.11.0",
     "velocity-react": "^1.1.2",
-    "yargs": "^3.18.0"
+    "yargs": "^3.18.0",
+    "isomorphic-fetch": "latest",
+    "redux-simple-router": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
