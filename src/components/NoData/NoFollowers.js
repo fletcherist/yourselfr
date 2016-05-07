@@ -7,7 +7,7 @@ class NoFollowers extends Component {
   };
   render () {
     return (
-      <div className={s.noSubscriptions}>У {this.props.username} пока нет ни одного<br/> подписчика</div>
+      <div className={s.noData}>У {this.props.username} пока нет ни одного<br/> подписчика</div>
     )
   }
 }

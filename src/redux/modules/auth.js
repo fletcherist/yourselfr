@@ -103,7 +103,10 @@ export const logIn = (username, password) => {
         dispatch(fetchLogIn([false, 'Неправильный логин или пароль.']));
       } else {
         dispatch(fetchLogIn([true]));
-        window.location.href = '/findme';
+        dispatch(authenticate());
+        setTimeout(() => {
+          dispatch(routeActions.push('/i/get-started'));
+        }, 1000);
         ga.event({
           category: 'User',
           action: 'Logged In'

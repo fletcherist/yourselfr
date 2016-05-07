@@ -13,11 +13,11 @@ class NoPosts extends Component {
     const { isAuthenticated } = this.props;
     if (isAuthenticated) {
       return (
-        <div className={s.noPosts}>Здесь будет показываться то,<br/> что ваши друзья думают о Вас.</div>
+        <div className={s.noData}>Здесь будет показываться то,<br/> что ваши друзья думают о Вас.</div>
       )
     } else {
       return (
-        <div className={s.noPosts}>Пока ничего нет. Напишите первым!</div>
+        <div className={s.noData}>Пока ничего нет. Напишите первым!</div>
       )
     }
   }

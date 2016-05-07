@@ -8,7 +8,7 @@ class NoFollowing extends Component {
 
   render () {
     return (
-        <div className={s.noSubscriptions}>
+        <div className={s.noData}>
           {this.props.username} пока ни на кого <br/> не подписался
         </div>
     )

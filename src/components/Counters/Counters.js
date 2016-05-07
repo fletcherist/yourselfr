@@ -15,10 +15,12 @@ class Counters extends Component {
     alias: PropTypes.string.isRequired
   };
   shouldComponentUpdate (nextProps) {
-    return nextProps.visits !== this.props.visits;
+    // return nextProps.alias !== this.props.alias
+    return true;
   }
 
   render () {
+    console.log(this.props.alias);
     var pronounce = {
       visits: cpEnding(this.props.visits, 'counters.visits'),
       followers: cpEnding(this.props.followers, 'counters.followers'),

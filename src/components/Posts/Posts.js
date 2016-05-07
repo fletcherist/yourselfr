@@ -25,7 +25,8 @@ class Posts extends Component {
     componentWillMount () {
       this.setState({
         count: this.props.count,
-        postsLoaded: 25
+        postsLoaded: 25,
+        height: 200
       });
     }
 
@@ -36,6 +37,7 @@ class Posts extends Component {
     componentDidMount () {
       // this.endlessFeed = setInterval(() => this.props.endlessLoad(), 15000);
     }
+
     componentWillUnmount () {
       // this.endlessFeed && clearInterval(this.endlessFeed);
       // this.endlessFeed = false;
@@ -64,7 +66,7 @@ class Posts extends Component {
       }
 
       return (
-        <div className='container--right padding-0 container--posts' id='right'>
+        <div className='container--right padding-0' id='right'>
           <PostsHeader count={this.props.count} username={this.props.username}/>
           {this.props.isFetching && (
             <Loader/>

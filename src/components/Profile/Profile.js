@@ -33,7 +33,8 @@ class Profile extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.alias !== this.props.alias;
+    // return nextProps.alias !== this.props.alias;
+    return true;
   }
 
   componentWillMount () {
@@ -49,7 +50,7 @@ class Profile extends Component {
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
     return (
       <div>
-        <div className='container--left padding-0 container--transparent container--user'>
+        <div className='container--left padding-0 container--transparent container--user' id='profile'>
           <Navigation/>
           <Avatar photo={photo} alias={alias}/>
           <Username online={online} username={username}/>
