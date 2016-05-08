@@ -43,7 +43,6 @@
   margin-bottom: 10px;
   max-width: 260px;
   width: 100%;
-  min-height: $minHeight;
 	// background-color: #f7f7f7;
   @media screen and (max-width: 1500px){
     max-width: 900px;
@@ -66,7 +65,7 @@
 }
 
 .container--user {
-  // min-height: 384px !important;
+  min-height: $minHeight;
   display: inline-block;
 }
 

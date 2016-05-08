@@ -18,7 +18,16 @@ export const changeAlias = createAction(CHANGE_ALIAS, (alias) => {
   cookie.save('alias', alias, { path: '/' });
   return alias;
 });
+
+const CHANGE_VK = 'CHANGE_VK';
+const CHANGE_TUMBLR = 'CHANGE_TUMBLR';
+const CHANGE_TWITTER = 'CHANGE_TWITTER';
+const CHANGE_INSTAGRAM = 'CHANGE_INSTAGRAM';
 export const changeStatus = createAction(CHANGE_STATUS);
+export const changeVK = createAction(CHANGE_VK);
+export const changeTumblr = createAction(CHANGE_TUMBLR);
+export const changeTwitter = createAction(CHANGE_TWITTER);
+export const changeInstagram = createAction(CHANGE_INSTAGRAM);
 
 var defaultMe = {
   authenticated: false,
@@ -177,5 +186,17 @@ export default handleActions({
   },
   CHANGE_STATUS: (state, { payload }) => {
     return {...state, user: {...state.user, status: payload}}
+  },
+  CHANGE_VK: (state, { payload }) => {
+    return {...state, user: {...state.user, social: {...state.user.social, vk: payload}}};
+  },
+  CHANGE_TUMBLR: (state, { payload }) => {
+    return {...state, user: {...state.user, social: {...state.user.social, tumblr: payload}}};
+  },
+  CHANGE_TWITTER: (state, { payload }) => {
+    return {...state, user: {...state.user, social: {...state.user.social, twitter: payload}}};
+  },
+  CHANGE_INSTAGRAM: (state, { payload }) => {
+    return {...state, user: {...state.user, social: {...state.user.social, instagram: payload}}};
   }
 }, defaultMe);

@@ -10,11 +10,22 @@ import twitterPicture from 'components/Buttons/SocialButtons/twitter.svg';
 import instagramPicture from 'components/Buttons/SocialButtons/instagram.png';
 import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg';
 
+import { LoaderSmall } from '../Loader';
+
 import { saveSocialNetworks } from 'redux/modules/preferences';
 
 let c = classNames.bind(x);
 
 class UpdateSocialNetworks extends Component {
+  static propTypes = {
+    saveSocialNetworks: PropTypes.func.isRequired,
+    isFetching: PropTypes.object,
+    vk: PropTypes.string,
+    twitter: PropTypes.string,
+    tumblr: PropTypes.string,
+    instagram: PropTypes.string
+  };
+
   constructor (props) {
     super(props);
     this.state = {
@@ -22,32 +33,28 @@ class UpdateSocialNetworks extends Component {
       twitter: this.props.twitter,
       tumblr: this.props.tumblr,
       instagram: this.props.instagram
-    }
+    };
   }
 
+  componentWillReceiveProps (props) {
+    this.setState({
+      vk: props.vk,
+      twitter: props.twitter,
+      tumblr: props.tumblr,
+      instagram: props.instagram
+    })
+  }
   handleVK () {
-    // this.props.saveSocialNetworks({vk: this.vk.value});
-    this.handleSocialNetworks();
+    this.props.saveSocialNetworks({vk: this.vk.value});
   }
   handleTumblr () {
-    // this.props.saveSocialNetworks({tumblr: this.tumblr.value});
-    this.handleSocialNetworks();
+    this.props.saveSocialNetworks({tumblr: this.tumblr.value});
   }
   handleTwitter () {
-    // this.props.saveSocialNetworks({twitter: this.twitter.value});
-    this.handleSocialNetworks();
+    this.props.saveSocialNetworks({twitter: this.twitter.value});
   }
-  handleInsta () {
-    // this.props.saveSocialNetworks({instagram: this.instagram.value});
-    this.handleSocialNetworks();
-  }
-  handleSocialNetworks () {
-    this.props.saveSocialNetworks({
-      vk: this.vk.value,
-      tumblr: this.tumblr.value,
-      twitter: this.twitter.value,
-      instagram: this.instagram.value
-    })
+  handleInstagram () {
+    this.props.saveSocialNetworks({instagram: this.instagram.value});
   }
   handleChange (name, e) {
     var change = {};
@@ -70,6 +77,11 @@ class UpdateSocialNetworks extends Component {
                   onChange={this.handleChange.bind(this, 'vk')}
                   onBlur={this.handleVK.bind(this)}/>
           <img src={vkPicture}/>
+          <div className={s.rightAddon}>
+            {isFetching.vk.status && (
+                <LoaderSmall/>
+            )}
+          </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.tumblr = r} placeholder='тамблер' value={this.state.tumblr}
@@ -82,6 +94,11 @@ class UpdateSocialNetworks extends Component {
                   onChange={this.handleChange.bind(this, 'tumblr')}
                   onBlur={this.handleTumblr.bind(this)}/>
           <img src={tumblrPicture}/>
+          <div className={s.rightAddon}>
+            {isFetching.tumblr.status && (
+                <LoaderSmall/>
+            )}
+          </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.twitter = r} placeholder='твиттер' value={this.state.twitter}
@@ -94,6 +111,11 @@ class UpdateSocialNetworks extends Component {
                   onChange={this.handleChange.bind(this, 'twitter')}
                   onBlur={this.handleTwitter.bind(this)}/>
           <img src={twitterPicture}/>
+          <div className={s.rightAddon}>
+            {isFetching.twitter.status && (
+                <LoaderSmall/>
+            )}
+          </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.instagram = r} placeholder='инстаграм' value={this.state.instagram}
@@ -104,21 +126,17 @@ class UpdateSocialNetworks extends Component {
                   formSuccess: isFetching.instagram.state === true
                 })}
                 onChange={this.handleChange.bind(this, 'instagram')}
-                onBlur={this.handleInsta.bind(this)}/>
+                onBlur={this.handleInstagram.bind(this)}/>
           <img src={instagramPicture}/>
+          <div className={s.rightAddon}>
+            {isFetching.instagram.status && (
+                <LoaderSmall/>
+            )}
+          </div>
         </div>
       </div>
     )
   }
-}
-
-UpdateSocialNetworks.propTypes = {
-  saveSocialNetworks: PropTypes.func.isRequired,
-  isFetching: PropTypes.object,
-  vk: PropTypes.string,
-  twitter: PropTypes.string,
-  tumblr: PropTypes.string,
-  instagram: PropTypes.string
 }
 
 function mapStateToProps (state) {

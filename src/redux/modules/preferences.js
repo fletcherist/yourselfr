@@ -7,7 +7,15 @@ import { fetchUsername,
          fetchSocialNetworks
 } from './isFetching';
 
-import {changeUsername, changeAlias, changeStatus} from './auth';
+import {
+  changeUsername,
+  changeAlias,
+  changeStatus,
+  changeVK,
+  changeTumblr,
+  changeTwitter,
+  changeInstagram
+} from './auth';
 
 export const loadAvatar = (avatar) => {
   return (dispatch, getState) => {
@@ -191,16 +199,10 @@ export const saveStatus = (status) => {
 
 export const saveSocialNetworks = (networks) => {
   return (dispatch, getState) => {
-    if (networks.vk) {
-      dispatch(fetchSocialNetworks({vk: {status: true}}));
-    } else if (networks.twitter) {
-      dispatch(fetchSocialNetworks({twitter: {status: true}}));
-    } else if (networks.tumblr) {
-      dispatch(fetchSocialNetworks({tumblr: {status: true}}));
-    } else if (networks.instagram) {
-      dispatch(fetchSocialNetworks({vk: {status: true}, instagram: {status: true}}));
-    }
+    console.log(networks);
+    dispatchFetch(true);
 
+    updateData();
     var body = createBody(networks);
     fetch(`${config.http}/api/users`, {
       method: 'POST',
@@ -213,7 +215,32 @@ export const saveSocialNetworks = (networks) => {
     .then((r) => r.json())
     .then((res) => {
       console.log(res);
-    })
+      dispatchFetch(false);
+    });
+
+    function dispatchFetch (status) {
+      if (networks.vk) {
+        dispatch(fetchSocialNetworks({vk: {status: status}}));
+      } else if (networks.twitter) {
+        dispatch(fetchSocialNetworks({twitter: {status: status}}));
+      } else if (networks.tumblr) {
+        dispatch(fetchSocialNetworks({tumblr: {status: status}}));
+      } else if (networks.instagram) {
+        dispatch(fetchSocialNetworks({instagram: {status: status}}));
+      }
+    }
+
+    function updateData () {
+      if (networks.vk) {
+        dispatch(changeVK(networks.vk));
+      } else if (networks.twitter) {
+        dispatch(changeTwitter(networks.twitter));
+      } else if (networks.tumblr) {
+        dispatch(changeTumblr(networks.tumblr));
+      } else if (networks.instagram) {
+        dispatch(changeInstagram(networks.instagram));
+      }
+    }
   }
 }
 

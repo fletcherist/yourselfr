@@ -16,18 +16,23 @@ class SocialNetworks extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    // return nextProps.networks.vk !== this.props.networks.vk
+    if (nextProps.networks && this.props.networks) {
+      return nextProps.networks.vk !== this.props.networks.vk
+    }
     return true;
   }
   render () {
     var ifSocial = false;
-    if (this.props.networks) {
-      const networks = this.props;
+
+    var networks = this.props.networks;
+    if (networks) {
       if (networks.vk || networks.twitter || networks.tumblr || networks.instagram) {
         ifSocial = true;
         var { vk, twitter, tumblr, instagram } = networks;
+        console.log(ifSocial);
       }
     }
+    console.log(ifSocial);
     if (ifSocial) {
       return (
         <div className={cx('container--left', s.social)}>

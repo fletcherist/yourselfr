@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import s from './Loader.scss';
 
 class Loader extends React.Component {
@@ -11,5 +12,9 @@ class Loader extends React.Component {
     )
   }
 }
+
+export const LoaderSmall = () => (
+  <div className={cx(s.spinner, s.spinnerSmall)}></div>
+)
 
 export default Loader;

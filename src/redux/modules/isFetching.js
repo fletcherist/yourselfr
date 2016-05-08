@@ -100,7 +100,7 @@ export default handleActions({
     return {...state, ...{socialNetworks: {
       ...state.socialNetworks,
       vk: payload.vk || {status: false, state: false},
-      twitter: payload.vk || {status: false, state: false},
+      twitter: payload.twitter || {status: false, state: false},
       tumblr: payload.tumblr || {status: false, state: false},
       instagram: payload.instagram || {status: false, state: false}
     }}}

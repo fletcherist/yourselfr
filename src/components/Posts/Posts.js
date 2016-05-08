@@ -39,6 +39,9 @@ class Posts extends Component {
     }
 
     componentWillUnmount () {
+      this.setState({
+        postsLoaded: 0
+      })
       // this.endlessFeed && clearInterval(this.endlessFeed);
       // this.endlessFeed = false;
     }
