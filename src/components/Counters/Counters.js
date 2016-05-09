@@ -28,7 +28,7 @@ class Counters extends Component {
     }
     const { visits, followers, following } = this.props;
     return (
-          <div>
+          <div className={s.counters}>
               <div className={s.counter}>
                   <div className={s.counter_count}>{visits}</div>
                   <div className={s.counter_title}><Translate content={pronounce.visits}/></div>

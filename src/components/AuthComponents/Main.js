@@ -6,6 +6,7 @@ import Footer from '../Footer';
 import WantToRegister from './WantToRegister';
 import { actions as feed } from '../../redux/modules/endlessFeed';
 import { connect } from 'react-redux';
+import cp from 'counterpart';
 
 import { ButtonContainer, AuthenticateButton } from 'components/Buttons';
 
@@ -23,7 +24,10 @@ class SignupForm extends Component {
         <Slideshow />
         <div className={s.container}>
           <div className={s.logotype}></div>
-          <div className={s.description}>Сервис анонимных мнений, <br/> позволяющий узнать, <br/> что думают о Вас ваши друзья.</div>
+          <div
+            className={s.description}
+            dangerouslySetInnerHTML={{__html: cp.translate('description')}}>
+          </div>
           <ButtonContainer>
             <AuthenticateButton/>
           </ButtonContainer>

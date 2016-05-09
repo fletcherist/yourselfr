@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import EndlessFeed from '../EndlessFeed';
 import User from '../User';
 import FeedHeader from '../Headers/FeedHeader';
+import NoFeed from '../NoData/NoFeed';
 
 class Feed extends Component {
   static propTypes = {
@@ -16,7 +17,12 @@ class Feed extends Component {
       <User>
         <div className='container--right padding-0'>
           <FeedHeader alias={this.props.user.alias} username={this.props.user.username} />
-          <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching}/>
+          {this.props.feed.length > 0 && (
+            <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching}/>
+          )}
+          {this.props.feed.length === 0 && (
+            <NoFeed/>
+          )}
         </div>
       </User>
     )

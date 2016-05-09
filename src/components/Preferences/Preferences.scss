@@ -79,28 +79,30 @@ h3 {
   opacity: .8;
 }
 
-.fetching {
-  overflow: hidden;
-  background-size:100px 100px;
-  background-image: linear-gradient(-45deg,
-     #f9d885 25%, #fff3bb 25%,
-     #fff3bb 50%, #f9d885 50%,
-     #f9d885 75%, #fff3bb 75%);
-  animation: anim 1s linear infinite;
-}
+// .fetching {
+//   overflow: hidden;
+//   background-size:100px 100px;
+//   background-image: linear-gradient(-45deg,
+//      #f9d885 25%, #fff3bb 25%,
+//      #fff3bb 50%, #f9d885 50%,
+//      #f9d885 75%, #fff3bb 75%);
+//   animation: anim 1s linear infinite;
+// }
 
 .fetchingForms {
-  overflow: hidden;
-  background-size:100px 100px;
-  background-image: linear-gradient(-45deg,
-     $yoColor05 25%, $yoColor 25%,
-     $yoColor 50%, $yoColor05 50%,
-     $yoColor05 75%, $yoColor 75%);
-  animation: anim 1s linear infinite;
-  opacity: 0.8;
-  overflow: hidden;
-  cursor: wait;
-  // border: 2px solid $yoColor;
+  // overflow: hidden;
+  // background-size:100px 100px;
+  // background-image: linear-gradient(-45deg,
+  //    $yoColor05 25%, $yoColor 25%,
+  //    $yoColor 50%, $yoColor05 50%,
+  //    $yoColor05 75%, $yoColor 75%);
+  // animation: anim 1s linear infinite;
+  // opacity: 0.8;
+  // overflow: hidden;
+  // cursor: wait;
+  // // border: 2px solid $yoColor;
+  background-color: $yoColor05;
+  transition: all .2s;
 }
 @keyframes anim {
   0% { background-position: 0px 0px; }
@@ -131,10 +133,10 @@ h3 {
 }
 
 .formError {
-  border: 1px solid $errorColor;
+  border-bottom: 1px solid $errorColor;
 }
 .formSuccess {
-  border: 1px solid $successColor;
+  border-bottom: 1px solid $successColor;
 }
 
 .photoLeft {

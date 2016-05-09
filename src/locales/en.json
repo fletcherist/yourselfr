@@ -1,7 +1,8 @@
 {
   "yourselfr": "Yourselfr",
+  "description": "We let you get to know,<br/> what your friends are thinking about you.",
   "signup": {
-    "message": "Yourselfr is such a kind of service, with which you get to know, what your friends thinking about you.",
+    "message": "Yourselfr is such a kind of service, with which you get to know, what your friends are thinking about you.",
     "username": "Username",
     "email": "E-mail",
     "password": "Password",
@@ -17,7 +18,8 @@
     "noAccount": "No account?",
     "haveAccount": "Have account?",
     "register": "Sign Up",
-    "login": "Log In"
+    "login": "Log In",
+    "WantToRegister": "Want to try it on myself! "
   },
   "forms": {
 
@@ -48,5 +50,14 @@
       "followers": "followers",
       "following": "following"
     }
+  },
+  "NoData": {
+    "NoFollowers": "%(username)s has no followers yet.",
+    "NoFollowing": "%(username)s has no someone to read yet.",
+    "NoPosts": {
+      "authenticated": "Hello. Soon there will be posts about you!",
+      "not_authenticated": "Hm, nothing there yet. Post the first?"
+    },
+    "NoFeed": "Your feed is empty. Please follow someone to fix it!"
   }
 }

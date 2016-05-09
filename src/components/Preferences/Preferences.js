@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import s from './Preferences.scss';
+import x from './UpdateSocialNetworks.scss';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/modules/preferences';
 import classNames from 'classnames/bind';
+
+import { LoaderSmall } from '../Loader';
 
 let cx = classNames.bind(s);
 
@@ -57,18 +60,25 @@ class Preferences extends Component {
       return (
             <div>
                 <h3>имя</h3>
-                <input
-                  value={this.state.username}
-                  onChange={this.handleChange.bind(this, 'username')}
-                  className={cx({
-                    username: true,
-                    fetchingForms: isFetching.username.status,
-                    formError: isFetching.username.state === false,
-                    formSuccess: isFetching.username.state === true
-                  })}
-                  onBlur={this.handleUsername.bind(this)}
-                  ref={ (r) => this.username = r }
-                />
+                <div className={cx(x.innerAddon)}>
+                  <input
+                    value={this.state.username}
+                    onChange={this.handleChange.bind(this, 'username')}
+                    className={cx({
+                      username: true,
+                      fetchingForms: isFetching.username.status,
+                      formError: isFetching.username.state === false,
+                      formSuccess: isFetching.username.state === true
+                    })}
+                    onBlur={this.handleUsername.bind(this)}
+                    ref={ (r) => this.username = r }
+                  />
+                  <div className={x.rightAddon}>
+                    {isFetching.username.status && (
+                        <LoaderSmall/>
+                    )}
+                  </div>
+                </div>
                 {isFetching.username.message && (
                   <div className={cx({
                     state: true,
@@ -79,18 +89,25 @@ class Preferences extends Component {
 
                 <h3>адрес страницы</h3>
                 <small>поделитесь им с друзьями, чтобы они смогли найти вас</small>
-                <input
-                  value={this.state.alias}
-                  onChange={this.handleChange.bind(this, 'alias')}
-                  className={cx({
-                    alias: true,
-                    fetchingForms: isFetching.alias.status,
-                    formError: isFetching.alias.state === false,
-                    formSuccess: isFetching.alias.state === true
-                  })}
-                  onBlur={this.handleAlias.bind(this)}
-                  ref={ (r) => this.alias = r }
-                />
+                <div className={cx(x.innerAddon)}>
+                  <input
+                    value={this.state.alias}
+                    onChange={this.handleChange.bind(this, 'alias')}
+                    className={cx({
+                      alias: true,
+                      fetchingForms: isFetching.alias.status,
+                      formError: isFetching.alias.state === false,
+                      formSuccess: isFetching.alias.state === true
+                    })}
+                    onBlur={this.handleAlias.bind(this)}
+                    ref={ (r) => this.alias = r }
+                  />
+                  <div className={x.rightAddon}>
+                    {isFetching.alias.status && (
+                        <LoaderSmall/>
+                    )}
+                  </div>
+                </div>
                 {isFetching.alias.message && (
                   <div className={cx({
                     state: true,
@@ -99,18 +116,25 @@ class Preferences extends Component {
                   })}>{isFetching.alias.message}</div>
                 )}
                 <h3>о себе</h3>
-                <textarea
-                  value={this.state.status}
-                  onChange={this.handleChange.bind(this, 'status')}
-                  className={cx({
-                    status: true,
-                    fetchingForms: isFetching.status.status,
-                    formError: isFetching.status.state === false,
-                    formSuccess: isFetching.status.state === true
-                  })}
-                  onBlur={this.handleStatus.bind(this)}
-                  ref={ (r) => this.status = r }
-                />
+                <div className={cx(x.innerAddon)}>
+                  <textarea
+                    value={this.state.status}
+                    onChange={this.handleChange.bind(this, 'status')}
+                    className={cx({
+                      status: true,
+                      fetchingForms: isFetching.status.status,
+                      formError: isFetching.status.state === false,
+                      formSuccess: isFetching.status.state === true
+                    })}
+                    onBlur={this.handleStatus.bind(this)}
+                    ref={ (r) => this.status = r }
+                  />
+                  <div className={x.rightAddon}>
+                    {isFetching.status.status && (
+                        <LoaderSmall/>
+                    )}
+                  </div>
+                </div>
                 {isFetching.status.message && (
                   <div className={cx({
                     stateStatus: true,

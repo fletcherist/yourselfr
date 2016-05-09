@@ -1,23 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import s from './NoData.scss';
+import Translate from 'react-translate-component';
 
 class NoPosts extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired
   };
 
-  doSomething () {
-
+  shouldComponentUpdate () {
+    return false;
   }
   render () {
     const { isAuthenticated } = this.props;
     if (isAuthenticated) {
       return (
-        <div className={s.noData}>Здесь будет показываться то,<br/> что ваши друзья думают о Вас.</div>
+        <div className={s.noData}>
+          <Translate content='NoData.NoPosts.authenticated'/>
+        </div>
       )
     } else {
       return (
-        <div className={s.noData}>Пока ничего нет. Напишите первым!</div>
+        <div className={s.noData}>
+          <Translate content='NoData.NoPosts.not_authenticated'/>
+        </div>
       )
     }
   }

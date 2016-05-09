@@ -3,6 +3,7 @@ import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
 import { logIn } from '../../../redux/modules/auth';
 import VkAuthButton from 'components/Buttons/SocialButtons';
+import Logotype from '../Logotype';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
@@ -34,7 +35,7 @@ class LoginForm extends React.Component {
     return (
       <div>
         <div className={s.loginFormContainer}>
-          <div className={s.logotype}></div>
+          <Logotype/>
           <VkAuthButton />
           <Translate className={s.titleAction} content='login.message' component='div'/>
           <form onSubmit={ this.logIn.bind(this)}>
