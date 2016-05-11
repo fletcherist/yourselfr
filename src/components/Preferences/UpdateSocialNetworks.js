@@ -12,13 +12,13 @@ import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg';
 
 import { LoaderSmall } from '../Loader';
 
-import { saveSocialNetworks } from 'redux/modules/preferences';
+import { updateVK } from 'redux/modules/socialNetworks';
 
 let c = classNames.bind(x);
 
 class UpdateSocialNetworks extends Component {
   static propTypes = {
-    saveSocialNetworks: PropTypes.func.isRequired,
+    actions: PropTypes.func.isRequired,
     isFetching: PropTypes.object,
     vk: PropTypes.string,
     twitter: PropTypes.string,
@@ -45,7 +45,8 @@ class UpdateSocialNetworks extends Component {
     })
   }
   handleVK () {
-    this.props.saveSocialNetworks({vk: this.vk.value});
+    console.log(this.props.actions);
+    this.props.actions.updateVK(this.vk.value);
   }
   handleTumblr () {
     this.props.saveSocialNetworks({tumblr: this.tumblr.value});
@@ -149,10 +150,5 @@ function mapStateToProps (state) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    saveSocialNetworks: (networks) => dispatch(saveSocialNetworks(networks))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateSocialNetworks);
+console.log(updateVK);
+export default connect(mapStateToProps, updateVK)(UpdateSocialNetworks);

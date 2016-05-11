@@ -197,53 +197,6 @@ export const saveStatus = (status) => {
   }
 }
 
-export const saveSocialNetworks = (networks) => {
-  return (dispatch, getState) => {
-    console.log(networks);
-    dispatchFetch(true);
-
-    updateData();
-    var body = createBody(networks);
-    fetch(`${config.http}/api/users`, {
-      method: 'POST',
-      headers: {
-        'Content-type': config.post
-      },
-      credentials: 'include',
-      body: body
-    })
-    .then((r) => r.json())
-    .then((res) => {
-      console.log(res);
-      dispatchFetch(false);
-    });
-
-    function dispatchFetch (status) {
-      if (networks.vk) {
-        dispatch(fetchSocialNetworks({vk: {status: status}}));
-      } else if (networks.twitter) {
-        dispatch(fetchSocialNetworks({twitter: {status: status}}));
-      } else if (networks.tumblr) {
-        dispatch(fetchSocialNetworks({tumblr: {status: status}}));
-      } else if (networks.instagram) {
-        dispatch(fetchSocialNetworks({instagram: {status: status}}));
-      }
-    }
-
-    function updateData () {
-      if (networks.vk) {
-        dispatch(changeVK(networks.vk));
-      } else if (networks.twitter) {
-        dispatch(changeTwitter(networks.twitter));
-      } else if (networks.tumblr) {
-        dispatch(changeTumblr(networks.tumblr));
-      } else if (networks.instagram) {
-        dispatch(changeInstagram(networks.instagram));
-      }
-    }
-  }
-}
-
 const createBody = (user) => {
   var body = ``;
   if (user.username) { body += `username=${user.username}&`; }
