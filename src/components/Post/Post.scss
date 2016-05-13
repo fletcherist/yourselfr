@@ -132,12 +132,12 @@
 	z-index: 99;
 }
 .removeButton:hover {
-	opacity: 1 !important;
+	opacity: .5 !important;
 }
 
 .post:hover .removeButton {
 	display: block;
-	opacity: .6;
+	opacity: .2;
 }
 .post:hover .hideOnHover {
 	display: none;
