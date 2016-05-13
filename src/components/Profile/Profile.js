@@ -7,6 +7,7 @@ import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
 import Navigation from '../Navigation';
+import Megaphone from '../Megaphone';
 
 import {actions as userActions} from '../../redux/modules/user';
 
@@ -69,6 +70,7 @@ class Profile extends Component {
           />
       </div>
       <SocialNetworks networks={social}/>
+      <Megaphone/>
       <div className='hide-on-mobile'>
         <Footer/>
       </div>
