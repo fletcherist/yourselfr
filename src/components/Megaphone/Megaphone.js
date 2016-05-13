@@ -15,7 +15,7 @@ class Megaphone extends Component {
     return (
       <div className={cx(x.megaphone, 'container--left')}>
         <div className={x.text}>
-          Поделитесь ссылкой с&nbsp;друзьями, чтобы получить шквал  мнений о&nbsp;себе:
+          Поделитесь ссылкой с&nbsp;друзьями, чтобы получить шквал  мнений&nbsp;о&nbsp;себе
         </div>
         <div className={x.input}>yourselfr.com/<b>{this.props.alias}</b></div>
         <div className={x.buttons}>

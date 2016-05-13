@@ -9,8 +9,14 @@
   // color: $yoColor;
   text-decoration: none;
   cursor: pointer;
+}
 
-  &:hover {
-    background-color: $yoColor05;
-  }
+.footer a {
+  color: rgba(255, 255, 255, .7);
+  transition: .2s ease;
+}
+
+.footer a:hover {
+  color: #fff;
+  transition: 0;
 }
