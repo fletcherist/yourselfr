@@ -8,7 +8,8 @@ export class NotFoundView extends React.Component {
     return (
       <div className='container text-center'>
         <Navigation/>
-        <div className={s.title}>Oops.<br/> Wrong hole.</div>
+        <div className={s.title}>
+        Проблемы с доступом к Джойказино.</div>
       </div>
     )
   }

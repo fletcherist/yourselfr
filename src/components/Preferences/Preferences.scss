@@ -2,10 +2,19 @@
 
 h3 {
   margin-top: 5px;
+  font-weight: bold;
+  margin-left: 8px;
+  margin-bottom: 0;
+  line-height: 1em;
 }
+
+small {
+  margin-left: 8px;
+}
+
 .status, .username, .alias, .network {
-  margin: 10px 0px 0px 0px;
-  padding: 10px;
+  margin: 5px 0px;
+  padding: 5px;
   resize: none;
   outline: none;
   width: 100%;
@@ -197,6 +206,7 @@ h3 {
   font-size: 17px;
   font-weight: bold;
   margin-bottom: 10px;
+  letter-spacing: 1px;
   a {
     display: block;
     padding: 8px 15px 8px 10px;
