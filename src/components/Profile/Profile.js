@@ -70,7 +70,7 @@ class Profile extends Component {
           />
       </div>
       <SocialNetworks networks={social}/>
-      <Megaphone/>
+      <Megaphone alias={alias} username={username}/>
       <div className='hide-on-mobile'>
         <Footer/>
       </div>

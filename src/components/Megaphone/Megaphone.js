@@ -7,23 +7,25 @@ import x from './megaphone.scss';
 // and useless and stupid funny society
 class Megaphone extends Component {
   static propTypes = {
-    alias: PropTypes.string.isRequired
+    alias: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
   };
+  PIZDA () {};
   render () {
     return (
       <div className={cx(x.megaphone, 'container--left')}>
         <div className={x.text}>
-          Поделитесь ссылкой с друзьями, чтобы получить шквал  мнений о&nbsp;себе:
+          Поделитесь ссылкой с&nbsp;друзьями, чтобы получить шквал  мнений о&nbsp;себе:
         </div>
-        <div className={x.input}>yourselfr.com/{this.props.alias}</div>
+        <div className={x.input}>yourselfr.com/<b>{this.props.alias}</b></div>
         <div className={x.buttons}>
-          <a href='http://www.facebook.com/sharer.php?u=?t='
+          <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&title=Узнайте обо мне больше на Йорселфере!`}
             className={cx(x.button, x.vk)}>ВК</a>
-          <a href='http://vk.com/share.php?url=?title=?description'
+          <a href='http://www.facebook.com/sharer.php?u=http://yourselfr.com/?t='
             className={cx(x.button, x.fb)}>Фейсбук</a>
-          <a href='http://twitter.com/share?url=?text=?via='
+          <a href='http://twitter.com/share?url=http://yourselfr.com/?text=?via='
             className={cx(x.button, x.tw)}>Твитер</a>
-          <a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl='
+          <a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=http://yourselfr.com/'
             className={cx(x.button, x.tb)}>Тамблер</a>
         </div>
       </div>
