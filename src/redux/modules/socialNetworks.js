@@ -5,7 +5,8 @@ import {
   changeVK,
   changeTumblr,
   changeTwitter,
-  changeInstagram
+  changeInstagram,
+  changeFacebook
 } from './auth';
 
 var body = {
@@ -76,56 +77,25 @@ export const updateInstagram = (instagram) => {
   }
 }
 
+export const updateFacebook = (facebook) => {
+  return (dispatch) => {
+    dispatch(fetchSocialNetworks({facebook: {status: true}}));
+    dispatch(changeFacebook(facebook));
+    var params = body;
+    params.body = `facebook=${facebook}`;
+    fetch(`${config.http}/api/preferences/change/facebook`, params)
+    .then((r) => r.json())
+    .then((res) => {
+      console.log(res);
+      dispatch(fetchSocialNetworks({facebook: {status: false}}));
+    });
+  }
+}
+
 export const actions = {
   updateVK,
   updateTwitter,
   updateTumblr,
-  updateInstagram
+  updateInstagram,
+  updateFacebook
 }
-// export const saveSocialNetworks = (networks) => {
-//   return (dispatch, getState) => {
-//     console.log(networks);
-//     dispatchFetch(true);
-//
-//     updateData();
-//     var body = createBody(networks);
-//     console.log(body);
-//     fetch(`${config.http}/api/users`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-type': config.post
-//       },
-//       credentials: 'include',
-//       body: body
-//     })
-//     .then((r) => r.json())
-//     .then((res) => {
-//       console.log(res);
-//       dispatchFetch(false);
-//     });
-//
-//     function dispatchFetch (status) {
-//       if (networks.vk) {
-//         dispatch(fetchSocialNetworks({vk: {status: status}}));
-//       } else if (networks.twitter) {
-//         dispatch(fetchSocialNetworks({twitter: {status: status}}));
-//       } else if (networks.tumblr) {
-//         dispatch(fetchSocialNetworks({tumblr: {status: status}}));
-//       } else if (networks.instagram) {
-//         dispatch(fetchSocialNetworks({instagram: {status: status}}));
-//       }
-//     }
-//
-//     function updateData () {
-//       if (networks.vk) {
-//         dispatch(changeVK(networks.vk));
-//       } else if (networks.twitter) {
-//         dispatch(changeTwitter(networks.twitter));
-//       } else if (networks.tumblr) {
-//         dispatch(changeTumblr(networks.tumblr));
-//       } else if (networks.instagram) {
-//         dispatch(changeInstagram(networks.instagram));
-//       }
-//     }
-//   }
-// }

@@ -45,10 +45,12 @@ const CHANGE_VK = 'CHANGE_VK';
 const CHANGE_TUMBLR = 'CHANGE_TUMBLR';
 const CHANGE_TWITTER = 'CHANGE_TWITTER';
 const CHANGE_INSTAGRAM = 'CHANGE_INSTAGRAM';
+const CHANGE_FACEBOOK = 'CHANGE_FACEBOOK';
 export const changeVK = createAction(CHANGE_VK);
 export const changeTumblr = createAction(CHANGE_TUMBLR);
 export const changeTwitter = createAction(CHANGE_TWITTER);
 export const changeInstagram = createAction(CHANGE_INSTAGRAM);
+export const changeFacebook = createAction(CHANGE_FACEBOOK);
 
 var defaultMe = {
   authenticated: false,
@@ -61,7 +63,8 @@ var defaultMe = {
       vk: undefined,
       twitter: undefined,
       tumblr: undefined,
-      instagram: undefined
+      instagram: undefined,
+      facebook: undefined
     }
   }
 }
@@ -219,5 +222,8 @@ export default handleActions({
   },
   CHANGE_INSTAGRAM: (state, { payload }) => {
     return {...state, user: {...state.user, social: {...state.user.social, instagram: payload}}};
+  },
+  CHANGE_FACEBOOK: (state, { payload }) => {
+    return {...state, user: {...state.user, social: {...state.user.social, facebook: payload}}};
   }
 }, defaultMe);

@@ -108,7 +108,8 @@ export default handleActions({
       vk: payload.vk || {status: false, state: false},
       twitter: payload.twitter || {status: false, state: false},
       tumblr: payload.tumblr || {status: false, state: false},
-      instagram: payload.instagram || {status: false, state: false}
+      instagram: payload.instagram || {status: false, state: false},
+      facebook: payload.facebook || {status: false, state: false}
     }}}
   },
   FETCH_SUBSCRIBE: (state, { payload }) => {
