@@ -8,7 +8,7 @@ class Footer extends Component {
   handleChange (locale) {
     cp.setLocale(locale);
     cookie.remove('locale', { path: '/' });
-    cookie.save('alias', locale, { path: '/' });
+    cookie.save('locale', locale, { path: '/' });
   }
 
   render () {
