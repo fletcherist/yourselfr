@@ -67,7 +67,7 @@ export const updateInstagram = (instagram) => {
     dispatch(changeInstagram(instagram));
     var params = body;
     params.body = `instagram=${instagram}`;
-    fetch(`${config.http}/api/preferences/change/tumblr`, params)
+    fetch(`${config.http}/api/preferences/change/instagram`, params)
     .then((r) => r.json())
     .then((res) => {
       console.log(res);
