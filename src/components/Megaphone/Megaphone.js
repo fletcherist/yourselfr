@@ -15,7 +15,7 @@ class Megaphone extends Component {
         <div className={x.text}>
           Поделитесь ссылкой с друзьями, чтобы получить шквал  мнений о&nbsp;себе:
         </div>
-        <div className={x.input}>yourselfr.com/{PropTypes.alias}</div>
+        <div className={x.input}>yourselfr.com/{this.props.alias}</div>
         <div className={x.buttons}>
           <a href='http://www.facebook.com/sharer.php?u=?t='
             className={cx(x.button, x.vk)}>ВК</a>
