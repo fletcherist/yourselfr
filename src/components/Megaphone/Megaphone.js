@@ -17,15 +17,14 @@ class Megaphone extends Component {
         </div>
         <div className={x.input}>yourselfr.com/{PropTypes.alias}</div>
         <div className={x.buttons}>
-// http://www.facebook.com/sharer.php                 ?u ?t
-// http://vk.com/share.php                            ?url ?title ?description
-// http://twitter.com/share                           ?url ?text ?via
-// https://www.tumblr.com/widgets/share/tool          ?canonicalUrl=
-
-          <div className={cx(x.button, x.vk)}><span>ВК</span></div>
-          <div className={cx(x.button, x.fb)}><span>Фейсбук</span></div>
-          <div className={cx(x.button, x.tw)}><span>Твитер</span></div>
-          <div className={cx(x.button, x.tb)}><span>Тамблер</span></div>
+          <a href='http://www.facebook.com/sharer.php?u=?t='
+            className={cx(x.button, x.vk)}>ВК</a>
+          <a href='http://vk.com/share.php?url=?title=?description'
+            className={cx(x.button, x.fb)}>Фейсбук</a>
+          <a href='http://twitter.com/share?url=?text=?via='
+            className={cx(x.button, x.tw)}>Твитер</a>
+          <a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl='
+            className={cx(x.button, x.tb)}>Тамблер</a>
         </div>
       </div>
     );
