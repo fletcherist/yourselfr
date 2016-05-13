@@ -55,6 +55,7 @@ class Profile extends Component {
           <Avatar photo={photo} alias={alias}/>
           <Username online={online} username={username}/>
           <Status status={status}/>
+          <SocialNetworks networks={social}/>
           {alias !== this.props.me.alias && (
             <SubscribeButton
               alias={alias}
@@ -69,7 +70,6 @@ class Profile extends Component {
             alias={alias}
           />
       </div>
-      <SocialNetworks networks={social}/>
       <Megaphone alias={alias} username={username}/>
       <div className='hide-on-mobile'>
         <Footer/>

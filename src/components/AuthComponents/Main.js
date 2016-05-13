@@ -3,7 +3,7 @@ import s from './Main.scss';
 import Slideshow from '../Slideshow/Slideshow.js';
 import EndlessFeed from '../EndlessFeed';
 import Footer from '../Footer';
-import WantToRegister from './WantToRegister';
+// import WantToRegister from './WantToRegister';
 import { actions as feed } from '../../redux/modules/endlessFeed';
 import { connect } from 'react-redux';
 import cp from 'counterpart';

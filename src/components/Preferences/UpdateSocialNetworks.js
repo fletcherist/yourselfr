@@ -9,6 +9,7 @@ import vkPicture from 'components/Buttons/SocialButtons/vk.svg';
 import twitterPicture from 'components/Buttons/SocialButtons/twitter.svg';
 import instagramPicture from 'components/Buttons/SocialButtons/instagram.png';
 import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg';
+import facebookPicture from 'components/Buttons/SocialButtons/facebook.svg';
 
 import { LoaderSmall } from '../Loader';
 
@@ -26,7 +27,8 @@ class UpdateSocialNetworks extends Component {
     updateVK: PropTypes.func.isRequired,
     updateTumblr: PropTypes.func.isRequired,
     updateTwitter: PropTypes.func.isRequired,
-    updateInstagram: PropTypes.func.isRequired
+    updateInstagram: PropTypes.func.isRequired,
+    updateFacebook: PropTypes.func.isRequired
   };
 
   constructor (props) {
@@ -58,6 +60,9 @@ class UpdateSocialNetworks extends Component {
   }
   handleInstagram () {
     this.props.updateInstagram(this.instagram.value);
+  }
+  handleFacebook () {
+    this.props.updateFacebook(this.facebook.value);
   }
   handleChange (name, e) {
     var change = {};
@@ -137,6 +142,23 @@ class UpdateSocialNetworks extends Component {
             )}
           </div>
         </div>
+        <div className={cx(s.innerAddon, s.leftAddon)}>
+          <input ref={(r) => this.facebook = r} placeholder='фейсбук' value={this.state.facebook}
+                className={c({
+                  'input': true,
+                  fetchingForms: isFetching.facebook.status,
+                  formError: isFetching.facebook.state === false,
+                  formSuccess: isFetching.facebook.state === true
+                })}
+                onChange={this.handleChange.bind(this, 'instagram')}
+                onBlur={this.handleFacebook.bind(this)}/>
+          <img src={facebookPicture}/>
+          <div className={s.rightAddon}>
+            {isFetching.facebook.status && (
+                <LoaderSmall/>
+            )}
+          </div>
+        </div>
       </div>
     )
   }
@@ -148,7 +170,8 @@ function mapStateToProps (state) {
     vk: state.auth.user.social.vk,
     twitter: state.auth.user.social.twitter,
     tumblr: state.auth.user.social.tumblr,
-    instagram: state.auth.user.social.instagram
+    instagram: state.auth.user.social.instagram,
+    facebook: state.auth.user.social.facebook
   }
 }
 
