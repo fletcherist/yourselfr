@@ -9,12 +9,18 @@ import ga from 'react-ga';
 import { config } from 'redux/config';
 import { authenticate, isYourPage } from './redux/modules/auth';
 
+import cookie from 'react-cookie';
 import counterpart from 'counterpart';
 import { getLocale } from './components/Toools';
 // Set Localization Preferences
 counterpart.registerTranslations('en', require('./locales/en.json'));
 counterpart.registerTranslations('ru', require('./locales/ru.json'));
-var locale = getLocale();
+
+var locale = cookie.load('locale');
+if (!locale) {
+  locale = getLocale();
+}
+
 if (locale === 'en-US') { locale = 'en'; }
 if (locale !== 'en' && locale !== 'ru') { locale = 'ru'; }
 counterpart.setLocale(locale);
