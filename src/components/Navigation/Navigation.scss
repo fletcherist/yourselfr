@@ -6,11 +6,12 @@
 
 .yoButton {
   padding: 15px;
-  background: url('./components/Navigation/yo.png') no-repeat 50% 50%;
-  background-size: 90px;
+  background: url('./components/Navigation/yo.svg') no-repeat 50% 50%;
+  background-size: 60px;
   background-position: left;
   cursor: pointer;
   padding-top: 50px;
+  margin-left: 10px;
 }
 
 .menu {
