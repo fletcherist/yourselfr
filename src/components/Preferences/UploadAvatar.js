@@ -2,7 +2,8 @@ import React from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import { loadAvatar } from '../../redux/modules/preferences';
+import { loadAvatar } from '../../redux/modules/upload';
+import { LoaderSmall } from '../Loader';
 
 let cx = classNames.bind(s);
 
@@ -13,23 +14,37 @@ class UploadAvatar extends React.Component {
     fd.append('file', photo[0].files[0]);
     this.props.loadAvatar(fd);
   }
+
   render () {
     const { isFetching } = this.props;
+    const { state, status } = isFetching;
+
+    var icon;
+    if (!status) {
+      icon = <div className={s.photoPlus}>+</div>
+    } else {
+      icon = <div className={s.loader}><LoaderSmall/></div>
+    }
+    if (state === true) {
+      icon = <div className={s.checkmark}></div>
+    }
     return (
       <div className={s.photoLeft}>
         <div className={s.avatarHolder}>
           <button onClick={ () => this.avatarInput.click() }
-            className={cx({avatar: true})}>
-              <div className={s.photoPlus}>+</div>
-              {!isFetching.avatar && (
+            className={cx({
+              avatar: true,
+              uploadSuccess: isFetching.state
+            })}>
+              <div>{icon}</div>
+              {!isFetching.status && (
                 'ФОТО'
-              )}
-              {isFetching.avatar && (
-                '...'
               )}
             </button>
         </div>
-        <div className={s.descTitle}>Добавьте фото профиля.</div>
+        <div className={s.descTitle}>
+          Добавьте фото профиля.
+        </div>
         <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
           <input
             type='file'
@@ -45,13 +60,13 @@ class UploadAvatar extends React.Component {
 }
 
 UploadAvatar.propTypes = {
-  loadAvatar: React.PropTypes.func,
+  loadAvatar: React.PropTypes.func.isRequired,
   isFetching: React.PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {
   return {
-    isFetching: state.isFetching
+    isFetching: state.isFetching.avatar
   }
 }
 

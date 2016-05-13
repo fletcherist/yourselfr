@@ -61,10 +61,16 @@ export default handleActions({
     }}}
   },
   FETCH_AVATAR: (state, {payload}) => {
-    return {...state, ...{avatar: payload}}
+    return {...state, ...{avatar: {
+      status: payload.status || false,
+      state: payload.state
+    }}}
   },
   FETCH_BACKGROUND: (state, {payload}) => {
-    return {...state, ...{background: payload}}
+    return {...state, ...{background: {
+      state: payload.state || false,
+      status: payload.status
+    }}}
   },
   FETCH_FOLLOWERS: (state, {payload}) => {
     return {...state, ...{followers: payload}}
@@ -162,7 +168,10 @@ export default handleActions({
   loadMorePosts: false,
   followers: false,
   following: false,
-  avatar: false,
+  avatar: {
+    status: false,
+    state: false
+  },
   background: false,
   subscribe: false,
   logIn: {

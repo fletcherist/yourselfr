@@ -6,6 +6,7 @@ import { config } from '../../redux/config';
 import { isValidPhoto } from '../Toools';
 import { Link } from 'react-router';
 import TickTime from '../Post/TickTime';
+import PostText from '../Post/PostText';
 
 let ccx = cx.bind(s);
 class FeedPost extends Component {
@@ -39,6 +40,7 @@ class FeedPost extends Component {
 
       var photo = isValidPhoto(this.props.user.photo);
       var linkHref = '/' + this.props.user.alias;
+
       return (
         <div className={s.postOne}>
           {!isPhoto && (
@@ -56,7 +58,7 @@ class FeedPost extends Component {
                           {' '}
                           <Link to={linkHref}><b>{this.props.user.username}</b></Link>
                         </div>
-                        <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+                        <PostText text={this.props.text}/>
                     </div>
               </div>
           )}

@@ -56,6 +56,34 @@ h3 {
     border-color: #455A64;
   }
 }
+
+.uploadSuccess {
+  color: $yoGreen !important;
+  border-color: $yoGreen;
+}
+
+.checkmark{
+  padding: 15px;
+  display:inline-block;
+
+  &:after{
+    /*Add another block-level blank space*/
+    content: '';
+    display: block;
+
+    /*Make it a small rectangle so the border will create an L-shape*/
+    width: 8px;
+    height: 16px;
+
+    /*Add a white border on the bottom and left, creating that 'L' */
+    border: solid $yoGreen;
+    border-width: 0 2px 2px 0;
+
+    /*Rotate the L 45 degrees to turn it into a checkmark*/
+    transform: rotate(45deg);
+  }
+}
+
 .avatarHolder {
   padding: 10px;
   margin-left: 0px;;
@@ -137,6 +165,12 @@ h3 {
 }
 .formSuccess {
   border-bottom: 1px solid $successColor;
+}
+
+.loader {
+  margin-top: -5px;
+  position: absolute;
+  margin-left: 33px;
 }
 
 .photoLeft {

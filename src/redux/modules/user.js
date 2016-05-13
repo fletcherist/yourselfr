@@ -11,6 +11,18 @@ const SUBSCRIBE = 'SUBSCRIBE';
 const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER';
 const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER';
 
+const PATCH_USERNAME = 'PATCH_USERNAME';
+const PATCH_ALIAS = 'PATCH_ALIAS';
+const PATCH_STATUS = 'PATCH_STATUS';
+const PATCH_AVATAR = 'PATCH_AVATAR';
+const PATCH_BACKGROUND = 'PATCH_BACKGROUND';
+
+export const patchUsername = createAction(PATCH_USERNAME);
+export const patchAlias = createAction(PATCH_ALIAS);
+export const patchStatus = createAction(PATCH_STATUS);
+export const patchAvatar = createAction(PATCH_AVATAR);
+export const patchBackground = createAction(PATCH_BACKGROUND);
+
 export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER);
 
 function getAlias () {
@@ -148,5 +160,21 @@ export default handleActions({
         followers: payload
       })
     })
+  },
+
+  PATCH_USERNAME: (state, { payload }) => {
+    return {...state, ...{username: payload}}
+  },
+  PATCH_ALIAS: (state, { payload }) => {
+    return {...state, ...{alias: payload}}
+  },
+  PATCH_STATUS: (state, { payload }) => {
+    return {...state, ...{status: payload}}
+  },
+  PATCH_AVATAR: (state, { payload }) => {
+    return {...state, ...{photo: payload}}
+  },
+  PATCH_BACKGROUND: (state, { payload }) => {
+    return {...state, ...{background: payload}}
   }
 }, standartUser);

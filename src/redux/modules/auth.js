@@ -5,6 +5,12 @@ import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';
 import cookie from 'react-cookie';
 
+import {
+  patchUsername,
+  patchAlias,
+  patchStatus
+} from './user';
+
 const AUTHENTICATE = 'AUTHENTICATE';
 // const LOG_IN = 'LOG_IN';
 const IS_YOUR_PAGE = 'IS_YOUR_PAGE';
@@ -12,18 +18,33 @@ const CHANGE_USERNAME = 'CHANGE_USERNAME';
 const CHANGE_ALIAS = 'CHANGE_ALIAS';
 const CHANGE_STATUS = 'CHANGE_STATUS';
 
-export const changeUsername = createAction(CHANGE_USERNAME);
-export const changeAlias = createAction(CHANGE_ALIAS, (alias) => {
-  cookie.remove('alias', { path: '/' });
-  cookie.save('alias', alias, { path: '/' });
-  return alias;
-});
+export const changeUsername = (username) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_USERNAME)(username));
+    dispatch(patchUsername(username));
+  }
+}
+
+export const changeAlias = (alias) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_ALIAS)(alias));
+    dispatch(patchAlias(alias));
+    cookie.remove('alias', { path: '/' });
+    cookie.save('alias', alias, { path: '/' });
+  }
+}
+
+export const changeStatus = (status) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_STATUS)(status));
+    dispatch(patchStatus(status));
+  }
+}
 
 const CHANGE_VK = 'CHANGE_VK';
 const CHANGE_TUMBLR = 'CHANGE_TUMBLR';
 const CHANGE_TWITTER = 'CHANGE_TWITTER';
 const CHANGE_INSTAGRAM = 'CHANGE_INSTAGRAM';
-export const changeStatus = createAction(CHANGE_STATUS);
 export const changeVK = createAction(CHANGE_VK);
 export const changeTumblr = createAction(CHANGE_TUMBLR);
 export const changeTwitter = createAction(CHANGE_TWITTER);

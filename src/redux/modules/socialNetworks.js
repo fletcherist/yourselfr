@@ -22,14 +22,7 @@ export const updateVK = (vk) => {
     dispatch(changeVK(vk));
     var params = body;
     params.body = `vk=${vk}`;
-    fetch(`${config.http}/api/preferences/change/vk`, {
-      method: 'POST',
-      headers: {
-        'Content-type': config.post
-      },
-      credentials: 'include',
-      body: body
-    })
+    fetch(`${config.http}/api/preferences/change/vk`, params)
     .then((r) => r.json())
     .then((res) => {
       console.log(res);
@@ -38,8 +31,56 @@ export const updateVK = (vk) => {
   }
 }
 
+export const updateTwitter = (twitter) => {
+  return (dispatch) => {
+    dispatch(fetchSocialNetworks({twitter: {status: true}}));
+    dispatch(changeTwitter(twitter));
+    var params = body;
+    params.body = `twitter=${twitter}`;
+    fetch(`${config.http}/api/preferences/change/twitter`, params)
+    .then((r) => r.json())
+    .then((res) => {
+      console.log(res);
+      dispatch(fetchSocialNetworks({twitter: {status: false}}));
+    });
+  }
+}
+
+export const updateTumblr = (tumblr) => {
+  return (dispatch) => {
+    dispatch(fetchSocialNetworks({tumblr: {status: true}}));
+    dispatch(changeTumblr(tumblr));
+    var params = body;
+    params.body = `tumblr=${tumblr}`;
+    fetch(`${config.http}/api/preferences/change/tumblr`, params)
+    .then((r) => r.json())
+    .then((res) => {
+      console.log(res);
+      dispatch(fetchSocialNetworks({tumblr: {status: false}}));
+    });
+  }
+}
+
+export const updateInstagram = (instagram) => {
+  return (dispatch) => {
+    dispatch(fetchSocialNetworks({instagram: {status: true}}));
+    dispatch(changeInstagram(instagram));
+    var params = body;
+    params.body = `instagram=${instagram}`;
+    fetch(`${config.http}/api/preferences/change/tumblr`, params)
+    .then((r) => r.json())
+    .then((res) => {
+      console.log(res);
+      dispatch(fetchSocialNetworks({instagram: {status: false}}));
+    });
+  }
+}
+
 export const actions = {
-  updateVK
+  updateVK,
+  updateTwitter,
+  updateTumblr,
+  updateInstagram
 }
 // export const saveSocialNetworks = (networks) => {
 //   return (dispatch, getState) => {

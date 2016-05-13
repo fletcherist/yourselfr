@@ -33,7 +33,7 @@ class Profile extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.alias !== this.props.alias;
+    return true;
   }
 
   componentWillMount () {

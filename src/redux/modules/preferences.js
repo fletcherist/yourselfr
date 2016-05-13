@@ -1,61 +1,15 @@
 import { config } from '../config';
 import { fetchUsername,
          fetchAlias,
-         fetchStatus,
-         fetchAvatar,
-         fetchBackground,
-         fetchSocialNetworks
+         fetchStatus
 } from './isFetching';
 
 import {
   changeUsername,
   changeAlias,
-  changeStatus,
-  changeVK,
-  changeTumblr,
-  changeTwitter,
-  changeInstagram
+  changeStatus
 } from './auth';
 
-export const loadAvatar = (avatar) => {
-  return (dispatch, getState) => {
-    console.log('saving uploading avatar..');
-    dispatch(fetchAvatar(true));
-    fetch(`${config.http}/upload/avatar`, {
-      method: 'post',
-      credentials: 'include',
-      body: avatar
-    })
-    .then((r) => r.json())
-    .then((res) => {
-      dispatch(fetchAvatar(false));
-      console.log(res);
-    })
-    .catch((e) => {
-      console.log('Error catched while attaching a photo', e);
-    })
-  }
-}
-
-export const loadBackground = (background) => {
-  return (dispatch, getState) => {
-    console.log('saving uploading background..');
-    dispatch(fetchBackground(true));
-    fetch(`${config.http}/upload/background`, {
-      method: 'post',
-      credentials: 'include',
-      body: background
-    })
-    .then((r) => r.json())
-    .then((res) => {
-      dispatch(fetchBackground(false));
-      console.log(res);
-    })
-    .catch((e) => {
-      console.log('Error catched while attaching a photo', e);
-    })
-  }
-}
 
 export const removeAvatar = () => {
   return (dispatch, getState) => {
@@ -211,8 +165,6 @@ const createBody = (user) => {
 }
 
 export const actions = {
-  loadAvatar,
-  loadBackground,
   removeAvatar,
   removeBackground,
 

@@ -6,7 +6,9 @@ import cx from 'classnames/bind';
 import CommentForm from '../Comment/CommentForm';
 import Photopost from '../Photopost';
 import TickTime from './TickTime';
+import PostText from './PostText';
 import Comments from '../Comments';
+
 import { isHot } from '../Toools';
 
 let ccx = cx.bind(s);
@@ -63,9 +65,7 @@ class Post extends Component {
                       <div className={s.removeButton} onClick={ () => this.props.removePost(this.props.id)}></div>
                   )}
               </div>
-              <div className={s.text}>
-                  <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
-              </div>
+              <PostText text={this.props.text}/>
               <Like
                   count={this.props.likes}
                   object={this.props.id}

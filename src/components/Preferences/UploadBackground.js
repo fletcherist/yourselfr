@@ -2,7 +2,8 @@ import React from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import { loadBackground } from '../../redux/modules/preferences';
+import { loadBackground } from '../../redux/modules/upload';
+import { LoaderSmall } from '../Loader';
 
 let cx = classNames.bind(s);
 
@@ -15,17 +16,28 @@ class UploadBackground extends React.Component {
   }
   render () {
     const { isFetching } = this.props;
+    const { state, status } = isFetching;
+
+    var icon;
+    if (!status) {
+      icon = <div className={s.photoPlus}>+</div>
+    } else {
+      icon = <div className={s.loader}><LoaderSmall/></div>
+    }
+    if (state === true) {
+      icon = <div className={s.checkmark}></div>
+    }
     return (
       <div className={s.photoRight}>
         <div className={s.backgroundHolder}>
           <button onClick={ () => this.backgroundInput.click() }
-          className={cx({background: true})}>
-          <div className={s.photoPlus}>+</div>
-            {!isFetching.avatar && (
+          className={cx({
+            background: true,
+            uploadSuccess: isFetching.state
+          })}>
+            <div>{icon}</div>
+            {!isFetching.status && (
               'ФОН'
-            )}
-            {isFetching.avatar && (
-              '...'
             )}
           </button>
         </div>
@@ -52,7 +64,7 @@ UploadBackground.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    isFetching: state.isFetching
+    isFetching: state.isFetching.background
   }
 }
 
