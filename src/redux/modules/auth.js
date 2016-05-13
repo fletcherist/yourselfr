@@ -8,7 +8,12 @@ import cookie from 'react-cookie';
 import {
   patchUsername,
   patchAlias,
-  patchStatus
+  patchStatus,
+  patchVK,
+  patchTumblr,
+  patchTwitter,
+  patchInstagram,
+  patchFacebook
 } from './user';
 
 const AUTHENTICATE = 'AUTHENTICATE';
@@ -46,11 +51,37 @@ const CHANGE_TUMBLR = 'CHANGE_TUMBLR';
 const CHANGE_TWITTER = 'CHANGE_TWITTER';
 const CHANGE_INSTAGRAM = 'CHANGE_INSTAGRAM';
 const CHANGE_FACEBOOK = 'CHANGE_FACEBOOK';
-export const changeVK = createAction(CHANGE_VK);
-export const changeTumblr = createAction(CHANGE_TUMBLR);
-export const changeTwitter = createAction(CHANGE_TWITTER);
-export const changeInstagram = createAction(CHANGE_INSTAGRAM);
-export const changeFacebook = createAction(CHANGE_FACEBOOK);
+
+export const changeVK = (vk) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_VK)(vk));
+    dispatch(patchVK(vk));
+  }
+}
+export const changeTumblr = (tumblr) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_TUMBLR)(tumblr));
+    dispatch(patchTumblr(tumblr));
+  }
+};
+export const changeTwitter = (twitter) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_TWITTER)(twitter));
+    dispatch(patchTwitter(twitter));
+  }
+};
+export const changeInstagram = (instagram) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_INSTAGRAM)(instagram));
+    dispatch(patchInstagram(instagram));
+  }
+};
+export const changeFacebook = (facebook) => {
+  return (dispatch) => {
+    dispatch(createAction(CHANGE_FACEBOOK)(facebook));
+    dispatch(patchFacebook(facebook));
+  }
+};
 
 var defaultMe = {
   authenticated: false,

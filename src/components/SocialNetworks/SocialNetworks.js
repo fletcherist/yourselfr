@@ -17,9 +17,6 @@ class SocialNetworks extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    if (nextProps.networks && this.props.networks) {
-      return nextProps.networks.vk !== this.props.networks.vk
-    }
     return true;
   }
   render () {
