@@ -23,6 +23,17 @@ export const patchStatus = createAction(PATCH_STATUS);
 export const patchAvatar = createAction(PATCH_AVATAR);
 export const patchBackground = createAction(PATCH_BACKGROUND);
 
+const PATCH_VK = 'PATCH_VK';
+const PATCH_TWITTER = 'PATCH_TWITTER';
+const PATCH_TUMBLR = 'PATCH_TUMBLR';
+const PATCH_INSTAGRAM = 'PATCH_INSTAGRAM';
+const PATCH_FACEBOOK = 'PATCH_FACEBOOK';
+export const patchVK = createAction(PATCH_VK);
+export const patchTwitter = createAction(PATCH_TWITTER);
+export const patchTumblr = createAction(PATCH_TUMBLR);
+export const patchInstagram = createAction(PATCH_INSTAGRAM);
+export const patchFacebook = createAction(PATCH_FACEBOOK);
+
 export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER);
 
 function getAlias () {
@@ -176,5 +187,21 @@ export default handleActions({
   },
   PATCH_BACKGROUND: (state, { payload }) => {
     return {...state, ...{background: payload}}
+  },
+
+  PATCH_VK: (state, { payload }) => {
+    return {...state, ...{social: {...state.social, vk: payload}}}
+  },
+  PATCH_TWITTER: (state, { payload }) => {
+    return {...state, ...{social: {...state.social, twitter: payload}}}
+  },
+  PATCH_TUMBLR: (state, { payload }) => {
+    return {...state, ...{social: {...state.social, tumblr: payload}}}
+  },
+  PATCH_INSTAGRAM: (state, { payload }) => {
+    return {...state, ...{social: {...state.social, instagram: payload}}}
+  },
+  PATCH_FACEBOOK: (state, { payload }) => {
+    return {...state, ...{social: {...state.social, facebook: payload}}}
   }
 }, standartUser);

@@ -1,7 +1,6 @@
 @import 'variables';
 
 .container {
-  max-width: 800px;
   margin: 20px auto;
 }
 
@@ -10,34 +9,46 @@
   background-size: 300px;
   height: 120px;
   width: 100%;
-  margin: 0px 0px 10px;
+  margin: 70px 0px 20px;
   display: block;
 }
 
 .description {
   text-align: center;
   color: #fff;
-  font-size: 24px;
-  line-height: 28px;
-  margin-top: 35px;
+  font-size: 36px;
+  line-height: 1.2em;
   font-weight: 300;
-
   @media screen and (max-width: 600px){
     font-size: 20px;
   }
 }
 
+.footer__anchor {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.left__main {
+  max-height: 300px;
+  overflow: scroll;
+  height: 0px !important;
+  opacity: 0;
+}
+
+.feed__title {
+  text-align: center;
+}
+
 .left {
   max-width: 470px;
   border-radius: 3px;
+  padding: 20px 0;
   background-color: #fff;
   z-index: 99999;
   margin: 40px auto;
-  min-height: 800px;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-
   @media screen and (max-width: 600px){
     width: 95%;
   }

@@ -19,13 +19,13 @@
 .counter_count {
 	text-align: center;
 	font-size: 22px;
-	color: #3d93e3;
-	padding-bottom: 7px;
+	color: $yoColor;
 }
 .counter_title {
-	font-weight: 500;
 	color: $yoGrey;
+	font-weight: 500;
 	font-size: 9px;
+	letter-spacing: 1px;
 	text-transform: uppercase;
 }
 

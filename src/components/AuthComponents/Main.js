@@ -3,10 +3,11 @@ import s from './Main.scss';
 import Slideshow from '../Slideshow/Slideshow.js';
 import EndlessFeed from '../EndlessFeed';
 import Footer from '../Footer';
-import WantToRegister from './WantToRegister';
+// import WantToRegister from './WantToRegister';
 import { actions as feed } from '../../redux/modules/endlessFeed';
 import { connect } from 'react-redux';
 import cp from 'counterpart';
+import cx from 'classnames';
 
 import { ButtonContainer, AuthenticateButton } from 'components/Buttons';
 
@@ -31,11 +32,12 @@ class SignupForm extends Component {
           <ButtonContainer>
             <AuthenticateButton/>
           </ButtonContainer>
-          <div className={s.left}>
-            <WantToRegister/>
+          <div className={cx(s.left, s.left__main)}>
             <EndlessFeed feed={this.props.feed}/>
           </div>
-          <Footer/>
+          <div className={s.footer__anchor}>
+            <Footer/>
+          </div>
         </div>
       </div>
     )

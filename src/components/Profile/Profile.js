@@ -18,6 +18,7 @@ class Profile extends Component {
     photo: PropTypes.string.isRequired,
     background: PropTypes.string,
     online: PropTypes.bool,
+    isYourProfile: PropTypes.bool.isRequired,
     status: PropTypes.string,
     social: PropTypes.object,
     stats: PropTypes.shape({
@@ -45,6 +46,7 @@ class Profile extends Component {
     document.body.style.minHeight = '400px';
   }
   render () {
+    console.log('isprof', this.props.isYourProfile);
     document.title = `${this.props.username} — Йорселфер`;
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
@@ -55,6 +57,7 @@ class Profile extends Component {
           <Avatar photo={photo} alias={alias}/>
           <Username online={online} username={username}/>
           <Status status={status}/>
+          <SocialNetworks networks={social}/>
           {alias !== this.props.me.alias && (
             <SubscribeButton
               alias={alias}
@@ -69,8 +72,9 @@ class Profile extends Component {
             alias={alias}
           />
       </div>
-      <SocialNetworks networks={social}/>
-      <Megaphone/>
+      {this.props.isYourProfile && (
+        <Megaphone alias={alias} username={username}/>
+      )}
       <div className='hide-on-mobile'>
         <Footer/>
       </div>

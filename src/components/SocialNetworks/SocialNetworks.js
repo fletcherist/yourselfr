@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import s from './SocialNetworks.scss';
-import cx from 'classnames';
+// import cx from 'classnames';
 import classNames from 'classnames/bind';
 
 import vkPic from 'components/Buttons/SocialButtons/vk.svg';
 import twitterPic from 'components/Buttons/SocialButtons/twitter.svg';
 import instagramPic from 'components/Buttons/SocialButtons/instagram.png';
 import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg';
+import facebookPic from 'components/Buttons/SocialButtons/facebook.svg';
 
 let c = classNames.bind(s);
 
@@ -16,9 +17,6 @@ class SocialNetworks extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    if (nextProps.networks && this.props.networks) {
-      return nextProps.networks.vk !== this.props.networks.vk
-    }
     return true;
   }
   render () {
@@ -26,16 +24,16 @@ class SocialNetworks extends Component {
 
     var networks = this.props.networks;
     if (networks) {
-      if (networks.vk || networks.twitter || networks.tumblr || networks.instagram) {
+      if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
         ifSocial = true;
-        var { vk, twitter, tumblr, instagram } = networks;
+        var { vk, twitter, tumblr, instagram, facebook } = networks;
         console.log(ifSocial);
       }
     }
     console.log(ifSocial);
     if (ifSocial) {
       return (
-        <div className={cx('container--left', s.social)}>
+        <div className={s.social}>
           <a href={`http://vk.com/${vk}`} target='_blank'>
             <img src={vkPic} className={c({
               inactive: !vk
@@ -54,6 +52,11 @@ class SocialNetworks extends Component {
           <a href={`http://instagram.com/${instagram}`} target='_blank'>
             <img src={instagramPic} className={c({
               inactive: !instagram
+            })}/>
+          </a>
+          <a href={`http://facebook.com/${facebook}`} target='_blank'>
+            <img src={facebookPic} className={c({
+              inactive: !facebook
             })}/>
           </a>
         </div>

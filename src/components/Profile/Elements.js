@@ -3,7 +3,6 @@ import s from './Profile.scss';
 import { Link } from 'react-router';
 import { isValidPhoto } from '../Toools';
 
-import onlinePic from './online.png';
 export const Avatar = ({photo, alias}) => (
     <div className={s.avatar}>
         <Link to={`/${alias}`}>
@@ -21,7 +20,7 @@ export const Username = ({username, online}) => {
     <div className={s.username}>
         <span style={fontSize}>{username}</span>
         {online === true && (
-          <img className={s.online} src={onlinePic}></img>
+          <div className={s.online} />
         )}
     </div>
   )

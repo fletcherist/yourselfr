@@ -6,11 +6,22 @@
 
 .yoButton {
   padding: 15px;
-  background: url('./components/Navigation/yo.png') no-repeat 50% 50%;
-  background-size: 90px;
+  -webkit-mask: url('./components/Navigation/yo.svg') no-repeat 50% 50%;
+  -webkit-mask-size: 55px;
+  width: 55px;
+  height: 55px;
+  background: $yoColor;
+  background-size: 55px;
   background-position: left;
   cursor: pointer;
   padding-top: 50px;
+  margin-left: 10px;
+  transition: .2s ease-in background-color;
+}
+
+.yoButton:hover {
+  background: lighten( $yoColor, 10% );
+  transition: 0;
 }
 
 .menu {

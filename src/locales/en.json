@@ -1,6 +1,6 @@
 {
   "yourselfr": "Yourselfr",
-  "description": "We let you get to know,<br/> what your friends are thinking about you.",
+  "description": "See what your friends <br/>think about you",
   "signup": {
     "message": "Yourselfr is such a kind of service, with which you get to know, what your friends are thinking about you.",
     "username": "Username",
@@ -12,7 +12,7 @@
     "message": "Log in to know what your friends are thinking about you.",
     "login": "Login",
     "password": "Password",
-    "button": "Log In"
+    "button": "Get Started"
   },
   "same": {
     "noAccount": "No account?",
@@ -25,7 +25,7 @@
 
   },
   "socialButtons": {
-    "authViaVK": "Authenticate"
+    "authViaVK": "Log in via VK"
   },
   "counters": {
     "followers": {

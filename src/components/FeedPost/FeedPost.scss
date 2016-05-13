@@ -32,6 +32,7 @@
 		width: 75%;
 		font-weight: 400;
 		color: #515151;
+		line-height: 1.15em;
 
 		@media screen and (max-width: 800px) {
 			width: 83%;
@@ -129,8 +130,6 @@
 	width: 100%;
 	font-size: 26px;
 	color: white;
-	font-family: Courier, monospace;
-	letter-spacing: 3px;
 	text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 	align-self: center;
 }
