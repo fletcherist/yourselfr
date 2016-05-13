@@ -1,11 +1,12 @@
 import lay1 from './Layout1.jpg';
 import lay2 from './Layout2.jpg';
-import lay3 from './Layout3.jpg';
+// import lay3 from './Layout3.jpg';
 import lay4 from './Layout4.jpg';
+import lay5 from './Layout5.jpg';
 
 import React from 'react';
 
-var backgrounds = [lay1, lay2, lay3, lay4];
+var backgrounds = [lay1, lay2, lay4, lay5];
 
 class Slideshow extends React.Component {
   constructor () {
@@ -23,7 +24,7 @@ class Slideshow extends React.Component {
 
     var self = this;
     function decrease () {
-      opacity -= 0.03;
+      opacity -= 0.01;
       if (opacity <= 0) {
         element.style.opacity = 0;
 
@@ -55,7 +56,7 @@ class Slideshow extends React.Component {
 
     var self = this;
     function decrease () {
-      opacity += 0.03;
+      opacity += 0.01;
       if (opacity >= 1) {
         element.style.opacity = 1;
 

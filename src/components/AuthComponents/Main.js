@@ -35,7 +35,9 @@ class SignupForm extends Component {
           <div className={cx(s.left, s.left__main)}>
             <EndlessFeed feed={this.props.feed}/>
           </div>
-          <Footer/>
+          <div className={s.footer__anchor}>
+            <Footer/>
+          </div>
         </div>
       </div>
     )
