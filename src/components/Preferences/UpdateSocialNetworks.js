@@ -150,7 +150,7 @@ class UpdateSocialNetworks extends Component {
                   formError: isFetching.facebook.state === false,
                   formSuccess: isFetching.facebook.state === true
                 })}
-                onChange={this.handleChange.bind(this, 'instagram')}
+                onChange={this.handleChange.bind(this, 'facebook')}
                 onBlur={this.handleFacebook.bind(this)}/>
           <img src={facebookPicture}/>
           <div className={s.rightAddon}>
