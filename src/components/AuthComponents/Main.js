@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import cp from 'counterpart';
 import cx from 'classnames';
 
+import Translate from 'react-translate-component';
+
 import { ButtonContainer, AuthenticateButton } from 'components/Buttons';
 
 class SignupForm extends Component {
@@ -25,10 +27,7 @@ class SignupForm extends Component {
         <Slideshow />
         <div className={s.container}>
           <div className={s.logotype}></div>
-          <div
-            className={s.description}
-            dangerouslySetInnerHTML={{__html: cp.translate('description')}}>
-          </div>
+          <Translate content='description' className={s.description} component='div' />
           <ButtonContainer>
             <AuthenticateButton/>
           </ButtonContainer>

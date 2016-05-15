@@ -1,6 +1,6 @@
 {
   "yourselfr": "Yourselfr",
-  "description": "See what your friends <br/>think about you",
+  "description": "See what your friends think about you",
   "signup": {
     "message": "Yourselfr is such a kind of service, with which you get to know, what your friends are thinking about you.",
     "username": "Username",
@@ -12,14 +12,15 @@
     "message": "Log in to know what your friends are thinking about you.",
     "login": "Login",
     "password": "Password",
-    "button": "Get Started"
+    "button": "Log In"
   },
   "same": {
     "noAccount": "No account?",
     "haveAccount": "Have account?",
     "register": "Sign Up",
     "login": "Log In",
-    "WantToRegister": "Want to try it on myself! "
+    "WantToRegister": "Want to try it on myself! ",
+    "get_started": "Get Started"
   },
   "forms": {
 

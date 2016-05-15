@@ -94,8 +94,7 @@
     "url": "^0.11.0",
     "velocity-react": "^1.1.2",
     "yargs": "^3.18.0",
-    "isomorphic-fetch": "latest",
-    "redux-simple-router": "latest"
+    "isomorphic-fetch": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",

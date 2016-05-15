@@ -19,7 +19,7 @@ export class AuthenticateButton extends Component {
       <div>
         <Link to='/login'>
           <div className={s.AuthenticateButton}>
-            <Translate content='login.button'/>
+            <Translate content='same.get_started'/>
           </div>
         </Link>
       </div>
