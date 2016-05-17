@@ -1,9 +1,10 @@
 # Yourselfr
-http://yourselfr.com — web client
+A front-end part for yourselfr.com written in React and Redux. Connects to node/Mongo back-end and generates webpages.  
 
+Made with love in Uglich and Surgut.
 
-Want selfr on your machine?
+### Installation
+* Clone the repository
 * `npm install`
 * `npm start`
-
-localhost:3000
+* Go to `localhost:3000`
