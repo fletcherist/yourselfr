@@ -6,6 +6,7 @@ import cx from 'classnames';
 import Modal from 'react-modal';
 import AttachPhoto from './AttachPhoto';
 import ModalStyles from './ModalStyles.js';
+import TextBox from '../TextBox';
 
 function formToFull () {
   var form = document.getElementById('text-form');
@@ -17,7 +18,9 @@ class WriteBox extends Component {
       sendPost: PropTypes.func.isRequired,
       alias: PropTypes.string.isRequired,
       username: PropTypes.string.isRequired,
-      isYourPage: PropTypes.bool.isRequired
+      isYourPage: PropTypes.bool.isRequired,
+      isOpen: PropTypes.bool.isRequired,
+      toggleModalBox: PropTypes.func.isRequired
     };
 
     constructor (props) {
@@ -53,7 +56,7 @@ class WriteBox extends Component {
         username: props.username,
         created_by: props.alias,
         text: '',
-        isOpen: props.show || false,
+        isOpen: props.isOpen || false,
         textPlaceholder: phrases[random]
       })
     }
@@ -62,7 +65,8 @@ class WriteBox extends Component {
       var textBox = document.querySelector('#text-form')
       var photo = document.querySelector('#input-value').value;
       var preview = document.querySelector('#attach-preview');
-      var text = textBox.value;
+      var text = textBox.textContent;
+      console.log(text);
       if (!photo && !text) {
         textBox.focus();
       }
@@ -74,25 +78,20 @@ class WriteBox extends Component {
       preview.src = '';
       preview.classList.add('hidden')
       formToFull();
-      this.toggle();
+      this.props.toggleModalBox();
     }
 
-    toggle () {
-      this.setState({
-        isOpen: !this.state.isOpen
-      })
-    }
     render () {
       var attachPreview = cx(s.attachPreview, 'hidden');
       return (
-        <Modal isOpen={this.state.isOpen} style={ModalStyles} onRequestClose={this.toggle.bind(this)} closeTimeoutMS={300}>
+        <Modal
+          isOpen={this.props.isOpen}
+          style={ModalStyles}
+          onRequestClose={ this.props.toggleModalBox }
+          closeTimeoutMS={300}>
             <div className={s.container}>
                 <div className={s.header}>Написать анонимное мнение</div>
-                <textarea
-                  placeholder={this.state.textPlaceholder}
-                  id='text-form'
-                  style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
-                </textarea>
+                <TextBox/>
                 <img id='attach-preview' className={attachPreview}/>
                 <div className={s.above}>
                     <div

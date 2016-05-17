@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ending } from '../Toools';
+import { ending, blurRoot } from '../Toools';
 import WriteBox from '../WriteBox';
 import s from './Headers.scss';
 
@@ -11,12 +11,18 @@ class PostsHeader extends Component {
 
   componentWillMount () {
     this.setState({
-      show: false
+      isOpen: false
     })
   }
 
-  openModalBox () {
-    this.setState({show: !this.state.show})
+  toggleModalBox () {
+    if (this.state.isOpen) {
+      this.setState({isOpen: false})
+      blurRoot(false);
+    } else {
+      this.setState({isOpen: true})
+      blurRoot(true);
+    }
   }
 
   render () {
@@ -32,8 +38,11 @@ class PostsHeader extends Component {
           <span className={s.separator}></span>
           <span className={s.navItem}>{ count } {postsPronounce}</span>
         </div>
-        <span className={s.blockTitleRight} onClick={ this.openModalBox.bind(this) }>Оставить своё мнение</span>
-        <WriteBox show={this.state.show}/>
+        <span className={s.blockTitleRight} onClick={ this.toggleModalBox.bind(this) }>Оставить своё мнение</span>
+        <WriteBox
+          isOpen={this.state.isOpen}
+          toggleModalBox={ this.toggleModalBox.bind(this) }
+        />
       </div>
     )
   }

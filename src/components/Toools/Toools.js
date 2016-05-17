@@ -159,3 +159,12 @@ export function isHot (created_at) {
     return false;
   }
 }
+
+export function blurRoot (flag) {
+  var root = document.getElementById('root');
+  if (flag) {
+    root.classList.add('backgroundblur');
+  } else {
+    root.classList.remove('backgroundblur');
+  }
+}

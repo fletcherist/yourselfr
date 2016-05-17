@@ -80,7 +80,7 @@ class Slideshow extends React.Component {
     }, 5000);
   }
 
-  componentWillUnmount () {
+  shouldComponentUpdate () {
     return false;
   }
   render () {

@@ -46,6 +46,6 @@ class EndlessFeed extends Component {
 
 EndlessFeed.propTypes = {
   feed: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool
 }
 export default EndlessFeed;

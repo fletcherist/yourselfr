@@ -6,9 +6,12 @@ class PostText extends Component {
     text: PropTypes.string.isRequired
   };
 
+  shouldComponentUpdate () {
+    return false;
+  }
   render () {
     var formattedText = {
-      fontSize: this.props.text.length > 100 ? '13px' : '16px'
+      fontSize: this.props.text.length > 100 ? '16px' : '16px'
     }
     return (
       <span

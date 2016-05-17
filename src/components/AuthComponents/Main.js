@@ -6,8 +6,6 @@ import Footer from '../Footer';
 // import WantToRegister from './WantToRegister';
 import { actions as feed } from '../../redux/modules/endlessFeed';
 import { connect } from 'react-redux';
-import cp from 'counterpart';
-import cx from 'classnames';
 
 import Translate from 'react-translate-component';
 
@@ -31,7 +29,7 @@ class SignupForm extends Component {
           <ButtonContainer>
             <AuthenticateButton/>
           </ButtonContainer>
-          <div className={cx(s.left, s.left__main)}>
+          <div className={s.left}>
             <EndlessFeed feed={this.props.feed}/>
           </div>
           <div className={s.footer__anchor}>
