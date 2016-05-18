@@ -1,6 +1,6 @@
 # Yourselfr
 
-A front-end part for yourselfr.com written in React and Redux.
+A front-end part for [yourselfr.com](http://yourselfr.com) written in React and Redux.
 Connects to node.js back-end and generates webpages for user to stare at:
 ![](https://pp.vk.me/c636219/v636219292/8f3a/EXwXqqzzsOk.jpg)
 
