@@ -4,11 +4,13 @@ A front-end part for [yourselfr.com](http://yourselfr.com) written in React and 
 Connects to node.js back-end and generates webpages for user to stare at:
 ![](https://pp.vk.me/c636219/v636219292/8f3a/EXwXqqzzsOk.jpg)
 
+Supports different locales, uploads images, chages settings—in other words, does what a real application would do, even though it’s written in React!
+
 ### Play with it for yourself:
     $ npm install
     $ npm start
     → localhost:3000
 
 <br/>
-A Pizdets project. Made with :heart: in Surgut and Uglich. We can be reached
-at team@pizdets.xyz.
+A Pizdets project. Made with :heart: in Surgut and Uglich.  
+We can be reached at team@pizdets.xyz.
