@@ -1,0 +1,5 @@
+{
+	"name":"WriteBox",
+	"version":"0.0.0",
+	"main": "./WriteBox.js"
+}

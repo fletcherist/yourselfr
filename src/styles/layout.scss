@@ -1,0 +1,140 @@
+@import 'variables';
+
+.button {
+  padding: 5px 15px 6px;
+  background: #eee;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px #ccc;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+}
+.button--register {
+  background: #5CD987;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 0 -1px #44B66B;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  font-size: 16px;
+}
+.button:disabled {
+  background: $yoGrey;
+  box-shadow: inset 0 -1px #A0A0A0;
+}
+.button--submit {
+  color: #E98032;
+  background: #FFF3BB;
+  box-shadow: inset 0 -1px #F9D885;
+  float: right;
+  position: relative;
+  text-align: center;
+}
+.button--save {
+  color: #E98032;
+  background: #FFF3BB;
+  box-shadow: inset 0 -1px #F9D885;
+  position: relative;
+  text-align: center;
+}
+.button--upload {
+  margin: 10px 8px 10px 0px;
+  height: 30px;
+  background: $yoColor05;
+  color: $yoColor;
+  box-shadow: inset 0 -1px #AADCFF;
+}
+.button--block {
+  width: 100%;
+}
+.button--container {
+  margin-top: 16px;
+}
+
+
+
+.button--block {
+  width: 100%;
+}
+.button--photo {
+  width: 36px;
+  padding: 8px 7px 3px;
+  float: right;
+  position: relative;
+  right: 12px;
+}
+.button:active {
+  box-shadow: inset 0 -1px rgba(0, 0, 0, .1), inset 0 -100px 100px rgba(0, 0, 0, .05);
+}
+
+
+.input--form {
+  background-color: #fdfdfd;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 9px 8px 7px;
+  -webkit-appearance: none;
+}
+.input--block {
+  width: 100%;
+}
+.input--container {
+  margin-top: 6px;
+}
+
+.input {
+  margin: 10px 0px 0px 0px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0px;
+  border: 0px;
+  border: 2px solid transparent;
+  border-bottom: 1px solid $borderColor;
+  -webkit-input-placeholder {color:#c0392b;}
+}
+
+
+.groupSeparator {
+	margin-top: 4px;
+	color: white;
+	p {
+		overflow: hidden;
+		margin-bottom: 10px;
+		text-align: center;
+  }
+	p:before {
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 40%;
+		background: rgba(0,0,0,0.2);
+		-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		margin-right: 10px;
+  }
+	p:after {
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 40%;
+		background: rgba(0,0,0,0.2);
+		-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		margin-left: 10px;
+  }
+}
+
+.grey {
+	color: $yoGrey !important;
+}

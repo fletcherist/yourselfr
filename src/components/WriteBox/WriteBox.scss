@@ -1,0 +1,183 @@
+@import 'variables';
+
+.header {
+	text-align: center;
+	font-weight: 300;
+	font-size: 14px;
+	padding: 10px;
+	background-color: $greyBackground;
+	border-bottom: 1px solid $borderColor;
+	border-radius: 3px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.container {
+	transition: all .2s;
+	border-radius: 3px;
+	background-color: white;
+	max-width: 490px;
+	width: 100%;
+	margin: auto;
+
+	box-shadow: 0 1px 2px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.04);
+	textarea {
+		border-radius: 3px;
+		display: block;
+		height: 140px;
+		line-height: 20px;
+		width: 100%;
+
+		resize: none;
+		font-size: 15px !important;
+		border: 0;
+		padding: 10px 10px 10px 10px;;
+
+		&:focus {
+			outline: none;
+		}
+	}
+	.preview {
+		background-color: #EFEFEF;
+		padding: 10px;
+		float: right;
+		height: 130px;
+		width: 145px;
+		border-radius: 3px;
+	}
+
+	@media screen and (max-width: 800px){
+		display: block;
+		max-width: 100%;
+		width: 80%;
+		border-bottom: 1px solid #e7e7e7;
+		margin: 10px auto;
+		width: 400px !important;
+	}
+	@media screen and (max-width: 600px){
+    width: 385px !important;
+  }
+	@media screen and (max-width: 400px){
+		width: 285px !important;
+	}
+
+	textarea:focus::-webkit-input-placeholder { color:transparent; }
+	textarea:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+	textarea:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+	textarea:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+}
+
+.form {
+	border-radius: 3px;
+	background-color: white;
+	float: left;
+	max-width: 500px;
+	width: 100%;
+	z-index: 9999999;
+}
+
+.formOpen {
+	padding: 15px;
+	text-align: center;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.above {
+	z-index: 1;
+	transition: opacity .4s;
+	transition-delay: .2s;
+	margin-top: -20px;
+}
+
+.attachForm {
+	position: absolute;
+	display: none;
+}
+
+.attachPhoto {
+	// display: none;
+}
+
+.photoHolder {
+	float: right;
+	width: 110px;
+	background-color: #CFEFD0;
+	padding: 10px 10px 4px;
+	border-radius: 3px;
+	color: #36802B;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	transition: .2s background;
+
+	&:hover {
+		background: #D5EFF9;
+		color: $yoColor;
+	}
+
+	&:active {
+		color: $yoColor;
+	}
+}
+
+.photoTitle {
+	float: left;
+	margin-top: 2px;
+	font-size: 10px;
+}
+
+.addPhoto {
+	position: relative;;
+	display: right;
+	z-index: 99999;
+	-webkit-mask-size: cover;
+	mask-size: cover;
+	outline: 0px;
+	outline-width: 0px;
+	-webkit-mask-size: cover;
+	display: inline-block;
+	transition: transform .4s, background-color .5s, opacity .1s;
+	background-color: white;
+	-webkit-mask: url('./components/WriteBox/camera.svg') no-repeat 50% 50%;
+	mask: url(./components/WriteBox/camera.svg) no-repeat 100% 100%;
+	-webkit-mask-size: 16px;
+
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.attachPreview {
+		background-color: #EFEFEF;
+		float: right;
+		margin-top: -140px;
+		height: 120px;
+		width: 202px;
+		border-radius: 0px;
+		cursor: pointer;
+}
+
+.button {
+		margin: 10px;
+}
+
+.buttonSubmit {
+	color: $yoColor;
+	background: $yoColor05;
+	text-align: center;
+	font-size: 11px;
+	border-radius: 3px;
+	display: inline-block;
+	padding: 10px;
+	width: 160px;
+	cursor: pointer;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	transition: .2s background;
+
+	&:hover {
+		background: #D5EFF9;
+	}
+}

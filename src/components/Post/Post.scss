@@ -1,0 +1,144 @@
+@import 'variables';
+
+.first:first-child {
+	padding-top: 0px;
+}
+
+.post {
+	word-wrap: break-word;
+	padding: 10px 15px 10px 5px;
+	line-height: 20px;
+	font-size: 16px;
+	justify-content: left;
+	display: flex;
+	width: 100%;
+	a {
+		background-color: transparent;
+		color: $yoColor;
+		border-bottom: 1px inset rgba(60, 151, 188, 0.25);
+		text-decoration: none;
+		transition: all .2s ease-out;
+	}
+
+	a:hover {
+		color: #d04000;
+		border-color: rgba(208, 64, 0, 0.51);
+		transition: 0;
+	}
+
+
+	.time {
+		font-weight: 300;
+		font-size: 13px;
+		align-self: center;
+		padding: 0px 0px 0px 10px;
+		color: $yoGrey;
+		width: 55px;
+		@media screen and (max-width: 500px) {
+			padding: 0px 0px 0px 3px;
+		}
+	}
+	.text {
+		width: 100%;
+		font-weight: 400;
+		color: #515151;
+		padding-left: 3px;
+	}
+	.like {
+		align-self: center;
+	}
+	.fav {
+		align-self: center;
+	}
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
+	}
+}
+.hot {
+	background-color: #F2FAFF;
+	transition: background-color 2s;
+}
+.hotYellow {
+	transition: background-color 2s;
+	background-color: #FFFCE7;
+}
+
+.comment {
+	// margin-left: 50px;
+	min-height: 55px;
+	.time {
+		width: 50px;
+	}
+}
+.commentText {
+	margin-top: 0px;
+}
+.commentTime {
+	font-weight: 300;
+	font-size: 14px;
+	color: #8d96a2;
+}
+.commentAuthor {
+	font-weight: bold;
+	border-bottom: none !important;
+}
+.removeComment {
+	font-size: 11px;
+	color: $yoGrey;
+	padding: 21px;
+	border-top: 1px solid $borderColor;
+	float: right;
+	max-width: 440px;
+	width: 100%;
+}
+
+.photo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 0px;
+  z-index: 999;
+  margin-left: 0px;
+  background-size: contain;
+}
+
+.attachmentPhoto {
+	max-width: 490px;
+	background-color: #EFEFEF;
+	border-radius: 2px;
+
+	@media screen and (max-width: 1000px) {
+		max-width: 100%;
+	}
+}
+
+
+
+.removeButton {
+	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;
+	background: #148BC3;
+	width: 22px;
+	height: 22px;
+	mask-size: cover;
+	position: absolute;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .2s;
+	display: none;
+	margin-top: -8px;
+	z-index: 99;
+}
+.removeButton:hover {
+	opacity: .5 !important;
+}
+
+.post:hover .removeButton {
+	display: block;
+	opacity: .2;
+}
+.post:hover .hideOnHover {
+	display: none;
+}

@@ -1,0 +1,60 @@
+@import 'variables';
+
+.subscription {
+  z-index: 99999;
+  min-height: 160px;
+}
+.photo {
+  height: 80px;
+  min-width: 80px;
+  border-radius: 50%;
+  margin: 0px;
+  z-index: 999;
+  margin-top: 70px;
+  margin-left: 20px;
+  background-size: contain;
+}
+
+.background {
+	z-index: 1;
+	width: 100.6%;
+	height: 98px;
+  margin-bottom: -160px;
+  margin-left: -1px;
+  margin-top: -2px;
+  z-index: 999999999999;
+  &:last-child {
+    border-radius: 30px;
+  }
+}
+
+.borderBottom {
+  border-bottom: 1px solid $borderColor;
+}
+
+.info {
+  display: inline-block;
+  position: absolute;
+  margin: 90px 0px 50px 20px;
+  // width: 400px;
+  width: 590px;
+  max-width: 590px;
+}
+
+.left_info {
+  float: left;
+}
+.subscribeButton {
+  float: right;
+  display: inline-block;
+  position: absolute;
+}
+
+.username {
+  text-decoration: none;
+  font-size: 20px;
+  color: $yoColor;
+}
+.alias {
+  color: $yoGrey;
+}

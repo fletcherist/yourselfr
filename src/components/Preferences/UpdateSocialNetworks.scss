@@ -1,0 +1,42 @@
+@import 'variables';
+
+
+.innerAddon {
+    position: relative;
+}
+
+/* style icon */
+.innerAddon .rightAddon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  z-index: 9999 !important;
+}
+
+.innerAddon img, .innerAddon .rightAddon {
+	position: absolute;
+	pointer-events: none;
+	z-index: 9;
+	height: 30px;
+	margin-top: 16px;
+}
+/* align icon */
+.leftAddon img  { left:  0px;}
+.rightAddon {
+   right: 0px;
+   display: inline-block;
+ }
+.middleAddon .fa {
+	top: 2px;
+	left: 56%;
+};
+.alert {
+	animation: fadeIn .2s;
+	text-overflow: ellipsis;
+	padding: 10px 15px 10px 15px;
+	// min-height 37px
+}
+
+/* add padding  */
+.leftAddon input  { padding-left:  35px; }
+.rightAddon input { padding-right: 30px; }

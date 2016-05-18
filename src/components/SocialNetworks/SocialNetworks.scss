@@ -1,0 +1,24 @@
+.social {
+	text-align: center;
+	padding: 5px;
+	margin: 0 auto;
+	img {
+		width: 35px;
+    height: 35px;
+		margin-right: 8px;
+		margin-left: 4px;
+  }
+  span {
+    position: absolute;
+    margin-top: 7px;
+		white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		max-width: 200px;
+  }
+}
+
+.inactive {
+	filter:  grayscale(100%);
+	display: none;
+}

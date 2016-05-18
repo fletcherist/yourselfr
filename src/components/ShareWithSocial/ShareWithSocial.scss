@@ -1,0 +1,32 @@
+.network {
+  height: 60px;
+  width: 60px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.description {
+  position: absolute;
+  margin: 20px;
+  display: inline-block;
+  width: 280px;
+  color: #999;
+}
+
+.linkTitle {
+
+}
+
+.link {
+  padding: 10px 10px 10px 20px;
+	margin-bottom: 10px;
+	background-color: #FFFC97;
+	color: #7593A4;
+  font-size: 20px;
+  text-align: center;
+}
+
+.linkTitle {
+  color: #999;
+  padding: 10px;
+}

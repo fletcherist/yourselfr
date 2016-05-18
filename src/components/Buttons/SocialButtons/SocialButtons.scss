@@ -1,0 +1,46 @@
+.button {
+	-webkit-font-smoothing: antialiased;
+	padding: 0px;
+	margin: 0px auto;
+  margin-bottom: 10px;
+	border-radius: 4px;
+	box-shadow: shadow;
+	height: 37px;
+	max-width: 200px;
+
+
+	a {
+		text-decoration: none;
+  }
+	span {
+		// position absolute
+		margin-top: 8px;
+		margin-left: 8px;
+		float: left;
+		color: white;
+		font-weight: bold;
+		font-size: 16px;
+  }
+	img {
+		float: left;
+		height: 37px;
+		padding: 5px 10px 5px 10px;
+
+		border-right: 1px solid #476E9A;
+		background-color: whiteBackground;
+  }
+}
+
+.vk {
+	background-color: #4C75A3;
+}
+.twitter {
+	background-color: #00acec;
+	img {
+		border-radius: 3px;
+		height: 37px;
+		padding: 5px 10px 5px 10px;
+		border-right: 1px solid #1FA3D4;
+		background-color: #FFFFFF;
+  }
+}

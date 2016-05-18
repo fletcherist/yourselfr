@@ -1,0 +1,55 @@
+@import 'variables';
+
+.avatar {
+	margin: 0px auto;
+	margin-top: -30px;
+	max-width: 100%;
+	img {
+		display: block;
+		width: 240px;
+		max-width: 220px;
+		max-height: 220px;
+		height: 240px;
+		border-radius: 10000px;
+		margin: 0px auto;
+	}
+}
+
+.username {
+	min-height: 30px;
+	margin: 15px auto;
+	margin-bottom: 0px;
+	text-align:  center;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 130%;
+	word-wrap: break-word;
+	width: 215px;
+}
+
+.alias {
+	text-align: center;
+	color: #999;
+	font-size: 18px;
+}
+.status {
+	text-align: center;
+	font-size: 16px;
+	text-align-last: center;
+	word-wrap: break-word;
+	padding: 0px 15px 10px 15px;
+	margin: auto;
+	max-width: 230px;
+}
+
+.online {
+	margin-bottom: 2px;
+	margin-left: 4px;
+	opacity: .5;
+	transition: all .3s;
+	cursor: pointer;
+	width: 10px;
+	&:hover {
+		opacity: 1;
+	}
+}

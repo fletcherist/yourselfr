@@ -1,0 +1,158 @@
+@import 'variables';
+
+.postOne {
+	&:last-child {
+		padding-bottom: 10px;
+	}
+}
+
+.post {
+	margin-bottom: 16px;
+	line-height: 28px;
+	font-size: 16px;
+	justify-content: left;
+	display: flex;
+	a {
+		background-color: transparent;
+		color: $yoColor;
+		text-decoration: none;
+		transition: all .2s ease-out;
+	}
+
+
+	.time {
+		font-size: 14px;
+    text-align: center;
+		align-self: center;
+		padding: 0px 0px 0px 0px;
+		color: #B1B1B1;
+		width: 80px;
+	}
+	.text {
+		width: 75%;
+		font-weight: 400;
+		color: #515151;
+		line-height: 1.15em;
+
+		@media screen and (max-width: 800px) {
+			width: 83%;
+		}
+		@media screen and (max-width: 700px) {
+			width: 79%;
+		}
+		@media screen and (max-width: 580px) {
+			width: 68%;
+		}
+		@media screen and (max-width: 550px) {
+			width: 63%;
+		}
+	}
+	.like {
+		align-self: center;
+	}
+	.fav {
+		align-self: center;
+	}
+	.attachment-photo-back {
+		margin-top: 10px;
+		// width: 402px;
+		// background-color: #FCFCFC;
+	}
+}
+.hot {
+	background-color: #F2FAFF;
+}
+
+.photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 0px;
+	margin-top: 5px;
+  z-index: 999;
+  background-size: contain;
+}
+
+.removeButton {
+	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;
+	background: #148BC3;
+	width: 22px;
+	height: 22px;
+	mask-size: cover;
+	position: absolute;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .2s;
+	display: none;
+	margin-top: -8px;
+}
+.removeButton:hover {
+	opacity: 1 !important;
+}
+
+.post:hover .removeButton {
+	display: block;
+	opacity: .6;
+}
+.post:hover .hideOnHover {
+	display: none;
+}
+
+
+
+
+.photoAvatar {
+	margin: 15px;
+}
+.photoPost {
+	border-radius: 0px;
+	justify-content: left;
+	display: flex;
+	min-height: 300px;
+	width: auto;
+	overflow: hidden;
+	background-size:cover !important;
+	background-position:center !important; /* IE fix */
+	background-color: #F7F7F7;
+	// min-width: 490px;
+}
+
+.photoPost:hover .removePhotoPost {
+	display: block;
+	opacity: .8;
+}
+.photoText {
+	text-align: center;
+	max-width: 495px;
+	width: 100%;
+	font-size: 26px;
+	color: white;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+	align-self: center;
+}
+.removePhotoPost {
+	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;
+	background: white;
+	width: 28px;
+	height: 28px;
+	mask-size: cover;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .2s;
+	margin-top: -8px;
+	z-index: 99999999;
+	align-self: center;
+	text-align: left;
+	width: 20px;
+	margin-left: 15px;
+
+	&:hover {
+		opacity: 1 !important;
+	}
+}

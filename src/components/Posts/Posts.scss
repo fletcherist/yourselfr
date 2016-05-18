@@ -1,0 +1,33 @@
+@import 'variables';
+.header {
+	.counter, .favourite {
+		display: inline-block;
+		margin-right: 0px;
+		padding: 4px 0px 2px 0px;
+	}
+	.counter {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.favourite {
+		font-size: 16px;
+	}
+	padding: 8px 0px 6px 15px;
+
+	h1 {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	margin-bottom: 0px;
+	// border-bottom: 1px solid #E7E7E7;
+}
+
+.loadMore {
+	padding: 10px;
+	text-align: center;
+	color: $yoColor;
+	cursor: pointer;
+	background-color: $yoColor05;
+	border-radius: 0px 0px 3px 3px;
+}

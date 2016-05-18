@@ -1,0 +1,34 @@
+@import 'variables';
+.counters {
+	// position: absolute;
+	// bottom: 0;
+	// left: 0;
+	// width: 100%;
+}
+.counter {
+	width: 33.333%;
+	display: inline-block;
+	padding: 10px 0 15px 3px;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	border-radius: 3px;
+	border-radius: 0px 0px 2px 0px;
+}
+
+.counter_count {
+	text-align: center;
+	font-size: 22px;
+	color: $yoColor;
+}
+.counter_title {
+	color: $yoGrey;
+	font-weight: 500;
+	font-size: 9px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.highlighted {
+	background-color: #f2fdff;
+}
