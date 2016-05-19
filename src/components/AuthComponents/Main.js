@@ -27,13 +27,13 @@ class SignupForm extends Component {
           <div className={s.logotype}></div>
           <Translate content='description' className={s.description} component='div' />
           <ButtonContainer>
-            <AuthenticateButton/>
+            <AuthenticateButton />
           </ButtonContainer>
           <div className={s.left}>
-            <EndlessFeed feed={this.props.feed}/>
+            <EndlessFeed feed={this.props.feed} />
           </div>
           <div className={s.footer__anchor}>
-            <Footer/>
+            <Footer />
           </div>
         </div>
       </div>

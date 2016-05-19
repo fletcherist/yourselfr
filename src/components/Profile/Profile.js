@@ -18,7 +18,7 @@ class Profile extends Component {
     photo: PropTypes.string.isRequired,
     background: PropTypes.string,
     online: PropTypes.bool,
-    isYourProfile: PropTypes.bool.isRequired,
+    isYourPage: PropTypes.bool.isRequired,
     status: PropTypes.string,
     social: PropTypes.object,
     stats: PropTypes.shape({
@@ -46,18 +46,17 @@ class Profile extends Component {
     document.body.style.minHeight = '400px';
   }
   render () {
-    console.log('isprof', this.props.isYourProfile);
     document.title = `${this.props.username} — Йорселфер`;
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
     return (
       <div>
         <div className='container--left padding-0 container--transparent container--user' id='profile'>
-          <Navigation/>
-          <Avatar photo={photo} alias={alias}/>
-          <Username online={online} username={username}/>
-          <Status status={status}/>
-          <SocialNetworks networks={social}/>
+          <Navigation />
+          <Avatar photo={photo} alias={alias} />
+          <Username online={online} username={username} />
+          <Status status={status} />
+          <SocialNetworks networks={social} />
           {alias !== this.props.me.alias && (
             <SubscribeButton
               alias={alias}
@@ -71,14 +70,14 @@ class Profile extends Component {
             following={stats.following}
             alias={alias}
           />
-      </div>
-      {this.props.isYourProfile && (
-        <Megaphone alias={alias} username={username}/>
-      )}
-      <div className='hide-on-mobile'>
-        <Footer/>
-      </div>
-    </div>)
+        </div>
+        {this.props.isYourPage && (
+          <Megaphone alias={alias} username={username} />
+        )}
+        <div className='hide-on-mobile'>
+          <Footer />
+        </div>
+      </div>)
   }
 }
 
@@ -94,7 +93,7 @@ function mapStateToProps (state) {
     social: state.user.social,
     isAuthenticated: state.auth.authenticated,
     isFetching: state.isFetching.user,
-    isYourProfile: state.auth.isYourProfile,
+    isYourPage: state.auth.isYourPage,
     isFollowing: state.user.isFollowing,
 
     me: state.auth.user

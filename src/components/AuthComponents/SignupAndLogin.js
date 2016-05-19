@@ -12,8 +12,8 @@ export class Signup extends Component {
         <Slideshow />
         <div className={s.formBlock}>
           <SignupForm />
-          <HaveAccount/>
-          <Footer/>
+          <HaveAccount />
+          <Footer />
         </div>
       </div>
     )
@@ -27,8 +27,8 @@ export class Login extends Component {
         <Slideshow />
         <div className={s.formBlock}>
           <LoginForm />
-          <NoAccount/>
-          <Footer/>
+          <NoAccount />
+          <Footer />
         </div>
       </div>
     )

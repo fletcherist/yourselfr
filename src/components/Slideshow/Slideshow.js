@@ -1,14 +1,14 @@
+import React, { Component } from 'react';
+
 import lay1 from './Layout1.jpg';
 import lay2 from './Layout2.jpg';
-// import lay3 from './Layout3.jpg';
+import lay3 from './Layout3.jpg';
 import lay4 from './Layout4.jpg';
 import lay5 from './Layout5.jpg';
 
-import React from 'react';
+var backgrounds = [lay1, lay2, lay3, lay4, lay5];
 
-var backgrounds = [lay1, lay2, lay4, lay5];
-
-class Slideshow extends React.Component {
+class Slideshow extends Component {
   constructor () {
     super();
     this.state = {
@@ -73,14 +73,14 @@ class Slideshow extends React.Component {
   componentDidMount () {
     console.log(this.state.count);
     if (this.state.count > 0) {
-      return;
+      return false;
     }
     setTimeout(() => {
       this.fadeOut(this.background);
     }, 5000);
   }
 
-  shouldComponentUpdate () {
+  componentWillUnmount () {
     return false;
   }
 
@@ -92,7 +92,7 @@ class Slideshow extends React.Component {
           className='responsive_crop_fixed'
           style={this.state.style}
           id='background'
-          ref={(r) => this.background = r}>
+          ref={(c) => this.background = c}>
         </div>
       </div>
 

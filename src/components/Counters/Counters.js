@@ -20,7 +20,6 @@ class Counters extends Component {
   }
 
   render () {
-    console.log(this.props.alias);
     var pronounce = {
       visits: cpEnding(this.props.visits, 'counters.visits'),
       followers: cpEnding(this.props.followers, 'counters.followers'),
@@ -28,22 +27,20 @@ class Counters extends Component {
     }
     const { visits, followers, following } = this.props;
     return (
-          <div className={s.counters}>
-              <div className={s.counter}>
-                  <div className={s.counter_count}>{visits}</div>
-                  <div className={s.counter_title}><Translate content={pronounce.visits}/></div>
-              </div>
-
-              <Link to={`/${this.props.alias}/followers`} className={s.counter} activeStyle={active}>
-                  <div className={s.counter_count}>{followers}</div>
-                  <div className={s.counter_title}><Translate content={pronounce.followers}/></div>
-              </Link>
-
-              <Link to={`/${this.props.alias}/following`} className={s.counter} activeStyle={active}>
-                <div className={s.counter_count}>{following}</div>
-                <div className={s.counter_title}><Translate content={pronounce.following}/></div>
-              </Link>
-          </div>
+      <div className={s.counters}>
+        <div className={s.counter}>
+          <div className={s.counter_count}>{visits}</div>
+          <div className={s.counter_title}><Translate content={pronounce.visits} /></div>
+        </div>
+        <Link to={`/${this.props.alias}/followers`} className={s.counter} activeStyle={active}>
+          <div className={s.counter_count}>{followers}</div>
+          <div className={s.counter_title}><Translate content={pronounce.followers} /></div>
+        </Link>
+        <Link to={`/${this.props.alias}/following`} className={s.counter} activeStyle={active}>
+          <div className={s.counter_count}>{following}</div>
+          <div className={s.counter_title}><Translate content={pronounce.following} /></div>
+        </Link>
+      </div>
       );
   }
 }
