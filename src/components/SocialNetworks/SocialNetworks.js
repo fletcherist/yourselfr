@@ -12,35 +12,70 @@ import facebookPic from 'components/Buttons/SocialButtons/facebook.svg';
 let c = classNames.bind(s);
 
 class SocialNetworks extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      networks: props.networks
+    }
+  }
   static propTypes = {
     networks: PropTypes.object
   };
 
-  shouldComponentUpdate (nextProps) {
-    if (nextProps.networks && this.props.networks) {
-      var current = nextProps.networks;
-      var old = this.props.networks;
-      if (current.vk !== old.vk ||
-          current.twitter !== old.twitter ||
-          current.tumblr !== old.tumblr ||
-          current.instagram !== old.instagram ||
-          current.facebook !== old.facebook) {
-        return true;
-      }
-    }
-    return false;
+  componentWillReceiveProps (props) {
+    this.setState({
+      networks: props.networks
+    })
   }
+
+  // componentWillUpdate (nextProps) {
+  //   if (nextProps.networks && this.props.networks) {
+  //     var current = nextProps.networks;
+  //     var old = this.props.networks;
+  //     if (current.vk !== old.vk ||
+  //         current.twitter !== old.twitter ||
+  //         current.tumblr !== old.tumblr ||
+  //         current.instagram !== old.instagram ||
+  //         current.facebook !== old.facebook) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
   render () {
     var ifSocial = false;
 
-    var networks = this.props.networks;
+    var networks = this.state.networks;
     if (networks) {
       if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
         ifSocial = true;
         var { vk, twitter, tumblr, instagram, facebook } = networks;
+
+        var expr = {
+          vk: /https?:\/\/vk\.com\//,
+          twitter: /https?:\/\/twitter\.com\//,
+          tumblr: /http:\/\//g,
+          instagram: /https?:\/\/instagram\.com\//,
+          askfm: /https?:\/\/ask\.fm\//
+        }
+
+        vk = vk ? vk.replace(expr.vk, '') : '';
+        twitter = twitter ? twitter.replace(expr.twitter, '') : '';
+        tumblr = tumblr ? tumblr.replace(expr.tumblr, '') : '';
+        instagram = instagram ? instagram.replace(expr.instagram, '') : '';
+
+        if (tumblr) {
+          if (tumblr.match(expr.tubmlr)) {
+
+          } else {
+            tumblr = 'http://' + tumblr;
+          }
+        } else {
+          tumblr = '';
+        }
       }
     }
-    console.log(ifSocial);
     if (ifSocial) {
       return (
         <div className={s.social}>
