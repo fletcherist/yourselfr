@@ -17,7 +17,18 @@ class SocialNetworks extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return true;
+    if (nextProps.networks && this.props.networks) {
+      var current = nextProps.networks;
+      var old = this.props.networks;
+      if (current.vk !== old.vk ||
+          current.twitter !== old.twitter ||
+          current.tumblr !== old.tumblr ||
+          current.instagram !== old.instagram ||
+          current.facebook !== old.facebook) {
+        return true;
+      }
+    }
+    return false;
   }
   render () {
     var ifSocial = false;
@@ -27,7 +38,6 @@ class SocialNetworks extends Component {
       if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
         ifSocial = true;
         var { vk, twitter, tumblr, instagram, facebook } = networks;
-        console.log(ifSocial);
       }
     }
     console.log(ifSocial);
@@ -35,29 +45,19 @@ class SocialNetworks extends Component {
       return (
         <div className={s.social}>
           <a href={`http://vk.com/${vk}`} target='_blank'>
-            <img src={vkPic} className={c({
-              inactive: !vk
-            })}/>
+            <img src={vkPic} className={c({inactive: !vk})} />
           </a>
           <a href={`http://twitter.com/${twitter}`} target='_blank'>
-            <img src={twitterPic} className={c({
-              inactive: !twitter
-            })}/>
+            <img src={twitterPic} className={c({inactive: !twitter})} />
           </a>
           <a href={`${tumblr}`} target='_blank'>
-            <img src={tumblrPic} className={c({
-              inactive: !tumblr
-            })}/>
+            <img src={tumblrPic} className={c({inactive: !tumblr})} />
           </a>
           <a href={`http://instagram.com/${instagram}`} target='_blank'>
-            <img src={instagramPic} className={c({
-              inactive: !instagram
-            })}/>
+            <img src={instagramPic} className={c({inactive: !instagram})} />
           </a>
           <a href={`http://facebook.com/${facebook}`} target='_blank'>
-            <img src={facebookPic} className={c({
-              inactive: !facebook
-            })}/>
+            <img src={facebookPic} className={c({inactive: !facebook})} />
           </a>
         </div>
       )
