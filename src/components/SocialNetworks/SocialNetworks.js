@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import s from './SocialNetworks.scss';
 // import cx from 'classnames';
 import classNames from 'classnames/bind';
+import { formatSocialNetworks } from '../Toools';
 
 import vkPic from 'components/Buttons/SocialButtons/vk.svg';
 import twitterPic from 'components/Buttons/SocialButtons/twitter.svg';
@@ -10,7 +11,6 @@ import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg';
 import facebookPic from 'components/Buttons/SocialButtons/facebook.svg';
 
 let c = classNames.bind(s);
-
 class SocialNetworks extends Component {
   constructor (props) {
     super(props);
@@ -50,30 +50,8 @@ class SocialNetworks extends Component {
     if (networks) {
       if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
         ifSocial = true;
+        networks = formatSocialNetworks(networks)
         var { vk, twitter, tumblr, instagram, facebook } = networks;
-
-        var expr = {
-          vk: /https?:\/\/vk\.com\//,
-          twitter: /https?:\/\/twitter\.com\//,
-          tumblr: /http:\/\//g,
-          instagram: /https?:\/\/instagram\.com\//,
-          askfm: /https?:\/\/ask\.fm\//
-        }
-
-        vk = vk ? vk.replace(expr.vk, '') : '';
-        twitter = twitter ? twitter.replace(expr.twitter, '') : '';
-        tumblr = tumblr ? tumblr.replace(expr.tumblr, '') : '';
-        instagram = instagram ? instagram.replace(expr.instagram, '') : '';
-
-        if (tumblr) {
-          if (tumblr.match(expr.tubmlr)) {
-
-          } else {
-            tumblr = 'http://' + tumblr;
-          }
-        } else {
-          tumblr = '';
-        }
       }
     }
     if (ifSocial) {

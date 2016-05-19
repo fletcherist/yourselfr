@@ -149,9 +149,9 @@ export function selectText (containerid) {
   }
 }
 
-export function isHot (created_at) {
+export function isHot (createdAt) {
   var now = new Date();
-  var time = new Date(created_at);
+  var time = new Date(createdAt);
   var passed = ((now - time) / 1000 / 60 / 60);
   if (passed < 1) {
     return true;
@@ -167,4 +167,31 @@ export function blurRoot (flag) {
   } else {
     root.classList.remove('backgroundblur');
   }
+}
+
+export function formatSocialNetworks (networks) {
+  var expr = {
+    vk: /https?:\/\/vk\.com\//,
+    twitter: /https?:\/\/twitter\.com\//,
+    tumblr: /http:\/\//g,
+    instagram: /https?:\/\/instagram\.com\//,
+    askfm: /https?:\/\/ask\.fm\//
+  }
+
+  networks.vk = networks.vk ? networks.vk.replace(expr.vk, '') : '';
+  networks.twitter = networks.twitter ? networks.twitter.replace(expr.twitter, '') : '';
+  networks.tumblr = networks.tumblr ? networks.tumblr.replace(expr.tumblr, '') : '';
+  networks.instagram = networks.instagram ? networks.instagram.replace(expr.instagram, '') : '';
+
+  if (networks.tumblr) {
+    if (networks.tumblr.match(expr.tubmlr)) {
+
+    } else {
+      networks.tumblr = 'http://' + networks.tumblr;
+    }
+  } else {
+    networks.tumblr = '';
+  }
+
+  return networks;
 }
