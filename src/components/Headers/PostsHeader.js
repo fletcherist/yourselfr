@@ -19,11 +19,11 @@ class PostsHeader extends Component {
     if (this.state.isOpen) {
       this.setState({isOpen: false})
       hideBlocks(false);
-      // blurRoot(false);
+      blurRoot(false);
     } else {
       this.setState({isOpen: true})
       hideBlocks(true);
-      // blurRoot(true);
+      blurRoot(true);
     }
   }
 
@@ -38,12 +38,12 @@ class PostsHeader extends Component {
         <div className={s.postsUser}>
           <span className={s.navLink}>{username}</span>
           <span className={s.separator}></span>
-          <span className={s.navItem}>{ count } {postsPronounce}</span>
+          <span className={s.navItem}>{count} {postsPronounce}</span>
         </div>
-        <span className={s.blockTitleRight} onClick={ this.toggleModalBox.bind(this) }>Оставить своё мнение</span>
+        <span className={s.blockTitleRight} onClick={this.toggleModalBox.bind(this)}>Оставить своё мнение</span>
         <WriteBox
           isOpen={this.state.isOpen}
-          toggleModalBox={ this.toggleModalBox.bind(this) }
+          toggleModalBox={this.toggleModalBox.bind(this)}
         />
       </div>
     )
