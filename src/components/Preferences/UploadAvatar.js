@@ -23,7 +23,7 @@ class UploadAvatar extends React.Component {
     if (!status) {
       icon = <div className={s.photoPlus}>+</div>
     } else {
-      icon = <div className={s.loader}><LoaderSmall/></div>
+      icon = <div className={s.loader}><LoaderSmall /></div>
     }
     if (state === true) {
       icon = <div className={s.checkmark}></div>
@@ -31,27 +31,27 @@ class UploadAvatar extends React.Component {
     return (
       <div className={s.photoLeft}>
         <div className={s.avatarHolder}>
-          <button onClick={ () => this.avatarInput.click() }
+          <button onClick={() => this.avatarInput.click()}
             className={cx({
               avatar: true,
               uploadSuccess: isFetching.state
             })}>
-              <div>{icon}</div>
+            <div>{icon}</div>
               {!isFetching.status && (
                 'ФОТО'
               )}
-            </button>
+          </button>
         </div>
         <div className={s.descTitle}>
           Добавьте фото профиля.
         </div>
-        <form ref={ (r) => this.avatarForm = r } encType='multipart/form-data' method='post' className='hidden'>
+        <form ref={(r) => this.avatarForm = r} encType='multipart/form-data' method='post' className='hidden'>
           <input
             type='file'
             onChange={this.uploadAvatar.bind(this)}
             name='avatar'
             id='file-avatar'
-            ref={ (r) => this.avatarInput = r }
+            ref={(r) => this.avatarInput = r}
           />
         </form>
       </div>

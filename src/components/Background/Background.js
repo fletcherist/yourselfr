@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { config } from '../../redux/config';
+import { connect } from 'react-redux';
 
 class Background extends Component {
   static propTypes = {
@@ -22,4 +23,9 @@ class Background extends Component {
   }
 }
 
-export default Background;
+function mapStateToProps (state) {
+  return {
+    background: state.user.background
+  }
+}
+export default connect(mapStateToProps)(Background);

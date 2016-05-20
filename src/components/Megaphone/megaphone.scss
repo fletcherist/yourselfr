@@ -1,13 +1,17 @@
 @import 'variables';
 
+$megaphoneBackground: #E2F1F7;
+$megaphoneBorderColor: #BFD5E0;
+$megaphoneColor: #1d475d;
+
 .megaphone {
   max-width: 250px;
-  background: #E2F1F7;
-  border-color: #BFD5E0;
-  color: #1d475d;
+  background: $megaphoneBackground;
+  border-color: $megaphoneBorderColor;
+  color: $megaphoneColor;
   border-bottom: 0;
   padding: 0;
-  margin-top: 7px;
+  margin-top: 11px;
 }
 
 .megaphone:after, .megaphone:before {
@@ -23,7 +27,7 @@
 
 .megaphone:after {
 	border-width: 6px;
-	border-bottom-color: #E2F1F7;
+	border-bottom-color: $megaphoneBackground;
   margin-left: -6px;
 	left: 50%;
 }
@@ -31,7 +35,7 @@
 .megaphone:before {
   margin-bottom: -2px;
 	border-width: 8px;
-	border-bottom-color: #BFD5E0;
+	border-bottom-color: $megaphoneBorderColor;
   left: 50%;
   margin-left: -8px;
   margin-bottom: 0px;

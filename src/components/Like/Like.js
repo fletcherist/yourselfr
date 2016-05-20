@@ -11,7 +11,7 @@ class Like extends Component {
     count: PropTypes.number,
     object: PropTypes.string.isRequired,
     likePost: PropTypes.func.isRequired,
-    isLiked: PropTypes.bool.isRequired,
+    isLiked: PropTypes.bool,
     type: PropTypes.string.isRequired
   };
   constructor (props) {

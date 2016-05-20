@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import s from './SocialNetworks.scss';
-// import cx from 'classnames';
+import cx from 'classnames';
 import classNames from 'classnames/bind';
 import { formatSocialNetworks } from '../Toools';
 
@@ -56,7 +56,7 @@ class SocialNetworks extends Component {
     }
     if (ifSocial) {
       return (
-        <div className={s.social}>
+        <div className={cx(s.social, 'container--left')}>
           <a href={`http://vk.com/${vk}`} target='_blank'>
             <img src={vkPic} className={c({inactive: !vk})} />
           </a>

@@ -1,5 +1,8 @@
 @import 'variables';
 
+.page-container {
+  transition: opacity .3s;
+}
 .responsive_crop {
   z-index: -1;
   position: fixed;

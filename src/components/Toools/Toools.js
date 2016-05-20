@@ -169,6 +169,15 @@ export function blurRoot (flag) {
   }
 }
 
+export function hideBlocks (flag) {
+  var root = document.getElementById('blocks');
+  if (flag) {
+    root.style.opacity = '0';
+  } else {
+    root.style.opacity = '1';
+  }
+}
+
 export function formatSocialNetworks (networks) {
   var expr = {
     vk: /https?:\/\/vk\.com\//,

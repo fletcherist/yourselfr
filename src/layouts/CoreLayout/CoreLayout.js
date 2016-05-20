@@ -1,10 +1,14 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
+import Background from 'components/Background';
 import '../../styles/core.scss'
 
 function CoreLayout ({ children }) {
   return (
-    <div className='page-container'>
-        {children}
+    <div>
+      <Background />
+      <div className='page-container' id='blocks'>
+          {children}
+      </div>
     </div>
   )
 }

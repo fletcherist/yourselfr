@@ -16,8 +16,8 @@
   },
   "rules": {
     "semi": 0,
-    "max-len": [2, 120, 2],
     "react/jsx-no-bind": 0,
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "max-len": 0
   }
 }

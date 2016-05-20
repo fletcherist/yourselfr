@@ -15,10 +15,10 @@ class PreferencesPhotos extends Component {
       <div>
         <h3>Фотографии</h3>
         <div>
-          <UploadAvatar/>
-          <UploadBackground/>
-          <button onClick={ () => this.props.removeAvatar() } className='button button--upload'> Удалить аватар </button>
-          <button onClick={ () => this.props.removeBackground() } className='button button--upload'> Удалить Фон </button>
+          <UploadAvatar />
+          <UploadBackground />
+          <button onClick={() => this.props.removeAvatar()} className='button button--upload'> Удалить аватар </button>
+          <button onClick={() => this.props.removeBackground()} className='button button--upload'> Удалить Фон </button>
         </div>
       </div>
     )

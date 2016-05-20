@@ -11,7 +11,10 @@ class Megaphone extends Component {
     alias: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired
   };
-  PIZDA () {};
+  shouldComponentUpdate () {
+    return false;
+  }
+
   render () {
     return (
       <div className={cx(x.megaphone, 'container--left')}>
