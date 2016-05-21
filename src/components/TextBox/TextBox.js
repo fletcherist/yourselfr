@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from './TextBox.scss';
 import generatePhrase from './generatePhrase';
+import { focusDiv } from '../Toools';
 
 class TextBox extends Component {
   static propTypes = {
@@ -14,28 +15,45 @@ class TextBox extends Component {
       opacity: {
         opacity: 0.5
       },
-      text: generatePhrase(this.props.username)
+      placeholderText: generatePhrase(this.props.username),
+      focused: false
     });
   }
 
   boxFocus () {
+    if (this.state.focused) {
+      return false;
+    }
     this.setState({
       opacity: {
         opacity: 1
       },
-      text: ''
+      placeholderText: '',
+      focused: true
     })
   }
+  componentDidMount () {
+    setTimeout(() => {
+      focusDiv(document.querySelector('#text-form'));
+    }, 100);
+    document.onkeypress = () => {
+      if (!this.state.focused) {
+        this.boxFocus();
+      }
+    }
+  }
   render () {
+    const placeholder = <div style={this.state.opacity} className={s.placeHolder}>{this.state.placeholderText}</div>
     return (
       <div
         contentEditable
         suppressContentEditableWarning
         className={s.textBox}
         id='text-form'
-        style={this.state.opacity}
-        onClick={this.boxFocus.bind(this)}>
-        {this.state.text}
+        onMouseDown={this.boxFocus.bind(this)}
+        autoFocus
+        spellCheck={false}>
+        {placeholder}
       </div>
     );
   }

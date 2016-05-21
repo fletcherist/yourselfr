@@ -55,12 +55,12 @@ class AttachPhoto extends Component {
   render () {
     return (
       <div className={s.photoHolder} onClick={this.selectPhoto.bind(this)}>
-        <form ref={ (r) => this.photoForm = r } encType='multipart/form-data' method='post' className={ s.attachForm }>
-          <input type='file' onChange={this.attachPhoto.bind(this)} ref={ (r) => this.photoInput = r }/>
-          <input id='input-value'/>
-        </form>
         <div className={s.photoTitle}>Прикрепить</div>
         <div className={s.addPhoto}></div>
+        <form ref={(r) => this.photoForm = r} encType='multipart/form-data' method='post' className={s.attachForm}>
+          <input type='file' onChange={this.attachPhoto.bind(this)} ref={(r) => this.photoInput = r} />
+          <input id='input-value' />
+        </form>
       </div>
     );
   }
