@@ -19,11 +19,11 @@ class PostsHeader extends Component {
     if (this.state.isOpen) {
       this.setState({isOpen: false})
       hideBlocks(false);
-      // blurRoot(false);
+      blurRoot(false);
     } else {
       this.setState({isOpen: true})
       hideBlocks(true);
-      // blurRoot(true);
+      blurRoot(true);
     }
   }
 

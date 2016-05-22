@@ -5,7 +5,7 @@ $megaphoneBorderColor: #BFD5E0;
 $megaphoneColor: #1d475d;
 
 .megaphone {
-  max-width: 250px;
+  // max-width: 250px;
   background: $megaphoneBackground;
   border-color: $megaphoneBorderColor;
   color: $megaphoneColor;
@@ -58,7 +58,7 @@ $megaphoneColor: #1d475d;
 .buttons {
   display: flex;
   margin-left: -1px;
-  width: 250px;
+  // width: 250px;
 }
 
 .button {

@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { config } from '../../redux/config';
 import s from './WriteBox.scss';
 
-function formToTray () {
-  var form = document.getElementById('text-form');
-  form.style.width = '60%';
-}
-
 class AttachPhoto extends Component {
   shouldComponentUpdate (nextProps) {
     return true;
@@ -23,12 +18,12 @@ class AttachPhoto extends Component {
     fd.append('file', photo[0].files[0]);
 
     var preview = document.querySelector('#attach-preview');
+    var attachBlock = document.querySelector('#attach-block');
     var reader = new FileReader();
 
     reader.onload = function () {
-      formToTray();
       preview.src = reader.result;
-      preview.classList.remove('hidden');
+      attachBlock.classList.remove('hidden');
     }
 
     if (photo[0].files[0]) {
