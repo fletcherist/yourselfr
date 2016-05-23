@@ -16,7 +16,7 @@ const ModalStyles = {
     minHeight: '400px',
     height: '70%',
     maxHeight: '1200px',
-    minWidth: '500px',
+    minWidth: '640px',
     background: 'transparent',
     overflow: 'auto',
     WebkitOverflowScrolling: 'auto',

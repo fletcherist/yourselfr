@@ -31,7 +31,10 @@ class Posts extends Component {
   }
 
   componentWillUpdate (nextProps) {
-    return !arraysEqual(this.props.posts, nextProps.posts);
+    if (this.props.posts[0] && nextProps.posts[0]) {
+      return this.props.posts[0]._id !== nextProps.posts[0]._id;
+    }
+    return true;
   }
 
   componentDidMount () {

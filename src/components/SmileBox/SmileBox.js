@@ -6,7 +6,7 @@ class SmileBox extends React.Component {
     return (
       <div>
         <div className={s.button}>😈asdads</div>
-        <Smiles/>
+        <Smiles />
       </div>
     )
   }
