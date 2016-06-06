@@ -97,7 +97,8 @@ var defaultMe = {
       instagram: undefined,
       facebook: undefined
     }
-  }
+  },
+  friends: false
 }
 
 const isYourPagePatch = createAction(IS_YOUR_PAGE);

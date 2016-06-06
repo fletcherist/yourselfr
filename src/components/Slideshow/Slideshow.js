@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-import lay1 from './Layout1.jpg';
-import lay2 from './Layout2.jpg';
-import lay3 from './Layout3.jpg';
-import lay4 from './Layout4.jpg';
-import lay5 from './Layout5.jpg';
-import lay6 from './Layout6.jpg';
+// import lay1 from './Layout1.jpg';
+// import lay2 from './Layout2.jpg';
+// import lay3 from './Layout3.jpg';
+// import lay4 from './Layout4.jpg';
+// import lay5 from './Layout5.jpg';
+// import lay6 from './Layout6.jpg';
+import lay7 from './Layout7.jpg';
 
-var backgrounds = [lay1, lay2, lay3, lay4, lay5, lay6];
+// var backgrounds = [lay1, lay2, lay3, lay4, lay5, lay6];
 
 class Slideshow extends Component {
   constructor () {
     super();
     this.state = {
       style: {
-        background: `url(${backgrounds[5]})`
+        background: `url{${lay7}}`
       },
       backgroundCount: 1,
       count: 0
@@ -95,7 +96,6 @@ class Slideshow extends Component {
           ref={(c) => this.background = c}>
         </div>
       </div>
-
     )
   }
 }

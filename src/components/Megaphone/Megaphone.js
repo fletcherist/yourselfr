@@ -11,8 +11,8 @@ class Megaphone extends Component {
     alias: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired
   };
-  shouldComponentUpdate () {
-    return false;
+  shouldComponentUpdate (nextProps) {
+    return this.props.alias !== nextProps.alias;
   }
 
   render () {
