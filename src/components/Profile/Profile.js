@@ -8,8 +8,9 @@ import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
 import Navigation from '../Navigation';
 import Megaphone from '../Megaphone';
+import Friends from '../Friends';
 
-import {actions as userActions} from '../../redux/modules/user';
+import { actions as userActions } from '../../redux/modules/user';
 
 class Profile extends Component {
   static propTypes = {
@@ -72,7 +73,10 @@ class Profile extends Component {
         </div>
         <SocialNetworks networks={social} />
         {this.props.isYourPage && (
-          <Megaphone alias={alias} username={username} />
+          <div>
+            <Megaphone alias={alias} username={username} />
+            <Friends />
+          </div>
         )}
         <div className='hide-on-mobile'>
           <Footer />

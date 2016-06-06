@@ -47,6 +47,8 @@
 
 .container--left {
   position: relative;
+  display: block;
+  word-wrap: break-word;
   border: 1px solid $borderColor;
   // box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
 	background-color: white;
@@ -146,6 +148,10 @@
 }
 .rate-empty-line-5 {
   height: 50px;
+}
+
+.flex {
+  display: flex;
 }
 
 .hide-on-mobile {

@@ -1,0 +1,19 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+  width: 70%;
+  margin: 0px auto;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  background: #eee;
+  border-radius: 50%;
+  margin: 5px;
+  margin-bottom: 15px;
+}
