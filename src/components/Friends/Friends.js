@@ -40,6 +40,8 @@ class Friends extends Component {
       user1 = friends[0];
       user2 = friends[1];
       user3 = friends[2];
+    } else {
+      return (null);
     }
 
     if (this.state.closed) {
