@@ -1,4 +1,4 @@
-# Yourselfr
+# Yourselfr [![Build Status](https://travis-ci.org/pizdets-team/yourselfr.svg?branch=master)](https://travis-ci.org/pizdets-team/yourselfr)
 
 A front-end part for [yourselfr.com](http://yourselfr.com) written in React and Redux.
 Connects to node.js back-end and generates webpages for user to stare at:
