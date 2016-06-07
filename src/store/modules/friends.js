@@ -1,13 +1,14 @@
-import { handleActions } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config.js';
 
 const LOAD_FRIENDS = 'LOAD_FRIENDS';
 export const loadFriends = () => {
   return (dispatch, getState) => {
-    fetch(`${config.http}/api/users/friends`)
+    fetch(`${config.http}/api/users/friends`, { credentials: 'include' })
       .then((r) => r.json())
       .then((res) => {
-        dispatch(LOAD_FRIENDS(res));
+        console.log(res);
+        dispatch(createAction(LOAD_FRIENDS)(res));
       });
   }
 }

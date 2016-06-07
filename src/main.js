@@ -7,8 +7,8 @@ import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
 
 import ga from 'react-ga';
-import { config } from 'redux/config';
-import { authenticate, isYourPage } from './redux/modules/auth';
+import { config } from 'store/config';
+import { authenticate, isYourPage } from './store/modules/auth';
 
 import cookie from 'react-cookie';
 import counterpart from 'counterpart';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { subscribe } from '../../redux/modules/user';
+import { subscribe } from '../../store/modules/user';
 import s from './SubscribeButton.scss';
 import classNames from 'classnames/bind';
 

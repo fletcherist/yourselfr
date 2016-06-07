@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { config } from '../../redux/config';
+import { config } from '../../store/config';
 import { connect } from 'react-redux';
 
 class Background extends Component {

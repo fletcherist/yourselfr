@@ -1,26 +1,38 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import s from './Friends.scss';
-import { actions as friendsActions } from '../../redux/modules/user';
+import { loadFriends } from '../../store/modules/friends';
+import { loadUser } from '../../store/modules/user';
 
 class Friends extends Component {
   static propTypes = {
     friends: PropTypes.array,
-    loadFriends: PropTypes.func.isRequired
+    loadFriends: PropTypes.func.isRequired,
+    loadUser: PropTypes.func.isRequired
   };
   componentWillMount () {
     this.props.loadFriends();
   }
 
   render () {
+    var user1 = '';
+    var user2 = '';
+    var user3 = '';
+    const { loadUser } = this.props;
+    if (this.props.friends[0] && this.props.friends[1] && this.props.friends[2]) {
+      const { friends } = this.props;
+      user1 = friends[0];
+      user2 = friends[1];
+      user3 = friends[2];
+    }
     return (
       <div className='container--left'>
         <div className={s.title}>Друзья на Йорселфере</div>
         <div className={s.flex}>
-          <div className={s.avatar}></div>
-          <div className={s.avatar}></div>
-          <div className={s.avatar}></div>
+          <Link to={`${user1.alias}`} onClick={() => loadUser(user1.alias)}><img src={`${user1.photo}`} className={s.avatar} /></Link>
+          <Link to={`${user2.alias}`} onClick={() => loadUser(user2.alias)}><img src={`${user2.photo}`} className={s.avatar} /></Link>
+          <Link to={`${user3.alias}`} onClick={() => loadUser(user3.alias)}><img src={`${user3.photo}`} className={s.avatar} /></Link>
         </div>
       </div>
     );
@@ -32,4 +44,10 @@ const mapStateToProps = (state) => {
     friends: state.friends
   }
 }
-export default connect(mapStateToProps, friendsActions)(Friends);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadUser: (alias) => dispatch(loadUser(alias)),
+    loadFriends: () => dispatch(loadFriends())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);

@@ -3,7 +3,7 @@ import s from './Posts.scss';
 import Post from '../Post';
 import { isEmpty, arraysEqual } from '../Toools';
 import {connect} from 'react-redux';
-import { actions as postsActions } from '../../redux/modules/posts';
+import { actions as postsActions } from '../../store/modules/posts';
 import Loader from '../Loader';
 import NoPosts from '../NoData/NoPosts';
 import PostsHeader from '../Headers/PostsHeader';
@@ -34,7 +34,7 @@ class Posts extends Component {
     if (this.props.posts[0] && nextProps.posts[0]) {
       return this.props.posts[0]._id !== nextProps.posts[0]._id;
     }
-    return true;
+    return false;
   }
 
   componentDidMount () {
@@ -42,9 +42,9 @@ class Posts extends Component {
   }
 
   componentWillUnmount () {
-    this.setState({
-      postsLoaded: 0
-    })
+    // this.setState({
+    //   postsLoaded: 0
+    // })
       // this.endlessFeed && clearInterval(this.endlessFeed);
       // this.endlessFeed = false;
   }

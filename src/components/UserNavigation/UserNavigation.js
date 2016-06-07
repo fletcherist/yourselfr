@@ -3,7 +3,7 @@ import s from './UserNavigation.scss';
 import {Link} from 'react-router';
 import Navigation from '../Navigation';
 import { connect } from 'react-redux';
-import { config } from '../../redux/config';
+import { config } from '../../store/config';
 
 const active = {
   backgroundColor: '#f2fdff'

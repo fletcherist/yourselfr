@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import s from './Like.scss';
 import { connect } from 'react-redux';
-import { likePost } from '../../redux/modules/posts';
+import { likePost } from '../../store/modules/posts';
 
 let cx = classNames.bind(s);
 

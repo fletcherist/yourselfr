@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { config } from '../../redux/config';
+import { config } from '../../store/config';
 import s from './WriteBox.scss';
 
 class AttachPhoto extends Component {

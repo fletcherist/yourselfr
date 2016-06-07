@@ -51,6 +51,9 @@ export const loadPosts = (offset) => {
         dispatch(loadPostsPatch(posts));
         dispatch(fetchPosts(false));
       })
+    setTimeout(() => {
+      dispatch(fetchPosts(false));
+    }, 2000);
   }
 };
 

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import s from './Photopost.scss';
-import { config } from '../../redux/config';
+import { config } from '../../store/config';
 
 class Photopost extends Component {
   static propTypes = {

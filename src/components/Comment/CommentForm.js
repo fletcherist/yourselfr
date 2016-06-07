@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import s from './CommentForm.scss';
 import cx from 'classnames';
 import { connect } from 'react-redux';
-import { postComment } from '../../redux/modules/comments';
+import { postComment } from '../../store/modules/comments';
 
 class CommentForm extends Component {
   static propTypes = {

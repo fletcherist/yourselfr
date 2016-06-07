@@ -46,7 +46,6 @@ const loadUserPatch = createAction(LOAD_USER);
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
     dispatch(fetchUser({status: true}));
-    dispatch(fetchPosts(true));
 
     var currentAlias = getAlias();
     if (!alias) {
@@ -76,7 +75,6 @@ export const loadUser = (alias) => {
         })
         .then((data) => {
           dispatch(fetchUser({status: false}));
-          dispatch(fetchPosts(false));
           if (!data.user) {
             return dispatch(routeActions.push('/404'));
           }

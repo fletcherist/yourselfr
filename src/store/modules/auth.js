@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
 import { fetchLogIn, fetchRegister } from './isFetching';
-import { routeActions } from 'react-router-redux';
+import { routerActions } from 'react-router-redux';
 import ga from 'react-ga';
 import cookie from 'react-cookie';
 
@@ -134,11 +134,11 @@ export const authenticate = () => {
           var path = window.location.pathname;
           if (auth.authenticated) {
             if (path === '/') {
-              dispatch(routeActions.push(auth.user.alias));
+              dispatch(routerActions.push(auth.user.alias));
             }
           } else {
             if (path === '/feed' || path === '/preferences') {
-              dispatch(routeActions.push('/'));
+              dispatch(routerActions.push('/'));
             }
           }
         }
@@ -170,7 +170,7 @@ export const logIn = (username, password) => {
         dispatch(fetchLogIn([true]));
         dispatch(authenticate());
         setTimeout(() => {
-          dispatch(routeActions.push('/i/get-started'));
+          dispatch(routerActions.push('/i/get-started'));
         }, 1000);
         ga.event({
           category: 'User',
@@ -210,7 +210,7 @@ export const register = (username, email, password) => {
         dispatch(fetchRegister(false));
         dispatch(authenticate());
         setTimeout(() => {
-          dispatch(routeActions.push('/i/get-started'));
+          dispatch(routerActions.push('/i/get-started'));
         }, 1000);
         ga.event({
           category: 'User',

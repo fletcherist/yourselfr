@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import UploadAvatar from './UploadAvatar';
 import UploadBackground from './uploadBackground.js';
 import { connect } from 'react-redux';
-import { actions } from '../../redux/modules/preferences';
+import { actions } from '../../store/modules/preferences';
 
 class PreferencesPhotos extends Component {
   static propTypes = {

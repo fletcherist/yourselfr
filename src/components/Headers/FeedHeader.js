@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
-import { actions as feed } from '../../redux/modules/endlessFeed';
+import { actions as feed } from '../../store/modules/endlessFeed';
 import s from './Headers.scss';
 let cx = classNames.bind(s);
 

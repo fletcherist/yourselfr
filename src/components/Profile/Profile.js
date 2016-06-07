@@ -10,7 +10,7 @@ import Navigation from '../Navigation';
 import Megaphone from '../Megaphone';
 import Friends from '../Friends';
 
-import { actions as userActions } from '../../redux/modules/user';
+import { actions as userActions } from '../../store/modules/user';
 
 class Profile extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ class Profile extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return true;
+    return nextProps.alias !== this.props.alias;
   }
 
   componentWillMount () {

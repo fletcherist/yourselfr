@@ -13,7 +13,7 @@ import facebookPicture from 'components/Buttons/SocialButtons/facebook.svg';
 
 import { LoaderSmall } from '../Loader';
 
-import { actions } from 'redux/modules/socialNetworks';
+import { actions } from 'store/modules/socialNetworks';
 let c = classNames.bind(x);
 
 class UpdateSocialNetworks extends Component {
@@ -76,86 +76,86 @@ class UpdateSocialNetworks extends Component {
         <h3>Социальные сети</h3>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.vk = r} placeholder='вконтакте' value={this.state.vk}
-                  className={c({
-                    'input': true,
-                    fetchingForms: isFetching.vk.status,
-                    formError: isFetching.vk.state === false,
-                    formSuccess: isFetching.vk.state === true
-                  })}
-                  onChange={this.handleChange.bind(this, 'vk')}
-                  onBlur={this.handleVK.bind(this)}/>
-          <img src={vkPicture}/>
+            className={c({
+              'input': true,
+              fetchingForms: isFetching.vk.status,
+              formError: isFetching.vk.state === false,
+              formSuccess: isFetching.vk.state === true
+            })}
+            onChange={this.handleChange.bind(this, 'vk')}
+            onBlur={this.handleVK.bind(this)} />
+          <img src={vkPicture} />
           <div className={s.rightAddon}>
             {isFetching.vk.status && (
-                <LoaderSmall/>
+              <LoaderSmall />
             )}
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.tumblr = r} placeholder='тамблер' value={this.state.tumblr}
-                  className={c({
-                    'input': true,
-                    fetchingForms: isFetching.tumblr.status,
-                    formError: isFetching.tumblr.state === false,
-                    formSuccess: isFetching.tumblr.state === true
-                  })}
-                  onChange={this.handleChange.bind(this, 'tumblr')}
-                  onBlur={this.handleTumblr.bind(this)}/>
-          <img src={tumblrPicture}/>
+            className={c({
+              'input': true,
+              fetchingForms: isFetching.tumblr.status,
+              formError: isFetching.tumblr.state === false,
+              formSuccess: isFetching.tumblr.state === true
+            })}
+            onChange={this.handleChange.bind(this, 'tumblr')}
+            onBlur={this.handleTumblr.bind(this)} />
+          <img src={tumblrPicture} />
           <div className={s.rightAddon}>
             {isFetching.tumblr.status && (
-                <LoaderSmall/>
+              <LoaderSmall />
             )}
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.twitter = r} placeholder='твиттер' value={this.state.twitter}
-                  className={c({
-                    'input': true,
-                    fetchingForms: isFetching.twitter.status,
-                    formError: isFetching.twitter.state === false,
-                    formSuccess: isFetching.twitter.state === true
-                  })}
-                  onChange={this.handleChange.bind(this, 'twitter')}
-                  onBlur={this.handleTwitter.bind(this)}/>
-          <img src={twitterPicture}/>
+            className={c({
+              'input': true,
+              fetchingForms: isFetching.twitter.status,
+              formError: isFetching.twitter.state === false,
+              formSuccess: isFetching.twitter.state === true
+            })}
+            onChange={this.handleChange.bind(this, 'twitter')}
+            onBlur={this.handleTwitter.bind(this)} />
+          <img src={twitterPicture} />
           <div className={s.rightAddon}>
             {isFetching.twitter.status && (
-                <LoaderSmall/>
+              <LoaderSmall />
             )}
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.instagram = r} placeholder='инстаграм' value={this.state.instagram}
-                className={c({
-                  'input': true,
-                  fetchingForms: isFetching.instagram.status,
-                  formError: isFetching.instagram.state === false,
-                  formSuccess: isFetching.instagram.state === true
-                })}
-                onChange={this.handleChange.bind(this, 'instagram')}
-                onBlur={this.handleInstagram.bind(this)}/>
-          <img src={instagramPicture}/>
+            className={c({
+              'input': true,
+              fetchingForms: isFetching.instagram.status,
+              formError: isFetching.instagram.state === false,
+              formSuccess: isFetching.instagram.state === true
+            })}
+            onChange={this.handleChange.bind(this, 'instagram')}
+            onBlur={this.handleInstagram.bind(this)} />
+          <img src={instagramPicture} />
           <div className={s.rightAddon}>
             {isFetching.instagram.status && (
-                <LoaderSmall/>
+              <LoaderSmall />
             )}
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
           <input ref={(r) => this.facebook = r} placeholder='фейсбук' value={this.state.facebook}
-                className={c({
-                  'input': true,
-                  fetchingForms: isFetching.facebook.status,
-                  formError: isFetching.facebook.state === false,
-                  formSuccess: isFetching.facebook.state === true
-                })}
-                onChange={this.handleChange.bind(this, 'facebook')}
-                onBlur={this.handleFacebook.bind(this)}/>
-          <img src={facebookPicture}/>
+            className={c({
+              'input': true,
+              fetchingForms: isFetching.facebook.status,
+              formError: isFetching.facebook.state === false,
+              formSuccess: isFetching.facebook.state === true
+            })}
+            onChange={this.handleChange.bind(this, 'facebook')}
+            onBlur={this.handleFacebook.bind(this)} />
+          <img src={facebookPicture} />
           <div className={s.rightAddon}>
             {isFetching.facebook.status && (
-                <LoaderSmall/>
+              <LoaderSmall />
             )}
           </div>
         </div>

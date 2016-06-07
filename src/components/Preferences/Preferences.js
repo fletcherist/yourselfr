@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import s from './Preferences.scss';
 import x from './UpdateSocialNetworks.scss';
 import { connect } from 'react-redux';
-import { actions } from '../../redux/modules/preferences';
+import { actions } from '../../store/modules/preferences';
 import classNames from 'classnames/bind';
 
 import { LoaderSmall } from '../Loader';

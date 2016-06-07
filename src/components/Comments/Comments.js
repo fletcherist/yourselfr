@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { isEmpty, arraysEqual } from '../Toools';
 import { connect } from 'react-redux';
-import { loadUser } from '../../redux/modules/user';
-import { removeComment } from '../../redux/modules/comments';
+import { loadUser } from '../../store/modules/user';
+import { removeComment } from '../../store/modules/comments';
 import Comment from '../Comment';
 
 class Comments extends Component {

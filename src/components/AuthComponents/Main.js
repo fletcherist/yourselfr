@@ -4,7 +4,7 @@ import Slideshow from '../Slideshow/Slideshow.js';
 import EndlessFeed from '../EndlessFeed';
 import Footer from '../Footer';
 // import WantToRegister from './WantToRegister';
-import { actions as feed } from '../../redux/modules/endlessFeed';
+import { actions as feed } from '../../store/modules/endlessFeed';
 import { connect } from 'react-redux';
 
 import Translate from 'react-translate-component';

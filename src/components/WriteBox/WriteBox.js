@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from './WriteBox.scss';
 import { connect } from 'react-redux';
-import { actions as postsActions } from '../../redux/modules/posts';
+import { actions as postsActions } from '../../store/modules/posts';
 import Modal from 'react-modal';
 import AttachPhoto from './AttachPhoto';
 import ModalStyles from './ModalStyles.js';

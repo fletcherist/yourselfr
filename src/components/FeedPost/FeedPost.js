@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import s from './FeedPost.scss';
 import cx from 'classnames/bind';
-import { config } from '../../redux/config';
+import { config } from '../../store/config';
 import { isValidPhoto } from '../Toools';
 import { Link } from 'react-router';
 import TickTime from '../Post/TickTime';

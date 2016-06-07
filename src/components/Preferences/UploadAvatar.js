@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Preferences.scss';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import { loadAvatar } from '../../redux/modules/upload';
+import { loadAvatar } from '../../store/modules/upload';
 import { LoaderSmall } from '../Loader';
 
 let cx = classNames.bind(s);

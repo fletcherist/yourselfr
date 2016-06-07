@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
-import { logIn } from '../../../redux/modules/auth';
+import { logIn } from '../../../store/modules/auth';
 import VkAuthButton from 'components/Buttons/SocialButtons';
 import Logotype from '../Logotype';
 

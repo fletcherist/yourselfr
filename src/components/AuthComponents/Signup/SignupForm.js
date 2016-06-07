@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
-import { register } from 'redux/modules/auth';
+import { register } from 'store/modules/auth';
 
 import { isValidEmail } from 'components/Toools';
 import { routeActions } from 'react-router-redux';
@@ -93,27 +93,27 @@ class SignupForm extends Component {
     return (
       <div>
         <div className={s.loginFormContainer}>
-          <Logotype/>
+          <Logotype />
           <VkAuthButton />
-          <Translate content="signup.message" className={s.titleAction} component='div'/>
-          <form onSubmit={ this.register.bind(this) }>
+          <Translate content='signup.message' className={s.titleAction} component='div' />
+          <form onSubmit={this.register.bind(this)}>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder={ cp.translate('signup.username') }
-                  ref={(r) => this.username = r}/>
+              <input className='input--form input--block' placeholder={cp.translate('signup.username')}
+                ref={(r) => this.username = r} />
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder={ cp.translate('signup.email') }
-                  ref={(r) => this.email = r}/>
+              <input className='input--form input--block' placeholder={cp.translate('signup.email')}
+                ref={(r) => this.email = r} />
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder={ cp.translate('signup.password') }
-                  ref={(r) => this.password = r}/>
+              <input className='input--form input--block' placeholder={cp.translate('signup.password')}
+                ref={(r) => this.password = r} />
             </div>
             <button
               type='submit'
               className='button button--register button--block button--container'
               disabled={this.props.isFetching.status}>
-              <Translate content="signup.button"/>
+              <Translate content='signup.button' />
             </button>
           </form>
           {this.state.message && (

@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import s from './Navigation.scss';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { loadUser } from '../../redux/modules/user';
+import { loadUser } from '../../store/modules/user';
 
 let cx = classNames.bind(s);
 
