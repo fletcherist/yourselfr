@@ -224,3 +224,7 @@ export function focusDiv (div) {
     }
   }, 1);
 };
+
+export function shuffle (arr) {
+  return arr.sort(function () { return 0.5 - Math.random() });
+}
