@@ -39,7 +39,7 @@
     "deploy": {
       "command": "npm run clean && npm run compile && better-npm-run copy",
       "env": {
-        "NODE_ENV": "development",
+        "NODE_ENV": "production",
         "DEBUG": "app:*"
       }
     },

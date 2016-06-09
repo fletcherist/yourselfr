@@ -14,9 +14,6 @@ import cookie from 'react-cookie';
 import counterpart from 'counterpart';
 import { getLocale } from './components/Toools';
 
-import Perf from 'react-addons-perf';
-console.log(Perf);
-window.Perf = Perf;
 // Set Localization Preferences
 counterpart.registerTranslations('en', require('./locales/en.json'));
 counterpart.registerTranslations('ru', require('./locales/ru.json'));

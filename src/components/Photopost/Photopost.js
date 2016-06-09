@@ -13,13 +13,16 @@ class Photopost extends Component {
 
   render () {
     return (
-      <div className={s.photoPost} style={{background: `url(${config.http}/upload/photo/${this.props.photo})`}}>
-        {this.props.isYourPage && (
-          <div className={s.removePhotoPost} onClick={() => this.props.removePost(this.props.id)}></div>
-        )}
-        <div className={s.photoText}>
-          <span dangerouslySetInnerHTML={{__html: this.props.text}}></span>
+      <div>
+        <div className={s.photoPost}>
+          {this.props.isYourPage && (
+            <div className={s.removePhotoPost} onClick={() => this.props.removePost(this.props.id)}></div>
+          )}
+          <div className={s.photoText}>
+            <div className={s.text} dangerouslySetInnerHTML={{__html: this.props.text}}></div>
+          </div>
         </div>
+        <div className={s.background} style={{background: `url(${config.http}/upload/photo/${this.props.photo})`}}></div>
       </div>
     )
   }

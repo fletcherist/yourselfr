@@ -1,15 +1,21 @@
 .photoPost {
 	border-radius: 0px;
-	justify-content: left;
-	display: flex;
+	justify-content: center;
+	display: inline-flex;
 	min-height: 250px;
-	width: auto;
 	overflow: hidden;
+	margin-left: -1px;
+	width: 100.3%;
+}
+
+.background {
 	background-size:cover !important;
 	background-position:center;
 	background-color: #F7F7F7;
-	margin-left: -1px;
-	width: 100.6%;
+	width: 100%;
+	min-height: 250px;
+	filter: brightness(70%);
+	margin-top: -250px;
 }
 
 .photoPost:hover .removePhotoPost {
@@ -20,10 +26,16 @@
 	text-align: center;
 	max-width: 495px;
 	width: 100%;
-	font-size: 20px;
+	font-size: 18px;
 	color: white;
 	text-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
 	align-self: center;
+	z-index: 999999999;
+}
+.text {
+	max-width: 130px;
+	margin: auto;
+	word-wrap: break-word;
 }
 .removePhotoPost {
 	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;

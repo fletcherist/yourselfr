@@ -34,6 +34,7 @@ class Friends extends Component {
     var user2 = '';
     var user3 = '';
     const { loadUser } = this.props;
+    console.log(this.props.friends);
     if (this.props.friends[0] && this.props.friends[1] && this.props.friends[2]) {
       var { friends } = this.props;
       friends = shuffle(friends);
