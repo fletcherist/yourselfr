@@ -35,23 +35,23 @@ class LoginForm extends React.Component {
     return (
       <div>
         <div className={s.loginFormContainer}>
-          <Logotype/>
+          <Logotype />
           <VkAuthButton />
-          <Translate className={s.titleAction} content='login.message' component='div'/>
-          <form onSubmit={ this.logIn.bind(this)}>
+          <Translate className={s.titleAction} content='login.message' component='div' />
+          <form onSubmit={this.logIn.bind(this)}>
             <div className='input--container'>
-              <input className='input--form input--block' placeholder={ cp.translate('login.login') }
-                      ref={(r) => this.login = r}/>
+              <input className='input--form input--block' placeholder={cp.translate('login.login')}
+                ref={(r) => this.login = r} />
             </div>
             <div className='input--container'>
-              <input className='input--form input--block' type='password' placeholder={ cp.translate('login.password') }
-                      ref={(r) => this.password = r}/>
+              <input className='input--form input--block' type='password' placeholder={cp.translate('login.password')}
+                ref={(r) => this.password = r} />
             </div>
             <button
               type='submit'
               className='button button--register button--block button--container'
               disabled={this.props.isFetching.status}>
-              <Translate content='login.button'/>
+              <Translate content='login.button' />
             </button>
           </form>
           {this.props.isFetching.message && (

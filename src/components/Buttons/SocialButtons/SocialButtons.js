@@ -6,12 +6,12 @@ import Translate from 'react-translate-component';
 
 const VkAuthButton = () => {
   return (
-      <div className={cx(s.button, s.vk)}>
-        <a href='auth/vk'>
-          <img src={vkWhite}/>
-          <Translate content='socialButtons.authViaVK' component='span'/>
-        </a>
-      </div>
+    <div className={cx(s.button, s.vk)}>
+      <a href='http://yourselfr.com/auth/vk'>
+        <img src={vkWhite} />
+        <Translate content='socialButtons.authViaVK' component='span' />
+      </a>
+    </div>
   )
 }
 
