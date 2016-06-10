@@ -9,15 +9,14 @@ import lay5 from './Layout5.jpg';
 var backgrounds = [lay1, lay2, lay3, lay4, lay5];
 
 class Slideshow extends Component {
-  constructor () {
-    super();
-    this.state = {
+  componentWillMount () {
+    this.setState({
       style: {
-        background: `url(${backgrounds[0]})`
+        background: `url(${backgrounds[2]})`
       },
       backgroundCount: 1,
       count: 0
-    }
+    });
   }
   fadeOut (element) {
     var opacity = 1;
@@ -42,8 +41,9 @@ class Slideshow extends Component {
           backgroundCount: backgroundCount,
           count: self.state.count + 1
         })
+        console.log('decreasing ' + opacity)
         self.fadeIn(element);
-        return true;
+        return false;
       }
       element.style.opacity = opacity;
       requestAnimationFrame(decrease);
@@ -55,7 +55,7 @@ class Slideshow extends Component {
     var opacity = 0;
 
     var self = this;
-    function decrease () {
+    function increase () {
       opacity += 0.01;
       if (opacity >= 1) {
         element.style.opacity = 1;
@@ -63,23 +63,31 @@ class Slideshow extends Component {
         setTimeout(() => {
           self.fadeOut(element);
         }, 5000);
-        return true;
+        return false;
       }
       element.style.opacity = opacity;
-      requestAnimationFrame(decrease);
+      requestAnimationFrame(increase);
     }
-    decrease();
+    increase();
   }
   componentDidMount () {
-    console.log(this.state.count);
-    if (this.state.count > 0) {
-      return false;
-    }
-    setTimeout(() => {
-      this.fadeOut(this.background);
+    // console.log(this.state.count);
+    // if (this.state.count > 0) {
+      // return false;
+    // }
+    var element = document.querySelector('#slideshow');
+    console.log(element);
+    this.timeout = setTimeout(() => {
+      this.fadeOut(element);
     }, 5000);
   }
-
+  componentWillUpdate () {
+    return false;
+  }
+  shouldComponentUpdate () {
+    // return false;
+    return true;
+  }
   componentWillUnmount () {
     return false;
   }
@@ -87,15 +95,14 @@ class Slideshow extends Component {
   render () {
     return (
       <div>
-        <div className='black_layout'></div>
+        <div className='black_layout' style={{backgroundColor: 'black'}}></div>
         <div
-          className='responsive_crop_fixed responsive_crop_main'
+          className='responsive_crop_main'
           style={this.state.style}
-          id='background'
-          ref={(c) => this.background = c}>
+          id='slideshow'
+          ref={(c) => this.slideshow = c}>
         </div>
       </div>
-
     )
   }
 }

@@ -15,8 +15,10 @@ class Friends extends Component {
   };
   componentWillMount () {
     var closeFriends = cookie.load('closeFriends');
-    this.setState({closed: closeFriends || false})
-    this.props.loadFriends();
+    this.setState({closed: closeFriends || false});
+    if (closeFriends !== false) {
+      this.props.loadFriends();
+    }
   }
 
   refresh () {

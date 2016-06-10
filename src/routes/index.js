@@ -1,4 +1,5 @@
 // We only need to import the modules necessary for initial render
+import React, { Component, PropTypes } from 'react';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 
 // Preferences Components
@@ -11,7 +12,7 @@ import User from 'components/User';
 import Feed from 'components/Feed';
 
 import Main from 'components/AuthComponents/Main'
-import { Signup, Login } from 'components/AuthComponents/SignupAndLogin';
+import { Signup, Login, AuthBootstrap } from 'components/AuthComponents/AuthBootstrap';
 
 import GetStarted from 'views/GetStarted/GetStarted';
 import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
@@ -49,20 +50,29 @@ const getSocializedRoute = {
 }
 
 export const createRoutes = (store) => ({
-  path: '/',
+  path: '',
   component: CoreLayout,
   indexRoute: {
     component: Main
   },
   childRoutes: [
     {
+      path: '/',
+      component: AuthBootstrap,
+      indexRoute: {
+        component: Main
+      }
+    },
+    {
       path: '/login',
+      component: AuthBootstrap,
       indexRoute: {
         component: Login
       }
     },
     {
       path: '/signup',
+      component: AuthBootstrap,
       indexRoute: {
         component: Signup
       }

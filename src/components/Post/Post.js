@@ -32,11 +32,8 @@ class Post extends Component {
     }
   }
 
-  shouldComponentUpdate (nextProps) {
-    return false;
-  }
-
   openCommentForm () {
+    console.log('asdasd');
     this.setState({
       showCommentForm: !this.state.showCommentForm
     })

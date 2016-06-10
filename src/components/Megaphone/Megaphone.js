@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import x from './megaphone.scss';
 import { selectText } from '../Toools';
+import cookie from 'react-cookie';
 // i am like this when the police finally finds me
 // dropped body on a slippy road
 // this shitty component is the last thing i will gift to this pathetic
@@ -11,17 +12,28 @@ class Megaphone extends Component {
     alias: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired
   };
-  shouldComponentUpdate (nextProps) {
-    return this.props.alias !== nextProps.alias;
+  componentWillMount () {
+    var closeFriends = cookie.load('closeMegaphone');
+    this.setState({closed: closeFriends || false});
+  }
+
+  close () {
+    cookie.remove('closeMegaphone', { path: '/' });
+    cookie.save('closeMegaphone', true, { path: '/' });
+    this.setState({closed: true})
   }
 
   render () {
+    if (this.state.closed) {
+      return (null);
+    }
     return (
       <div className={cx(x.megaphone, 'container--left')}>
+        <div onClick={() => this.close()} className={x.remove}></div>
         <div className={x.text}>
-          Поделитесь ссылкой с&nbsp;друзьями, чтобы получить шквал  мнений&nbsp;о&nbsp;себе
+          Поделитесь ссылкой <br /> на ваш профиль
         </div>
-        <div className={x.input} id='megaphone' onClick={ () => selectText('megaphone') }>yourselfr.com/<b>{this.props.alias}</b></div>
+        <div className={x.input} id='megaphone' onClick={() => selectText('megaphone')}>yourselfr.com/<b>{this.props.alias}</b></div>
         <div className={x.buttons}>
           <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&title=Узнайте обо мне больше на Йорселфере!`}
             className={cx(x.button, x.vk)}>ВК</a>
