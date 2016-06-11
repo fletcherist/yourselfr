@@ -35,9 +35,9 @@ class Profile extends Component {
     me: PropTypes.object
   };
 
-  shouldComponentUpdate (nextProps) {
-    return nextProps.alias !== this.props.alias;
-  }
+  // shouldComponentUpdate (nextProps) {
+    // return nextProps.alias !== this.props.alias;
+  // }
 
   componentWillMount () {
     this.props.loadUser();

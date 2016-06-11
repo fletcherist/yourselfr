@@ -130,6 +130,12 @@ export const createRoutes = (store) => ({
         }
       ]
     },
+    {
+      path: '/404',
+      indexRoute: {
+        component: NotFoundView
+      }
+    },
     getStartedRoute,
     getPersonalizedRoute,
     getSocializedRoute

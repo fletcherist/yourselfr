@@ -24,10 +24,10 @@ class UserAvatar extends Component {
     const { alias, loadUser } = this.props;
     return (
       <div className={s.time} style={{marginRight: '15px'}}>
-        <Link to={`/${alias}`} style={styles.link} onClick={ () => loadUser(alias)}>
+        <Link to={`/${alias}`} style={styles.link} onClick={() => loadUser(alias)}>
           <img
             src={photo}
-            className={s.photo}/>
+            className={s.photo} />
         </Link>
       </div>
     );

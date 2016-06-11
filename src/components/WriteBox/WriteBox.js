@@ -12,6 +12,7 @@ class WriteBox extends Component {
     sendPost: PropTypes.func.isRequired,
     alias: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
     isYourPage: PropTypes.bool.isRequired,
     isOpen: PropTypes.bool.isRequired,
     toggleModalBox: PropTypes.func.isRequired
@@ -65,7 +66,15 @@ class WriteBox extends Component {
         onRequestClose={this.props.toggleModalBox}
         closeTimeoutMS={300}>
         <div className={s.container}>
-          <div className={s.header}>Написать анонимное мнение</div>
+          <div className={s.header}>
+            <div className={s.left}>
+              <img src={this.props.photo} className={s.avatar} />
+            </div>
+            <div>
+              Привет, я {this.props.alias}<br />
+              <span className='bold'>Напиши, пожалуйста, что ты думаешь обо мне.</span>
+            </div>
+          </div>
           <TextBox username={this.props.username} />
           <div id='attach-block' className='hidden'>
             <div className={s.plus}>+</div>
@@ -88,6 +97,7 @@ function mapStateToProps (state) {
   return {
     alias: state.user.alias,
     username: state.user.username,
+    photo: state.user.photo,
     isYourPage: state.auth.isYourPage
   }
 }

@@ -39,7 +39,7 @@ class Counters extends Component {
           <div className={s.counter_count}>{followers}</div>
           <div className={s.counter_title}><Translate content={pronounce.followers} /></div>
         </Link>
-        <Link to={followingLink} className={s.counter} activeClass={s.activeClass}>
+        <Link to={followingLink} className={s.counter} activeStyle={active} activeClass={s.activeClass}>
           <div className={s.counter_count}>{following}</div>
           <div className={s.counter_title}><Translate content={pronounce.following} /></div>
         </Link>

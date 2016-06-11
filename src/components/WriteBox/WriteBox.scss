@@ -5,7 +5,13 @@
 	font-weight: 300;
 	font-size: 14px;
 	padding: 10px;
-	border-bottom: 1px solid $borderColor;
+	display: flex;
+}
+
+.avatar {
+	height: 100px;
+	width: 100px;
+	border-radius: 100px;
 }
 
 .container {
