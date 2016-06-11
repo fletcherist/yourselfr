@@ -1,7 +1,9 @@
 import { config } from '../config';
 import { fetchUsername,
          fetchAlias,
-         fetchStatus
+         fetchStatus,
+         fetchRemoveAvatar,
+         fetchRemoveBackground
 } from './isFetching';
 
 import {
@@ -10,15 +12,17 @@ import {
   changeStatus
 } from './auth';
 
-
 export const removeAvatar = () => {
   return (dispatch, getState) => {
-    fetch(`${config.http}/upload/background/delete`, {
+    fetch(`${config.http}/upload/avatar/delete`, {
       method: 'post',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {
         'Content-type': config.post
       }
+    })
+    .then(() => {
+      dispatch(fetchRemoveAvatar(true));
     });
   }
 }
@@ -27,8 +31,11 @@ export const removeBackground = () => {
   return (dispatch, getState) => {
     fetch(`${config.http}/upload/background/delete`, {
       method: 'post',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {'Content-type': config.post}
+    })
+    .then(() => {
+      dispatch(fetchRemoveBackground(true));
     });
   }
 }
@@ -55,7 +62,7 @@ export const saveUsername = (username) => {
     dispatch(changeUsername(username));
     var body = createBody({username: username});
     console.log(username);
-    fetch(`${config.http}/api/users`, {
+    fetch(`${config.http}/api/preferences/change/username`, {
       method: 'POST',
       headers: {'Content-type': config.post},
       credentials: 'include',
@@ -93,7 +100,7 @@ export const saveAlias = (alias) => {
 
     dispatch(changeAlias(alias));
     var body = createBody({alias: alias});
-    fetch(`${config.http}/api/users`, {
+    fetch(`${config.http}/api/preferences/change/alias`, {
       method: 'POST',
       headers: {'Content-type': config.post},
       credentials: 'include',
@@ -129,7 +136,7 @@ export const saveStatus = (status) => {
     dispatch(changeStatus(status));
 
     var body = createBody({status: status});
-    fetch(`${config.http}/api/users`, {
+    fetch(`${config.http}/api/preferences/change/status`, {
       method: 'POST',
       headers: {
         'Content-type': config.post

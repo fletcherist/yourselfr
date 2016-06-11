@@ -12,7 +12,7 @@ class Slideshow extends Component {
   componentWillMount () {
     this.setState({
       style: {
-        background: `url(${backgrounds[2]})`
+        background: `url(${backgrounds[0]})`
       },
       backgroundCount: 1,
       count: 0
@@ -41,7 +41,6 @@ class Slideshow extends Component {
           backgroundCount: backgroundCount,
           count: self.state.count + 1
         })
-        console.log('decreasing ' + opacity)
         self.fadeIn(element);
         return false;
       }

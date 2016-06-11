@@ -18,10 +18,10 @@ class Feed extends Component {
         <div className='container--right padding-0'>
           <FeedHeader alias={this.props.user.alias} username={this.props.user.username} />
           {this.props.feed.length > 0 && (
-            <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching}/>
+            <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching} />
           )}
           {this.props.feed.length === 0 && (
-            <NoFeed/>
+            <NoFeed />
           )}
         </div>
       </User>

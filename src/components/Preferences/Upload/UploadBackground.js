@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import s from './Preferences.scss';
+import s from '../Preferences.scss';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import { loadBackground } from '../../store/modules/upload';
-import { LoaderSmall } from '../Loader';
+import { loadBackground } from 'store/modules/upload';
+import { LoaderSmall } from 'components/Loader';
 
 let cx = classNames.bind(s);
 
@@ -28,7 +28,7 @@ class UploadBackground extends Component {
       icon = <div className={s.checkmark}></div>
     }
     return (
-      <div className={s.photoRight}>
+      <div>
         <div className={s.backgroundHolder}>
           <button onClick={() => this.backgroundInput.click()}
             className={cx({

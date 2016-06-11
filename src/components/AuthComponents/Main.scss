@@ -20,7 +20,7 @@
   line-height: 1.2em;
   font-weight: 300;
   @media screen and (max-width: 600px){
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 
@@ -37,14 +37,16 @@
 .left {
   max-width: 470px;
   border-radius: 3px;
-  padding: 20px 0;
   background-color: #fff;
   z-index: 99999;
-  margin: 100px auto;
+  margin: 50px auto;
   width: 100%;
   margin-bottom: 20px;
+  border: 1px solid $borderColor;
+
   @media screen and (max-width: 600px){
-    width: 95%;
+    border-left: 0px;
+    border-right: 0px;
   }
 }
 

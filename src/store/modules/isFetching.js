@@ -7,7 +7,9 @@ const FETCH_USERNAME = 'FETCH_USERNAME';
 const FETCH_ALIAS = 'FETCH_ALIAS';
 const FETCH_STATUS = 'FETCH_STATUS';
 const FETCH_AVATAR = 'FETCH_AVATAR';
+const FETCH_REMOVE_AVATAR = 'FETCH_REMOVE_AVATAR';
 const FETCH_BACKGROUND = 'FETCH_BACKGROUND';
+const FETCH_REMOVE_BACKGROUND = 'FETCH_REMOVE_BACKGROUND';
 const FETCH_LOAD_MORE_POSTS = 'FETCH_LOAD_MORE_POSTS';
 const FETCH_LOGIN = 'FETCH_LOGIN';
 const FETCH_REGISTER = 'FETCH_REGISTER';
@@ -24,7 +26,9 @@ export const fetchUsername = createAction(FETCH_USERNAME);
 export const fetchAlias = createAction(FETCH_ALIAS);
 export const fetchStatus = createAction(FETCH_STATUS);
 export const fetchAvatar = createAction(FETCH_AVATAR);
+export const fetchRemoveAvatar = createAction(FETCH_REMOVE_AVATAR);
 export const fetchBackground = createAction(FETCH_BACKGROUND);
+export const fetchRemoveBackground = createAction(FETCH_REMOVE_BACKGROUND);
 export const fetchLogIn = createAction(FETCH_LOGIN);
 export const fetchRegister = createAction(FETCH_REGISTER);
 export const fetchUser = createAction(FETCH_USER);
@@ -66,11 +70,17 @@ export default handleActions({
       state: payload.state
     }}}
   },
+  FETCH_REMOVE_AVATAR: (state, {payload}) => {
+    return {...state, ...{removeAvatar: payload}}
+  },
   FETCH_BACKGROUND: (state, {payload}) => {
     return {...state, ...{background: {
       state: payload.state || false,
       status: payload.status
     }}}
+  },
+  FETCH_REMOVE_BACKGROUND: (state, {payload}) => {
+    return {...state, ...{removeBackground: payload}}
   },
   FETCH_FOLLOWERS: (state, {payload}) => {
     return {...state, ...{followers: payload}}
@@ -173,7 +183,9 @@ export default handleActions({
     status: false,
     state: false
   },
+  removeAvatar: false,
   background: false,
+  removeBackground: false,
   subscribe: false,
   logIn: {
     status: false,

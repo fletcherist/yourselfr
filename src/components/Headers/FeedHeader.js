@@ -40,12 +40,14 @@ class FeedHeader extends Component {
     const { alias, username } = this.props;
     return (
       <div className={s.blockTitle}>
-        <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
-        <span className={s.separator}></span>
-        <span className={s.navItem}>Лента</span>
+        <div className={s.feedUser}>
+          <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
+          <span className={s.separator}></span>
+          <span className={s.navItem}>Лента</span>
+        </div>
         <div className={s.pick}>
-          <div className={cx({param: true, selected: this.state.selected === 1})} onClick={ () => this.changeSelector(1) }>личная</div>
-          <div className={cx({param: true, selected: this.state.selected === 2})} onClick={ () => this.changeSelector(2) }>всеобщая</div>
+          <div className={cx({param: true, selected: this.state.selected === 1})} onClick={() => this.changeSelector(1)}>личная</div>
+          <div className={cx({param: true, selected: this.state.selected === 2})} onClick={() => this.changeSelector(2)}>всеобщая</div>
         </div>
       </div>
     );

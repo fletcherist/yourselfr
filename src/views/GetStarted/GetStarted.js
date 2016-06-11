@@ -19,7 +19,7 @@ class GetStarted extends Component {
     const { username } = this.props.user;
     return (
       <div>
-        <Navigation/>
+        <Navigation />
         <div className={s.container}>
           <div className={s.left}>
             <h1 className={s.greeting}>Рады вас видеть, {username}.</h1>
@@ -31,7 +31,7 @@ class GetStarted extends Component {
               Подпишитесь на людей, мнения о которых Вам интересно знать.
             </div>
             <div>
-              Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br/> ваш профиль популярнее.
+              Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br /> ваш профиль популярнее.
             </div>
             <Link to='/i/get-personalized'>
               <div className={s.button}>Продолжить!</div>

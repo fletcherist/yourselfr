@@ -1,0 +1,17 @@
+@import 'variables';
+.removePhoto {
+  text-align: center;
+  color: $yoColor;
+  width: auto;
+  font-weight: bold;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.removedPhoto {
+  text-align: center;
+  color: $yoGreyLight;
+  width: auto;
+  font-weight: bold;
+  margin-top: 2px;
+}

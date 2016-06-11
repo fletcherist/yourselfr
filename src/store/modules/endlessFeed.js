@@ -21,7 +21,6 @@ export const loadEndlessFeed = (offset) => {
     fetch(url)
       .then((r) => r.json())
       .then((posts) => {
-        console.log(posts);
         dispatch(loadEndlessFeedPatch(posts));
         dispatch(fetchFeed(false));
       })

@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Navigation from 'components/Navigation';
-import UploadAvatar from 'components/Preferences/UploadAvatar';
-import UploadBackground from 'components/Preferences/uploadBackground';
+import { AvatarAndBackground } from 'components/Preferences/Photos';
 
 class GetPersonalized extends React.Component {
   render () {
     return (
       <div>
-        <Navigation/>
+        <Navigation />
         <div className={s.container}>
           <div className={s.left}>
             <h1 className={s.greeting}>Сделайте всё красиво.</h1>
@@ -27,8 +26,7 @@ class GetPersonalized extends React.Component {
             </Link>
           </div>
           <div className={s.right}>
-            <UploadAvatar/>
-            <UploadBackground/>
+            <AvatarAndBackground />
           </div>
         </div>
       </div>

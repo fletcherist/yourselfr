@@ -15,7 +15,7 @@ class WantToRegister extends React.Component {
       <div>
         <Link to='/signup'>
           <div className={s.WantToRegister}>
-            <Translate content='same.WantToRegister'/>
+            <Translate content='same.WantToRegister' />
           </div>
         </Link>
       </div>

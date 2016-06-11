@@ -63,14 +63,12 @@
   height: 51px;
 }
 
-.postsUser {
+.postsUser, .feedUser {
   display: inline-block;
   @media screen and (max-width: 500px) {
     display: none;
   }
 }
-
-
 
 .pick {
   display: inline-block;

@@ -5,7 +5,21 @@
 	min-height: 250px;
 	overflow: hidden;
 	margin-left: -1px;
-	width: 100.3%;
+	width: 100.6%;
+}
+
+.photoPostFeed {
+	border-radius: 0px;
+	justify-content: left;
+	display: flex;
+	min-height: 300px;
+	width: auto;
+	overflow: hidden;
+	background-size:cover !important;
+	background-position:center !important; /* IE fix */
+	background-color: #F7F7F7;
+	margin-left: -1px;
+	width: 100.6%;
 }
 
 .background {
@@ -59,4 +73,14 @@
 	&:hover {
 		opacity: 1 !important;
 	}
+}
+
+.userPhoto {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 0px;
+	margin-top: 5px;
+  z-index: 999;
+  background-size: contain;
 }

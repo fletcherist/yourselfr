@@ -1,13 +1,13 @@
-import React from 'react';
-import s from './Preferences.scss';
+import React, { Component, PropTypes } from 'react';
+import s from '../Preferences.scss';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import { loadAvatar } from '../../store/modules/upload';
-import { LoaderSmall } from '../Loader';
+import { loadAvatar } from 'store/modules/upload';
+import { LoaderSmall } from 'components/Loader';
 
 let cx = classNames.bind(s);
 
-class UploadAvatar extends React.Component {
+class UploadAvatar extends Component {
   uploadAvatar () {
     var photo = this.avatarForm;
     var fd = new FormData();
@@ -29,7 +29,7 @@ class UploadAvatar extends React.Component {
       icon = <div className={s.checkmark}></div>
     }
     return (
-      <div className={s.photoLeft}>
+      <div>
         <div className={s.avatarHolder}>
           <button onClick={() => this.avatarInput.click()}
             className={cx({
@@ -60,8 +60,8 @@ class UploadAvatar extends React.Component {
 }
 
 UploadAvatar.propTypes = {
-  loadAvatar: React.PropTypes.func.isRequired,
-  isFetching: React.PropTypes.object.isRequired
+  loadAvatar: PropTypes.func.isRequired,
+  isFetching: PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {

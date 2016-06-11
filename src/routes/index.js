@@ -1,5 +1,4 @@
 // We only need to import the modules necessary for initial render
-import React, { Component, PropTypes } from 'react';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 
 // Preferences Components

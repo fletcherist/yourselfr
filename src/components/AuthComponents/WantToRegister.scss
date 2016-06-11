@@ -1,23 +1,23 @@
 @import 'variables';
 
 .WantToRegister {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: $yoColor;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid $borderColor;
+  background-color: $greyBackground;
   padding: 15px;
   text-align: center;
-  color: white;
+  color: $yoColor;
   cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+  transition: background-color .1s;
+
+  &:hover {
+    background-color: $yoColor05;
+  }
 }
 
 .container {
-  padding: 15px;
   background-color: #A2ADBC;
-}
-
-.formTitle {
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  font-weight: 200;
 }

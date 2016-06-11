@@ -46,10 +46,14 @@
 .online {
 	margin-bottom: 2px;
 	margin-left: 4px;
-	opacity: .5;
+	// opacity: .5;
 	transition: all .3s;
 	cursor: pointer;
 	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border-radius: 50px;
+	background-color: $yoColor;
 	&:hover {
 		opacity: 1;
 	}
