@@ -15,6 +15,10 @@ class Counters extends Component {
     alias: PropTypes.string.isRequired
   };
 
+  shouldComponentUpdate () {
+    return true;
+  }
+
   render () {
     var pronounce = {
       visits: cpEnding(this.props.visits, 'counters.visits'),
@@ -31,11 +35,11 @@ class Counters extends Component {
           <div className={s.counter_count}>{visits}</div>
           <div className={s.counter_title}><Translate content={pronounce.visits} /></div>
         </div>
-        <Link to={followersLink} className={s.counter} activeStyle={active}>
+        <Link to={followersLink} className={s.counter} activeStyle={active} activeClass={s.activeClass}>
           <div className={s.counter_count}>{followers}</div>
           <div className={s.counter_title}><Translate content={pronounce.followers} /></div>
         </Link>
-        <Link to={followingLink} className={s.counter} activeStyle={active}>
+        <Link to={followingLink} className={s.counter} activeClass={s.activeClass}>
           <div className={s.counter_count}>{following}</div>
           <div className={s.counter_title}><Translate content={pronounce.following} /></div>
         </Link>

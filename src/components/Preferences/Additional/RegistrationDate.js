@@ -7,7 +7,11 @@ class RegistrationDate extends Component {
 
   render () {
     return (
-      <div>вы зарегистрировались</div>
+      <div className='text-grey'>
+        вы зарегистрировались:
+        {' '}
+        <b>22.04.2015</b>
+      </div>
     );
   }
 }

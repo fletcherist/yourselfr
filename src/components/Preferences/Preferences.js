@@ -8,6 +8,7 @@ import classNames from 'classnames/bind';
 import { LoaderSmall } from '../Loader';
 import VkSupport from './Additional/VkSupport';
 import RegistrationDate from './Additional/RegistrationDate';
+import Email from './Additional/Email';
 
 let cx = classNames.bind(s);
 
@@ -132,8 +133,12 @@ class Preferences extends Component {
             error: isFetching.status.state === false
           })}>{isFetching.status.message}</div>
         )}
-        <VkSupport />
-        <RegistrationDate />
+        <div className='bottom-left'>
+          (in developing)
+          <VkSupport />
+          <RegistrationDate />
+          <Email />
+        </div>
       </div>
       );
   }

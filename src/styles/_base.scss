@@ -173,3 +173,16 @@
     display: none;
   }
 }
+
+.relative {
+  position: relative;
+}
+.text-grey {
+  font-size: 12px;
+  color: $yoGrey;
+}
+.bottom-left {
+  bottom: 5px;
+  left: 10px;
+  position: absolute;
+}

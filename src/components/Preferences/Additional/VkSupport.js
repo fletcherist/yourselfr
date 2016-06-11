@@ -10,10 +10,10 @@ class vkSupport extends Component {
 
   render () {
     return (
-      <div className='grey'>
+      <div className='text-grey'>
         страница вконтакте:
         {' '}
-        <a>http://vk.com/id399929</a>
+        <a><b>http://vk.com/id399929</b></a>
       </div>
     );
   }
