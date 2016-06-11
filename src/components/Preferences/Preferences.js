@@ -6,6 +6,9 @@ import { actions } from '../../store/modules/preferences';
 import classNames from 'classnames/bind';
 
 import { LoaderSmall } from '../Loader';
+import VkSupport from './Additional/VkSupport';
+import RegistrationDate from './Additional/RegistrationDate';
+
 let cx = classNames.bind(s);
 
 class Preferences extends Component {
@@ -129,6 +132,8 @@ class Preferences extends Component {
             error: isFetching.status.state === false
           })}>{isFetching.status.message}</div>
         )}
+        <VkSupport />
+        <RegistrationDate />
       </div>
       );
   }

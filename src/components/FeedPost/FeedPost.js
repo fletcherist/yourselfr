@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import s from 'components/Post/Post.scss';
 import cx from 'classnames/bind';
-import { config } from '../../store/config';
+// import { config } from '../../store/config';
 import TickTime from '../Post/TickTime';
 import PostText from '../Post/PostText';
 import PhotopostFeed from 'components/Photopost/PhotopostFeed';
@@ -56,7 +56,9 @@ class FeedPost extends Component {
                 {' '}
                 <Link to={`/${alias}`}><b>{username}</b></Link>
               </div>
-              <PostText text={this.props.text} />
+              <div className={s.feedText}>
+                <PostText text={this.props.text} />
+              </div>
             </div>
           </div>
         )}
