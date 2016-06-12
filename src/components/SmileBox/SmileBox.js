@@ -20,16 +20,20 @@ class SmileBox extends Component {
     })
   }
   showBox () {
-    console.log('showBox');
     this.setState({
-      style: {visibility: 'visible'}
+      style: {visibility: 'visible', display: 'block'}
     });
   }
   hideBox () {
-    console.log('asddassadsd');
     this.setState({
-      style: {visibility: 'hidden'}
+      style: {visibility: 'hidden', display: 'none'}
     });
+    var self = this;
+    setTimeout(() => {
+      self.setState({
+        style: {display: 'block'}
+      });
+    }, 500);
   }
   addSmile (smile) {
     var textForm = document.getElementById('text-form');
