@@ -8,6 +8,25 @@
 	display: flex;
 }
 
+.right {
+	margin-top: 15px;
+	padding-left: 30px;
+	width: 300px;
+}
+
+.greeting {
+	font-size: 24px;
+	text-align: left;
+}
+.action {
+	font-weight: bold;
+	text-align: left;
+
+	@media screen and (max-width: 600px) {
+		display: none;
+	}
+}
+
 .avatar {
 	height: 100px;
 	width: 100px;
@@ -135,5 +154,9 @@
 
 	&:hover {
 		background: rgba(255, 255, 255, .3);
+	}
+
+	@media screen and (max-width: 700px) {
+		width: 120px;
 	}
 }

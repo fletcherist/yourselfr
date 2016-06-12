@@ -1,0 +1,88 @@
+@import 'variables';
+
+.button {
+  -webkit-mask: url('./components/SmileBox/smile.svg') no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+	background: #148BC3;
+	width: 22px;
+	height: 22px;
+	mask-size: 12px;;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	transition: all .2s;
+	z-index: 99;
+  background-color: white;
+  display: inline-block;
+  float: left;
+  margin: 5px 0px 0px 10px;
+}
+
+.list {
+  padding: 10px;
+  overflow-y: auto;
+  // overflow: hidden;
+  position: absolute;
+  height: 150px;
+  width: 310px;
+  border-radius: 5px;
+  background-color: white;
+  transition: all;
+  opacity: 0;
+  transition-property: opacity, top, visibility;
+	transition-duration: 0.4s;
+	transition-delay: 0.2s;
+  visibility: hidden;
+  cursor: pointer;
+  top: 120px;
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.button:hover ~ .list {
+  visibility: visible;
+  opacity: 1;
+  top: 100px;
+}
+
+.list:after, .list:before {
+  display: block;
+	border: solid transparent;
+	content: ' ';
+	height: 0;
+	bottom: 50%;
+	position: absolute;
+	width: 0;
+  bottom: 0px;
+  margin-bottom: -10px;
+}
+
+.list:after {
+	border-width: 9px;
+	border-top-color: white;
+  margin-bottom: -18px;
+	left: 40%;
+}
+
+.smile {
+  display: inline-block;
+  padding-left: 2px;
+  transition: background-color .3s;
+  font-size: 25px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $yoColor;
+  }
+}
+
+// .list:before {
+//   margin-bottom: -2px;
+// 	border-width: 11px;
+// 	border-top-color: $borderColor;
+//   left: 50%;
+//   margin-left: -22px;
+// }

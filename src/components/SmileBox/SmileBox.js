@@ -1,22 +1,57 @@
-import React from 'react';
-import s from './SmileBox.css';
+import React, { Component, PropTypes } from 'react';
+import s from './SmileBox.scss';
 
-class SmileBox extends React.Component {
+const smiles = [
+  '😀', '😬', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😉', '😊', '🙂',
+  '😋', '😌', '😍', '😘', '😗', '😙', '😚', '😜', '😝', '😛', '🤑', '🤓',
+  '😎', '🤗', '😏', '😶', '😐', '😑', '😒', '🙄', '🤔', '😳', '😞', '😟',
+  '😠', '😡', '😔', '😕', '😣', '😖', '😫', '😩', '😤', '😮', '😱', '😨',
+  '😰', '😯', '😦', '😧', '😢', '😥', '😪', '😓', '😭', '😲', '🤐', '😷',
+  '🤒', '🤕', '😴', '💤', '💩', '😈', '👿', '👹', '👺', '💀', '👻', '👽',
+  '🤖', '😺', '😸', '😹', '😻', '😽', '🙀', '😿', '😾', '🙌', '👏', '👋',
+  '👍', '👊', '✊', '👌', '✋', '💪', '🙏', '👆', '👇', '👈', '👉', '🖕',
+  '🤘', '💅'
+];
+
+class SmileBox extends Component {
+  componentWillMount () {
+    this.setState({
+      style: {}
+    })
+  }
+  showBox () {
+    console.log('showBox');
+    this.setState({
+      style: {visibility: 'visible'}
+    });
+  }
+  hideBox () {
+    console.log('asddassadsd');
+    this.setState({
+      style: {visibility: 'hidden'}
+    });
+  }
+  addSmile (smile) {
+    var textForm = document.getElementById('text-form');
+    textForm.innerHTML = textForm.innerHTML + smile + ' ';
+    this.hideBox();
+  }
   render () {
     return (
       <div>
-        <div className={s.button}>😈asdads</div>
-        <Smiles />
-      </div>
-    )
-  }
-}
-
-class Smiles extends React.Component {
-  render () {
-    return (
-      <div className={s.list}>
-        набор смайликов
+        <div className={s.button} onMouseOver={() => this.showBox()}></div>
+        <div className={s.list} style={this.state.style}>
+          {smiles.map((smile) => {
+            return (
+              <div
+                className={s.smile}
+                onClick={() => this.addSmile(smile)}
+                key={smile}>
+                {smile}
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }

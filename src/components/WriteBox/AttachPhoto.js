@@ -22,8 +22,10 @@ class AttachPhoto extends Component {
     var reader = new FileReader();
 
     reader.onload = function () {
-      preview.src = reader.result;
-      attachBlock.classList.remove('hidden');
+      var background = document.querySelector('#background');
+      background.style.background = `url(${reader.result})`;
+      // preview.src = reader.result;
+      // attachBlock.classList.remove('hidden');
     }
 
     if (photo[0].files[0]) {
@@ -44,7 +46,7 @@ class AttachPhoto extends Component {
     })
     .catch((e) => {
       console.log('Error catched while attaching a photo', e);
-    })
+    });
   }
 
   render () {

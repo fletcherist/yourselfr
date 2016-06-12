@@ -21,6 +21,13 @@ class Friends extends Component {
     }
   }
 
+  shouldComponentUpdate () {
+    if (this.props.friends && this.props.friends.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
   refresh () {
     this.forceUpdate();
   }

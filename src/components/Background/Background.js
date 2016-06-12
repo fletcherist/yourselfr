@@ -18,7 +18,7 @@ class Background extends Component {
       }
       : {}
     return (
-      <div className='responsive_crop_fixed' style={backround}></div>
+      <div className='responsive_crop_fixed' style={backround} id='background'></div>
     )
   }
 }

@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import AttachPhoto from './AttachPhoto';
 import ModalStyles from './ModalStyles.js';
 import TextBox from '../TextBox';
+import SmileBox from '../SmileBox';
 
 class WriteBox extends Component {
   static propTypes = {
@@ -66,32 +67,40 @@ class WriteBox extends Component {
         onRequestClose={this.props.toggleModalBox}
         closeTimeoutMS={300}>
         <div className={s.container}>
-          <div className={s.header}>
-            <div className={s.left}>
-              <img src={this.props.photo} className={s.avatar} />
-            </div>
-            <div>
-              Привет, я {this.props.alias}<br />
-              <span className='bold'>Напиши, пожалуйста, что ты думаешь обо мне.</span>
-            </div>
-          </div>
+          <GreetingHeader
+            username={this.props.username}
+            photo={this.props.photo}
+          />
           <TextBox username={this.props.username} />
           <div id='attach-block' className='hidden'>
             <div className={s.plus}>+</div>
             <img id='attach-preview' className={s.attachPreview} />
           </div>
           <div className={s.above}>
+            <AttachPhoto />
+            <SmileBox />
             <div
               className={s.buttonSubmit}
               onClick={this.handleSubmitButton.bind(this)}>
               Отправить
             </div>
-            <AttachPhoto />
           </div>
         </div>
       </Modal>);
   }
 }
+
+const GreetingHeader = ({username, photo}) => (
+  <div className={s.header}>
+    <div className={s.left}>
+      <img src={photo} className={s.avatar} />
+    </div>
+    <div className={s.right}>
+      <div className={s.greeting}>Привет, я {username}<br /></div>
+      <div className={s.action}>Напиши, пожалуйста,<br /> что ты думаешь обо мне.</div>
+    </div>
+  </div>
+)
 
 function mapStateToProps (state) {
   return {

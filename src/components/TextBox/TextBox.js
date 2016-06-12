@@ -13,7 +13,8 @@ class TextBox extends Component {
   componentWillMount () {
     this.setState({
       opacity: {
-        opacity: 0.5
+        opacity: 0.5,
+        display: 'block'
       },
       placeholderText: generatePhrase(this.props.username),
       focused: false
@@ -26,11 +27,12 @@ class TextBox extends Component {
     }
     this.setState({
       opacity: {
-        opacity: 1
+        opacity: 1,
+        display: 'none'
       },
       placeholderText: '',
       focused: true
-    })
+    });
   }
   componentDidMount () {
     setTimeout(() => {

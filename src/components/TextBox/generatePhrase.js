@@ -15,9 +15,9 @@ export default function generatePhrase (username) {
     `Обладает ли ${username} хорошим вкусом?`,
     `Знает ли ${username} о трёх перерождениях духа?`,
     `Какие книги читает ${username}?`,
-    `${username} — это его настоящее имя?`,
     `${username} приходил в гости без спросу?`,
-    `Мешает ли ${username} вам спать?`
+    `Мешает ли ${username} вам спать?`,
+    `Любит ли ${username} вейпинг?`
   ]
 
   var random = Math.floor(Math.random() * phrases.length)
