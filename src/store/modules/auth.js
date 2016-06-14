@@ -90,6 +90,8 @@ var defaultMe = {
     username: undefined,
     alias: undefined,
     status: undefined,
+    email: undefined,
+    created_at: undefined,
     social: {
       vk: undefined,
       twitter: undefined,

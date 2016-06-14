@@ -178,6 +178,14 @@ export function hideBlocks (flag) {
   }
 }
 
+export const formatVK = (vk) => {
+  if (!vk) {
+    return false;
+  }
+  var vkExpr = /https?:\/\/vk\.com\//;
+  vk = vk ? vk.replace(vkExpr, '') : '';
+  return vk;
+}
 export function formatSocialNetworks (networks) {
   var expr = {
     vk: /https?:\/\/vk\.com\//,

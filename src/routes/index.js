@@ -7,8 +7,10 @@ import UpdateSocialNetworks from 'components/Preferences/UpdateSocialNetworks';
 import PreferencesPhotos from 'components/Preferences/Photos';
 
 import Posts from 'components/Posts';
-import User from 'components/User';
+// import User from 'components/User';
 import Feed from 'components/Feed';
+
+import User from './User';
 
 import Main from 'components/AuthComponents/Main'
 import { Signup, Login, AuthBootstrap } from 'components/AuthComponents/AuthBootstrap';
@@ -110,8 +112,8 @@ export const createRoutes = (store) => ({
       ]
     },
     {
-      path: ':user',
-      component: User,
+      path: 'user',
+      component: User(store),
       indexRoute: {
         component: Posts
       },

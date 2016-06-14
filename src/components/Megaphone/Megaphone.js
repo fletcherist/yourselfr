@@ -49,4 +49,4 @@ class Megaphone extends Component {
   }
 }
 
-export default Megaphone
+export default Megaphone;

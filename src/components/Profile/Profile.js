@@ -8,6 +8,7 @@ import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
 import Navigation from '../Navigation';
 import Megaphone from '../Megaphone';
+import AttachEmail from '../AttachEmail';
 import Friends from '../Friends';
 
 import { actions as userActions } from '../../store/modules/user';

@@ -4,8 +4,7 @@ import Profile from '../Profile';
 
 class User extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
-    background: PropTypes.string
+    children: PropTypes.element.isRequired
   };
 
   render () {

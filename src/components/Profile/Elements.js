@@ -35,7 +35,7 @@ export const Username = ({username, online}) => {
 }
 Username.propTypes = {
   username: PropTypes.string.isRequired,
-  online: PropTypes.obj
+  online: PropTypes.bool
 }
 
 export const Status = ({status}) => (

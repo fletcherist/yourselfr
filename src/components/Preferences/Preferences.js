@@ -135,7 +135,6 @@ class Preferences extends Component {
           })}>{isFetching.status.message}</div>
         )}
         <div className='bottom-left'>
-          (in developing)
           <VkSupport />
           <RegistrationDate />
           <Email />
