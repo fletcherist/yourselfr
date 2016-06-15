@@ -41,7 +41,7 @@ class Profile extends Component {
   // }
 
   componentWillMount () {
-    this.props.loadUser();
+    // this.props.loadUser();
     document.body.style.minHeight = '101vh';
   }
   componentWillUnmount () {

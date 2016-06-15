@@ -45,48 +45,53 @@ function getAlias () {
 const loadUserPatch = createAction(LOAD_USER);
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
-    dispatch(fetchUser({status: true}));
+    return new Promise(resolve => {
+      dispatch(fetchUser({status: true}));
 
-    var currentAlias = getAlias();
-    if (!alias) {
-      alias = currentAlias;
-    } else {
-      if (alias === currentAlias) {
-        return false;
+      var currentAlias = getAlias();
+      if (!alias) {
+        alias = currentAlias;
+      } else {
+        if (alias === currentAlias) {
+          return false;
+        }
       }
-    }
 
-    if (alias === 'preferences' || alias === 'share-with-social' || alias === 'feed') {
-      var authenticated = cookie.load('authenticated');
-      if (!authenticated) {
-        window.location.href = '404';
-      }
-      alias = cookie.load('alias');
-      fetchData();
-    } else {
-      fetchData();
-    }
-
-    function fetchData () {
-      fetch(`${config.http}/api/all/user/${alias}`, {credentials: 'include'})
-        .then((r) => r.json())
-        .catch((e) => {
+      if (alias === 'preferences' || alias === 'share-with-social' || alias === 'feed') {
+        var authenticated = cookie.load('authenticated');
+        if (!authenticated) {
           window.location.href = '404';
-        })
-        .then((data) => {
-          dispatch(fetchUser({status: false}));
-          if (!data.user) {
-            return dispatch(routeActions.push('/404'));
-          }
-          dispatch(loadUserPatch(data.user));
-          dispatch(loadPostsPatch(data.posts));
+        }
+        alias = cookie.load('alias');
+        fetchData();
+      } else {
+        fetchData();
+      }
 
-          ga.event({
-            category: 'User',
-            action: 'Userpage Loaded'
+      function fetchData () {
+        fetch(`${config.http}/api/all/user/${alias}`, {credentials: 'include'})
+          .then((r) => r.json())
+          .catch((e) => {
+            window.location.href = '404';
+          })
+          .then((data) => {
+            dispatch(fetchUser({status: false}));
+            if (!data.user) {
+              return dispatch(routeActions.push('/404'));
+            }
+            dispatch(loadUserPatch(data.user));
+            dispatch(loadPostsPatch(data.posts));
+
+            setTimeout(() => {
+              resolve();
+            }, 5000);
+            ga.event({
+              category: 'User',
+              action: 'Userpage Loaded'
+            });
           });
-        });
-    }
+      }
+    });
   }
 }
 

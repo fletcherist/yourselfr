@@ -111,27 +111,7 @@ export const createRoutes = (store) => ({
         }
       ]
     },
-    {
-      path: 'user',
-      component: User(store),
-      indexRoute: {
-        component: Posts
-      },
-      childRoutes: [
-        {
-          path: 'followers',
-          indexRoute: {
-            component: Followers
-          }
-        },
-        {
-          path: 'following',
-          indexRoute: {
-            component: Following
-          }
-        }
-      ]
-    },
+    User(store),
     {
       path: '/404',
       indexRoute: {
