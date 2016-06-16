@@ -45,7 +45,7 @@ function getAlias () {
 const loadUserPatch = createAction(LOAD_USER);
 export const loadUser = (alias) => {
   return (dispatch, getState) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       dispatch(fetchUser({status: true}));
 
       var currentAlias = getAlias();
@@ -77,18 +77,16 @@ export const loadUser = (alias) => {
           .then((data) => {
             dispatch(fetchUser({status: false}));
             if (!data.user) {
-              return dispatch(routeActions.push('/404'));
+              reject();
             }
             dispatch(loadUserPatch(data.user));
             dispatch(loadPostsPatch(data.posts));
 
-            setTimeout(() => {
-              resolve();
-            }, 5000);
             ga.event({
               category: 'User',
               action: 'Userpage Loaded'
             });
+            resolve();
           });
       }
     });
@@ -145,7 +143,10 @@ var standartUser = {
   photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
   alias: ' ',
   status: '',
-  online: {},
+  background: '',
+  online: {
+    status: false
+  },
   stats: {
     visits: 0,
     followers: 0,

@@ -86,21 +86,16 @@ class Following extends Component {
       followingList = '';
     }
     return (
-      <div className='container--right padding-0 container--subscriptions'>
+      <div className='container--right padding-0 container--subscriptions relative'>
         <FollowingHeader alias={this.props.user.alias} username={this.props.user.username} />
-        {this.props.isFetching && (
-          <Loader />
-        )}
-        {!this.props.isFetching && (
-          <div>
-            {followingList && (
-              followingList
-            )}
-            {!followingList && (
-              <NoFollowing username={this.props.user.username} />
-            )}
-          </div>
-        )}
+        <div>
+          {followingList && (
+            followingList
+          )}
+          {!followingList && (
+            <NoFollowing username={this.props.user.username} />
+          )}
+        </div>
       </div>
     )
   }

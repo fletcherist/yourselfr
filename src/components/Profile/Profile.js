@@ -92,7 +92,7 @@ function mapStateToProps (state) {
     alias: state.user.alias,
     photo: state.user.photo,
     background: state.user.background,
-    online: state.user.online.status,
+    online: state.user.online,
     status: state.user.status,
     stats: state.user.stats,
     social: state.user.social,

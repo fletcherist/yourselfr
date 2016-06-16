@@ -6,26 +6,50 @@ class Background extends Component {
   static propTypes = {
     background: PropTypes.string
   };
-
-  shouldComponentUpdate (nextProps) {
-    return nextProps.background !== this.props.background;
+  componentWillMount () {
+    var blurred = `${config.http}/upload/background_blur/${this.props.background}`;
+    var original = `${config.http}/upload/background/${this.props.background}`;
+    var self = this;
+    self.setState({
+      background: blurred,
+      filter: 'blur(20px)'
+    });
+    // 2: load large image
+    var imgLarge = new Image();
+    imgLarge.src = original;
+    imgLarge.onload = function () {
+      self.setState({
+        background: original,
+        filter: 'blur(0px)'
+      });
+    };
   }
-
   render () {
-    var backround = this.props.background
-      ? {
-        background: `url(${config.http}/upload/background/${this.props.background})`
-      }
-      : {}
+    if (!this.props.background) {
+      return (
+        <div className='responsive_crop_fixed' id='background'></div>
+      );
+    }
     return (
-      <div className='responsive_crop_fixed' style={backround} id='background'></div>
+      <div
+        className='responsive_crop_fixed'
+        style={{
+          background: `url(${this.state.background})`,
+          WebkitFilter: this.state.filter,
+          WebkitTransition: '-webkit-filter .8s'
+        }}
+        id='background'>
+      </div>
     )
   }
 }
 
 function mapStateToProps (state) {
-  return {
-    background: state.user.background
+  if (state.user) {
+    return {
+      background: state.user.background
+    }
   }
+  return {}
 }
 export default connect(mapStateToProps)(Background);

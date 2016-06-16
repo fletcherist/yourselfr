@@ -1,6 +1,8 @@
 import { injectReducer } from '../../store/reducers';
 
 import { loadUser } from '../../store/modules/user';
+import { loadFollowers, loadFollowing } from '../../store/modules/followers';
+
 export default (store) => ({
   'path': ':user',
   getComponent (nextState, cb) {
@@ -9,16 +11,48 @@ export default (store) => ({
       const reducer = require('../../store/modules/user').default;
       injectReducer(store, {key: 'user', reducer});
 
+      var currentAlias = store.getState().user.alias;
+      var alias = window.location.pathname.substr(1).split('/')[0];
+
+      if (currentAlias === alias) {
+        return cb(null, User);
+      }
+
       store.dispatch(loadUser())
         .then(
            result => { cb(null, User) },
-           error => { cb(null, User) }
+           error => { window.location.href = '/404'}
         );
     }, 'user');
   },
+  indexRoute: posts,
   childRoutes: [
-    followers,
-    following
+    {
+      'path': 'followers',
+      getComponent (nextState, cb) {
+        require.ensure([], (require) => {
+          const Followers = require('components/Subscriptions/Followers').default;
+
+          store.dispatch(loadFollowers())
+            .then(
+              result => cb(null, Followers)
+            );
+        }, 'followers');
+      }
+    },
+    {
+      'path': 'following',
+      getComponent (nextState, cb) {
+        require.ensure([], (require) => {
+          const Following = require('components/Subscriptions/Following').default;
+
+          store.dispatch(loadFollowing())
+            .then(
+              result => cb(null, Following)
+            );
+        }, 'following');
+      }
+    }
   ]
 });
 
@@ -31,45 +65,11 @@ export default (store) => ({
 //     });
 //   }
 // }
-
-const followers = {
-  'path': 'followers',
+const posts = {
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      const Followers = require('components/Subscriptions/Followers').default;
-      cb(null, Followers);
-    })
+      const Posts = require('components/Posts').default;
+      cb(null, Posts);
+    }, 'posts')
   }
 }
-
-const following = {
-  'path': 'following',
-  getComponent (nextState, cb) {
-    require.ensure([], (require) => {
-      const Following = require('components/Subscriptions/Following').default;
-      cb(null, Following);
-    });
-  }
-}
-//
-// {
-//   path: ':user',
-//   component: ,
-//   indexRoute: {
-//     component: Posts
-//   },
-//   childRoutes: [
-//     {
-//       path: 'followers',
-//       indexRoute: {
-//         component: Followers
-//       }
-//     },
-//     {
-//       path: 'following',
-//       indexRoute: {
-//         component: Following
-//       }
-//     }
-//   ]
-// }

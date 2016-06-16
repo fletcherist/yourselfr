@@ -91,19 +91,14 @@ class Followers extends Component {
           alias={this.props.user.alias}
           username={this.props.user.username}
         />
-        {this.props.isFetching && (
-          <Loader />
-        )}
-        {!this.props.isFetching && (
-          <div>
-            {followersList && (
-              followersList
-            )}
-            {!followersList && (
-              <NoFollowers username={this.props.user.username}/>
-            )}
-          </div>
-        )}
+        <div>
+          {followersList && (
+            followersList
+          )}
+          {!followersList && (
+            <NoFollowers username={this.props.user.username} />
+          )}
+        </div>
       </div>
     )
   }

@@ -2,15 +2,16 @@
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 
 // Preferences Components
-import PreferencesContainer from 'components/Preferences/Container';
-import UpdateSocialNetworks from 'components/Preferences/UpdateSocialNetworks';
-import PreferencesPhotos from 'components/Preferences/Photos';
+// import PreferencesContainer from 'components/Preferences/Container';
+// import UpdateSocialNetworks from 'components/Preferences/UpdateSocialNetworks';
+// import PreferencesPhotos from 'components/Preferences/Photos';
 
-import Posts from 'components/Posts';
+// import Posts from 'components/Posts';
 // import User from 'components/User';
 import Feed from 'components/Feed';
 
 import User from './User';
+import Preferences from './Preferences';
 
 import Main from 'components/AuthComponents/Main'
 import { Signup, Login, AuthBootstrap } from 'components/AuthComponents/AuthBootstrap';
@@ -20,12 +21,12 @@ import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
 import GetSocialized from 'views/GetSocialized/GetSocialized';
 // import ShareWithSocial from 'components/ShareWithSocial';
 
-import Followers from 'components/Subscriptions/Followers';
-import Following from 'components/Subscriptions/Following';
+// import Followers from 'components/Subscriptions/Followers';
+// import Following from 'components/Subscriptions/Following';
 // import UserNavigation from 'components/UserNavigation';
 
 import NotFoundView from 'views/NotFoundView/NotFoundView';
-import Preferences from 'components/Preferences';
+// import Preferences from 'components/Preferences';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -90,27 +91,7 @@ export const createRoutes = (store) => ({
         component: Feed
       }
     },
-    {
-      path: '/preferences',
-      component: PreferencesContainer,
-      indexRoute: {
-        component: Preferences
-      },
-      childRoutes: [
-        {
-          path: 'photos',
-          indexRoute: {
-            component: PreferencesPhotos
-          }
-        },
-        {
-          path: 'social',
-          indexRoute: {
-            component: UpdateSocialNetworks
-          }
-        }
-      ]
-    },
+    Preferences(store),
     User(store),
     {
       path: '/404',

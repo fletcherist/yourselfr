@@ -194,7 +194,7 @@ export const register = (username, email, password) => {
     }
     fetch(`${config.http}/auth/signup`, {
       method: 'post',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {
         'Content-type': config.post
       },

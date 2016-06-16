@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 
-import user from './modules/user'
+// import user from './modules/user'
 import posts from './modules/posts'
 import auth from './modules/auth'
 import isFetching from './modules/isFetching';
@@ -17,7 +17,7 @@ var subscriptions = combineReducers({
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     // Add sync reducers here
-    user,
+    // user,
     posts,
     router,
     auth,

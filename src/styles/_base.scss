@@ -45,6 +45,12 @@
 	background-color: #F7F7F7;
 }
 
+.img-small {
+  filter: blur(50px);
+  /* this is needed so Safari keeps sharp edges */
+  transform: scale(1);
+}
+
 .responsive_crop_main {
   top: 0px;
   z-index: -1;
@@ -118,7 +124,7 @@
     margin: 10px auto;
     float: none;
 
-    min-height: 133px;
+    min-height: 280px;
   }
   @media screen and (max-width: 600px){
     max-width: 100%;
