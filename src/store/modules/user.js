@@ -53,6 +53,7 @@ export const loadUser = (alias) => {
         alias = currentAlias;
       } else {
         if (alias === currentAlias) {
+          resolve();
           return false;
         }
       }
@@ -77,7 +78,7 @@ export const loadUser = (alias) => {
           .then((data) => {
             dispatch(fetchUser({status: false}));
             if (!data.user) {
-              reject();
+              resolve();
             }
             dispatch(loadUserPatch(data.user));
             dispatch(loadPostsPatch(data.posts));

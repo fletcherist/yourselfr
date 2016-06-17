@@ -1,17 +1,32 @@
+import { authenticate } from '../../store/modules/auth';
+import { loadUser } from '../../store/modules/user';
 export default (store) => ({
   'path': '/preferences',
   getComponent (nextState, cb) {
     require.ensure([], require => {
-      var PreferencesContainer = require('components/Preferences/Container');
-      cb(null, PreferencesContainer);
-    });
+      var PreferencesContainer = require('components/Preferences/Container').default;
+
+      store.dispatch(authenticate())
+      .then(response => store.dispatch(loadUser()))
+      .then(
+        response => {
+          setTimeout(() => {
+            cb(null, PreferencesContainer)
+          }, 1000);
+        },
+        error => console.log(error)
+      )
+    }, 'preferences_container');
   },
   indexRoute: {
     getComponent (nextState, cb) {
       require.ensure([], require => {
-        var Preferences = require('components/Preferences');
-        cb(null, Preferences);
-      });
+        var Preferences = require('components/Preferences').default;
+        Promise.all([store.dispatch(authenticate()), store.dispatch(loadUser())])
+        .then(
+          response => cb(null, Preferences)
+        )
+      }, 'preferences_general');
     }
   },
   childRoutes: [
@@ -19,18 +34,24 @@ export default (store) => ({
       path: 'photos',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          var Photos = require('components/Preferences/Photos');
-          cb(null, Photos);
-        })
+          var Photos = require('components/Preferences/Photos').default;
+          Promise.all([store.dispatch(authenticate()), store.dispatch(loadUser())])
+          .then(
+            response => cb(null, Photos)
+          )
+        }, 'preferences_photos')
       }
     },
     {
       path: 'social',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          var SocialNetworks = require('components/Preferences/UpdateSocialNetworks');
-          cb(null, SocialNetworks);
-        })
+          var SocialNetworks = require('components/Preferences/UpdateSocialNetworks').default;
+          Promise.all([store.dispatch(authenticate()), store.dispatch(loadUser())])
+          .then(
+            response => cb(null, SocialNetworks)
+          )
+        }, 'preferences_social')
       }
     }
   ]

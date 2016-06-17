@@ -122,30 +122,33 @@ export const isYourPage = () => {
 export const authenticatePatch = createAction(AUTHENTICATE);
 export const authenticate = () => {
   return (dispatch, getState) => {
-    fetch(`${config.http}/auth`, {credentials: 'include'})
-      .then((r) => r.json())
-      .then((res) => {
-        var auth = res;
+    return new Promise(resolve => {
+      fetch(`${config.http}/auth`, {credentials: 'include'})
+        .then((r) => r.json())
+        .then((res) => {
+          var auth = res;
 
-        cookie.save('authenticated', auth.authenticated, { path: '/' });
-        if (auth.user) {
-          cookie.save('alias', auth.user.alias, { path: '/' });
-          cookie.save('background', auth.user.background, { path: '/' });
+          cookie.save('authenticated', auth.authenticated, { path: '/' });
+          if (auth.user) {
+            cookie.save('alias', auth.user.alias, { path: '/' });
+            cookie.save('background', auth.user.background, { path: '/' });
 
-          // Redirect in case of authenticate status
-          var path = window.location.pathname;
-          if (auth.authenticated) {
-            if (path === '/') {
-              dispatch(routerActions.push(auth.user.alias));
-            }
-          } else {
-            if (path === '/feed' || path === '/preferences') {
-              dispatch(routerActions.push('/'));
+            // Redirect in case of authenticate status
+            var path = window.location.pathname;
+            if (auth.authenticated) {
+              if (path === '/') {
+                dispatch(routerActions.push(auth.user.alias));
+              }
+            } else {
+              if (path === '/feed' || path === '/preferences') {
+                dispatch(routerActions.push('/'));
+              }
             }
           }
-        }
-        dispatch(authenticatePatch(auth));
-      });
+          dispatch(authenticatePatch(auth));
+          resolve();
+        });
+    });
   }
 }
 // const logInAction = createAction(LOG_IN);

@@ -26,7 +26,6 @@ import GetSocialized from 'views/GetSocialized/GetSocialized';
 // import UserNavigation from 'components/UserNavigation';
 
 import NotFoundView from 'views/NotFoundView/NotFoundView';
-// import Preferences from 'components/Preferences';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */

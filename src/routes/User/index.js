@@ -9,7 +9,7 @@ export default (store) => ({
     require.ensure([], (require) => {
       const User = require('components/User').default;
       const reducer = require('../../store/modules/user').default;
-      injectReducer(store, {key: 'user', reducer});
+      // injectReducer(store, {key: 'user', reducer});
 
       var currentAlias = store.getState().user.alias;
       var alias = window.location.pathname.substr(1).split('/')[0];

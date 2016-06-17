@@ -7,12 +7,26 @@ class Background extends Component {
     background: PropTypes.string
   };
   componentWillMount () {
+    this.setBackground();
+  }
+  componentWillReceiveProps () {
+    this.setBackground();
+  }
+  setBackground () {
+    console.log(this.props.background);
+    var self = this;
+    if (!this.props.background) {
+      self.setState({
+        background: ''
+      })
+      return;
+    }
     var blurred = `${config.http}/upload/background_blur/${this.props.background}`;
     var original = `${config.http}/upload/background/${this.props.background}`;
-    var self = this;
+
     self.setState({
       background: blurred,
-      filter: 'blur(20px)'
+      filter: 'blur(10px)'
     });
     // 2: load large image
     var imgLarge = new Image();

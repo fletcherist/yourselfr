@@ -34,7 +34,7 @@
 }
 
 .responsive_crop_fixed {
-  top: 0px;
+  overflow:hidden;
   z-index: -2;
 	position: fixed;
 	width:100%;
@@ -43,6 +43,7 @@
 	background-size:cover !important;
 	background-position:center !important; /* IE fix */
 	background-color: #F7F7F7;
+  background-attachment: fixed;
 }
 
 .img-small {
