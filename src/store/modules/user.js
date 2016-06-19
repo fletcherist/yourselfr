@@ -80,6 +80,7 @@ export const loadUser = (alias) => {
             if (!data.user) {
               resolve();
             }
+            data.user.isLoaded = true;
             dispatch(loadUserPatch(data.user));
             dispatch(loadPostsPatch(data.posts));
 
@@ -140,9 +141,9 @@ export const actions = {
 
 var standartUser = {
   isFollowing: false,
-  username: ' ',
+  username: '',
   photo: 'http://yourselfr.com/upload/avatar/nophoto.png',
-  alias: ' ',
+  alias: '',
   status: '',
   background: '',
   online: {
@@ -153,7 +154,8 @@ var standartUser = {
     followers: 0,
     following: 0,
     posts: 0
-  }
+  },
+  isLoaded: false
 }
 
 export default handleActions({

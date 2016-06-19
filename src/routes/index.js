@@ -92,12 +92,6 @@ export const createRoutes = (store) => ({
     },
     Preferences(store),
     User(store),
-    {
-      path: '/404',
-      indexRoute: {
-        component: NotFoundView
-      }
-    },
     getStartedRoute,
     getPersonalizedRoute,
     getSocializedRoute
@@ -122,4 +116,4 @@ export const createRoutes = (store) => ({
     when the route exists and matches.
 */
 
-export default createRoutes
+export default createRoutes;

@@ -33,7 +33,6 @@ class Post extends Component {
   }
 
   openCommentForm () {
-    console.log('asdasd');
     this.setState({
       showCommentForm: !this.state.showCommentForm
     })

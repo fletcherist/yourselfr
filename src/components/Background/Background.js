@@ -34,7 +34,7 @@ class Background extends Component {
     imgLarge.onload = function () {
       self.setState({
         background: original,
-        filter: 'blur(0px)'
+        filter: 'none'
       });
     };
   }
