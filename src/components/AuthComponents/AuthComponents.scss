@@ -17,6 +17,13 @@ body {
   max-width: 410px;
 }
 
+.sameContainer {
+  // float: right;
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
 .title {
   text-align: center;
   font-weight: 500;
@@ -80,7 +87,10 @@ body {
 .loginFormContainer, .containerBlock {
 
   @media screen and (max-width: 800px) {
-    max-width: 330px;
+    max-width: 260px;
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 350px;
   }
 }
 

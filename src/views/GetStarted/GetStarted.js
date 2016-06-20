@@ -18,31 +18,26 @@ class GetStarted extends Component {
   render () {
     const { username } = this.props.user;
     return (
-      <div>
-        <Navigation />
-        <div className={s.container}>
-          <div className={s.left}>
-            <h1 className={s.greeting}>Рады вас видеть, {username}.</h1>
-            <div className={s.info}>
-              Йорселфер — это бесконечный поток анонимных мнений о вас:
-              ваши друзья могут рассказать о вас и ваших предпочтениях, вкусах, а также даже признаться в любви.
-
-              Получайте анонимные мнения о Вас, а также следите за тем, что думают о Ваших друзьях в ленте.
-              Подпишитесь на людей, мнения о которых Вам интересно знать.
-            </div>
-            <div>
-              Расскажите друзьям о том, что вы есть на Йорселфере, и мы поможем сделать <br /> ваш профиль популярнее.
-            </div>
-            <Link to='/i/get-personalized'>
-              <div className={s.button}>Продолжить!</div>
-            </Link>
+      <div className={s.container}>
+        <div className={s.left}>
+          <div className={s.navigation}>
+            <Navigation />
           </div>
-          <div className={s.right}>
-            <img className={s.photo} src={photo1} />
-            <img className={s.photo} src={photo2} />
-            <img className={s.photo} src={photo3} />
-            <img className={s.photo} src={photo4} />
+          <h1 className={s.greeting}>Рады вас видеть, {username}.</h1>
+          <div className={s.info}>
+            <div>Йорселфер — это бесконечный поток мнений о вас.</div>
+            <span><b>Читайте</b> мнения о себе и <b>анонимно пишите</b>, что думаете о ваших друзьях. </span>
+            <span><b>Подпишитесь</b> на тех людей, мнения о которых вы хотите знать.</span>
           </div>
+          <Link to='/i/get-personalized'>
+            <div className='button button--block button--material'>Поехали!</div>
+          </Link>
+        </div>
+        <div className={s.right}>
+          <img className={s.photo} src={photo1} />
+          <img className={s.photo} src={photo2} />
+          <img className={s.photo} src={photo3} />
+          <img className={s.photo} src={photo4} />
         </div>
       </div>
     )

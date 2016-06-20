@@ -40,7 +40,7 @@ class PostsHeader extends Component {
           <span className={s.separator}></span>
           <span className={s.navItem}>{count} {postsPronounce}</span>
         </div>
-        <span className={s.blockTitleRight} onClick={this.toggleModalBox.bind(this)}>Оставить своё мнение</span>
+        <span className={s.blockTitleRight} onClick={this.toggleModalBox.bind(this)}>Оставить мнение</span>
         <WriteBox
           isOpen={this.state.isOpen}
           toggleModalBox={this.toggleModalBox.bind(this)}

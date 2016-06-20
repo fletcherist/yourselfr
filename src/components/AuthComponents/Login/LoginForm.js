@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { logIn } from '../../../store/modules/auth';
 import VkAuthButton from 'components/Buttons/SocialButtons';
 import Logotype from '../Logotype';
+import { NoAccount } from '../Same';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
@@ -59,6 +60,7 @@ class LoginForm extends React.Component {
               {this.props.isFetching.message}
             </div>
           )}
+          <NoAccount />
         </div>
       </div>
     )

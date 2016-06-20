@@ -7,6 +7,7 @@ import { isValidEmail } from 'components/Toools';
 import { routeActions } from 'react-router-redux';
 import VkAuthButton from 'components/Buttons/SocialButtons';
 import Logotype from '../Logotype';
+import { HaveAccount } from '../Same';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
@@ -120,6 +121,7 @@ class SignupForm extends Component {
             {this.state.message}
           </div>
         )}
+        <HaveAccount />
       </div>
     )
   }
