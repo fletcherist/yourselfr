@@ -8,21 +8,20 @@ import ShareWithSocial from 'components/ShareWithSocial';
 
 class GetSocialized extends React.Component {
   render () {
-    // const { username } = this.props.user;
     return (
       <div>
-        <Navigation/>
         <div className={s.container}>
-          <div className={s.left}>
-            <h1 className={s.greeting}>Последнее.<br/> Расскажите в соцсетях.</h1>
-            <div className={s.info}>
-              Поделитесь ссылкой на страничку в ВК или в Твиттере, чтобы ваши друзья смогли найти Вас.
+          <div className={s.middle}>
+            <div className={s.navigation}>
+              <Navigation />
             </div>
+            <h1 className={s.greeting}>Последнее.<br /> Расскажите в соцсетях.</h1>
+            <ShareWithSocial />
+            <div className='rate-empty-line-2'></div>
             <Link to={`/${this.props.user.alias}`}>
-              <div className={s.button}>Перейти к профилю!</div>
+              <div className='button button--block button--material'>Перейти к профилю!</div>
             </Link>
           </div>
-          <ShareWithSocial/>
         </div>
       </div>
     )

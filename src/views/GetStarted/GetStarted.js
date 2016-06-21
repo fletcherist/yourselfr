@@ -29,6 +29,7 @@ class GetStarted extends Component {
             <span><b>Читайте</b> мнения о себе и <b>анонимно пишите</b>, что думаете о ваших друзьях. </span>
             <span><b>Подпишитесь</b> на тех людей, мнения о которых вы хотите знать.</span>
           </div>
+          <div className='rate-empty-line-2'></div>
           <Link to='/i/get-personalized'>
             <div className='button button--block button--material'>Поехали!</div>
           </Link>

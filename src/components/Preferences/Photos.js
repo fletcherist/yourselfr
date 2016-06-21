@@ -8,7 +8,7 @@ import s from './Preferences.scss';
 export class AvatarAndBackground extends Component {
   render () {
     return (
-      <div>
+      <div style={{height: '150px'}}>
         <div className={s.photoLeft}>
           <UploadAvatar />
         </div>

@@ -8,6 +8,7 @@
 
   @media screen and (max-width: 600px) {
     padding-top: 0px;
+    flex-direction: column;
   }
 }
 
@@ -29,6 +30,11 @@
     margin: 20% auto;
     margin-bottom: 0px;
   }
+}
+
+.middle {
+  max-width: 50%;
+  margin: auto;
 }
 
 
@@ -69,6 +75,7 @@
   max-width: 40%;
   @media screen and (max-width: 800px){
     display: none;
+    float: none;
   }
 }
 
@@ -97,22 +104,11 @@
 .greeting {
   font-weight: 300;
   font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .info {
   font-size: 1em;
   line-height: 32px;
   color: #929292;
-  margin-bottom: 30px;
-
-}
-
-.button {
-  margin-top: 20px;
-  background-color: $yoColor;
-  color: white;
-  padding: 10px 30px 10px 30px;
-  width: 220px;
-  text-align: center;
-  border-radius: 3px;
 }
