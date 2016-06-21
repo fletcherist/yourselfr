@@ -2,14 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import s from '../GetSomething.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import Ink from 'react-ink';
 
 import Navigation from 'components/Navigation';
-
-import photo1 from './photo1.jpg';
-import photo2 from './photo2.jpg';
-import photo3 from './photo3.jpg';
-import photo4 from './photo4.jpg';
-// import photo5 from './photo6.jpg';
 
 class GetStarted extends Component {
   static propTypes = {
@@ -19,7 +14,7 @@ class GetStarted extends Component {
     const { username } = this.props.user;
     return (
       <div className={s.container}>
-        <div className={s.left}>
+        <div className={s.middle}>
           <div className={s.navigation}>
             <Navigation />
           </div>
@@ -31,14 +26,11 @@ class GetStarted extends Component {
           </div>
           <div className='rate-empty-line-2'></div>
           <Link to='/i/get-personalized'>
-            <div className='button button--block button--material'>Поехали!</div>
+            <div className='button button--block button--material' style={{position: 'relative'}}>
+              <Ink />
+              Поехали!
+            </div>
           </Link>
-        </div>
-        <div className={s.right}>
-          <img className={s.photo} src={photo1} />
-          <img className={s.photo} src={photo2} />
-          <img className={s.photo} src={photo3} />
-          <img className={s.photo} src={photo4} />
         </div>
       </div>
     )

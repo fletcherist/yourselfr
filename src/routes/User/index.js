@@ -1,4 +1,4 @@
-import { injectReducer } from '../../store/reducers';
+// import { injectReducer } from '../../store/reducers';
 
 import { loadUser } from '../../store/modules/user';
 import { loadFollowers, loadFollowing } from '../../store/modules/followers';
@@ -8,7 +8,7 @@ export default (store) => ({
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const User = require('components/User').default;
-      const reducer = require('../../store/modules/user').default;
+      // const reducer = require('../../store/modules/user').default;
       // injectReducer(store, {key: 'user', reducer});
 
       var currentAlias = store.getState().user.alias;

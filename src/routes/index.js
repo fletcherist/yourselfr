@@ -16,9 +16,6 @@ import Preferences from './Preferences';
 import Main from 'components/AuthComponents/Main'
 import { Signup, Login, AuthBootstrap } from 'components/AuthComponents/AuthBootstrap';
 
-import GetStarted from 'views/GetStarted/GetStarted';
-import GetPersonalized from 'views/GetPersonalized/GetPersonalized';
-import GetSocialized from 'views/GetSocialized/GetSocialized';
 // import ShareWithSocial from 'components/ShareWithSocial';
 
 // import Followers from 'components/Subscriptions/Followers';
@@ -29,26 +26,9 @@ import NotFoundView from 'views/NotFoundView/NotFoundView';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
-const getStartedRoute = {
-  path: '/i/get-started',
-  indexRoute: {
-    component: GetStarted
-  }
-}
-
-const getPersonalizedRoute = {
-  path: '/i/get-personalized',
-  indexRoute: {
-    component: GetPersonalized
-  }
-}
-
-const getSocializedRoute = {
-  path: '/i/get-socialized',
-  indexRoute: {
-    component: GetSocialized
-  }
-}
+import GetStarted from './GetStarted';
+import GetPersonalized from './GetPersonalized';
+import GetSocialized from './GetSocialized';
 
 export const createRoutes = (store) => ({
   path: '',
@@ -92,9 +72,9 @@ export const createRoutes = (store) => ({
     },
     Preferences(store),
     User(store),
-    getStartedRoute,
-    getPersonalizedRoute,
-    getSocializedRoute
+    GetStarted(store),
+    GetPersonalized(store),
+    GetSocialized(store)
   ]
 })
 

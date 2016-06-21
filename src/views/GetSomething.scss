@@ -33,8 +33,13 @@
 }
 
 .middle {
+  min-width: 50%;
   max-width: 50%;
-  margin: auto;
+  margin: 30px auto;
+
+  @media screen and (max-width: 600px) {
+    max-width: 90%;
+  }
 }
 
 
