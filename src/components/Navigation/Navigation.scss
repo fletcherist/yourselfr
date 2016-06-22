@@ -6,9 +6,9 @@
 
 .yoButton {
   padding: 15px;
-  -webkit-mask: url('./components/Navigation/yo.png') no-repeat 50% 50%;
-  -webkit-mask-size: 55px;
-  width: 55px;
+  -webkit-mask: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
+  -webkit-mask-size: 90px;
+  width: 90px;
   height: 55px;
   background: $yoColor;
   background-size: 55px;
@@ -41,10 +41,6 @@
   margin-left: -40px;
   display: flex;
   flex-wrap: wrap;
-
-  @media screen and (max-width: 800px) {
-    width: 162px;
-  }
 }
 
 .menu:after, .menu:before {

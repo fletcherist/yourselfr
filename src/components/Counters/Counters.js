@@ -3,7 +3,6 @@ import s from './Counters.scss';
 import { Link } from 'react-router';
 import { cpEnding } from '../Toools';
 import Translate from 'react-translate-component';
-import Ink from 'react-ink';
 
 class Counters extends Component {
   static propTypes = {
@@ -62,20 +61,16 @@ class Counters extends Component {
         <Link to={followersLink} className={s.counter}
           onClick={() => this.handleClick(1)}
           style={{
-            position: 'relative',
             backgroundColor: this.state.followersStyle}}>
           <div className={s.counter_count}>{followers}</div>
           <div className={s.counter_title}><Translate content={pronounce.followers} /></div>
-          <Ink />
         </Link>
         <Link to={followingLink} className={s.counter}
           onClick={() => this.handleClick(2)}
           style={{
-            position: 'relative',
             backgroundColor: this.state.followingStyle}}>
           <div className={s.counter_count}>{following}</div>
           <div className={s.counter_title}><Translate content={pronounce.following} /></div>
-          <Ink />
         </Link>
       </div>
       );

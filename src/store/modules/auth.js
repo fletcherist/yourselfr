@@ -134,16 +134,16 @@ export const authenticate = () => {
             cookie.save('background', auth.user.background, { path: '/' });
 
             // Redirect in case of authenticate status
-            var path = window.location.pathname;
-            if (auth.authenticated) {
-              if (path === '/') {
-                dispatch(routerActions.push(auth.user.alias));
-              }
-            } else {
-              if (path === '/feed' || path === '/preferences') {
-                dispatch(routerActions.push('/'));
-              }
-            }
+            // var path = window.location.pathname;
+            // if (auth.authenticated) {
+              // if (path === '/') {
+                // dispatch(routerActions.push(auth.user.alias));
+              // }
+            // } else {
+              // if (path === '/feed' || path === '/preferences') {
+                // dispatch(routerActions.push('/'));
+              // }
+            // }
           }
           dispatch(authenticatePatch(auth));
           resolve();

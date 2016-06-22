@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import s from './Preferences.scss';
-import User from '../User';
+import User from 'routes/User/containers/User';
 
 export class PreferencesContainer extends Component {
   static propTypes = {

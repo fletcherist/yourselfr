@@ -6,9 +6,8 @@ import { Avatar, Username, Status } from './Elements';
 import SubscribeButton from '../SubscribeButton';
 import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
-import Navigation from '../Navigation';
 import Megaphone from '../Megaphone';
-import AttachEmail from '../AttachEmail';
+// import AttachEmail from '../AttachEmail';
 import Friends from '../Friends';
 
 import { actions as userActions } from '../../store/modules/user';
@@ -52,9 +51,8 @@ class Profile extends Component {
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
     return (
-      <div>
+      <div className='hide-on-mobile'>
         <div className='container--left padding-0 container--transparent container--user' id='profile'>
-          <Navigation />
           <Avatar photo={photo} alias={alias} />
           <Username online={online} username={username} />
           <Status status={status} />

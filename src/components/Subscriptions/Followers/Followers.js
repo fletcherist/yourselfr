@@ -7,7 +7,6 @@ import { loadUser } from '../../../store/modules/user';
 import { loadFollowers } from '../../../store/modules/followers'
 import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
 import { config } from '../../../store/config';
-import Loader from '../../Loader';
 import SubscribeButton from '../../SubscribeButton';
 import FollowersHeader from '../../Headers/FollowersHeader';
 import NoFollowers from 'components/NoData/NoFollowers';

@@ -7,7 +7,7 @@ export default (store) => ({
   'path': ':user',
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      const User = require('components/User').default;
+      const User = require('./containers/User').default;
       // const reducer = require('../../store/modules/user').default;
       // injectReducer(store, {key: 'user', reducer});
 
@@ -17,7 +17,6 @@ export default (store) => ({
       if (currentAlias === alias) {
         return cb(null, User);
       }
-
       store.dispatch(loadUser())
         .then(
            result => { cb(null, User) },
