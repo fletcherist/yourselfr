@@ -9,7 +9,6 @@ import { LoaderSmall } from '../Loader';
 import VkSupport from './Additional/VkSupport';
 import RegistrationDate from './Additional/RegistrationDate';
 import Email from './Additional/Email';
-// import SmileBox from '../SmileBox';
 
 let cx = classNames.bind(s);
 

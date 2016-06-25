@@ -1,7 +1,7 @@
 @import 'variables';
 
 .page-container {
-  transition: opacity .3s;
+  transition: opacity .5s ease-out;
 }
 .responsive_crop {
   z-index: -1;

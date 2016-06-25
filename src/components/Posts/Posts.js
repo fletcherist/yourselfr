@@ -19,6 +19,7 @@ class Posts extends Component {
     isFetchingLoadMore: PropTypes.bool.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     username: PropTypes.string.isRequired,
+    alias: PropTypes.string.isRequired,
     isYourPage: PropTypes.bool.isRequired
   };
 
@@ -72,7 +73,11 @@ class Posts extends Component {
     }
     return (
       <div className='container--right padding-0' id='right'>
-        <PostsHeader count={this.props.count} username={this.props.username} />
+        <PostsHeader
+          count={this.props.count}
+          username={this.props.username}
+          alias={this.props.alias}
+        />
         {this.props.isFetching && (
           <Loader />
         )}
@@ -109,7 +114,8 @@ function mapStateToProps (state) {
     isYourPage: state.auth.isYourPage,
     isFetching: state.isFetching.posts,
     isFetchingLoadMore: state.isFetching.loadMorePosts,
-    username: state.user.username
+    username: state.user.username,
+    alias: state.user.alias
   }
 }
 export default connect(mapStateToProps, postsActions)(Posts)
