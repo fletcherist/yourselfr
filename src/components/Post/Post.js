@@ -31,11 +31,14 @@ class Post extends Component {
       showCommentForm: false
     }
   }
-
+  shouldComponentUpdate () {
+    return false;
+  }
   openCommentForm () {
     this.setState({
       showCommentForm: !this.state.showCommentForm
     })
+    this.forceRender();
   }
   render () {
     let postClasses = ccx({

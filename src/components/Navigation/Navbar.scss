@@ -31,7 +31,17 @@
   width: 30%;
   line-height: 30px;
   margin-top: 15px;
+  margin-left: 30px;
 
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.right {
+  line-height: 30px;
+  margin-top: 15px;
+  margin-left: auto;
   @media screen and (max-width: 600px) {
     display: none;
   }

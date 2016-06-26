@@ -2,6 +2,11 @@
 .navigation {
   height: 70px;
   z-index: 99999999999999999999;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 40%;
+  }
+
 }
 
 .yoButton {
@@ -37,38 +42,63 @@
   border-radius: 4px;
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
-  margin-top: -60px;
-  margin-left: -40px;
+  // margin-left: -40px;
+  margin-left: -125px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .menu:after, .menu:before {
-  display: block;
 	border: solid transparent;
 	content: ' ';
 	height: 0;
-	bottom: 80%;
+	left: 50%;
 	position: absolute;
 	width: 0;
-  left: 0px;
+  bottom: 100%;
   margin-left: -10px;
 }
 
 .menu:after {
 	border-width: 9px;
-	border-right-color: white;
-  margin-left: -18px;
-	left: 0%;
+	border-bottom-color: white;
+	left: 50%;
 }
 
 .menu:before {
-  margin-bottom: -2px;
 	border-width: 11px;
-	border-right-color: $borderColor;
-  left: 0%;
-  margin-left: -22px;
+	border-bottom-color: $borderColor;
+  left: 50%;
+  margin-left: -12px;
 }
+
+// .menu:after, .menu:before {
+//   display: block;
+// 	border: solid transparent;
+// 	content: ' ';
+// 	height: 0;
+// 	bottom: 80%;
+// 	position: absolute;
+// 	width: 0;
+//   left: 0px;
+//   margin-left: -10px;
+// }
+//
+// .menu:after {
+// 	border-width: 9px;
+// 	border-right-color: white;
+//   margin-left: -18px;
+// 	left: 0%;
+// }
+//
+// .menu:before {
+//   margin-bottom: -2px;
+// 	border-width: 11px;
+// 	border-right-color: $borderColor;
+//   left: 0%;
+//   margin-left: -22px;
+// }
 
 .hiddenMenu {
   visibility: hidden;

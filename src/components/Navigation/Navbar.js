@@ -13,7 +13,20 @@ class NavBar extends Component {
   render () {
     const { authenticated, alias } = this.props;
     if (!authenticated) {
-      return (null);
+      return (
+        <div className={s.navbar}>
+          <div className={s.wrap}>
+            <Navigation />
+            <div className={s.right}>
+              <span>нет аккаунта?</span>
+              {' '}
+              <Link to='/signup'>
+                <b>регистрация</b>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
     }
     return (
       <div className={s.navbar}>
@@ -28,8 +41,6 @@ class NavBar extends Component {
           <div className={s.item}>
             <Link to={`/${alias}/following`}>подписки</Link>
           </div>
-
-          <div></div>
         </div>
       </div>
     );
