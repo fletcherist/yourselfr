@@ -1,3 +1,5 @@
+import { config } from 'store/config';
+
 export function ending (iNumber, aEndings) {
   var sEnding, i;
   iNumber = iNumber % 100
@@ -36,9 +38,16 @@ export function cpEnding (iNumber, str) {
 }
 
 export function isValidPhoto (photo) {
+  photo = downloadDirectlyFromServer(photo);
   return photo && photo === 'http://yourselfr.com/upload/avatar/null'
   ? 'http://i.forbesimg.com/media/lists/companies/facebook_416x416.jpg'
   : photo;
+}
+
+export const downloadDirectlyFromServer = (photo) => {
+  var regex = /http:\/\/yourselfr.com/ig;
+  photo = photo.replace(regex, config.ip);
+  return photo;
 }
 
 export function isNotEmptyString (str) {

@@ -16,6 +16,7 @@ class UserAvatar extends Component {
 
   render () {
     var photo = isValidPhoto(this.props.photo);
+    console.log(photo);
     var styles = {
       link: {
         border: '0px'

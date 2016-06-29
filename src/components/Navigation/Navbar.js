@@ -32,15 +32,6 @@ class NavBar extends Component {
       <div className={s.navbar}>
         <div className={s.wrap}>
           <Navigation />
-          <div className={s.item}>
-            <Link to={`/${alias}/friends`}>друзья</Link>
-          </div>
-          <div className={s.item}>
-            <Link to={`/${alias}/followers`}>подписчики</Link>
-          </div>
-          <div className={s.item}>
-            <Link to={`/${alias}/following`}>подписки</Link>
-          </div>
         </div>
       </div>
     );
