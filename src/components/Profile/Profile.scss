@@ -15,6 +15,14 @@
 		margin: 0px auto;
 		background-color: #fafafa;
 	}
+	@media screen and (max-width: 600px) {
+		padding-top: 15px;
+		img {
+			height: 100px;
+			width: 100px;
+		}
+
+	}
 }
 
 .username {

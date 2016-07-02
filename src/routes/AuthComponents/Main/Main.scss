@@ -1,7 +1,7 @@
 @import 'variables';
 
 .container {
-  margin: 20px auto;
+  padding-top: 20px;
 }
 
 .logotype {
@@ -34,19 +34,40 @@
   text-align: center;
 }
 
-.left {
+.wrap {
+  max-width: 900px;
+  display: flex;
+  width: 100%;
+  margin: 50px auto;
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+}
+
+.right {
   max-width: 470px;
   border-radius: 3px;
   background-color: #fff;
   z-index: 99999;
-  margin: 50px auto;
   width: 100%;
   margin-bottom: 20px;
   border: 1px solid $borderColor;
+  margin-left: 15px;
 
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 800px) {
+    margin: 50px auto;
+  }
+  @media screen and (max-width: 600px) {
     border-left: 0px;
     border-right: 0px;
+  }
+}
+
+.left {
+  width: 270px;
+  margin-left: 10px;
+  @media screen and (max-width: 800px) {
+    display: none;
   }
 }
 

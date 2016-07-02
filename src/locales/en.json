@@ -26,7 +26,9 @@
 
   },
   "socialButtons": {
-    "authViaVK": "Log in via VK"
+    "authViaVK": "Log in via VK",
+    "authViaTwitter": "Log in via Twitter",
+    "authViaFb": "Log in via Facebook"
   },
   "counters": {
     "followers": {

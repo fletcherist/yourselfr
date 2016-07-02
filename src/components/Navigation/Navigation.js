@@ -47,31 +47,31 @@ class Navigation extends Component {
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to='/feed' activeStyle={active}>
-                  <div title='перейти к ленте' className={cx(s.icon, s.iconFeed)} />
+                  <div title='мнения о друзьях' className={cx(s.icon, s.iconFeed)} />
                   <div>лента</div>
                 </Link>
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to='/preferences' activeStyle={active}>
-                  <div title='перейти к настройкам' className={cx(s.icon, s.iconPreferences)} />
+                  <div title='настройки профиля' className={cx(s.icon, s.iconPreferences)} />
                   <div>настройки</div>
                 </Link>
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to={`/${this.props.user.alias}/followers`} activeStyle={active}>
-                  <div title='перейти к подписчикам' className={cx(s.icon, s.iconFollowers)} />
+                  <div title='люди, подписанные на вас' className={cx(s.icon, s.iconFollowers)} />
                   <div>подписчики</div>
                 </Link>
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to={`/${this.props.user.alias}/following`} activeStyle={active}>
-                  <div title='перейти к подпискам' className={cx(s.icon, s.iconFollowing)} />
+                  <div title='люди, на которых подписаны вы' className={cx(s.icon, s.iconFollowing)} />
                   <div>подписки</div>
                 </Link>
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <a href='http://yourselfr.com/auth/logout'>
-                  <div title='вечно возвратиться' className={cx(s.icon, s.iconLogout)} />
+                  <div title='выйти' className={cx(s.icon, s.iconLogout)} />
                   <div>выход</div>
                 </a>
               </div>

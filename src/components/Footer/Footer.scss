@@ -6,17 +6,20 @@
 }
 .footerA {
   padding: 2px 5px;
-  // color: $yoColor;
+  color: $yoColor;
   text-decoration: none;
   cursor: pointer;
 }
 
 .footer a {
-  color: rgba(255, 255, 255, .7);
+  // color: rgba(255, 255, 255, .7);
+  color: $yoColor;
   transition: .2s ease;
+  &:hover {
+    font-weight: bold;
+  }
 }
 
-.footer a:hover {
-  color: #fff;
-  transition: 0;
+.footer span {
+  color: $yoGrey;
 }

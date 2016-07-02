@@ -5,7 +5,7 @@ import Footer from 'components/Footer';
 import WantToRegister from '../WantToRegister';
 import { actions as feed } from 'store/modules/endlessFeed';
 import { connect } from 'react-redux';
-
+import LoginForm from '../Login/LoginForm';
 import Translate from 'react-translate-component';
 
 // import { ButtonContainer, AuthenticateButton } from 'components/Buttons';
@@ -21,14 +21,15 @@ class SignupForm extends Component {
   render () {
     return (
       <div className={s.container}>
-        <div className={s.logotype}></div>
-        <Translate content='description' className={s.description} component='div' />
-        <div className={s.left}>
-          <WantToRegister />
-          <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching} />
-        </div>
-        <div className={s.footer__anchor}>
-          <Footer />
+        <div className={s.wrap}>
+          <div className={s.left}>
+            <LoginForm />
+            <Footer />
+          </div>
+          <div className={s.right}>
+            <WantToRegister />
+            <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching} />
+          </div>
         </div>
       </div>
     )

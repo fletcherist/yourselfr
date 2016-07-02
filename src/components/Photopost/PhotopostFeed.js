@@ -18,17 +18,20 @@ class Photopost extends Component {
     const { alias, text } = this.props;
 
     return (
-      <div className={s.photoPostFeed} style={{background: `url(${config.http}/upload/photo/${this.props.photo})`}}>
-        <div className={s.photoAvatar}>
-          <Link to={`/${alias}`}>
-            <img
-              src={photo}
-              className={s.userPhoto} />
-          </Link>
+      <div>
+        <div className={s.photoPost}>
+          <div className={s.photoAvatar}>
+            <Link to={`/${alias}`}>
+              <img
+                src={isValidPhoto(photo)}
+                className={s.userPhoto} />
+            </Link>
+          </div>
+          <div className={s.photoText}>
+            <div className={s.text} dangerouslySetInnerHTML={{__html: this.props.text}}></div>
+          </div>
         </div>
-        <div className={s.photoText}>
-          <span dangerouslySetInnerHTML={{__html: text}}></span>
-        </div>
+        <div className={s.background} style={{background: `url(${config.http}/upload/photo/${this.props.photo})`}}></div>
       </div>
     )
   }

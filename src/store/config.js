@@ -1,5 +1,6 @@
-var http = 'http://localhost:80';
+// var http = 'http://localhost:80';
 // var http = 'http://yourselfr.com';
+var http = 'http://yoursel.fr';
 // var http = 'http://185.18.54.156';
 var ip = 'http://185.18.54.156';
 

@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import s from '../AuthComponents.scss';
 import { connect } from 'react-redux';
 import { logIn } from '../../../store/modules/auth';
-import VkAuthButton from 'components/Buttons/SocialButtons';
+import { AuthPack } from 'components/Buttons/SocialButtons';
 import Logotype from '../Logotype';
 import { NoAccount } from '../Same';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
   static propTypes = {
     isFetching: PropTypes.object.isRequired,
     logIn: PropTypes.func.isRequired,
@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
       <div>
         <div className={s.loginFormContainer}>
           <Logotype />
-          <VkAuthButton />
+          <AuthPack />
           <Translate className={s.titleAction} content='login.message' component='div' />
           <form onSubmit={this.logIn.bind(this)}>
             <div className='input--container'>

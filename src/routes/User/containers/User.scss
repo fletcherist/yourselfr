@@ -6,6 +6,10 @@
 	display:  block;
 	max-width: 840px;
 	width: 100%;
+
+	@media screen and (max-width: 800px){
+		padding-top: 0px;
+	}
 }
 
 .container_left {

@@ -4,9 +4,8 @@
   z-index: 99999999999999999999;
 
   @media screen and (max-width: 600px) {
-    margin-left: 40%;
+    margin-left: 50%;
   }
-
 }
 
 .yoButton {
@@ -20,7 +19,7 @@
   background-position: left;
   cursor: pointer;
   padding-top: 50px;
-  margin-left: 10px;
+  margin-left: -45px;
   transition: .2s ease-in background-color;
 }
 
@@ -43,7 +42,7 @@
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
   // margin-left: -40px;
-  margin-left: -125px;
+  margin-left: -155px;
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;

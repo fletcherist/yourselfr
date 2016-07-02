@@ -34,13 +34,6 @@ const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: __BASENAME__
 })
 
-// ========================================================
-// Store and History Instantiation
-// ========================================================
-// Create redux store and sync with react-router-redux. We have installed the
-// react-router-redux reducer under the routerKey "router" in src/routes/index.js,
-// so we need to provide a custom `selectLocationState` to inform
-// react-router-redux of its location.
 const initialState = window.___INITIAL_STATE__
 const store = createStore(initialState, browserHistory)
 store.dispatch(isYourPage());

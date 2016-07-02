@@ -26,7 +26,7 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : process.env.NODE_ENV === 'production' ? 'yourselfr.com ' : localip,
+  server_host : process.env.NODE_ENV === 'production' ? 'yoursel.fr ' : localip,
   server_port : process.env.PORT || 3000,
   // server_host: 'yourselfr.com',
   // server_port: 80,

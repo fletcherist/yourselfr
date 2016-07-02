@@ -51,7 +51,7 @@ class Profile extends Component {
 
     const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
     return (
-      <div className='hide-on-mobile'>
+      <div>
         <div className='container--left padding-0 container--transparent container--user' id='profile'>
           <Avatar photo={photo} alias={alias} />
           <Username online={online} username={username} />
@@ -72,7 +72,7 @@ class Profile extends Component {
         </div>
         <SocialNetworks networks={social} />
         {this.props.isYourPage && (
-          <div>
+          <div className='hide-on-mobile'>
             <Megaphone alias={alias} username={username} />
             <Friends />
           </div>

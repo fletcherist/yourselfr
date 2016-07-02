@@ -102,6 +102,11 @@
 .container--user {
   min-height: $minHeight;
   display: inline-block;
+  border-top: 1px solid $borderColor;
+
+  @media screen and (max-width: 600px) {
+    min-height: 0px;
+  }
 }
 
 .container--right {

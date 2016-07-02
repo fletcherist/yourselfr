@@ -26,7 +26,9 @@
 
   },
   "socialButtons": {
-    "authViaVK": "Войти через ВК"
+    "authViaVK": "Войти через ВК",
+    "authViaTwitter": "Войти через Твиттер",
+    "authViaFb": "Войти через Фейсбук"
   },
   "counters": {
     "followers": {

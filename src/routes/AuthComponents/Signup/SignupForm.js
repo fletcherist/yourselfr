@@ -5,7 +5,6 @@ import { register } from 'store/modules/auth';
 
 import { isValidEmail } from 'components/Toools';
 import { routeActions } from 'react-router-redux';
-import VkAuthButton from 'components/Buttons/SocialButtons';
 import Logotype from '../Logotype';
 import { HaveAccount } from '../Same';
 
@@ -94,7 +93,6 @@ class SignupForm extends Component {
     return (
       <div className={s.loginFormContainer}>
         <Logotype />
-        <VkAuthButton />
         <Translate content='signup.message' className={s.titleAction} component='div' />
         <form onSubmit={this.register.bind(this)}>
           <div className='input--container'>
