@@ -1,6 +1,6 @@
 @import 'variables';
 .navigation {
-  height: 70px;
+  height: 60px;
   z-index: 99999999999999999999;
 
   @media screen and (max-width: 600px) {
@@ -9,23 +9,22 @@
 }
 
 .yoButton {
-  padding: 15px;
+  padding: 10px;
   -webkit-mask: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
   -webkit-mask-size: 90px;
-  width: 90px;
+  width: 150px;
   height: 55px;
   background: $yoColor;
   background-size: 55px;
   background-position: left;
   cursor: pointer;
-  padding-top: 50px;
-  margin-left: -45px;
+  padding-top: 10px;
+  margin-left: -50px;
   transition: .2s ease-in background-color;
 }
 
 .yoButton:hover {
-  background: lighten( $yoColor, 10% );
-  transition: 0;
+  background: #179cde;
 }
 
 .menu {

@@ -31,7 +31,6 @@ class Following extends Component {
   }
 
   render () {
-    const loadUser = this.props.loadUser.bind(this);
     const isAuthenticated = this.props.auth.authenticated;
     const myUserId = this.props.auth.user._id;
 
@@ -43,38 +42,28 @@ class Following extends Component {
         var linkHref = '/' + following.alias;
         const myPageInList = following._id === myUserId;
         return (
-          <div key={following._id} className={s.subContainer}>
-            <div style={{background: `url(${config.http}/upload/background_cropped/${following.background})`}}
-              className={s.background}>
-            </div>
-            <div className={s.subscription}>
+          <div>
+            <div key={following._id} className={s.container}>
               <Link to={linkHref}>
-                <img
-                  src={photo}
-                  className={s.photo}
-                  onClick={() => loadUser(following.alias)} />
+                <img src={photo} className={s.photo} />
               </Link>
               <div className={s.info}>
-                <div className={s.left_info}>
-                  <Link
-                    to={linkHref}
-                    onClick={() => loadUser(following.alias)}
-                    className={s.username}>{following.username}
-                  </Link>
-                  <div className={s.alias}>
-                    @{following.alias}
-                  </div>
+                <Link to={linkHref} className={s.username}>
+                  {following.username}
+                </Link>
+                <div className={s.alias}>
+                  @{following.alias}
                 </div>
-                {isAuthenticated && !myPageInList && (
-                  <div className={s.SubscribeButton}>
-                    <SubscribeButton
-                      alias={following.alias}
-                      isFollowing
-                      updateCounters={false}
-                    />
-                  </div>
-                )}
               </div>
+              {isAuthenticated && !myPageInList && (
+                <div className={s.SubscribeButton}>
+                  <SubscribeButton
+                    alias={following.alias}
+                    isFollowing
+                    updateCounters={false}
+                  />
+                </div>
+              )}
             </div>
             {!following.background && (
               <div className={s.borderBottom}></div>

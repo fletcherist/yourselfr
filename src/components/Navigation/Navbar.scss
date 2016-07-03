@@ -1,7 +1,7 @@
 @import 'variables';
 
 .navbar {
-  height: 60px;
+  height: 48px;
   background-color: white;
   margin-bottom: 40px;
   border-bottom: 1px inset $borderColor;
@@ -37,13 +37,51 @@
 }
 
 .item {
-  width: 30%;
-  line-height: 30px;
-  margin-top: 15px;
-  margin-left: 30px;
+  // line-height: 30px;
+  margin-top: 14px;
+  // margin-left: 30px;
+  font-weight: bold;
+  height: 30.5px;
+  a {
+      -webkit-transition: padding-bottom .2s ease-in-out, box-shadow .2s ease-in-out;
+      box-shadow: 0px 0px 0px 0px #179cde;
+      padding-top: 16.5px;
+      padding-bottom: 16.5px;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  &:hover {
+    a {
+      box-shadow: 0px 3px 0px 0px #179cde;
+      padding-top: 12.5px;
+      padding-bottom: 12.5px;
+    }
+  }
 
   @media screen and (max-width: 600px) {
     display: none;
+  }
+}
+
+.active {
+  box-shadow: 0px 3px 0px 0px #179cde !important;
+  padding-top: 12.5px !important;
+  padding-bottom: 12.5px !important;
+}
+
+.notification {
+  -webkit-mask: url('./components/Navigation/icons/notification.svg') no-repeat 50% 50%;
+  -webkit-mask-size: 25px;
+  width: 100px;
+  height: 40px;
+  background: $yoGreyLight;
+  background-position: left;
+  cursor: pointer;
+  transition: .2s ease-in background-color;
+  margin-top: -10px;
+
+  &:hover {
+    background: $yoColor;
   }
 }
 

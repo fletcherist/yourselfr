@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import EndlessFeed from '../EndlessFeed';
-import User from 'routes/User';
+import User from 'routes/User/containers/User';
 import FeedHeader from '../Headers/FeedHeader';
 import NoFeed from '../NoData/NoFeed';
 

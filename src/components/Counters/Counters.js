@@ -3,6 +3,7 @@ import s from './Counters.scss';
 import { Link } from 'react-router';
 import { cpEnding } from '../Toools';
 import Translate from 'react-translate-component';
+import cx from 'classnames';
 
 class Counters extends Component {
   static propTypes = {

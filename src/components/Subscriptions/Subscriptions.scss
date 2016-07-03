@@ -1,8 +1,12 @@
 @import 'variables';
 
-.subscription {
+.container {
+  display: flex;
   z-index: 99999;
-  min-height: 160px;
+  min-height: 70px;
+  height: 110px;
+  z-index: 9999;
+  overflow: hidden;
 }
 .photo {
   height: 80px;
@@ -10,22 +14,22 @@
   border-radius: 50%;
   margin: 0px;
   z-index: 999;
-  margin-top: 70px;
-  margin-left: 20px;
+  margin: 20px;
   background-size: contain;
 }
 
 .background {
-	z-index: 1;
-	width: 100.6%;
-	height: 98px;
-  margin-bottom: -160px;
+  background-size:cover !important;
+  background-position:center;
+  background-color: #F7F7F7;
+  width: 100%;
+  height: 100px;
+  filter: brightness(70%);
+  margin-top: -100px;
   margin-left: -1px;
-  margin-top: -2px;
-  z-index: 999999999999;
-  &:last-child {
-    border-radius: 30px;
-  }
+  width: 100.6%;
+  opacity: .5;
+  z-index: 0;
 }
 
 .borderBottom {
@@ -33,21 +37,19 @@
 }
 
 .info {
-  display: inline-block;
-  position: absolute;
-  margin: 90px 0px 50px 20px;
-  // width: 400px;
-  width: 590px;
-  max-width: 590px;
+  margin: 30px;
+  margin-left: 0px;
+  width: 40%;
+  @media screen and (max-width: 600px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 400px) {
+    width: 30%;
+  }
 }
-
-.left_info {
-  float: left;
-}
-.subscribeButton {
-  float: right;
-  display: inline-block;
-  position: absolute;
+.SubscribeButton {
+  margin-top: 35px;
+  margin-right: 15px;
 }
 
 .username {

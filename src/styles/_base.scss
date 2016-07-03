@@ -206,3 +206,9 @@
 .bold {
   font-weight: bold;
 }
+
+.link--active {
+  box-shadow: 0px 3px 0px 0px #179cde !important;
+  padding-top: 12.5px !important;
+  padding-bottom: 12.5px !important;
+}
