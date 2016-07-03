@@ -2,7 +2,10 @@
 	text-align: center;
 	padding: 5px;
 	margin: 0 auto;
+<<<<<<< HEAD
 	margin-bottom: 10px;
+=======
+>>>>>>> origin/master
 	img {
 		width: 35px;
     height: 35px;
@@ -17,12 +20,19 @@
     text-overflow: ellipsis;
 		max-width: 200px;
   }
+<<<<<<< HEAD
 
 	@media screen and (max-width: 600px) {
 		margin-bottom: 0px;
 	}
+=======
+>>>>>>> origin/master
 }
 
 .inactive {
 	filter:  grayscale(100%);
+<<<<<<< HEAD
+=======
+	display: none;
+>>>>>>> origin/master
 }

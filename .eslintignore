@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 blueprints/**/files/**
+=======
+>>>>>>> origin/master
 coverage/**
 node_modules/**
 dist/**

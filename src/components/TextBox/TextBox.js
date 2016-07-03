@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import s from './TextBox.scss';
+<<<<<<< HEAD
 import generatePhrase from './generatePhrase';
 import { focusDiv } from '../Toools';
 
@@ -56,6 +57,20 @@ class TextBox extends Component {
         autoFocus
         spellCheck={false}>
         {placeholder}
+=======
+
+class TextBox extends Component {
+  static propTypes = {
+    something: PropTypes.string
+  };
+
+  render () {
+    return (
+      <div
+        contentEditable
+        className={s.textBox}
+        id='text-form'>
+>>>>>>> origin/master
       </div>
     );
   }

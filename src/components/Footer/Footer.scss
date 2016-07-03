@@ -6,12 +6,17 @@
 }
 .footerA {
   padding: 2px 5px;
+<<<<<<< HEAD
   color: $yoColor;
+=======
+  // color: $yoColor;
+>>>>>>> origin/master
   text-decoration: none;
   cursor: pointer;
 }
 
 .footer a {
+<<<<<<< HEAD
   // color: rgba(255, 255, 255, .7);
   color: $yoColor;
   transition: .2s ease;
@@ -22,4 +27,13 @@
 
 .footer span {
   color: $yoGrey;
+=======
+  color: rgba(255, 255, 255, .7);
+  transition: .2s ease;
+}
+
+.footer a:hover {
+  color: #fff;
+  transition: 0;
+>>>>>>> origin/master
 }

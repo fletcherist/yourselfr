@@ -2,7 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import s from './Like.scss';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { likePost } from '../../store/modules/posts';
+=======
+import { likePost } from '../../redux/modules/posts';
+>>>>>>> origin/master
 
 let cx = classNames.bind(s);
 
@@ -11,7 +15,11 @@ class Like extends Component {
     count: PropTypes.number,
     object: PropTypes.string.isRequired,
     likePost: PropTypes.func.isRequired,
+<<<<<<< HEAD
     isLiked: PropTypes.bool,
+=======
+    isLiked: PropTypes.bool.isRequired,
+>>>>>>> origin/master
     type: PropTypes.string.isRequired
   };
   constructor (props) {

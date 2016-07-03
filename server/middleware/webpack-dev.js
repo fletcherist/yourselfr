@@ -11,7 +11,11 @@ export default function (compiler, publicPath) {
 
   const middleware = WebpackDevMiddleware(compiler, {
     publicPath,
+<<<<<<< HEAD
     contentBase: paths.client(),
+=======
+    contentBase: paths.base(config.dir_client),
+>>>>>>> origin/master
     hot: true,
     quiet: config.compiler_quiet,
     noInfo: config.compiler_quiet,
@@ -21,7 +25,11 @@ export default function (compiler, publicPath) {
 
   return async function koaWebpackDevMiddleware (ctx, next) {
     let hasNext = await applyExpressMiddleware(middleware, ctx.req, {
+<<<<<<< HEAD
       end: (content) => (ctx.body = content),
+=======
+      end: (content) => ctx.body = content,
+>>>>>>> origin/master
       setHeader: function () {
         ctx.set.apply(ctx, arguments)
       }

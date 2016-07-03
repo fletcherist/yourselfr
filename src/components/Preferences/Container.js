@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import s from './Preferences.scss';
+<<<<<<< HEAD
 import User from 'routes/User/containers/User';
+=======
+import User from '../User';
+>>>>>>> origin/master
 
 export class PreferencesContainer extends Component {
   static propTypes = {
@@ -14,7 +18,11 @@ export class PreferencesContainer extends Component {
     }
     return (
       <User>
+<<<<<<< HEAD
         <div className='container--right relative'>
+=======
+        <div className='container--right'>
+>>>>>>> origin/master
           <div>
             <div className={s.category}><Link to='/preferences/'>общие</Link></div>
             <div className={s.category}><Link to='/preferences/photos' activeStyle={activeStyle}>фотографии</Link></div>

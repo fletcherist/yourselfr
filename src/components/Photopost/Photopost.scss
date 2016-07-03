@@ -1,5 +1,6 @@
 .photoPost {
 	border-radius: 0px;
+<<<<<<< HEAD
 	justify-content: center;
 	display: inline-flex;
 	min-height: 250px;
@@ -31,6 +32,18 @@
 	margin-top: -250px;
 	margin-left: -1px;
 	width: 100.6%;
+=======
+	justify-content: left;
+	display: flex;
+	min-height: 250px;
+	width: auto;
+	overflow: hidden;
+	background-size:cover !important;
+	background-position:center;
+	background-color: #F7F7F7;
+	margin-left: -1px;
+	width: 100.4%;
+>>>>>>> origin/master
 }
 
 .photoPost:hover .removePhotoPost {
@@ -41,6 +54,7 @@
 	text-align: center;
 	max-width: 495px;
 	width: 100%;
+<<<<<<< HEAD
 	font-size: 18px;
 	color: white;
 	text-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
@@ -51,6 +65,12 @@
 	max-width: 180px;
 	margin: auto;
 	word-wrap: break-word;
+=======
+	font-size: 24px;
+	color: white;
+	text-shadow: 3px 1px 5px rgba(0, 0, 0, 0.2);
+	align-self: center;
+>>>>>>> origin/master
 }
 .removePhotoPost {
 	-webkit-mask: url('./components/Post/remove-button.svg') no-repeat 50% 50%;
@@ -75,6 +95,7 @@
 		opacity: 1 !important;
 	}
 }
+<<<<<<< HEAD
 
 .userPhoto {
   height: 50px;
@@ -91,3 +112,5 @@
 	margin: 10px;
 	position: absolute;
 }
+=======
+>>>>>>> origin/master

@@ -1,4 +1,5 @@
 import assert from 'assert'
+<<<<<<< HEAD
 import React from 'react'
 import {mount, render, shallow} from 'enzyme'
 
@@ -12,6 +13,8 @@ class Fixture extends React.Component {
     )
   }
 }
+=======
+>>>>>>> origin/master
 
 describe('(Framework) Karma Plugins', function () {
   it('Should expose "expect" globally.', function () {
@@ -31,6 +34,7 @@ describe('(Framework) Karma Plugins', function () {
       expect(fail).to.not.be.fulfilled
     ])
   })
+<<<<<<< HEAD
 
   it('should have chai-enzyme working', function() {
     let wrapper = shallow(<Fixture />)
@@ -42,4 +46,6 @@ describe('(Framework) Karma Plugins', function () {
     wrapper = render(<Fixture />)
     expect(wrapper.find('#checked')).to.be.checked()
   })
+=======
+>>>>>>> origin/master
 })

@@ -36,7 +36,11 @@ class EndlessFeed extends Component {
     return (
       <div className='endlessfeed__wrapper'>
         {this.props.isFetching && (
+<<<<<<< HEAD
           <Loader />
+=======
+          <Loader/>
+>>>>>>> origin/master
         )}
         {endlessFeedArray}
       </div>

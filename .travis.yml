@@ -2,7 +2,11 @@ sudo: false
 language: node_js
 node_js:
   - "5.0"
+<<<<<<< HEAD
   - "6"
+=======
+
+>>>>>>> origin/master
 cache:
   directories:
     - node_modules
@@ -11,7 +15,14 @@ install:
   - npm install
 
 script:
+<<<<<<< HEAD
   - npm run lint
 
 after_success:
   - npm run codecov
+=======
+  - npm run test
+  - NODE_ENV=development npm run deploy
+  - NODE_ENV=staging npm run deploy
+  - NODE_ENV=production npm run deploy
+>>>>>>> origin/master

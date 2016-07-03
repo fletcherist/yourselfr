@@ -26,9 +26,13 @@
 
   },
   "socialButtons": {
+<<<<<<< HEAD
     "authViaVK": "Войти через ВК",
     "authViaTwitter": "Войти через Твиттер",
     "authViaFb": "Войти через Фейсбук"
+=======
+    "authViaVK": "Войти через ВК"
+>>>>>>> origin/master
   },
   "counters": {
     "followers": {

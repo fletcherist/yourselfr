@@ -63,6 +63,7 @@
   height: 51px;
 }
 
+<<<<<<< HEAD
 .postsUser, .feedUser {
   display: inline-block;
   @media screen and (max-width: 500px) {
@@ -70,6 +71,17 @@
   }
 }
 
+=======
+.postsUser {
+  display: inline-block;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+}
+
+
+
+>>>>>>> origin/master
 .pick {
   display: inline-block;
   float: right;

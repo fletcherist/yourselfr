@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import s from './SocialNetworks.scss';
+<<<<<<< HEAD
 import cx from 'classnames';
 import classNames from 'classnames/bind';
 import { formatSocialNetworks } from '../Toools';
+=======
+// import cx from 'classnames';
+import classNames from 'classnames/bind';
+>>>>>>> origin/master
 
 import vkPic from 'components/Buttons/SocialButtons/vk.svg';
 import twitterPic from 'components/Buttons/SocialButtons/twitter.svg';
@@ -11,6 +16,7 @@ import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg';
 import facebookPic from 'components/Buttons/SocialButtons/facebook.svg';
 
 let c = classNames.bind(s);
+<<<<<<< HEAD
 class SocialNetworks extends Component {
   constructor (props) {
     super(props);
@@ -19,10 +25,15 @@ class SocialNetworks extends Component {
       networks: props.networks
     }
   }
+=======
+
+class SocialNetworks extends Component {
+>>>>>>> origin/master
   static propTypes = {
     networks: PropTypes.object
   };
 
+<<<<<<< HEAD
   componentWillReceiveProps (props) {
     this.setState({
       networks: props.networks
@@ -71,6 +82,50 @@ class SocialNetworks extends Component {
           </a>
           <a href={`http://facebook.com/${facebook}`} target='_blank'>
             <img src={facebookPic} className={c({inactive: !facebook})} />
+=======
+  shouldComponentUpdate (nextProps) {
+    return true;
+  }
+  render () {
+    var ifSocial = false;
+
+    var networks = this.props.networks;
+    if (networks) {
+      if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
+        ifSocial = true;
+        var { vk, twitter, tumblr, instagram, facebook } = networks;
+        console.log(ifSocial);
+      }
+    }
+    console.log(ifSocial);
+    if (ifSocial) {
+      return (
+        <div className={s.social}>
+          <a href={`http://vk.com/${vk}`} target='_blank'>
+            <img src={vkPic} className={c({
+              inactive: !vk
+            })}/>
+          </a>
+          <a href={`http://twitter.com/${twitter}`} target='_blank'>
+            <img src={twitterPic} className={c({
+              inactive: !twitter
+            })}/>
+          </a>
+          <a href={`${tumblr}`} target='_blank'>
+            <img src={tumblrPic} className={c({
+              inactive: !tumblr
+            })}/>
+          </a>
+          <a href={`http://instagram.com/${instagram}`} target='_blank'>
+            <img src={instagramPic} className={c({
+              inactive: !instagram
+            })}/>
+          </a>
+          <a href={`http://facebook.com/${facebook}`} target='_blank'>
+            <img src={facebookPic} className={c({
+              inactive: !facebook
+            })}/>
+>>>>>>> origin/master
           </a>
         </div>
       )

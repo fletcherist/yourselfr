@@ -2,6 +2,7 @@ import React from 'react';
 import s from './SocialButtons.scss';
 import cx from 'classnames';
 import vkWhite from './vkint.svg';
+<<<<<<< HEAD
 import twitter from './twitter_white.svg';
 import facebook from './facebook.svg';
 import Translate from 'react-translate-component';
@@ -40,3 +41,19 @@ export const AuthPack = () => (
     <FacebookAuthButton />
   </div>
 )
+=======
+import Translate from 'react-translate-component';
+
+const VkAuthButton = () => {
+  return (
+      <div className={cx(s.button, s.vk)}>
+        <a href='auth/vk'>
+          <img src={vkWhite}/>
+          <Translate content='socialButtons.authViaVK' component='span'/>
+        </a>
+      </div>
+  )
+}
+
+export default VkAuthButton;
+>>>>>>> origin/master

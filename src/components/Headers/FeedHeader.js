@@ -2,7 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { actions as feed } from '../../store/modules/endlessFeed';
+=======
+import { actions as feed } from '../../redux/modules/endlessFeed';
+>>>>>>> origin/master
 import s from './Headers.scss';
 let cx = classNames.bind(s);
 
@@ -40,6 +44,7 @@ class FeedHeader extends Component {
     const { alias, username } = this.props;
     return (
       <div className={s.blockTitle}>
+<<<<<<< HEAD
         <div className={s.feedUser}>
           <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
           <span className={s.separator}></span>
@@ -48,6 +53,14 @@ class FeedHeader extends Component {
         <div className={s.pick}>
           <div className={cx({param: true, selected: this.state.selected === 1})} onClick={() => this.changeSelector(1)}>личная</div>
           <div className={cx({param: true, selected: this.state.selected === 2})} onClick={() => this.changeSelector(2)}>всеобщая</div>
+=======
+        <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
+        <span className={s.separator}></span>
+        <span className={s.navItem}>Лента</span>
+        <div className={s.pick}>
+          <div className={cx({param: true, selected: this.state.selected === 1})} onClick={ () => this.changeSelector(1) }>личная</div>
+          <div className={cx({param: true, selected: this.state.selected === 2})} onClick={ () => this.changeSelector(2) }>всеобщая</div>
+>>>>>>> origin/master
         </div>
       </div>
     );

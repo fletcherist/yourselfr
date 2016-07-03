@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // NOTE: These options are overriden by the babel-loader configuration
 // for webpack, which can be found in ~/build/webpack.config.
 //
@@ -7,4 +8,9 @@
 {
   "presets": ["es2015", "react", "stage-0"],
   "plugins": ["transform-runtime"]
+=======
+{
+  "presets": ["es2015", "react", "stage-0"],
+  "plugins": ["transform-runtime", "add-module-exports"]
+>>>>>>> origin/master
 }

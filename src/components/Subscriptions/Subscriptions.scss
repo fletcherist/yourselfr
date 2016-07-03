@@ -1,5 +1,6 @@
 @import 'variables';
 
+<<<<<<< HEAD
 .container {
   display: flex;
   z-index: 99999;
@@ -7,6 +8,11 @@
   height: 110px;
   z-index: 9999;
   overflow: hidden;
+=======
+.subscription {
+  z-index: 99999;
+  min-height: 160px;
+>>>>>>> origin/master
 }
 .photo {
   height: 80px;
@@ -14,11 +20,17 @@
   border-radius: 50%;
   margin: 0px;
   z-index: 999;
+<<<<<<< HEAD
   margin: 20px;
+=======
+  margin-top: 70px;
+  margin-left: 20px;
+>>>>>>> origin/master
   background-size: contain;
 }
 
 .background {
+<<<<<<< HEAD
   background-size:cover !important;
   background-position:center;
   background-color: #F7F7F7;
@@ -30,6 +42,18 @@
   width: 100.6%;
   opacity: .5;
   z-index: 0;
+=======
+	z-index: 1;
+	width: 100.6%;
+	height: 98px;
+  margin-bottom: -160px;
+  margin-left: -1px;
+  margin-top: -2px;
+  z-index: 999999999999;
+  &:last-child {
+    border-radius: 30px;
+  }
+>>>>>>> origin/master
 }
 
 .borderBottom {
@@ -37,6 +61,7 @@
 }
 
 .info {
+<<<<<<< HEAD
   margin: 30px;
   margin-left: 0px;
   width: 40%;
@@ -50,6 +75,23 @@
 .SubscribeButton {
   margin-top: 35px;
   margin-right: 15px;
+=======
+  display: inline-block;
+  position: absolute;
+  margin: 90px 0px 50px 20px;
+  // width: 400px;
+  width: 590px;
+  max-width: 590px;
+}
+
+.left_info {
+  float: left;
+}
+.subscribeButton {
+  float: right;
+  display: inline-block;
+  position: absolute;
+>>>>>>> origin/master
 }
 
 .username {

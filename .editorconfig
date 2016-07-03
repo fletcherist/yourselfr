@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # http://editorconfig.org
 
 # A special property that should be specified at the top of the file outside of
@@ -27,4 +28,13 @@ trim_trailing_whitespace = true
 
 # Denotes whether file should end with a newline
 # Possible values - true, false
+=======
+root = true
+[*]
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+>>>>>>> origin/master
 insert_final_newline = true

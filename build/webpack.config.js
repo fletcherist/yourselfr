@@ -15,14 +15,20 @@ const webpackConfig = {
   target: 'web',
   devtool: config.compiler_devtool,
   resolve: {
+<<<<<<< HEAD
     root: paths.client(),
     extensions: ['', '.js', '.jsx', '.json']
+=======
+    root: paths.base(config.dir_client),
+    extensions: ['', '.js', '.jsx']
+>>>>>>> origin/master
   },
   module: {}
 }
 // ------------------------------------
 // Entry Points
 // ------------------------------------
+<<<<<<< HEAD
 const APP_ENTRY_PATHS = [
   'babel-polyfill',
   paths.client('main.js')
@@ -32,6 +38,14 @@ webpackConfig.entry = {
   app: __DEV__
     ? APP_ENTRY_PATHS.concat(`webpack-hot-middleware/client?path=${config.compiler_public_path}__webpack_hmr`)
     : APP_ENTRY_PATHS,
+=======
+const APP_ENTRY_PATH = paths.base(config.dir_client) + '/main.js'
+
+webpackConfig.entry = {
+  app: __DEV__
+    ? [APP_ENTRY_PATH, `webpack-hot-middleware/client?path=${config.compiler_public_path}__webpack_hmr`]
+    : [APP_ENTRY_PATH],
+>>>>>>> origin/master
   vendor: config.compiler_vendor
 }
 
@@ -40,7 +54,11 @@ webpackConfig.entry = {
 // ------------------------------------
 webpackConfig.output = {
   filename: `[name].[${config.compiler_hash_type}].js`,
+<<<<<<< HEAD
   path: paths.dist(),
+=======
+  path: paths.base(config.dir_dist),
+>>>>>>> origin/master
   publicPath: config.compiler_public_path
 }
 
@@ -84,16 +102,23 @@ if (__DEV__) {
 
 // Don't split bundles during testing, since we only want import one bundle
 if (!__TEST__) {
+<<<<<<< HEAD
   webpackConfig.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor']
     })
   )
+=======
+  webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    names: ['vendor']
+  }))
+>>>>>>> origin/master
 }
 
 // ------------------------------------
 // Pre-Loaders
 // ------------------------------------
+<<<<<<< HEAD
 /*
 [ NOTE ]
 We no longer use eslint-loader due to it severely impacting build
@@ -103,16 +128,25 @@ use a linting plugin for your IDE in place of this loader.
 If you do wish to continue using the loader, you can uncomment
 the code below and run `npm i --save-dev eslint-loader`. This code
 will be removed in a future release.
+=======
+>>>>>>> origin/master
 webpackConfig.module.preLoaders = [{
   test: /\.(js|jsx)$/,
   loader: 'eslint',
   exclude: /node_modules/
 }]
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 webpackConfig.eslint = {
   configFile: paths.base('.eslintrc'),
   emitWarning: __DEV__
 }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> origin/master
 
 // ------------------------------------
 // Loaders
@@ -125,12 +159,18 @@ webpackConfig.module.loaders = [{
   query: {
     cacheDirectory: true,
     plugins: ['transform-runtime'],
+<<<<<<< HEAD
     presets: ['es2015', 'react', 'stage-0'],
     env: {
       production: {
         // presets: ['react-optimize']
       }
     }
+=======
+    presets: __DEV__
+      ? ['es2015', 'react', 'stage-0', 'react-hmre']
+      : ['es2015', 'react', 'stage-0']
+>>>>>>> origin/master
   }
 },
 {
@@ -138,6 +178,7 @@ webpackConfig.module.loaders = [{
   loader: 'json'
 }]
 
+<<<<<<< HEAD
 // ------------------------------------
 // Style Loaders
 // ------------------------------------
@@ -166,10 +207,19 @@ if (isUsingCSSModules) {
   const cssModulesLoader = [
     BASE_CSS_LOADER,
     'modules',
+=======
+// Styles
+const cssLoader = !config.compiler_css_modules
+  ? 'css?sourceMap'
+  : [
+    'css?modules',
+    'sourceMap',
+>>>>>>> origin/master
     'importLoaders=1',
     'localIdentName=[name]__[local]___[hash:base64:5]'
   ].join('&')
 
+<<<<<<< HEAD
   webpackConfig.module.loaders.push({
     test: /\.scss$/,
     include: cssModulesRegex,
@@ -200,34 +250,83 @@ webpackConfig.module.loaders.push({
   loaders: [
     'style',
     BASE_CSS_LOADER,
+=======
+webpackConfig.module.loaders.push({
+  test: /\.scss$/,
+  include: /src/,
+  loaders: [
+    'style',
+    cssLoader,
     'postcss',
     'sass?sourceMap'
   ]
 })
+
+webpackConfig.module.loaders.push({
+  test: /\.css$/,
+  include: /src/,
+  loaders: [
+    'style',
+    cssLoader,
+    'postcss'
+  ]
+})
+
+// Don't treat global SCSS as modules
+webpackConfig.module.loaders.push({
+  test: /\.scss$/,
+  exclude: /src/,
+  loaders: [
+    'style',
+    'css?sourceMap',
+>>>>>>> origin/master
+    'postcss',
+    'sass?sourceMap'
+  ]
+})
+<<<<<<< HEAD
 webpackConfig.module.loaders.push({
   test: /\.css$/,
   exclude: excludeCSSModules,
   loaders: [
     'style',
     BASE_CSS_LOADER,
+=======
+
+// Don't treat global, third-party CSS as modules
+webpackConfig.module.loaders.push({
+  test: /\.css$/,
+  exclude: /src/,
+  loaders: [
+    'style',
+    'css?sourceMap',
+>>>>>>> origin/master
     'postcss'
   ]
 })
 
+<<<<<<< HEAD
 // ------------------------------------
 // Style Configuration
 // ------------------------------------
+=======
+>>>>>>> origin/master
 webpackConfig.sassLoader = {
   includePaths: paths.client('styles')
 }
 
 webpackConfig.postcss = [
   cssnano({
+<<<<<<< HEAD
+=======
+    sourcemap: true,
+>>>>>>> origin/master
     autoprefixer: {
       add: true,
       remove: true,
       browsers: ['last 2 versions']
     },
+<<<<<<< HEAD
     discardComments: {
       removeAll: true
     },
@@ -236,6 +335,12 @@ webpackConfig.postcss = [
     reduceIdents: false,
     safe: true,
     sourcemap: true
+=======
+    safe: false,
+    discardComments: {
+      removeAll: true
+    }
+>>>>>>> origin/master
   })
 ]
 
@@ -260,12 +365,21 @@ webpackConfig.module.loaders.push(
 // http://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts/34133809#34133809
 if (!__DEV__) {
   debug('Apply ExtractTextPlugin to CSS loaders.')
+<<<<<<< HEAD
   webpackConfig.module.loaders.filter((loader) =>
     loader.loaders && loader.loaders.find((name) => /css/.test(name.split('?')[0]))
   ).forEach((loader) => {
     const [first, ...rest] = loader.loaders
     loader.loader = ExtractTextPlugin.extract(first, rest.join('!'))
     Reflect.deleteProperty(loader, 'loaders')
+=======
+  webpackConfig.module.loaders.filter(loader =>
+    loader.loaders && loader.loaders.find(name => /css/.test(name.split('?')[0]))
+  ).forEach(loader => {
+    const [first, ...rest] = loader.loaders
+    loader.loader = ExtractTextPlugin.extract(first, rest.join('!'))
+    delete loader.loaders
+>>>>>>> origin/master
   })
 
   webpackConfig.plugins.push(

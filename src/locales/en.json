@@ -26,9 +26,13 @@
 
   },
   "socialButtons": {
+<<<<<<< HEAD
     "authViaVK": "Log in via VK",
     "authViaTwitter": "Log in via Twitter",
     "authViaFb": "Log in via Facebook"
+=======
+    "authViaVK": "Log in via VK"
+>>>>>>> origin/master
   },
   "counters": {
     "followers": {

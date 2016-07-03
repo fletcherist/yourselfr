@@ -6,12 +6,26 @@
 
 .post {
 	word-wrap: break-word;
+<<<<<<< HEAD
 	padding: 8px 15px 8px 5px;
+=======
+	padding: 10px 15px 10px 5px;
+>>>>>>> origin/master
 	line-height: 20px;
 	font-size: 16px;
 	justify-content: left;
 	display: flex;
 	width: 100%;
+<<<<<<< HEAD
+=======
+	a {
+		background-color: transparent;
+		color: $yoColor;
+		border-bottom: 1px inset rgba(60, 151, 188, 0.25);
+		text-decoration: none;
+		transition: all .2s ease-out;
+	}
+>>>>>>> origin/master
 
 	a:hover {
 		color: #d04000;
@@ -22,7 +36,11 @@
 
 	.time {
 		font-weight: 300;
+<<<<<<< HEAD
 		font-size: 12px;
+=======
+		font-size: 13px;
+>>>>>>> origin/master
 		align-self: center;
 		padding: 0px 0px 0px 10px;
 		color: $yoGrey;
@@ -34,12 +52,18 @@
 	.text {
 		width: 100%;
 		font-weight: 400;
+<<<<<<< HEAD
 		color: #060606;
 		padding-left: 3px;
 	}
 	.feedText {
 		padding-left: 7px;
 	}
+=======
+		color: #515151;
+		padding-left: 3px;
+	}
+>>>>>>> origin/master
 	.like {
 		align-self: center;
 	}

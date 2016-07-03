@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import { config } from 'store/config';
 
+=======
+>>>>>>> origin/master
 export function ending (iNumber, aEndings) {
   var sEnding, i;
   iNumber = iNumber % 100
@@ -38,18 +41,24 @@ export function cpEnding (iNumber, str) {
 }
 
 export function isValidPhoto (photo) {
+<<<<<<< HEAD
   photo = downloadDirectlyFromServer(photo);
+=======
+>>>>>>> origin/master
   return photo && photo === 'http://yourselfr.com/upload/avatar/null'
   ? 'http://i.forbesimg.com/media/lists/companies/facebook_416x416.jpg'
   : photo;
 }
 
+<<<<<<< HEAD
 export const downloadDirectlyFromServer = (photo) => {
   var regex = /http:\/\/yourselfr.com/ig;
   photo = photo.replace(regex, config.ip);
   return photo;
 }
 
+=======
+>>>>>>> origin/master
 export function isNotEmptyString (str) {
   if (!str) return false;
   if (/\S/.test(str)) {
@@ -123,7 +132,11 @@ export function isValidEmail (email) {
   if (!email) {
     return false;
   }
+<<<<<<< HEAD
   var regex = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+=======
+  var regex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+>>>>>>> origin/master
   if (regex.test(email)) {
     return true;
   } else {
@@ -158,9 +171,15 @@ export function selectText (containerid) {
   }
 }
 
+<<<<<<< HEAD
 export function isHot (createdAt) {
   var now = new Date();
   var time = new Date(createdAt);
+=======
+export function isHot (created_at) {
+  var now = new Date();
+  var time = new Date(created_at);
+>>>>>>> origin/master
   var passed = ((now - time) / 1000 / 60 / 60);
   if (passed < 1) {
     return true;
@@ -177,6 +196,7 @@ export function blurRoot (flag) {
     root.classList.remove('backgroundblur');
   }
 }
+<<<<<<< HEAD
 
 export function hideBlocks (flag) {
   var root = document.getElementById('blocks');
@@ -245,3 +265,5 @@ export function focusDiv (div) {
 export function shuffle (arr) {
   return arr.sort(function () { return 0.5 - Math.random() });
 }
+=======
+>>>>>>> origin/master
