@@ -4,7 +4,10 @@ import { Link } from 'react-router';
 import { cpEnding } from '../Toools';
 import Translate from 'react-translate-component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import cx from 'classnames';
+=======
+>>>>>>> parent of 6482088... new commit
 
 =======
 

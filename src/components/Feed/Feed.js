@@ -2,10 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import EndlessFeed from '../EndlessFeed';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import User from 'routes/User/containers/User';
 =======
 import User from '../User';
 >>>>>>> origin/master
+=======
+import User from 'routes/User';
+>>>>>>> parent of 6482088... new commit
 import FeedHeader from '../Headers/FeedHeader';
 import NoFeed from '../NoData/NoFeed';
 

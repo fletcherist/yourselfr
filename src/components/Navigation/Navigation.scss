@@ -1,7 +1,11 @@
 @import 'variables';
 .navigation {
 <<<<<<< HEAD
+<<<<<<< HEAD
   height: 60px;
+=======
+  height: 70px;
+>>>>>>> parent of 6482088... new commit
   z-index: 99999999999999999999;
 
   @media screen and (max-width: 600px) {
@@ -10,9 +14,10 @@
 }
 
 .yoButton {
-  padding: 10px;
+  padding: 15px;
   -webkit-mask: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
   -webkit-mask-size: 90px;
+<<<<<<< HEAD
   width: 150px;
 =======
   height: 70px;
@@ -25,11 +30,15 @@
   -webkit-mask-size: 55px;
   width: 55px;
 >>>>>>> origin/master
+=======
+  width: 90px;
+>>>>>>> parent of 6482088... new commit
   height: 55px;
   background: $yoColor;
   background-size: 55px;
   background-position: left;
   cursor: pointer;
+<<<<<<< HEAD
 <<<<<<< HEAD
   padding-top: 10px;
   margin-left: -50px;
@@ -37,16 +46,25 @@
   padding-top: 50px;
   margin-left: 10px;
 >>>>>>> origin/master
+=======
+  padding-top: 50px;
+  margin-left: -45px;
+>>>>>>> parent of 6482088... new commit
   transition: .2s ease-in background-color;
 }
 
 .yoButton:hover {
+<<<<<<< HEAD
 <<<<<<< HEAD
   background: #179cde;
 =======
   background: lighten( $yoColor, 10% );
   transition: 0;
 >>>>>>> origin/master
+=======
+  background: lighten( $yoColor, 10% );
+  transition: 0;
+>>>>>>> parent of 6482088... new commit
 }
 
 .menu {

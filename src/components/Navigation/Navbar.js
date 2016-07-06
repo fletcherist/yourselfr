@@ -11,7 +11,7 @@ class NavBar extends Component {
   };
 
   render () {
-    const { authenticated, alias, username } = this.props;
+    const { authenticated, alias } = this.props;
     if (!authenticated) {
       return (
         <div className={s.navbar}>
@@ -32,18 +32,6 @@ class NavBar extends Component {
       <div className={s.navbar}>
         <div className={s.wrap}>
           <Navigation />
-          <div className={s.item}>
-            <Link to={`/${alias}`} activeClassName={s.active}>{username}</Link>
-          </div>
-          <div className={s.item}>
-            <Link to={`${alias}/friends`} activeClassName={s.active}>Друзья</Link>
-          </div>
-          <div className={s.item}>
-            <Link to='/feed' activeClassName={s.active}>Лента</Link>
-          </div>
-          <div className={s.item}>
-            <div className={s.notification}></div>
-          </div>
         </div>
       </div>
     );
@@ -52,8 +40,7 @@ class NavBar extends Component {
 
 const mapStateToProps = state => ({
   alias: state.auth.user.alias,
-  authenticated: state.auth.authenticated,
-  username: state.auth.user.username
+  authenticated: state.auth.authenticated
 });
 
 // const mapDispatchToProps = dispatch => ({
