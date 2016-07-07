@@ -11,7 +11,6 @@
     "__DEV__"      : false,
     "__PROD__"     : false,
     "__DEBUG__"    : false,
-<<<<<<< HEAD
     "__COVERAGE__" : false,
     "__BASENAME__" : false
   },
@@ -21,13 +20,5 @@
     "no-return-assign": 0,
     "max-len": 0,
     "react/prop-types": 0
-=======
-    "__DEBUG_NEW_WINDOW__" : false,
-    "__BASENAME__" : false
-  },
-  "rules": {
-    "semi" : 0,
-    "jsx-quotes": 0
->>>>>>> origin/master
   }
 }
