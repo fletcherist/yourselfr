@@ -8,7 +8,7 @@ import SocialNetworks from '../SocialNetworks';
 import Footer from '../Footer';
 import Megaphone from '../Megaphone';
 // import AttachEmail from '../AttachEmail';
-import Friends from '../Friends';
+import FriendsSmall from '../FriendsSmall';
 
 import { actions as userActions } from '../../store/modules/user';
 
@@ -74,7 +74,7 @@ class Profile extends Component {
         {this.props.isYourPage && (
           <div className='hide-on-mobile'>
             <Megaphone alias={alias} username={username} />
-            <Friends />
+            <FriendsSmall />
           </div>
         )}
         <div className='hide-on-mobile'>

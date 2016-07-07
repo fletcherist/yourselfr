@@ -13,11 +13,7 @@
   color: $yoColor;
   float: right;
   cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-    color: #1477A6;
-  }
+  font-weight: bold;
 }
 
 .separator {

@@ -13,7 +13,7 @@ class NoFollowing extends Component {
   render () {
     return (
       <div className={s.noData}>
-        <Translate content='NoData.NoFollowing' username={this.props.username} />
+        <Translate content='NoData.NoFriends' username={this.props.username} />
       </div>
     )
   }

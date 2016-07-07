@@ -10,7 +10,10 @@ export class PreferencesContainer extends Component {
 
   render () {
     var activeStyle = {
-      backgroundColor: '#f2fdff'
+      backgroundColor: '#f2fdff',
+      boxShadow: '0px 3px 0px 0px #179cde',
+      paddingTop: '6.5px',
+      paddingBottom: '6.5px'
     }
     return (
       <User>

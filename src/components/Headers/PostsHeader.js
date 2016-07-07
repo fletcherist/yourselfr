@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ending, blurRoot, hideBlocks } from '../Toools';
+import { ending, hideBlocks } from '../Toools';
 import WriteBox from '../WriteBox';
 import s from './Headers.scss';
 import { Link } from 'react-router';
@@ -21,11 +21,9 @@ class PostsHeader extends Component {
     if (this.state.isOpen) {
       this.setState({isOpen: false})
       hideBlocks(false);
-      // blurRoot(false);
     } else {
       this.setState({isOpen: true})
       hideBlocks(true);
-      // blurRoot(true);
     }
   }
 

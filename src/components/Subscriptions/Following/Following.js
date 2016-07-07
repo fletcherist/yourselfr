@@ -43,6 +43,10 @@ class Following extends Component {
         const myPageInList = following._id === myUserId;
         return (
           <div>
+            <div
+              style={{background: `url(${config.http}/upload/background_cropped/${following.background})`}}
+              className={s.background}>
+            </div>
             <div key={following._id} className={s.container}>
               <Link to={linkHref}>
                 <img src={photo} className={s.photo} />

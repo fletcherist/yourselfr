@@ -61,6 +61,7 @@
       "authenticated": "Hello. Soon there will be posts about you!",
       "not_authenticated": "Hm, nothing there yet. Post the first?"
     },
-    "NoFeed": "Your feed is empty. Please follow someone to fix it!"
+    "NoFeed": "Your feed is empty. Please follow someone to fix it!",
+    "NoFriends": "You have no friends on Yourselfr"
   }
 }

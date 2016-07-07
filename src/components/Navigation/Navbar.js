@@ -33,10 +33,10 @@ class NavBar extends Component {
         <div className={s.wrap}>
           <Navigation />
           <div className={s.item}>
-            <Link to={`/${alias}`} activeClassName={s.active}>{username}</Link>
+            <Link to={`/${alias}`}>{username}</Link>
           </div>
           <div className={s.item}>
-            <Link to={`${alias}/friends`} activeClassName={s.active}>друзья</Link>
+            <Link to={`/${alias}/friends`} activeClassName={s.active}>друзья</Link>
           </div>
           <div className={s.item}>
             <Link to='/feed' activeClassName={s.active}>лента</Link>
@@ -44,14 +44,15 @@ class NavBar extends Component {
           <div className={s.item}>
             <Link to='/preferences' activeClassName={s.active}>настройки</Link>
           </div>
-          <div className={s.item}>
-            <div className={s.notification}></div>
-          </div>
         </div>
       </div>
     );
   }
 }
+
+// <div className={s.item}>
+  // <div className={s.notification}></div>
+// </div>
 
 const mapStateToProps = state => ({
   alias: state.auth.user.alias,

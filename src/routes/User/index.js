@@ -51,6 +51,16 @@ export default (store) => ({
             );
         }, 'following');
       }
+    },
+    {
+      path: 'friends',
+      getComponent (nextState, cb) {
+        require.ensure([], require => {
+          const Friends = require('components/Subscriptions/Friends').default;
+
+          cb(null, Friends);
+        })
+      }
     }
   ]
 });
