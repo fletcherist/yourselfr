@@ -7,6 +7,7 @@ import AttachPhoto from './AttachPhoto';
 import ModalStyles from './ModalStyles.js';
 import TextBox from '../TextBox';
 import SmileBox from '../SmileBox';
+import { isValidPhoto } from 'components/Toools';
 
 class WriteBox extends Component {
   static propTypes = {
@@ -36,7 +37,7 @@ class WriteBox extends Component {
       created_by: props.alias,
       text: '',
       isOpen: props.isOpen || false
-    })
+    });
   }
 
   handleSubmitButton (e) {
@@ -93,7 +94,7 @@ class WriteBox extends Component {
 const GreetingHeader = ({username, photo}) => (
   <div className={s.header}>
     <div className={s.left}>
-      <img src={photo} className={s.avatar} />
+      <img src={isValidPhoto(photo)} className={s.avatar} />
     </div>
     <div className={s.right}>
       <div className={s.greeting}>Привет, я {username}<br /></div>

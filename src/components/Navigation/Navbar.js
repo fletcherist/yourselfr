@@ -36,10 +36,13 @@ class NavBar extends Component {
             <Link to={`/${alias}`} activeClassName={s.active}>{username}</Link>
           </div>
           <div className={s.item}>
-            <Link to={`${alias}/friends`} activeClassName={s.active}>Друзья</Link>
+            <Link to={`${alias}/friends`} activeClassName={s.active}>друзья</Link>
           </div>
           <div className={s.item}>
-            <Link to='/feed' activeClassName={s.active}>Лента</Link>
+            <Link to='/feed' activeClassName={s.active}>лента</Link>
+          </div>
+          <div className={s.item}>
+            <Link to='/preferences' activeClassName={s.active}>настройки</Link>
           </div>
           <div className={s.item}>
             <div className={s.notification}></div>
