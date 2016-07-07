@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-<<<<<<< HEAD
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -10,24 +9,11 @@ import AppContainer from './containers/AppContainer'
 import ga from 'react-ga';
 import { config } from 'store/config';
 import { authenticate, isYourPage } from './store/modules/auth';
-=======
-import { useRouterHistory } from 'react-router'
-import { createHistory } from 'history'
-import routes from './routes'
-import Root from './containers/Root'
-import configureStore from './redux/configureStore'
-import ga from 'react-ga';
-import { config } from 'redux/config';
-import { authenticate, isYourPage } from './redux/modules/auth';
->>>>>>> origin/master
 
 import cookie from 'react-cookie';
 import counterpart from 'counterpart';
 import { getLocale } from './components/Toools';
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 // Set Localization Preferences
 counterpart.registerTranslations('en', require('./locales/en.json'));
 counterpart.registerTranslations('ru', require('./locales/ru.json'));
@@ -41,7 +27,6 @@ if (locale === 'en-US') { locale = 'en'; }
 if (locale !== 'en' && locale !== 'ru') { locale = 'ru'; }
 counterpart.setLocale(locale);
 
-<<<<<<< HEAD
 // ========================================================
 // Browser History Setup
 // ========================================================
@@ -58,23 +43,11 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router
 })
 
-=======
-const historyConfig = { basename: __BASENAME__ }
-const history = useRouterHistory(createHistory)(historyConfig)
-
-const initialState = window.__INITIAL_STATE__
-const store = configureStore({ initialState, history })
-
-store.dispatch(isYourPage());
-store.dispatch(authenticate());
-
->>>>>>> origin/master
 ga.initialize(config.googleAnalyticsId);
 history.listen(location => {
   ga.pageview(window.location.pathname);
   store.dispatch(isYourPage());
 });
-<<<<<<< HEAD
 
 // ========================================================
 // Developer Tools Setup
@@ -127,10 +100,3 @@ if (__DEV__ && module.hot) {
 // Go!
 // ========================================================
 render()
-=======
-// Render the React application to the DOM
-ReactDOM.render(
-  <Root history={history} routes={routes} store={store} />,
-  document.getElementById('root')
-)
->>>>>>> origin/master

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 
 import lay1 from './Layout1.jpg';
@@ -12,32 +11,12 @@ var backgrounds = [lay1, lay2, lay3, lay4, lay5];
 class Slideshow extends Component {
   componentWillMount () {
     this.setState({
-=======
-import lay1 from './Layout1.jpg';
-import lay2 from './Layout2.jpg';
-// import lay3 from './Layout3.jpg';
-import lay4 from './Layout4.jpg';
-import lay5 from './Layout5.jpg';
-
-import React from 'react';
-
-var backgrounds = [lay1, lay2, lay4, lay5];
-
-class Slideshow extends React.Component {
-  constructor () {
-    super();
-    this.state = {
->>>>>>> origin/master
       style: {
         background: `url(${backgrounds[0]})`
       },
       backgroundCount: 1,
       count: 0
-<<<<<<< HEAD
     });
-=======
-    }
->>>>>>> origin/master
   }
   fadeOut (element) {
     var opacity = 1;
@@ -63,11 +42,7 @@ class Slideshow extends React.Component {
           count: self.state.count + 1
         })
         self.fadeIn(element);
-<<<<<<< HEAD
         return false;
-=======
-        return true;
->>>>>>> origin/master
       }
       element.style.opacity = opacity;
       requestAnimationFrame(decrease);
@@ -79,11 +54,7 @@ class Slideshow extends React.Component {
     var opacity = 0;
 
     var self = this;
-<<<<<<< HEAD
     function increase () {
-=======
-    function decrease () {
->>>>>>> origin/master
       opacity += 0.01;
       if (opacity >= 1) {
         element.style.opacity = 1;
@@ -91,7 +62,6 @@ class Slideshow extends React.Component {
         setTimeout(() => {
           self.fadeOut(element);
         }, 5000);
-<<<<<<< HEAD
         return false;
       }
       element.style.opacity = opacity;
@@ -132,35 +102,6 @@ class Slideshow extends React.Component {
           ref={(c) => this.slideshow = c}>
         </div>
       </div>
-=======
-        return true;
-      }
-      element.style.opacity = opacity;
-      requestAnimationFrame(decrease);
-    }
-    decrease();
-  }
-  componentDidMount () {
-    console.log(this.state.count);
-    if (this.state.count > 0) {
-      return;
-    }
-    setTimeout(() => {
-      this.fadeOut(this.background);
-    }, 5000);
-  }
-
-  shouldComponentUpdate () {
-    return false;
-  }
-  render () {
-    return (
-      <div>
-        <div className='black_layout'></div>
-        <div className='responsive_crop_fixed' style={this.state.style} id='background' ref={(r) => this.background = r}></div>
-      </div>
-
->>>>>>> origin/master
     )
   }
 }

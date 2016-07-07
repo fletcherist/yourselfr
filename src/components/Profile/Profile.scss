@@ -2,12 +2,8 @@
 
 .avatar {
 	margin: 0px auto;
-<<<<<<< HEAD
 	margin-top: 0px;
 	padding-top: 30px;
-=======
-	margin-top: -30px;
->>>>>>> origin/master
 	max-width: 100%;
 	img {
 		display: block;
@@ -17,7 +13,6 @@
 		height: 240px;
 		border-radius: 10000px;
 		margin: 0px auto;
-<<<<<<< HEAD
 		background-color: #fafafa;
 	}
 	@media screen and (max-width: 600px) {
@@ -27,8 +22,6 @@
 			width: 100px;
 		}
 
-=======
->>>>>>> origin/master
 	}
 }
 
@@ -62,7 +55,6 @@
 .online {
 	margin-bottom: 2px;
 	margin-left: 4px;
-<<<<<<< HEAD
 	// opacity: .5;
 	transition: all .3s;
 	cursor: pointer;
@@ -71,12 +63,6 @@
 	display: inline-block;
 	border-radius: 50px;
 	background-color: $yoColor;
-=======
-	opacity: .5;
-	transition: all .3s;
-	cursor: pointer;
-	width: 10px;
->>>>>>> origin/master
 	&:hover {
 		opacity: 1;
 	}

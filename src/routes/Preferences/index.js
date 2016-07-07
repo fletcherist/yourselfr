@@ -1,5 +1,5 @@
-import { authenticate } from '../../store/modules/auth';
-import { loadUser } from '../../store/modules/user';
+import { authenticate } from 'store/modules/auth';
+import { loadUser } from 'store/modules/user';
 export default (store) => ({
   'path': '/preferences',
   getComponent (nextState, cb) {

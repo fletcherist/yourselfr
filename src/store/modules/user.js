@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { config } from '../config';
-import { fetchUser, fetchSubscribe, fetchPosts } from './isFetching';
+import { fetchUser, fetchSubscribe } from './isFetching';
 import { loadPostsPatch } from './posts';
 import { routeActions } from 'react-router-redux';
 import ga from 'react-ga';

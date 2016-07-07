@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import 'variables';
 
 $megaphoneBackground: #E2F1F7;
@@ -41,15 +40,6 @@ $megaphoneColor: #1d475d;
   left: 50%;
   margin-left: -8px;
   margin-bottom: 0px;
-=======
-.megaphone {
-  max-width: 250px;
-  background: #E2F1F7;
-  border-color: #BFD5E0;
-  color: #1d475d;
-  border-bottom: 0;
-  padding: 0;
->>>>>>> origin/master
 }
 
 .text {
@@ -69,11 +59,7 @@ $megaphoneColor: #1d475d;
 .buttons {
   display: flex;
   margin-left: -1px;
-<<<<<<< HEAD
   // width: 250px;
-=======
-  width: 250px;
->>>>>>> origin/master
 }
 
 .button {
@@ -112,7 +98,6 @@ $megaphoneColor: #1d475d;
 .tb {
   background: #35465C;
   border-radius: 0 0 3px 0;
-<<<<<<< HEAD
   border-width: 0 1px 1px 0;
 }
 
@@ -136,7 +121,4 @@ $megaphoneColor: #1d475d;
   &:hover {
     opacity: .7;
   }
-=======
-  border-width: 0 0 1px 0;
->>>>>>> origin/master
 }

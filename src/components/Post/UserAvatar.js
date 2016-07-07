@@ -16,10 +16,7 @@ class UserAvatar extends Component {
 
   render () {
     var photo = isValidPhoto(this.props.photo);
-<<<<<<< HEAD
     console.log(photo);
-=======
->>>>>>> origin/master
     var styles = {
       link: {
         border: '0px'
@@ -28,17 +25,10 @@ class UserAvatar extends Component {
     const { alias, loadUser } = this.props;
     return (
       <div className={s.time} style={{marginRight: '15px'}}>
-<<<<<<< HEAD
         <Link to={`/${alias}`} style={styles.link} onClick={() => loadUser(alias)}>
           <img
             src={photo}
             className={s.photo} />
-=======
-        <Link to={`/${alias}`} style={styles.link} onClick={ () => loadUser(alias)}>
-          <img
-            src={photo}
-            className={s.photo}/>
->>>>>>> origin/master
         </Link>
       </div>
     );

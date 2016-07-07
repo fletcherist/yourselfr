@@ -1,16 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-<<<<<<< HEAD
 import { config } from '../../store/config';
 import { connect } from 'react-redux';
-=======
-import { config } from '../../redux/config';
->>>>>>> origin/master
 
 class Background extends Component {
   static propTypes = {
     background: PropTypes.string
   };
-<<<<<<< HEAD
   componentWillMount () {
     this.setBackground();
   }
@@ -59,26 +54,10 @@ class Background extends Component {
         }}
         id='background'>
       </div>
-=======
-
-  shouldComponentUpdate (nextProps) {
-    return nextProps.background !== this.props.background;
-  }
-
-  render () {
-    var backround = this.props.background
-      ? {
-        background: `url(${config.http}/upload/background/${this.props.background})`
-      }
-      : {}
-    return (
-      <div className='responsive_crop_fixed' style={backround}></div>
->>>>>>> origin/master
     )
   }
 }
 
-<<<<<<< HEAD
 function mapStateToProps (state) {
   if (state.user) {
     return {
@@ -88,6 +67,3 @@ function mapStateToProps (state) {
   return {}
 }
 export default connect(mapStateToProps)(Background);
-=======
-export default Background;
->>>>>>> origin/master

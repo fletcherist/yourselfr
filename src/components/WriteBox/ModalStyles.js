@@ -13,15 +13,10 @@ const ModalStyles = {
     left: '50%',
     right: 'auto',
     border: 'none',
-<<<<<<< HEAD
     minHeight: '400px',
     height: '70%',
     maxHeight: '1200px',
     minWidth: '640px',
-=======
-    height: '400px',
-    minWidth: '500px',
->>>>>>> origin/master
     background: 'transparent',
     overflow: 'auto',
     WebkitOverflowScrolling: 'auto',

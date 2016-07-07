@@ -1,11 +1,6 @@
 @import 'variables';
 .navigation {
-<<<<<<< HEAD
-<<<<<<< HEAD
   height: 60px;
-=======
-  height: 70px;
->>>>>>> parent of 6482088... new commit
   z-index: 99999999999999999999;
 
   @media screen and (max-width: 600px) {
@@ -14,57 +9,22 @@
 }
 
 .yoButton {
-  padding: 15px;
+  padding: 10px;
   -webkit-mask: url('./components/Navigation/logo_big.png') no-repeat 50% 50%;
   -webkit-mask-size: 90px;
-<<<<<<< HEAD
   width: 150px;
-=======
-  height: 70px;
-  z-index: 99999999999999999999;
-}
-
-.yoButton {
-  padding: 15px;
-  -webkit-mask: url('./components/Navigation/yo.svg') no-repeat 50% 50%;
-  -webkit-mask-size: 55px;
-  width: 55px;
->>>>>>> origin/master
-=======
-  width: 90px;
->>>>>>> parent of 6482088... new commit
   height: 55px;
   background: $yoColor;
   background-size: 55px;
   background-position: left;
   cursor: pointer;
-<<<<<<< HEAD
-<<<<<<< HEAD
   padding-top: 10px;
   margin-left: -50px;
-=======
-  padding-top: 50px;
-  margin-left: 10px;
->>>>>>> origin/master
-=======
-  padding-top: 50px;
-  margin-left: -45px;
->>>>>>> parent of 6482088... new commit
   transition: .2s ease-in background-color;
 }
 
 .yoButton:hover {
-<<<<<<< HEAD
-<<<<<<< HEAD
   background: #179cde;
-=======
-  background: lighten( $yoColor, 10% );
-  transition: 0;
->>>>>>> origin/master
-=======
-  background: lighten( $yoColor, 10% );
-  transition: 0;
->>>>>>> parent of 6482088... new commit
 }
 
 .menu {
@@ -80,7 +40,6 @@
   border-radius: 4px;
   transition: top .2s, opacity .1s, visibility .3s;
   visibility: visible;
-<<<<<<< HEAD
   // margin-left: -40px;
   margin-left: -155px;
   margin-top: 10px;
@@ -96,33 +55,11 @@
 	position: absolute;
 	width: 0;
   bottom: 100%;
-=======
-  margin-top: -60px;
-  margin-left: -40px;
-  display: flex;
-  flex-wrap: wrap;
-
-  @media screen and (max-width: 800px) {
-    width: 162px;
-  }
-}
-
-.menu:after, .menu:before {
-  display: block;
-	border: solid transparent;
-	content: ' ';
-	height: 0;
-	bottom: 80%;
-	position: absolute;
-	width: 0;
-  left: 0px;
->>>>>>> origin/master
   margin-left: -10px;
 }
 
 .menu:after {
 	border-width: 9px;
-<<<<<<< HEAD
 	border-bottom-color: white;
 	left: 50%;
 }
@@ -164,24 +101,6 @@
 .hiddenMenu {
   visibility: hidden;
   display: none;
-=======
-	border-right-color: white;
-  margin-left: -18px;
-	left: 0%;
-}
-
-.menu:before {
-  margin-bottom: -2px;
-	border-width: 11px;
-	border-right-color: $borderColor;
-  left: 0%;
-  margin-left: -22px;
-
-}
-
-.hiddenMenu {
-  visibility: hidden;
->>>>>>> origin/master
   opacity: 0;
 }
 

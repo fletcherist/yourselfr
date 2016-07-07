@@ -1,19 +1,10 @@
 @import 'variables';
-<<<<<<< HEAD
 // .counters {
 // 	position: absolute;
 // 	bottom: 0;
 // 	left: 0;
 // 	width: 100%;
 // }
-=======
-.counters {
-	// position: absolute;
-	// bottom: 0;
-	// left: 0;
-	// width: 100%;
-}
->>>>>>> origin/master
 .counter {
 	width: 33.333%;
 	display: inline-block;
@@ -33,11 +24,7 @@
 .counter_title {
 	color: $yoGrey;
 	font-weight: 500;
-<<<<<<< HEAD
 	font-size: 8px;
-=======
-	font-size: 9px;
->>>>>>> origin/master
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
@@ -45,10 +32,7 @@
 .highlighted {
 	background-color: #f2fdff;
 }
-<<<<<<< HEAD
 
 .activeClass {
 	background-color: rgb(246, 246, 246);
 }
-=======
->>>>>>> origin/master

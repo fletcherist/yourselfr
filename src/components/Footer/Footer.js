@@ -14,11 +14,7 @@ class Footer extends Component {
   render () {
     return (
       <div className={s.footer}>
-<<<<<<< HEAD
         <span><Translate content='yourselfr'/>, 2016</span>
-=======
-        <span><a><Translate content='yourselfr'/>, 2016</a></span>
->>>>>>> origin/master
         {' '}
         <a onClick={ () => this.handleChange('ru')} className={s.footerA}>Русский</a>
         {' '}
