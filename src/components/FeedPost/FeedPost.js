@@ -7,6 +7,7 @@ import TickTime from '../Post/TickTime';
 import PostText from '../Post/PostText';
 import PhotopostFeed from 'components/Photopost/PhotopostFeed';
 import { Link } from 'react-router';
+import { isValidPhoto } from 'components/Toools';
 
 let ccx = cx.bind(s);
 class FeedPost extends Component {
@@ -45,7 +46,7 @@ class FeedPost extends Component {
           <div className={postClasses}>
             <div className={s.time}>
               <Link to={`/${alias}`}>
-                <img src={this.props.user.photo} className={s.photo} />
+                <img src={isValidPhoto(this.props.user.photo)} className={s.photo} />
               </Link>
             </div>
             <div className={s.text}>

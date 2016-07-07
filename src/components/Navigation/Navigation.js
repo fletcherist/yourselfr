@@ -4,6 +4,7 @@ import s from './Navigation.scss';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/modules/user';
+import { isValidPhoto } from 'components/Toools';
 
 let cx = classNames.bind(s);
 
@@ -40,7 +41,7 @@ class Navigation extends Component {
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to={`/${this.props.user.alias}`}>
                   <div title='перейти к профилю' className={s.photo} onClick={() => this.props.loadUser(this.props.user.alias)}>
-                    <img src={this.props.user.photo} />
+                    <img src={isValidPhoto(this.props.user.photo)} />
                   </div>
                   <div>профиль</div>
                 </Link>

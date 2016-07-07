@@ -39,6 +39,7 @@ class Background extends Component {
     };
   }
   render () {
+    console.log(this.props.background);
     if (!this.props.background) {
       return (
         <div className='responsive_crop_fixed' id='background'></div>
