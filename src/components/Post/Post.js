@@ -38,7 +38,7 @@ class Post extends Component {
     this.setState({
       showCommentForm: !this.state.showCommentForm
     })
-    this.forceRender();
+    this.forceUpdate();
   }
   render () {
     let postClasses = ccx({

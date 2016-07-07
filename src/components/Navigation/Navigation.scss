@@ -2,9 +2,11 @@
 .navigation {
   height: 60px;
   z-index: 99999999999999999999;
-
+  max-width: 150px;
+  width: 100%;
   @media screen and (max-width: 600px) {
     margin-left: 50%;
+    max-width: 80px;
   }
 }
 
@@ -31,20 +33,21 @@
   position: relative;
   text-align: center;
   background-color: white;
-  // box-shadow: 0 1px 1px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 10px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.07);
   border: 1px solid $borderColor;
   width: 242px;
   // height: 180px !important;
   left: 50%;
   z-index: 99999999999999999999;
   border-radius: 4px;
-  transition: top .2s, opacity .1s, visibility .3s;
+  transition: opacity .2s, visibility .3s, transform .2s;
   visibility: visible;
   // margin-left: -40px;
   margin-left: -155px;
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
+  transform: translateY(10px);
 }
 
 .menu:after, .menu:before {
@@ -69,6 +72,13 @@
 	border-bottom-color: $borderColor;
   left: 50%;
   margin-left: -12px;
+}
+
+.hiddenMenu {
+  // visibility: hidden;
+  // display: none;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 // .menu:after, .menu:before {
@@ -98,12 +108,6 @@
 //   margin-left: -22px;
 // }
 
-.hiddenMenu {
-  visibility: hidden;
-  display: none;
-  opacity: 0;
-}
-
 .element {
   width: 80px;
   padding-bottom: 20px;
@@ -115,6 +119,7 @@
   &:nth-child(1), &:nth-child(4) {
       border-left: 0px;
   }
+
   color: #999;
   font-size: 12px;
 

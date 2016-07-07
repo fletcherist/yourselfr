@@ -9,7 +9,6 @@ import Footer from '../Footer';
 import Megaphone from '../Megaphone';
 // import AttachEmail from '../AttachEmail';
 import FriendsSmall from '../FriendsSmall';
-
 import { actions as userActions } from '../../store/modules/user';
 
 class Profile extends Component {

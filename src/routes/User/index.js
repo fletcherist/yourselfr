@@ -1,7 +1,8 @@
 // import { injectReducer } from '../../store/reducers';
 
-import { loadUser } from '../../store/modules/user';
-import { loadFollowers, loadFollowing } from '../../store/modules/followers';
+import { loadUser } from 'store/modules/user';
+import { loadFollowers, loadFollowing } from 'store/modules/followers';
+import { loadFriends } from 'store/modules/friends';
 
 export default (store) => ({
   'path': ':user',
@@ -24,7 +25,14 @@ export default (store) => ({
         );
     }, 'user');
   },
-  indexRoute: posts,
+  indexRoute: {
+    getComponent (nextState, cb) {
+      require.ensure([], (require) => {
+        const Posts = require('components/Posts').default;
+        cb(null, Posts);
+      }, 'posts')
+    }
+  },
   childRoutes: [
     {
       'path': 'followers',
@@ -57,28 +65,12 @@ export default (store) => ({
       getComponent (nextState, cb) {
         require.ensure([], require => {
           const Friends = require('components/Subscriptions/Friends').default;
-
-          cb(null, Friends);
+          store.dispatch(loadFriends())
+            .then(
+              result => cb(null, Friends)
+            );
         })
       }
     }
   ]
 });
-
-// const getData = () => {
-//   return dispatch => {
-//     return new Promise(resolve => {
-//       setTimeout(() => {
-//         resolve();
-//       });
-//     });
-//   }
-// }
-const posts = {
-  getComponent (nextState, cb) {
-    require.ensure([], (require) => {
-      const Posts = require('components/Posts').default;
-      cb(null, Posts);
-    }, 'posts')
-  }
-}

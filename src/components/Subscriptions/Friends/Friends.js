@@ -29,7 +29,7 @@ class Friends extends Component {
 
     var followersList;
     if (!isEmpty(this.props.followers)) {
-      var followers = this.props.followers;
+      var followers = this.props.friends;
       followersList = followers.map(function (follower) {
         var photo = isValidPhoto(follower.photo);
         var linkHref = '/' + follower.alias;
@@ -74,10 +74,7 @@ class Friends extends Component {
 
     return (
       <div className='container--right padding-0 container--subscriptions'>
-        <FriendsHeader
-          alias={this.props.user.alias}
-          username={this.props.user.username}
-        />
+        <FriendsHeader alias={this.props.user.alias} username={this.props.user.username} />
         <div>
           {followersList && (
             followersList
@@ -91,9 +88,9 @@ class Friends extends Component {
   }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   return {
-    followers: state.subscriptions.followers,
+    friends: state.friends,
     isFetching: state.isFetching.followers,
     auth: state.auth,
     user: state.user
