@@ -22,7 +22,7 @@
   background-position: left;
   cursor: pointer;
   transition: .2s ease-in background-color;
-  margin-top: -5px;
+  margin-top: -7px;
 }
 
 .wrap {
@@ -87,7 +87,7 @@
 
 .right {
   line-height: 30px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: auto;
   @media screen and (max-width: 600px) {
     display: none;

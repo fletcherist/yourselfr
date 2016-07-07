@@ -10,7 +10,9 @@ class Background extends Component {
     this.setBackground();
   }
   componentWillReceiveProps () {
-    this.setBackground();
+    setTimeout(something => {
+      this.setBackground();
+    });
   }
   setBackground () {
     console.log(this.props.background);
