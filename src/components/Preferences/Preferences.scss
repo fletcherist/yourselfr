@@ -76,19 +76,12 @@ small {
   display:inline-block;
 
   &:after{
-    /*Add another block-level blank space*/
     content: '';
     display: block;
-
-    /*Make it a small rectangle so the border will create an L-shape*/
     width: 8px;
     height: 16px;
-
-    /*Add a white border on the bottom and left, creating that 'L' */
     border: solid $yoGreen;
     border-width: 0 2px 2px 0;
-
-    /*Rotate the L 45 degrees to turn it into a checkmark*/
     transform: rotate(45deg);
   }
 }
@@ -116,30 +109,9 @@ small {
   opacity: .8;
 }
 
-// .fetching {
-//   overflow: hidden;
-//   background-size:100px 100px;
-//   background-image: linear-gradient(-45deg,
-//      #f9d885 25%, #fff3bb 25%,
-//      #fff3bb 50%, #f9d885 50%,
-//      #f9d885 75%, #fff3bb 75%);
-//   animation: anim 1s linear infinite;
-// }
-
 .fetchingForms {
-  // overflow: hidden;
-  // background-size:100px 100px;
-  // background-image: linear-gradient(-45deg,
-  //    $yoColor05 25%, $yoColor 25%,
-  //    $yoColor 50%, $yoColor05 50%,
-  //    $yoColor05 75%, $yoColor 75%);
-  // animation: anim 1s linear infinite;
-  // opacity: 0.8;
-  // overflow: hidden;
-  // cursor: wait;
-  // // border: 2px solid $yoColor;
-  background-color: $yoColor05;
-  transition: all .2s;
+  // background-color: $yoColor05;
+  // transition: all .2s;
 }
 @keyframes anim {
   0% { background-position: 0px 0px; }
@@ -159,14 +131,12 @@ small {
   font-size: 11px;
 }
 .success {
-  background-color: $successColor;
-  color: $white-base;
-  font-weight: 500;
+  color: $yoGreen;
+  font-weight: bold;
 }
 .error {
-  background-color: $errorColor;
-  color: $white-base;
-  font-weight: 500;
+  color: $errorColor;
+  font-weight: bold;
 }
 
 .formError {

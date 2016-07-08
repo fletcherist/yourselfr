@@ -2,7 +2,6 @@
 
 .header {
 	text-align: center;
-	font-weight: 300;
 	font-size: 14px;
 	padding: 10px;
 	display: flex;
@@ -17,9 +16,9 @@
 .greeting {
 	font-size: 24px;
 	text-align: left;
+
 }
 .action {
-	font-weight: bold;
 	text-align: left;
 
 	@media screen and (max-width: 600px) {
@@ -36,9 +35,8 @@
 .container {
 	transition: all .2s;
 	border-radius: 3px;
-	background-color: transparent;
-	color: white;
-	font-size: 20px;
+	background-color: white;
+	font-size: 14px;
 	margin: auto;
 	max-width: 500px;
 	width: 100%;
@@ -58,13 +56,6 @@
 	}
 }
 
-.above {
-	z-index: 1;
-	transition: opacity .4s;
-	transition-delay: .2s;
-	margin-top: 20px;
-}
-
 .attachForm {
 	position: absolute;
 	display: none;
@@ -74,15 +65,23 @@
 	// display: none;
 }
 
+.additional {
+	background-color: $greyBox;
+	padding: 3px 0px 0px;
+	border-radius: 3px;
+}
+
 .photoHolder {
 	float: left;
 	width: 110px;
 	background: rgba(255, 255, 255, .2);
 	padding: 2px 8px 4px;
 	border-radius: 3px;
-	color: white;
 	cursor: pointer;
 	transition: .2s background;
+	color: $yoColor;
+	font-weight: bold;
+	margin-left: 15px;
 
 	&:hover {
 		background: rgba(255, 255, 255, .3);
@@ -105,7 +104,7 @@
 	-webkit-mask-size: cover;
 	display: inline-block;
 	transition: transform .4s, background-color .5s, opacity .1s;
-	background-color: white;
+	background-color: $yoColor;
 	-webkit-mask: url('./components/WriteBox/camera.svg') no-repeat 50% 50%;
 	mask: url(./components/WriteBox/camera.svg) no-repeat 100% 100%;
 	-webkit-mask-size: 16px;
@@ -114,7 +113,7 @@
 	height: 16px;
 	cursor: pointer;
 	margin-left: 10px;
-	margin-top: 3px;
+	margin-top: 5px;
 }
 
 .plus {
@@ -129,7 +128,6 @@
 		float: right;
 		height: 300px;
 		width: 100%;
-		border-radius: 0px;
 		cursor: pointer;
 		border-radius: 4px;
 		margin: 20px 0px;
@@ -140,17 +138,16 @@
 }
 
 .buttonSubmit {
-	color: white;
-	background: rgba(255, 255, 255, .2);
+	color: $yoColor;
+	font-weight: bold;
 	text-align: center;
 	font-size: 11px;
 	border-radius: 3px;
-	display: inline-block;
 	padding: 10px;
-	width: 160px;
+	max-width: 100px;
 	cursor: pointer;
 	transition: .2s background;
-	float: right;
+	margin-left: auto;
 
 	&:hover {
 		background: rgba(255, 255, 255, .3);

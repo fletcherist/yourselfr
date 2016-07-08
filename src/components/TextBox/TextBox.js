@@ -1,22 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import s from './TextBox.scss';
-import generatePhrase from './generatePhrase';
+// import generatePhrase from './generatePhrase';
 import { focusDiv } from '../Toools';
 
 class TextBox extends Component {
   static propTypes = {
-    username: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
+    alias: PropTypes.string.isRequired
   };
-  // shouldComponentUpdate (nextProps) {
-  //   return nextProps.username !== this.props.username;
-  // }
+  shouldComponentUpdate (nextProps) {
+    return nextProps.username !== this.props.username;
+  }
   componentWillMount () {
     this.setState({
       opacity: {
         opacity: 0.5,
         display: 'block'
       },
-      placeholderText: generatePhrase(this.props.username),
       focused: false
     });
   }
@@ -30,9 +30,9 @@ class TextBox extends Component {
         opacity: 1,
         display: 'none'
       },
-      placeholderText: '',
       focused: true
     });
+    this.forceUpdate();
   }
   componentDidMount () {
     setTimeout(() => {
@@ -45,17 +45,19 @@ class TextBox extends Component {
     }
   }
   render () {
-    const placeholder = <div style={this.state.opacity} className={s.placeHolder}>{this.state.placeholderText}</div>
+    const placeholder = <div style={this.state.opacity} className={s.placeHolder}>Мнение о @{this.props.alias}</div>
     return (
-      <div
-        contentEditable
-        suppressContentEditableWarning
-        className={s.textBox}
-        id='text-form'
-        onMouseDown={this.boxFocus.bind(this)}
-        autoFocus
-        spellCheck={false}>
-        {placeholder}
+      <div className={s.wrap}>
+        <div
+          contentEditable
+          suppressContentEditableWarning
+          className={s.textBox}
+          id='text-form'
+          onMouseDown={this.boxFocus.bind(this)}
+          autoFocus
+          spellCheck={false}>
+          {placeholder}
+        </div>
       </div>
     );
   }

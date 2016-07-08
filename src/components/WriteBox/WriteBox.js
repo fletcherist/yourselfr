@@ -72,14 +72,13 @@ class WriteBox extends Component {
             username={this.props.username}
             photo={this.props.photo}
           />
-          <TextBox username={this.props.username} />
+          <TextBox username={this.props.username} alias={this.props.alias} />
           <div id='attach-block' className='hidden'>
             <div className={s.plus}>+</div>
             <img id='attach-preview' className={s.attachPreview} />
           </div>
-          <div className={s.above}>
+          <div className={s.additional}>
             <AttachPhoto />
-            <SmileBox />
             <div
               className={s.buttonSubmit}
               onClick={this.handleSubmitButton.bind(this)}>
@@ -91,14 +90,16 @@ class WriteBox extends Component {
   }
 }
 
+// <SmileBox />
+
 const GreetingHeader = ({username, photo}) => (
   <div className={s.header}>
     <div className={s.left}>
       <img src={isValidPhoto(photo)} className={s.avatar} />
     </div>
     <div className={s.right}>
-      <div className={s.greeting}>Привет, я {username}<br /></div>
-      <div className={s.action}>Напиши, пожалуйста,<br /> что ты думаешь обо мне.</div>
+      <div className={s.greeting}>{username}</div>
+      <div className={s.action}>Расскажи обо мне.</div>
     </div>
   </div>
 )

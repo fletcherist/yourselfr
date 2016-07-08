@@ -71,6 +71,15 @@ export default (store) => ({
             );
         })
       }
+    },
+    {
+      path: 'write',
+      getComponent (nextState, cb) {
+        require.ensure([], require => {
+          const WriteBox = require('components/WriteBox/OpenBox').default;
+          cb(null, WriteBox);
+        })
+      }
     }
   ]
 });

@@ -16,11 +16,12 @@ const ModalStyles = {
     minHeight: '400px',
     height: '70%',
     maxHeight: '1200px',
-    minWidth: '640px',
     background: 'transparent',
     overflow: 'auto',
     WebkitOverflowScrolling: 'auto',
     marginRight: '-50%',
+    maxWidth: '320px',
+    padding: '0px',
     transform: 'translate(-51%, -50%)',
     trasnition: 'opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25)'
   }

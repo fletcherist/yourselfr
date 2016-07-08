@@ -34,12 +34,12 @@
 	transition-delay: 0.2s;
   visibility: hidden;
   cursor: pointer;
-  top: 120px;
+  transform: translateY(0px);
 
   &:hover {
     visibility: visible;
     opacity: 1;
-    top: 100px;
+    transform: translateY(20px);
   }
 }
 

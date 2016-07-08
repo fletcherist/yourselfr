@@ -1,6 +1,17 @@
+@import 'variables';
+
+.wrap {
+	background-color: $greyBox;
+	padding: 15px;
+	padding-bottom: 0px;
+	border-top: 1px solid $borderColor;
+}
 .textBox {
-	height: 100px;
-	padding: 10px;
+	background-color: white;
+	border: 1px solid #C5C5C5;
+	border-radius: 3px;
+	min-height: 37px;
+	padding: 8px 7px;
 	&:focus {
 		outline: none;
 	}
