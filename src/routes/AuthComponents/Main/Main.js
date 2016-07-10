@@ -5,11 +5,11 @@ import Footer from 'components/Footer';
 import WantToRegister from '../WantToRegister';
 import { actions as feed } from 'store/modules/endlessFeed';
 import { connect } from 'react-redux';
-import LoginForm from '../Login/LoginForm';
-import Translate from 'react-translate-component';
+import SignupForm from '../Signup/SignupForm';
+// import Translate from 'react-translate-component';
 
 // import { ButtonContainer, AuthenticateButton } from 'components/Buttons';
-class SignupForm extends Component {
+class Main extends Component {
   static propTypes = {
     loadEndlessFeed: PropTypes.func.isRequired,
     feed: PropTypes.array.isRequired,
@@ -23,7 +23,7 @@ class SignupForm extends Component {
       <div className={s.container}>
         <div className={s.wrap}>
           <div className={s.left}>
-            <LoginForm />
+            <SignupForm />
             <Footer />
           </div>
           <div className={s.right}>
@@ -42,4 +42,4 @@ const mapStateToProps = state => {
     isFetching: state.isFetching.feed
   }
 }
-export default connect(mapStateToProps, feed)(SignupForm);
+export default connect(mapStateToProps, feed)(Main);

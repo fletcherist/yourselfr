@@ -71,7 +71,7 @@ class Navigation extends Component {
                 </Link>
               </div>
               <div className={s.element} onClick={this.toggle.bind(this)}>
-                <a href='http://yourselfr.com/auth/logout'>
+                <a href='http://yoursel.fr/auth/logout'>
                   <div title='выйти' className={cx(s.icon, s.iconLogout)} />
                   <div>выход</div>
                 </a>

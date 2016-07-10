@@ -7,6 +7,7 @@ import { isValidEmail } from 'components/Toools';
 import { routeActions } from 'react-router-redux';
 import Logotype from '../Logotype';
 import { HaveAccount } from '../Same';
+import { AuthPack } from 'components/Buttons/SocialButtons';
 
 import Translate from 'react-translate-component';
 import cp from 'counterpart';
@@ -93,6 +94,7 @@ class SignupForm extends Component {
     return (
       <div className={s.loginFormContainer}>
         <Logotype />
+        <AuthPack />
         <Translate content='signup.message' className={s.titleAction} component='div' />
         <form onSubmit={this.register.bind(this)}>
           <div className='input--container'>

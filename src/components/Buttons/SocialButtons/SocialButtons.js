@@ -7,30 +7,30 @@ import facebook from './facebook.svg';
 import Translate from 'react-translate-component';
 
 export const VkAuthButton = () => (
-  <div className={cx(s.button, s.vk)}>
-    <a href='http://yoursel.fr/auth/vk'>
+  <a href='http://yoursel.fr/auth/vk'>
+    <div className={cx(s.button, s.vk)}>
       <img src={vkWhite} />
       <Translate content='socialButtons.authViaVK' component='span' />
-    </a>
-  </div>
+    </div>
+  </a>
 )
 
 export const TwitterAuthButton = () => (
-  <div className={cx(s.button, s.twitter)}>
-    <a href='http://yoursel.fr/auth/twitter'>
+  <a href='http://yoursel.fr/auth/twitter'>
+    <div className={cx(s.button, s.twitter)}>
       <img src={twitter} />
       <Translate content='socialButtons.authViaTwitter' component='span' />
-    </a>
-  </div>
+    </div>
+  </a>
 )
 
 export const FacebookAuthButton = () => (
-  <div className={cx(s.button, s.facebook)}>
-    <a href='http://yoursel.fr/auth/facebook'>
+  <a href='http://yoursel.fr/auth/facebook'>
+    <div className={cx(s.button, s.facebook)}>
       <img src={facebook} />
       <Translate content='socialButtons.authViaFb' component='span' />
-    </a>
-  </div>
+    </div>
+  </a>
 )
 
 export const AuthPack = () => (

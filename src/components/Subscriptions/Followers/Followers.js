@@ -36,10 +36,13 @@ class Followers extends Component {
         const myPageInList = follower._id === myUserId;
         return (
           <div>
-            <div
-              style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
-              className={s.background}>
-            </div>
+            {follower.background && (
+              <div
+                style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
+                className={s.background}>
+                <div className={s.alpha}></div>
+              </div>
+            )}
             <div key={follower._id} className={s.container}>
               <Link to={linkHref}>
                 <img src={photo} className={s.photo} />

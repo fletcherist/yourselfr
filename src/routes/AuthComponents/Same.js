@@ -8,7 +8,9 @@ export const NoAccount = () => (
     <Translate content='same.noAccount' />
     {' '}
     <Link to='signup'><b><Translate content='same.register' /></b></Link>
-    <ForgotPassword />
+    {
+      // <ForgotPassword />
+    }
   </div>
 )
 

@@ -22,17 +22,18 @@
   // background-size:cover !important;
   // background-position:center;
   // background-color: #F7F7F7;
-  width: 100%;
   height: 100px;
   margin-bottom: -111px;
   margin-left: -1px;
   width: 100.6%;
   z-index: -9999;
   display: block;
+}
 
-  &:before, &:after {
-    background-color: rgba(0, 0, 0, 1);
-  }
+.alpha {
+  background-color:rgba(0,0,0,0.8);
+  height: 100px;
+  width: 100%;
 }
 
 .borderBottom {

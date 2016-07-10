@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 export default store => ({
   path: '/',
   getComponent (nextState, cb) {
@@ -10,7 +12,11 @@ export default store => ({
     getComponent (nextState, cb) {
       require.ensure([], require => {
         const Main = require('./Main').default;
-        cb(null, Main);
+        var auth = store.getState().auth;
+        if (auth.authenticated) {
+          return store.dispatch(push(`/${auth.user.alias}`));
+        }
+        return cb(null, Main);
       });
     }
   }
