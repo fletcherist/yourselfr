@@ -7,12 +7,16 @@ class Background extends Component {
     background: PropTypes.string
   };
   componentWillMount () {
+    this.setState({
+      background: '',
+      filter: ''
+    });
     this.setBackground();
   }
   componentWillReceiveProps () {
     setTimeout(something => {
       this.setBackground();
-    });
+    }, 300);
   }
   setBackground () {
     console.log(this.props.background);
@@ -26,22 +30,28 @@ class Background extends Component {
     var blurred = `${config.http}/upload/background_blur/${this.props.background}`;
     var original = `${config.http}/upload/background/${this.props.background}`;
 
-    self.setState({
-      background: blurred,
-      filter: 'blur(10px)'
-    });
+    var imgSmall = new Image();
+    imgSmall.src = blurred;
+
     // 2: load large image
     var imgLarge = new Image();
     imgLarge.src = original;
-    imgLarge.onload = function () {
+
+    imgSmall.onload = function () {
       self.setState({
-        background: original,
-        filter: 'none'
+        background: blurred,
+        filter: 'blur(10px)'
       });
+
+      imgLarge.onload = function () {
+        self.setState({
+          background: original,
+          filter: 'none'
+        });
+      }
     };
   }
   render () {
-    console.log(this.props.background);
     if (!this.props.background) {
       return (
         <div className='responsive_crop_fixed' id='background'></div>

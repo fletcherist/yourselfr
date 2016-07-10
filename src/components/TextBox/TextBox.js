@@ -45,7 +45,12 @@ class TextBox extends Component {
     }
   }
   render () {
-    const placeholder = <div style={this.state.opacity} className={s.placeHolder}>Мнение о @{this.props.alias}</div>
+    const placeholder =
+      <div style={this.state.opacity} className={s.placeHolder}>
+        {this.state.display === 'block' && (
+          <span>Мнение о @{this.props.alias}</span>
+        )}
+      </div>
     return (
       <div className={s.wrap}>
         <div

@@ -37,11 +37,7 @@ class Followers extends Component {
         return (
           <div>
             {follower.background && (
-              <div
-                style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
-                className={s.background}>
-                <div className={s.alpha}></div>
-              </div>
+              <div style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}} className={s.background}></div>
             )}
             <div key={follower._id} className={s.container}>
               <Link to={linkHref}>
