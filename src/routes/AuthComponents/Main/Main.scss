@@ -36,12 +36,7 @@
 
 .wrap {
   max-width: 900px;
-  display: flex;
-  width: 100%;
-  margin: 50px auto;
-  @media screen and (max-width: 800px) {
-    display: block;
-  }
+  margin: 0px auto;
 }
 
 .right {
@@ -60,13 +55,6 @@
   @media screen and (max-width: 600px) {
     border-left: 0px;
     border-right: 0px;
-  }
-}
-
-.left {
-  width: 270px;
-  @media screen and (max-width: 800px) {
-    display: none;
   }
 }
 

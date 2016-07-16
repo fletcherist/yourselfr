@@ -22,14 +22,8 @@ class Main extends Component {
     return (
       <div className={s.container}>
         <div className={s.wrap}>
-          <div className={s.left}>
-            <SignupForm />
-            <Footer />
-          </div>
-          <div className={s.right}>
-            <WantToRegister />
-            <EndlessFeed feed={this.props.feed} isFetching={this.props.isFetching} />
-          </div>
+          <SignupForm />
+          <Footer />
         </div>
       </div>
     )

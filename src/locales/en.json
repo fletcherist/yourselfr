@@ -28,7 +28,8 @@
   "socialButtons": {
     "authViaVK": "VK",
     "authViaTwitter": "Twitter",
-    "authViaFb": "Facebook"
+    "authViaFb": "Facebook",
+    "authViaEmail": "Email"
   },
   "counters": {
     "followers": {

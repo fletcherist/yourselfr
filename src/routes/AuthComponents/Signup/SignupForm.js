@@ -94,34 +94,8 @@ class SignupForm extends Component {
     return (
       <div className={s.loginFormContainer}>
         <Logotype />
-        <AuthPack />
         <Translate content='signup.message' className={s.titleAction} component='div' />
-        <form onSubmit={this.register.bind(this)}>
-          <div className='input--container'>
-            <input className='input--form input--block' placeholder={cp.translate('signup.username')}
-              ref={(r) => this.username = r} />
-          </div>
-          <div className='input--container'>
-            <input className='input--form input--block' placeholder={cp.translate('signup.email')}
-              ref={(r) => this.email = r} />
-          </div>
-          <div className='input--container'>
-            <input className='input--form input--block' placeholder={cp.translate('signup.password')}
-              ref={(r) => this.password = r} />
-          </div>
-          <button
-            type='submit'
-            className='button button--register button--block button--container'
-            disabled={this.props.isFetching.status}>
-            <Translate content='signup.button' />
-          </button>
-        </form>
-        {this.state.message && (
-          <div className={s.errorMessage}>
-            {this.state.message}
-          </div>
-        )}
-        <HaveAccount />
+        <AuthPack />
       </div>
     )
   }
@@ -139,3 +113,30 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+// 
+// <form onSubmit={this.register.bind(this)}>
+//   <div className='input--container'>
+//     <input className='input--form input--block' placeholder={cp.translate('signup.username')}
+//       ref={(r) => this.username = r} />
+//   </div>
+//   <div className='input--container'>
+//     <input className='input--form input--block' placeholder={cp.translate('signup.email')}
+//       ref={(r) => this.email = r} />
+//   </div>
+//   <div className='input--container'>
+//     <input className='input--form input--block' placeholder={cp.translate('signup.password')}
+//       ref={(r) => this.password = r} />
+//   </div>
+//   <button
+//     type='submit'
+//     className='button button--register button--block button--container'
+//     disabled={this.props.isFetching.status}>
+//     <Translate content='signup.button' />
+//   </button>
+// </form>
+// {this.state.message && (
+//   <div className={s.errorMessage}>
+//     {this.state.message}
+//   </div>
+// )}
+// <HaveAccount />

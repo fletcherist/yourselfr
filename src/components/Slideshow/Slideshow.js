@@ -94,7 +94,7 @@ class Slideshow extends Component {
   render () {
     return (
       <div>
-        <div className='black_layout' style={{backgroundColor: 'black'}}></div>
+        <div className='black_layout slide_backdrop' style={{backgroundColor: 'black'}}></div>
         <div
           className='responsive_crop_main'
           style={this.state.style}

@@ -12,7 +12,6 @@ export class AuthBootstrap extends Component {
   render () {
     return (
       <div>
-        <Slideshow />
         {this.props.children}
       </div>
     )
