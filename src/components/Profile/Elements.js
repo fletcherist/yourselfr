@@ -33,10 +33,6 @@ export const Username = ({username, online}) => {
     </div>
   )
 }
-Username.propTypes = {
-  username: PropTypes.string.isRequired,
-  online: PropTypes.bool
-}
 
 export const Status = ({status}) => (
   <div className={s.status}>{status}</div>

@@ -10,6 +10,7 @@ import Megaphone from '../Megaphone';
 // import AttachEmail from '../AttachEmail';
 import FriendsSmall from '../FriendsSmall';
 import { actions as userActions } from '../../store/modules/user';
+import s from './Profile.scss';
 
 class Profile extends Component {
   static propTypes = {
