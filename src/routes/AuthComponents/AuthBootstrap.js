@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import Slideshow from 'components/Slideshow';
-import Footer from 'components/Footer';
-import SignupForm from './Signup/SignupForm';
-import LoginForm from './Login/LoginForm';
-import s from './AuthComponents.scss';
+import React, { Component, PropTypes } from 'react'
+import Footer from 'components/Footer'
+import SignupForm from './Signup/SignupForm'
+import LoginForm from './Login/LoginForm'
+// import s from './AuthComponents.scss'
+// import Slideshow from 'components/Slideshow'
 
 export class AuthBootstrap extends Component {
   static propTypes = {
@@ -18,14 +18,14 @@ export class AuthBootstrap extends Component {
   }
 }
 export const Signup = () => (
-  <div className={s.formBlock}>
+  <div>
     <SignupForm />
     <Footer />
   </div>
 )
 
 export const Login = () => (
-  <div className={s.formBlock}>
+  <div>
     <LoginForm />
     <Footer />
   </div>

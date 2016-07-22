@@ -1,14 +1,10 @@
 @import 'variables';
 
 .button {
-  padding: 5px 15px 6px;
-  background: #eee;
-  display: inline-block;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px #ccc;
-  cursor: pointer;
-  outline: 0;
-  border: none;
+  max-width: 100% !important;
+  input {
+    padding: 5px 15px 6px !important;
+  }
 }
 .button--register {
   background: #5CD987;

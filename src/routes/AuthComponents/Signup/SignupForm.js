@@ -1,25 +1,27 @@
-import React, { Component, PropTypes } from 'react';
-import s from '../AuthComponents.scss';
-import { connect } from 'react-redux';
-import { register } from 'store/modules/auth';
+import React, { Component, PropTypes } from 'react'
+import s from '../AuthComponents.scss'
+import { connect } from 'react-redux'
+import { register } from 'store/modules/auth'
 
-import { isValidEmail } from 'components/Toools';
-import { routeActions } from 'react-router-redux';
-import Logotype from '../Logotype';
-import { HaveAccount } from '../Same';
-import { AuthPack } from 'components/Buttons/SocialButtons';
+import { isValidEmail } from 'components/Toools'
+import { routeActions } from 'react-router-redux'
+import Logotype from '../Logotype'
+import { HaveAccount } from '../Same'
+import { AuthPack } from 'components/Buttons/SocialButtons'
 
-import Translate from 'react-translate-component';
-import cp from 'counterpart';
+import Translate from 'react-translate-component'
+import cp from 'counterpart'
+
+import Paper from 'material-ui/Paper'
 
 class SignupForm extends Component {
   static propTypes = {
     isFetching: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
     routeActions: PropTypes.func.isRequired
-  };
+  }
   constructor () {
-    super();
+    super()
     this.state = {
       message: undefined
     }
@@ -32,35 +34,35 @@ class SignupForm extends Component {
 
   checkUsername () {
     if (this.username.value === '') {
-      this.username.focus();
-      return false;
+      this.username.focus()
+      return false
     }
 
-    this.resetMessage();
-    return true;
+    this.resetMessage()
+    return true
   }
   checkEmail () {
     if (this.email.value === '') {
-      this.email.focus();
-      return false;
+      this.email.focus()
+      return false
     }
 
     if (!isValidEmail(this.email.value)) {
-      this.email.focus();
+      this.email.focus()
       this.setState({
         message: 'Почта введена некорректно.'
-      });
+      })
 
-      return false;
+      return false
     }
 
-    this.resetMessage();
-    return true;
+    this.resetMessage()
+    return true
   }
   checkPassword () {
     if (this.password.value === '') {
-      this.password.focus();
-      return false;
+      this.password.focus()
+      return false
     }
 
     if (this.password.value < 6) {
@@ -68,20 +70,20 @@ class SignupForm extends Component {
         message: 'Минимальная длина пароля — 6 символов'
       })
 
-      return false;
+      return false
     }
 
-    this.resetMessage();
-    return true;
+    this.resetMessage()
+    return true
     // More than 6 symbols.
   }
   register (e) {
     if (this.checkUsername() && this.checkEmail() && this.checkPassword()) {
-      this.props.register(this.username.value, this.email.value, this.password.value);
-      e.preventDefault();
-      return false;
+      this.props.register(this.username.value, this.email.value, this.password.value)
+      e.preventDefault()
+      return false
     }
-    e.preventDefault();
+    e.preventDefault()
   }
 
   componentWillReceiveProps (props) {
@@ -99,7 +101,7 @@ class SignupForm extends Component {
       </div>
     )
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -112,8 +114,8 @@ const mapDispatchToProps = (dispatch) => {
     routeActions: () => dispatch(routeActions())
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
-// 
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
+//
 // <form onSubmit={this.register.bind(this)}>
 //   <div className='input--container'>
 //     <input className='input--form input--block' placeholder={cp.translate('signup.username')}
