@@ -8,6 +8,8 @@ import { NoAccount } from '../Same'
 
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
 
 import Translate from 'react-translate-component'
 import cp from 'counterpart'
@@ -40,30 +42,35 @@ class LoginForm extends Component {
       <div className={s.loginFormContainer}>
         <Logotype />
         <Translate className={s.titleAction} content='login.message' component='div' />
-        <form onSubmit={this.logIn.bind(this)}>
-          <TextField
-            className='button'
-            hintText={cp.translate('login.login')}
-            ref={(r) => this.login = r}
-          />
-          <TextField
-            className='button'
-            hintText={cp.translate('login.password')}
-            type='password'
-            ref={(r) => this.password = r}
-          />
-          <RaisedButton
-            disabled={this.props.isFetching.status}
-            onClick={this.logIn.bind(this)}
-            fullWidth>
-            <Translate content='login.button' />
-          </RaisedButton>
-        </form>
+        <Paper>
+          <form onSubmit={this.logIn.bind(this)}>
+            <TextField
+              className='input--ui'
+              hintText={cp.translate('login.login')}
+              underlineShow={false}
+              ref={(r) => this.login = r}
+            />
+            <Divider />
+            <TextField
+              className='input--ui'
+              hintText={cp.translate('login.password')}
+              type='password'
+              underlineShow={false}
+              ref={(r) => this.password = r}
+            />
+          </form>
+        </Paper>
         {this.props.isFetching.message && (
           <div className={s.errorMessage}>
             {this.props.isFetching.message}
           </div>
         )}
+        <RaisedButton
+          disabled={this.props.isFetching.status}
+          onClick={this.logIn.bind(this)}
+          fullWidth>
+          <Translate content='login.button' />
+        </RaisedButton>
         <NoAccount />
       </div>
     )

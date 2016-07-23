@@ -48,13 +48,13 @@ export const FacebookAuthButton = () => (
 )
 
 export const AuthWithEmail = () => (
-  <a href='http://yoursel.fr/signup'>
+  <Link to='/signup'>
     <RaisedButton
       fullWidth
       style={{marginBottom: ui.margin}}>
       <Translate content='socialButtons.authViaEmail' component='span' />
     </RaisedButton>
-  </a>
+  </Link>
 )
 
 export const Auth = () => (

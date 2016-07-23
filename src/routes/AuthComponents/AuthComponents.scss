@@ -53,9 +53,11 @@ body {
 
 .titleAction {
   text-align: center;
-  margin: 20px 0px;
+  margin: 40px 0px;
   font-weight: bold;
   color: $yoGrey;
+  min-height: 60px;
+  font-size: 18px;
 }
 
 .formBlock {
@@ -70,6 +72,8 @@ body {
   max-width: 240px;
   margin: auto;
   margin-bottom: 20px;
+  min-height: 500px;
+  padding-top: 10%;
 }
 
 .paper {
@@ -91,7 +95,7 @@ body {
     max-width: 260px;
   }
   @media screen and (max-width: 600px) {
-    max-width: 260px;
+    max-width: 90wh;
     // max-width: 100%
   }
 }

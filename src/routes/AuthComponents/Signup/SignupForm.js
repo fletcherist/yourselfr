@@ -7,12 +7,16 @@ import { isValidEmail } from 'components/Toools'
 import { routeActions } from 'react-router-redux'
 import Logotype from '../Logotype'
 import { HaveAccount } from '../Same'
-import { AuthPack } from 'components/Buttons/SocialButtons'
+// import { AuthPack } from 'components/Buttons/SocialButtons'
 
 import Translate from 'react-translate-component'
 import cp from 'counterpart'
 
 import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
+
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class SignupForm extends Component {
   static propTypes = {
@@ -33,7 +37,7 @@ class SignupForm extends Component {
   }
 
   checkUsername () {
-    if (this.username.value === '') {
+    if (!this.username.value || this.username.value === '') {
       this.username.focus()
       return false
     }
@@ -96,8 +100,45 @@ class SignupForm extends Component {
     return (
       <div className={s.loginFormContainer}>
         <Logotype />
-        <Translate content='signup.message' className={s.titleAction} component='div' />
-        <AuthPack />
+        <Translate className={s.titleAction} content='signup.benefits' component='div' />
+        <Paper zDepth={1}>
+          <form onSubmit={this.register.bind(this)}>
+            <TextField
+              className='input--ui'
+              hintText={cp.translate('signup.username')}
+              underlineShow={false}
+              ref={(r) => this.username = r}
+            />
+            <Divider />
+            <TextField
+              className='input--ui'
+              hintText={cp.translate('signup.email')}
+              underlineShow={false}
+              ref={(r) => this.email = r}
+            />
+            <Divider />
+            <TextField
+              className='input--ui'
+              hintText={cp.translate('signup.password')}
+              underlineShow={false}
+              ref={(r) => this.password = r}
+            />
+          </form>
+
+        </Paper>
+        <RaisedButton
+          disabled={this.props.isFetching.status}
+          onClick={this.register.bind(this)}
+          primary
+          fullWidth>
+          <Translate content='signup.button' />
+        </RaisedButton>
+        {this.state.message && (
+          <div className={s.errorMessage}>
+            {this.state.message}
+          </div>
+        )}
+        <HaveAccount />
       </div>
     )
   }
@@ -115,30 +156,3 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
-//
-// <form onSubmit={this.register.bind(this)}>
-//   <div className='input--container'>
-//     <input className='input--form input--block' placeholder={cp.translate('signup.username')}
-//       ref={(r) => this.username = r} />
-//   </div>
-//   <div className='input--container'>
-//     <input className='input--form input--block' placeholder={cp.translate('signup.email')}
-//       ref={(r) => this.email = r} />
-//   </div>
-//   <div className='input--container'>
-//     <input className='input--form input--block' placeholder={cp.translate('signup.password')}
-//       ref={(r) => this.password = r} />
-//   </div>
-//   <button
-//     type='submit'
-//     className='button button--register button--block button--container'
-//     disabled={this.props.isFetching.status}>
-//     <Translate content='signup.button' />
-//   </button>
-// </form>
-// {this.state.message && (
-//   <div className={s.errorMessage}>
-//     {this.state.message}
-//   </div>
-// )}
-// <HaveAccount />

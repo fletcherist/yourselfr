@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react'
-import s from './Main.scss'
+import s from '../AuthComponents.scss'
 // import EndlessFeed from 'components/EndlessFeed'
 import Footer from 'components/Footer'
 // import WantToRegister from '../WantToRegister'
 import { actions as feed } from 'store/modules/endlessFeed'
 import { connect } from 'react-redux'
-import SignupForm from '../Signup/SignupForm'
-// import Translate from 'react-translate-component'
+
+import Logotype from '../Logotype'
+import Translate from 'react-translate-component'
+import { AuthPack } from 'components/Buttons/SocialButtons'
 
 // import { ButtonContainer, AuthenticateButton } from 'components/Buttons'
 class Main extends Component {
@@ -21,7 +23,11 @@ class Main extends Component {
   render () {
     return (
       <div className={s.wrap}>
-        <SignupForm />
+        <div className={s.loginFormContainer}>
+          <Logotype />
+          <Translate content='signup.message' className={s.titleAction} component='div' />
+          <AuthPack />
+        </div>
         <Footer />
       </div>
     )

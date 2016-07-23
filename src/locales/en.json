@@ -6,7 +6,8 @@
     "username": "Username",
     "email": "E-mail",
     "password": "Password",
-    "button": "Signup"
+    "button": "Signup",
+    "benefits": "It't free"
   },
   "login": {
     "message": "Log in to know what your friends are thinking about you.",

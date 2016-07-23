@@ -1,61 +1,61 @@
-import React, { Component, PropTypes } from 'react';
-import { config } from '../../store/config';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import { config } from '../../store/config'
+import { connect } from 'react-redux'
 
 class Background extends Component {
   static propTypes = {
     background: PropTypes.string
-  };
+  }
   componentWillMount () {
     this.setState({
       background: '',
       filter: ''
-    });
-    this.setBackground();
+    })
+    this.setBackground()
   }
   componentWillReceiveProps () {
     setTimeout(something => {
-      this.setBackground();
-    }, 300);
+      this.setBackground()
+    }, 300)
   }
   setBackground () {
-    console.log(this.props.background);
-    var self = this;
+    console.log(this.props.background)
+    var self = this
     if (!this.props.background) {
       self.setState({
         background: ''
       })
-      return;
+      return
     }
-    var blurred = `${config.http}/upload/background_blur/${this.props.background}`;
-    var original = `${config.http}/upload/background/${this.props.background}`;
+    var blurred = `${config.http}/upload/background_blur/${this.props.background}`
+    var original = `${config.http}/upload/background/${this.props.background}`
 
-    var imgSmall = new Image();
-    imgSmall.src = blurred;
+    var imgSmall = new Image()
+    imgSmall.src = blurred
 
     // 2: load large image
-    var imgLarge = new Image();
-    imgLarge.src = original;
+    var imgLarge = new Image()
+    imgLarge.src = original
 
     imgSmall.onload = function () {
       self.setState({
         background: blurred,
         filter: 'blur(10px)'
-      });
+      })
 
       imgLarge.onload = function () {
         self.setState({
           background: original,
           filter: 'none'
-        });
+        })
       }
-    };
+    }
   }
   render () {
     if (!this.props.background) {
       return (
         <div className='responsive_crop_fixed' id='background'></div>
-      );
+      )
     }
     return (
       <div
@@ -79,4 +79,4 @@ function mapStateToProps (state) {
   }
   return {}
 }
-export default connect(mapStateToProps)(Background);
+export default connect(mapStateToProps)(Background)
