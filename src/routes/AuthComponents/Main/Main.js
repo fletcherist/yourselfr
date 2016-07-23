@@ -1,16 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import s from '../AuthComponents.scss'
-// import EndlessFeed from 'components/EndlessFeed'
-import Footer from 'components/Footer'
-// import WantToRegister from '../WantToRegister'
-import { actions as feed } from 'store/modules/endlessFeed'
 import { connect } from 'react-redux'
+import s from '../AuthComponents.scss'
+import Footer from 'components/Footer'
+import { actions as feed } from 'store/modules/endlessFeed'
 
 import Logotype from '../Logotype'
 import Translate from 'react-translate-component'
 import { AuthPack } from 'components/Buttons/SocialButtons'
 
-// import { ButtonContainer, AuthenticateButton } from 'components/Buttons'
 class Main extends Component {
   static propTypes = {
     loadEndlessFeed: PropTypes.func.isRequired,
@@ -18,7 +15,7 @@ class Main extends Component {
     isFetching: PropTypes.bool.isRequired
   }
   componentWillMount () {
-    this.props.loadEndlessFeed()
+    // this.props.loadEndlessFeed()
   }
   render () {
     return (
@@ -26,7 +23,9 @@ class Main extends Component {
         <div className={s.loginFormContainer}>
           <Logotype />
           <Translate content='signup.message' className={s.titleAction} component='div' />
-          <AuthPack />
+          <div className={s.loginComponents}>
+            <AuthPack />
+          </div>
         </div>
         <Footer />
       </div>

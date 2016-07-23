@@ -37,7 +37,7 @@ class SignupForm extends Component {
   }
 
   checkUsername () {
-    if (!this.username.value || this.username.value === '') {
+    if (!this.username.input.value || this.username.input.value === '') {
       this.username.focus()
       return false
     }
@@ -46,12 +46,12 @@ class SignupForm extends Component {
     return true
   }
   checkEmail () {
-    if (this.email.value === '') {
+    if (this.email.input.value === '') {
       this.email.focus()
       return false
     }
 
-    if (!isValidEmail(this.email.value)) {
+    if (!isValidEmail(this.email.input.value)) {
       this.email.focus()
       this.setState({
         message: 'Почта введена некорректно.'
@@ -64,12 +64,12 @@ class SignupForm extends Component {
     return true
   }
   checkPassword () {
-    if (this.password.value === '') {
+    if (this.password.input.value === '') {
       this.password.focus()
       return false
     }
 
-    if (this.password.value < 6) {
+    if (this.password.input.value < 6) {
       this.setState({
         message: 'Минимальная длина пароля — 6 символов'
       })
@@ -83,7 +83,11 @@ class SignupForm extends Component {
   }
   register (e) {
     if (this.checkUsername() && this.checkEmail() && this.checkPassword()) {
-      this.props.register(this.username.value, this.email.value, this.password.value)
+      this.props.register(
+        this.username.input.value,
+        this.email.input.value,
+        this.password.input.value
+      )
       e.preventDefault()
       return false
     }
@@ -107,7 +111,9 @@ class SignupForm extends Component {
               className='input--ui'
               hintText={cp.translate('signup.username')}
               underlineShow={false}
-              ref={(r) => this.username = r}
+              ref={(r) => {
+                this.username = r
+              }}
             />
             <Divider />
             <TextField
@@ -129,7 +135,6 @@ class SignupForm extends Component {
         <RaisedButton
           disabled={this.props.isFetching.status}
           onClick={this.register.bind(this)}
-          primary
           fullWidth>
           <Translate content='signup.button' />
         </RaisedButton>

@@ -1,10 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import s from '../GetSomething.scss';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import s from '../GetSomething.scss'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
-import Navigation from 'components/Navigation';
-import { AvatarAndBackground } from 'components/Preferences/Photos';
+import Navbar from 'components/Navigation/Navbar'
+import RaisedButton from 'material-ui/RaisedButton'
+
+import { AvatarAndBackground } from 'components/Preferences/Photos'
 
 class GetPersonalized extends Component {
   static propTypes = {
@@ -12,20 +14,20 @@ class GetPersonalized extends Component {
   }
   render () {
     return (
-      <div className={s.container}>
-        <div className={s.middle}>
-          <div className={s.navigation}>
-            <Navigation />
+      <div>
+        <Navbar />
+        <div className={s.container}>
+          <div className={s.middle}>
+            <h1 className={s.greeting}>Сделай красиво.</h1>
+            <div className={s.info}>
+              Загрузите фото профиля, чтобы ваши друзья смогли узнать вас.
+            </div>
+            <AvatarAndBackground />
+            <div className='rate-empty-line-5'></div>
+            <Link to='/i/get-socialized'>
+              <RaisedButton fullWidth label='Готово!' />
+            </Link>
           </div>
-          <h1 className={s.greeting}>Сделайте всё красиво.</h1>
-          <div className={s.info}>
-            Загрузите фото профиля, чтобы ваши друзья смогли узнать вас.
-          </div>
-          <AvatarAndBackground />
-          <div className='rate-empty-line-5'></div>
-          <Link to='/i/get-socialized'>
-            <div className='button button--block button--material'>Готово!</div>
-          </Link>
         </div>
       </div>
     )
@@ -44,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetPersonalized);
+export default connect(mapStateToProps, mapDispatchToProps)(GetPersonalized)

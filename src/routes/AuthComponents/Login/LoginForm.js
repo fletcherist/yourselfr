@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { logIn } from '../../../store/modules/auth'
 import Logotype from '../Logotype'
 import { NoAccount } from '../Same'
-// import { AuthPack } from 'components/Buttons/SocialButtons'
+
+import { VkAuthButton } from 'components/Buttons/SocialButtons'
 
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -44,6 +45,7 @@ class LoginForm extends Component {
         <Translate className={s.titleAction} content='login.message' component='div' />
         <Paper>
           <form onSubmit={this.logIn.bind(this)}>
+            <VkAuthButton />
             <TextField
               className='input--ui'
               hintText={cp.translate('login.login')}

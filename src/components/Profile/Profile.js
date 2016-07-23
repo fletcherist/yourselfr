@@ -1,16 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import Counters from '../Counters';
-import {connect} from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import Counters from '../Counters'
+import {connect} from 'react-redux'
 
-import { Avatar, Username, Status } from './Elements';
-import SubscribeButton from '../SubscribeButton';
-import SocialNetworks from '../SocialNetworks';
-import Footer from '../Footer';
-import Megaphone from '../Megaphone';
-// import AttachEmail from '../AttachEmail';
-import FriendsSmall from '../FriendsSmall';
-import { actions as userActions } from '../../store/modules/user';
-import s from './Profile.scss';
+import { Avatar, Username, Status } from './Elements'
+import SubscribeButton from '../SubscribeButton'
+import SocialNetworks from '../SocialNetworks'
+import Footer from '../Footer'
+import Megaphone from '../Megaphone'
+// import AttachEmail from '../AttachEmail'
+import FriendsSmall from '../FriendsSmall'
+import { actions as userActions } from '../../store/modules/user'
+import s from './Profile.scss'
 
 class Profile extends Component {
   static propTypes = {
@@ -33,22 +33,22 @@ class Profile extends Component {
     isFollowing: PropTypes.bool.isRequired,
 
     me: PropTypes.object
-  };
+  }
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.alias !== this.props.alias;
+    return nextProps.alias !== this.props.alias
   }
 
   componentWillMount () {
-    document.body.style.minHeight = '101vh';
+    document.body.style.minHeight = '101vh'
   }
   componentWillUnmount () {
-    document.body.style.minHeight = '400px';
+    document.body.style.minHeight = '400px'
   }
   render () {
-    document.title = `${this.props.username} — Йорселфер`;
+    document.title = `${this.props.username} — Йорселфер`
 
-    const { username, alias, photo, status, online, stats, isFollowing, social } = this.props;
+    const { username, alias, photo, status, online, stats, isFollowing, social } = this.props
     return (
       <div>
         <div className='container--left padding-0 container--transparent container--user' id='profile'>
@@ -102,4 +102,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, userActions)(Profile);
+export default connect(mapStateToProps, userActions)(Profile)
