@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 
 import Navbar from 'components/Navigation/Navbar'
 import ShareWithSocial from 'components/ShareWithSocial'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class GetSocialized extends React.Component {
   render () {
@@ -18,7 +19,7 @@ class GetSocialized extends React.Component {
               <ShareWithSocial />
               <div className='rate-empty-line-2'></div>
               <Link to={`/${this.props.user.alias}`}>
-                <div className='button button--block button--material'>Перейти к профилю!</div>
+                <RaisedButton label='перейти к профилю →' />
               </Link>
             </div>
           </div>

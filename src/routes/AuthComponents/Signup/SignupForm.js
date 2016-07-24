@@ -105,9 +105,10 @@ class SignupForm extends Component {
       <div className={s.loginFormContainer}>
         <Logotype />
         <Translate className={s.titleAction} content='signup.benefits' component='div' />
-        <Paper zDepth={1}>
-          <form onSubmit={this.register.bind(this)}>
+        <form onSubmit={this.register.bind(this)}>
+          <Paper zDepth={1}>
             <TextField
+              autoFocus
               className='input--ui'
               hintText={cp.translate('signup.username')}
               underlineShow={false}
@@ -129,20 +130,19 @@ class SignupForm extends Component {
               underlineShow={false}
               ref={(r) => this.password = r}
             />
-          </form>
-
-        </Paper>
-        <RaisedButton
-          disabled={this.props.isFetching.status}
-          onClick={this.register.bind(this)}
-          fullWidth>
-          <Translate content='signup.button' />
-        </RaisedButton>
-        {this.state.message && (
-          <div className={s.errorMessage}>
-            {this.state.message}
-          </div>
-        )}
+          </Paper>
+          <RaisedButton
+            disabled={this.props.isFetching.status}
+            onClick={this.register.bind(this)}
+            type='submit'
+            fullWidth
+            label={<Translate content='signup.button' />} />
+          {this.state.message && (
+            <div className={s.errorMessage}>
+              {this.state.message}
+            </div>
+          )}
+        </form>
         <HaveAccount />
       </div>
     )

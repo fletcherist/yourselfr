@@ -5,8 +5,6 @@ import { logIn } from '../../../store/modules/auth'
 import Logotype from '../Logotype'
 import { NoAccount } from '../Same'
 
-import { VkAuthButton } from 'components/Buttons/SocialButtons'
-
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
@@ -43,10 +41,10 @@ class LoginForm extends Component {
       <div className={s.loginFormContainer}>
         <Logotype />
         <Translate className={s.titleAction} content='login.message' component='div' />
-        <Paper>
-          <form onSubmit={this.logIn.bind(this)}>
-            <VkAuthButton />
+        <form onSubmit={this.logIn.bind(this)}>
+          <Paper>
             <TextField
+              autoFocus
               className='input--ui'
               hintText={cp.translate('login.login')}
               underlineShow={false}
@@ -60,19 +58,20 @@ class LoginForm extends Component {
               underlineShow={false}
               ref={(r) => this.password = r}
             />
-          </form>
-        </Paper>
-        {this.props.isFetching.message && (
-          <div className={s.errorMessage}>
-            {this.props.isFetching.message}
-          </div>
-        )}
-        <RaisedButton
-          disabled={this.props.isFetching.status}
-          onClick={this.logIn.bind(this)}
-          fullWidth>
-          <Translate content='login.button' />
-        </RaisedButton>
+          </Paper>
+          <RaisedButton
+            disabled={this.props.isFetching.status}
+            onClick={this.logIn.bind(this)}
+            type='submit'
+            fullWidth
+            label={<Translate content='login.button' />}
+          />
+          {this.props.isFetching.message && (
+            <div className={s.errorMessage}>
+              {this.props.isFetching.message}
+            </div>
+          )}
+        </form>
         <NoAccount />
       </div>
     )
