@@ -11,13 +11,15 @@ class GetStarted extends Component {
     user: PropTypes.object.isRequired
   }
   render () {
-    const { username } = this.props.user
+    const { username, alias } = this.props.user
     return (
       <div>
         <Navbar />
         <div className={s.container}>
           <div className={s.middle}>
-            <h1 className={s.greeting}>Рады вас видеть, {username}.</h1>
+            <h1 className={s.greeting}>Рады вас видеть,<br />
+              <Link to={`/${alias}`}>{username}</Link>
+            </h1>
             <div className={s.info}>
               <div>Йорселфер — это бесконечный поток мнений о вас.</div>
               <span><b>Читайте</b> мнения о себе и <b>анонимно пишите</b>, что думаете о ваших друзьях. </span>

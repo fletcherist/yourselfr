@@ -19,7 +19,7 @@ class GetSocialized extends React.Component {
               <ShareWithSocial />
               <div className='rate-empty-line-2'></div>
               <Link to={`/${this.props.user.alias}`}>
-                <RaisedButton label='перейти к профилю →' />
+                <RaisedButton label='перейти к профилю →' fullWidth />
               </Link>
             </div>
           </div>

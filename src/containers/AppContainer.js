@@ -2,10 +2,6 @@ import React, { PropTypes } from 'react'
 import { Router } from 'react-router'
 import { Provider } from 'react-redux'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
-
 class AppContainer extends React.Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
@@ -19,11 +15,9 @@ class AppContainer extends React.Component {
 
     return (
       <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-          <div style={{ height: '100%' }}>
-            <Router history={history} children={routes} key={routerKey} />
-          </div>
-        </MuiThemeProvider>
+        <div style={{ height: '100%' }}>
+          <Router history={history} children={routes} key={routerKey} />
+        </div>
       </Provider>
     )
   }
