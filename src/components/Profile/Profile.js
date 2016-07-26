@@ -52,9 +52,13 @@ class Profile extends Component {
     return (
       <div>
         <div className='container--left padding-0 container--transparent container--user' id='profile'>
-          <Avatar photo={photo} alias={alias} />
-          <Username online={online} username={username} />
-          <Status status={status} />
+          <div className={s.profile}>
+            <Avatar photo={photo} alias={alias} />
+            <div className={s.info}>
+              <Username online={online} username={username} />
+              <Status status={status} />
+            </div>
+          </div>
           {alias !== this.props.me.alias && (
             <SubscribeButton
               alias={alias}
@@ -69,7 +73,10 @@ class Profile extends Component {
             alias={alias}
           />
         </div>
-        <SocialNetworks networks={social} />
+
+        <div className='hide-on-mobile'>
+          <SocialNetworks networks={social} />
+        </div>
         {this.props.isYourPage && (
           <div className='hide-on-mobile'>
             <Megaphone alias={alias} username={username} />

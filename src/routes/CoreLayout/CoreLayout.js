@@ -7,6 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 const palette = {
   yoColor: '#0088cc',
+  yoGreen: '#4CAF50',
   white: '#ffffff'
 }
 
@@ -20,6 +21,12 @@ const muiTheme = getMuiTheme({
     primaryColor: palette.yoColor,
     primaryTextColor: palette.white,
     fontWeight: 300
+  },
+  flatButton: {
+    textColor: palette.yoColor,
+    primaryTextColor: palette.yoGreen,
+    fontSize: 12,
+    fontWeight: 700
   }
 })
 

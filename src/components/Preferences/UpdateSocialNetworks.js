@@ -1,20 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import s from './UpdateSocialNetworks.scss';
-import x from '../Preferences/Preferences';
-import { connect } from 'react-redux';
-import cx from 'classnames';
-import classNames from 'classnames/bind';
+import React, { Component, PropTypes } from 'react'
+import s from './UpdateSocialNetworks.scss'
+import x from '../Preferences/Preferences'
+import { connect } from 'react-redux'
+import cx from 'classnames'
+import classNames from 'classnames/bind'
 
-import vkPicture from 'components/Buttons/SocialButtons/vk.svg';
-import twitterPicture from 'components/Buttons/SocialButtons/twitter.svg';
-import instagramPicture from 'components/Buttons/SocialButtons/instagram.png';
-import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg';
-import facebookPicture from 'components/Buttons/SocialButtons/facebook.svg';
+import vkPicture from 'components/Buttons/SocialButtons/vk.svg'
+import twitterPicture from 'components/Buttons/SocialButtons/twitter.svg'
+import instagramPicture from 'components/Buttons/SocialButtons/instagram.png'
+import tumblrPicture from 'components/Buttons/SocialButtons/tumblr.svg'
+import facebookPicture from 'components/Buttons/SocialButtons/facebook.svg'
 
-import { LoaderSmall } from '../Loader';
+import { LoaderSmall } from '../Loader'
 
-import { actions } from 'store/modules/socialNetworks';
-let c = classNames.bind(x);
+import { actions } from 'store/modules/socialNetworks'
+let c = classNames.bind(x)
 
 class UpdateSocialNetworks extends Component {
   static propTypes = {
@@ -29,16 +29,16 @@ class UpdateSocialNetworks extends Component {
     updateTwitter: PropTypes.func.isRequired,
     updateInstagram: PropTypes.func.isRequired,
     updateFacebook: PropTypes.func.isRequired
-  };
+  }
 
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       vk: this.props.vk,
       twitter: this.props.twitter,
       tumblr: this.props.tumblr,
       instagram: this.props.instagram
-    };
+    }
   }
 
   componentWillReceiveProps (props) {
@@ -50,27 +50,27 @@ class UpdateSocialNetworks extends Component {
     })
   }
   handleVK () {
-    this.props.updateVK(this.vk.value);
+    this.props.updateVK(this.vk.value)
   }
   handleTumblr () {
-    this.props.updateTumblr(this.tumblr.value);
+    this.props.updateTumblr(this.tumblr.value)
   }
   handleTwitter () {
-    this.props.updateTwitter(this.twitter.value);
+    this.props.updateTwitter(this.twitter.value)
   }
   handleInstagram () {
-    this.props.updateInstagram(this.instagram.value);
+    this.props.updateInstagram(this.instagram.value)
   }
   handleFacebook () {
-    this.props.updateFacebook(this.facebook.value);
+    this.props.updateFacebook(this.facebook.value)
   }
   handleChange (name, e) {
-    var change = {};
-    change[name] = e.target.value;
-    this.setState(change);
+    var change = {}
+    change[name] = e.target.value
+    this.setState(change)
   }
   render () {
-    const { isFetching } = this.props;
+    const { isFetching } = this.props
     return (
       <div>
         <h3>Социальные сети</h3>
@@ -175,4 +175,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, actions)(UpdateSocialNetworks);
+export default connect(mapStateToProps, actions)(UpdateSocialNetworks)

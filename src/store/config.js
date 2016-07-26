@@ -1,10 +1,10 @@
-// var http = 'http://localhost:80'
-// var ip = 'http://localhost:80'
-// var http = 'http://yourselfr.com'
-var http = 'http://yoursel.fr'
+// DEVELOPMENT MODE
+var ip = 'http://localhost:80'
+var http = 'http://localhost:80'
 
-// var http = 'http://185.18.54.156'
-var ip = 'http://185.18.54.156'
+// PRODUCTION MODE
+// var http = 'http://yoursel.fr'
+// var ip = 'http://185.18.54.156'
 
 // var http = process.env.NODE_ENV === 'development' ? 'http://localhost:80' : 'http://yourselfr.com';
 // if (__PROD__) {

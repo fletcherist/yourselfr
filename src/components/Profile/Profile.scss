@@ -1,5 +1,23 @@
 @import 'variables';
 
+.profile {
+	display: block;
+	@media screen and (max-width: 400px) {
+		display: flex;
+		max-width: 100%;
+		margin: 20px 30px;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}
+
+.info {
+	@media screen and (max-width: 400px) {
+		max-width: 70%;
+		width: 100%;
+	}
+}
+
 .avatar {
 	margin: 0px auto;
 	margin-top: 0px;
@@ -16,10 +34,12 @@
 		background-color: #fafafa;
 	}
 	@media screen and (max-width: 600px) {
+		align-self: flex-start;
 		padding-top: 15px;
+		margin: 0px;
 		img {
 			height: 100px;
-			width: 100px;
+			max-width: 100px;
 		}
 
 	}
@@ -34,7 +54,10 @@
 	font-weight: 500;
 	line-height: 130%;
 	word-wrap: break-word;
-	width: 215px;
+	max-width: 215px;
+	@media screen and (max-width: 400px) {
+		align-self: center;
+	}
 }
 
 .alias {

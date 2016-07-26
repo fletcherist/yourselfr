@@ -5,7 +5,6 @@ import s from './ShareWithSocial.scss'
 import { connect } from 'react-redux'
 import { selectText } from '../Toools'
 
-
 class ShareWithSocial extends Component {
   static propTypes = {
     alias: PropTypes.string.isRequired
@@ -29,7 +28,7 @@ class ShareWithSocial extends Component {
             <img src={vk} alt='Рассказать Вконтакте' className={s.network} />
           </a>
           <a href={`http://twitter.com/home?status=Узнайте обо мне больше на http://yoursel.fr/${this.props.alias}`} target='_blank'>
-            <img src={twitter} alt='Рассказать в Твиттере' className={s.network}/>
+            <img src={twitter} alt='Рассказать в Твиттере' className={s.network} />
           </a>
         </div>
       </div>

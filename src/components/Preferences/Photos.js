@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import UploadAvatar from './Upload/UploadAvatar';
-import UploadBackground from './Upload/UploadBackground';
-import RemoveAvatar from './Remove/RemoveAvatar';
-import RemoveBackground from './Remove/removeBackground';
-import s from './Preferences.scss';
+import React, { Component } from 'react'
+import UploadAvatar from './Upload/UploadAvatar'
+import UploadBackground from './Upload/UploadBackground'
+import RemoveAvatar from './Remove/RemoveAvatar'
+import RemoveBackground from './Remove/removeBackground'
+import s from './Preferences.scss'
 
 export class AvatarAndBackground extends Component {
   render () {
@@ -39,4 +39,4 @@ class PreferencesPhotos extends Component {
   }
 }
 
-export default PreferencesPhotos;
+export default PreferencesPhotos

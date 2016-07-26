@@ -1,19 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import s from './SocialNetworks.scss';
-import cx from 'classnames';
-import classNames from 'classnames/bind';
-import { formatSocialNetworks } from '../Toools';
+import React, { Component, PropTypes } from 'react'
+import s from './SocialNetworks.scss'
+import cx from 'classnames'
+import classNames from 'classnames/bind'
+import { formatSocialNetworks } from '../Toools'
 
-import vkPic from 'components/Buttons/SocialButtons/vk.svg';
-import twitterPic from 'components/Buttons/SocialButtons/twitter.svg';
-import instagramPic from 'components/Buttons/SocialButtons/instagram.png';
-import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg';
-import facebookPic from 'components/Buttons/SocialButtons/facebook.svg';
+import vkPic from 'components/Buttons/SocialButtons/vk.svg'
+import twitterPic from 'components/Buttons/SocialButtons/twitter.svg'
+import instagramPic from 'components/Buttons/SocialButtons/instagram.png'
+import tumblrPic from 'components/Buttons/SocialButtons/tumblr.svg'
+import facebookPic from 'components/Buttons/SocialButtons/facebook.svg'
 
-let c = classNames.bind(s);
+let c = classNames.bind(s)
 class SocialNetworks extends Component {
   constructor (props) {
-    super(props);
+    super(props)
 
     this.state = {
       networks: props.networks
@@ -21,7 +21,7 @@ class SocialNetworks extends Component {
   }
   static propTypes = {
     networks: PropTypes.object
-  };
+  }
 
   componentWillReceiveProps (props) {
     this.setState({
@@ -31,27 +31,27 @@ class SocialNetworks extends Component {
 
   // componentWillUpdate (nextProps) {
   //   if (nextProps.networks && this.props.networks) {
-  //     var current = nextProps.networks;
-  //     var old = this.props.networks;
+  //     var current = nextProps.networks
+  //     var old = this.props.networks
   //     if (current.vk !== old.vk ||
   //         current.twitter !== old.twitter ||
   //         current.tumblr !== old.tumblr ||
   //         current.instagram !== old.instagram ||
   //         current.facebook !== old.facebook) {
-  //       return true;
+  //       return true
   //     }
   //   }
-  //   return false;
+  //   return false
   // }
   render () {
-    var ifSocial = false;
+    var ifSocial = false
 
-    var networks = this.state.networks;
+    var networks = this.state.networks
     if (networks) {
       if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
-        ifSocial = true;
+        ifSocial = true
         networks = formatSocialNetworks(networks)
-        var { vk, twitter, tumblr, instagram, facebook } = networks;
+        var { vk, twitter, tumblr, instagram, facebook } = networks
       }
     }
     if (ifSocial) {
@@ -80,4 +80,4 @@ class SocialNetworks extends Component {
   }
 }
 
-export default SocialNetworks;
+export default SocialNetworks

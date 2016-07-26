@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import s from './Preferences.scss';
-import User from 'routes/User/containers/User';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import s from './Preferences.scss'
+import User from 'routes/User/containers/User'
 
 export class PreferencesContainer extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
-  };
+  }
 
   render () {
     var activeStyle = {
@@ -30,4 +30,4 @@ export class PreferencesContainer extends Component {
   }
 }
 
-export default PreferencesContainer;
+export default PreferencesContainer
