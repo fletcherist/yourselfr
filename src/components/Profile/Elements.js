@@ -20,14 +20,11 @@ export const Username = ({username, online}) => {
   if (username.length > 15) {
     usernameStyle.fontSize = 18
   }
-  if (online === true) {
-    usernameStyle.color = '#148bc3'
-  }
-  console.log('online +  ' + online)
+  console.log(online)
   return (
     <div className={s.username}>
       <span style={usernameStyle}>{username}</span>
-      {online === true && (
+      {online.status === true && (
         <div className={s.online} />
       )}
     </div>
