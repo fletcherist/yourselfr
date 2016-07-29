@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
-import s from './Navigation.scss';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import { loadUser } from '../../store/modules/user';
-import { isValidPhoto } from 'components/Toools';
+import React, { Component, PropTypes } from 'react'
+import classNames from 'classnames/bind'
+import s from './Navigation.scss'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { loadUser } from '../../store/modules/user'
+import { isValidPhoto } from 'components/Toools'
 
-let cx = classNames.bind(s);
+let cx = classNames.bind(s)
 
 const active = {
   backgroundColor: 'rgb(246, 246, 246)'
@@ -16,9 +16,9 @@ class Navigation extends Component {
     isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object,
     loadUser: PropTypes.func.isRequired
-  };
+  }
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       hideMenu: true
     }
@@ -85,7 +85,7 @@ class Navigation extends Component {
           </Link>
         )}
       </div>
-      );
+      )
   }
 }
 
@@ -100,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
     loadUser: (alias) => dispatch(loadUser(alias))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation)

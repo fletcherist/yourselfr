@@ -4,7 +4,7 @@ import s from '../AuthComponents.scss'
 import Footer from 'components/Footer'
 import { actions as feed } from 'store/modules/endlessFeed'
 
-import Logotype from '../Logotype'
+import Logotype from 'components/Logotype'
 import Translate from 'react-translate-component'
 import { AuthPack } from 'components/Buttons/SocialButtons'
 

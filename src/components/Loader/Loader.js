@@ -1,10 +1,10 @@
-import React from 'react';
-import cx from 'classnames';
-import s from './Loader.scss';
+import React from 'react'
+import cx from 'classnames'
+import s from './Loader.scss'
 
 class Loader extends React.Component {
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   render () {
     return (
@@ -17,4 +17,4 @@ export const LoaderSmall = () => (
   <div className={cx(s.spinner, s.spinnerSmall)}></div>
 )
 
-export default Loader;
+export default Loader

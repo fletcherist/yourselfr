@@ -1,7 +1,7 @@
-import React from 'react';
-import s from './AuthComponents.scss';
-import { Link } from 'react-router';
-import Translate from 'react-translate-component';
+import React from 'react'
+import s from './AuthComponents.scss'
+import { Link } from 'react-router'
+import Translate from 'react-translate-component'
 
 export const NoAccount = () => (
   <div className={s.sameContainer}>

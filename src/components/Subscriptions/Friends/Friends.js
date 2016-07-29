@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
-import s from '../Subscriptions.scss';
+import React, { Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import s from '../Subscriptions.scss'
 import { Link } from 'react-router'
 
-import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
-import { config } from '../../../store/config';
-import SubscribeButton from '../../SubscribeButton';
-import FriendsHeader from '../../Headers/FriendsHeader';
-import NoFriends from 'components/NoData/NoFriends';
+import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools'
+import { config } from '../../../store/config'
+import SubscribeButton from '../../SubscribeButton'
+import FriendsHeader from '../../Headers/FriendsHeader'
+import NoFriends from 'components/NoData/NoFriends'
 
 class Friends extends Component {
   static propTypes = {
@@ -24,16 +24,16 @@ class Friends extends Component {
   }
 
   render () {
-    const isAuthenticated = this.props.auth.authenticated;
-    const myUserId = this.props.auth.user._id;
+    const isAuthenticated = this.props.auth.authenticated
+    const myUserId = this.props.auth.user._id
 
-    var followersList;
+    var followersList
     if (!isEmpty(this.props.followers)) {
-      var followers = this.props.friends;
+      var followers = this.props.friends
       followersList = followers.map(function (follower) {
-        var photo = isValidPhoto(follower.photo);
-        var linkHref = '/' + follower.alias;
-        const myPageInList = follower._id === myUserId;
+        var photo = isValidPhoto(follower.photo)
+        var linkHref = '/' + follower.alias
+        const myPageInList = follower._id === myUserId
         return (
           <div>
             <div
@@ -67,7 +67,7 @@ class Friends extends Component {
             )}
           </div>
         )
-      });
+      })
     } else {
       followersList = undefined
     }
@@ -96,4 +96,4 @@ const mapStateToProps = (state) => {
     user: state.user
   }
 }
-export default connect(mapStateToProps)(Friends);
+export default connect(mapStateToProps)(Friends)

@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import s from './Photopost.scss';
-import { config } from '../../store/config';
+import React, { Component, PropTypes } from 'react'
+import s from './Photopost.scss'
+import { config } from '../../store/config'
 
 class Photopost extends Component {
   static propTypes = {
@@ -28,4 +28,4 @@ class Photopost extends Component {
   }
 }
 
-export default Photopost;
+export default Photopost

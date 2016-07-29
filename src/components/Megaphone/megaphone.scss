@@ -11,36 +11,35 @@ $megaphoneColor: #1d475d;
   color: $megaphoneColor;
   border-bottom: 0;
   padding: 0;
-  margin-top: 11px;
+  // margin-top: 11px;
   border-right: 0px;
 }
-
-.megaphone:after, .megaphone:before {
-  display: block;
-	border: solid transparent;
-	content: ' ';
-	height: 0;
-	bottom: 100%;
-	position: absolute;
-	width: 0;
-  left: 0px;
-}
-
-.megaphone:after {
-	border-width: 6px;
-	border-bottom-color: $megaphoneBackground;
-  margin-left: -6px;
-	left: 50%;
-}
-
-.megaphone:before {
-  margin-bottom: -2px;
-	border-width: 8px;
-	border-bottom-color: $megaphoneBorderColor;
-  left: 50%;
-  margin-left: -8px;
-  margin-bottom: 0px;
-}
+// .megaphone:after, .megaphone:before {
+//   display: block;
+// 	border: solid transparent;
+// 	content: ' ';
+// 	height: 0;
+// 	bottom: 100%;
+// 	position: absolute;
+// 	width: 0;
+//   left: 0px;
+// }
+//
+// .megaphone:after {
+// 	border-width: 6px;
+// 	border-bottom-color: $megaphoneBackground;
+//   margin-left: -6px;
+// 	left: 50%;
+// }
+//
+// .megaphone:before {
+//   margin-bottom: -2px;
+// 	border-width: 8px;
+// 	border-bottom-color: $megaphoneBorderColor;
+//   left: 50%;
+//   margin-left: -8px;
+//   margin-bottom: 0px;
+// }
 
 .text {
   padding: 10px 10px 5px;

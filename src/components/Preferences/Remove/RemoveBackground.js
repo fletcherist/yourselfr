@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { actions } from 'store/modules/preferences';
-import s from './Remove.scss';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { actions } from 'store/modules/preferences'
+import s from './Remove.scss'
 
 class RemoveAvatar extends Component {
   static propTypes = {
@@ -13,12 +13,12 @@ class RemoveAvatar extends Component {
     if (this.props.isRemoved) {
       return (
         <div className={s.removedPhoto}>фон успешно удалён</div>
-      );
+      )
     }
 
     return (
       <div onClick={() => this.props.removeBackground()} className={s.removePhoto}>удалить фон</div>
-    );
+    )
   }
 }
 
@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
     isRemoved: state.isFetching.removeBackground
   }
 }
-export default connect(mapStateToProps, actions)(RemoveAvatar);
+export default connect(mapStateToProps, actions)(RemoveAvatar)

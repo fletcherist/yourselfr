@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import s from './Buttons.scss';
-import Translate from 'react-translate-component';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import s from './Buttons.scss'
+import Translate from 'react-translate-component'
 
 export class ButtonContainer extends Component {
   static propTypes = {

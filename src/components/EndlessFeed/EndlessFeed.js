@@ -1,23 +1,23 @@
-import React, { Component, PropTypes } from 'react';
-import FeedPost from '../FeedPost';
-import Loader from '../Loader';
-import { isEmpty, arraysEqual } from '../Toools';
+import React, { Component, PropTypes } from 'react'
+import FeedPost from '../FeedPost'
+import Loader from '../Loader'
+import { isEmpty, arraysEqual } from '../Toools'
 
 class EndlessFeed extends Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       feed: []
     }
   }
 
   componentWillUpdate (nextProps) {
-    return !arraysEqual(this.props.feed, nextProps.feed);
+    return !arraysEqual(this.props.feed, nextProps.feed)
   }
 
   render () {
-    var endlessFeed = this.props.feed;
-    var endlessFeedArray;
+    var endlessFeed = this.props.feed
+    var endlessFeedArray
     if (endlessFeed && !isEmpty(endlessFeed) && Array.isArray(endlessFeed)) {
       endlessFeedArray = endlessFeed.map(function (post) {
         return (
@@ -31,7 +31,7 @@ class EndlessFeed extends Component {
             attachments={post.attachments}
           />
         )
-      });
+      })
     }
     return (
       <div className='endlessfeed__wrapper'>
@@ -48,4 +48,4 @@ EndlessFeed.propTypes = {
   feed: PropTypes.array.isRequired,
   isFetching: PropTypes.bool
 }
-export default EndlessFeed;
+export default EndlessFeed

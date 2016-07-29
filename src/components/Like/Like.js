@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
-import s from './Like.scss';
-import { connect } from 'react-redux';
-import { likePost } from '../../store/modules/posts';
+import React, { Component, PropTypes } from 'react'
+import classNames from 'classnames/bind'
+import s from './Like.scss'
+import { connect } from 'react-redux'
+import { likePost } from '../../store/modules/posts'
 
-let cx = classNames.bind(s);
+let cx = classNames.bind(s)
 
 class Like extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Like extends Component {
     type: PropTypes.string.isRequired
   };
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       active: this.props.isLiked || false,
       count: this.props.count || 0,
@@ -24,25 +24,25 @@ class Like extends Component {
   }
 
   toggle () {
-    var diff = 0;
+    var diff = 0
     if (this.state.active === false) {
-      diff = 1;
+      diff = 1
     } else {
-      diff = -1;
+      diff = -1
     }
     this.setState({
       active: !this.state.active,
       count: this.state.count + diff
     })
-    this.props.likePost(this.state.object, this.props.type);
-    console.log(this.props);
+    this.props.likePost(this.state.object, this.props.type)
+    console.log(this.props)
   }
   render () {
     var classes = cx({
       button: true,
       inactive: !this.state.active,
       active: this.state.active || this.props.isLiked
-    });
+    })
     return (
       <div className={s.like} onClick={this.toggle.bind(this)}>
         <div className={s.count}>
@@ -52,7 +52,7 @@ class Like extends Component {
         </div>
         <div className={classes}></div>
       </div>
-    );
+    )
   }
 }
 
@@ -64,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
     likePost: (id, type) => dispatch(likePost(id, type))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Like);
+export default connect(mapStateToProps, mapDispatchToProps)(Like)

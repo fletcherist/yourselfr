@@ -1,7 +1,7 @@
 import React from 'react'
 // import Slideshow from 'components/Slideshow/Slideshow';
-import s from './404.scss';
-import Navigation from 'components/Navigation';
+import s from './404.scss'
+import Navigation from 'components/Navigation'
 
 export class NotFoundView extends React.Component {
   render () {

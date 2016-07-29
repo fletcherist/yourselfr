@@ -36,7 +36,8 @@ class Profile extends Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.alias !== this.props.alias
+    // return nextProps.alias !== this.props.alias
+    return true
   }
 
   componentWillMount () {
@@ -48,10 +49,15 @@ class Profile extends Component {
   render () {
     document.title = `${this.props.username} — Йорселфер`
 
-    const { username, alias, photo, status, online, stats, isFollowing, social } = this.props
+    const { username, alias, photo,
+            status, online, stats,
+            isFollowing, social } = this.props
     return (
       <div>
-        <div className='container--left padding-0 container--transparent container--user' id='profile'>
+        <div
+          className='container--left
+           padding-0 container--transparent container--user'
+          id='profile'>
           <div className={s.profile}>
             <Avatar photo={photo} alias={alias} />
             <div className={s.info}>

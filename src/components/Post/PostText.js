@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import s from './Post.scss';
+import React, { Component, PropTypes } from 'react'
+import s from './Post.scss'
 
 class PostText extends Component {
   static propTypes = {
@@ -7,7 +7,7 @@ class PostText extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   render () {
     var formattedText = {
@@ -19,8 +19,8 @@ class PostText extends Component {
         style={formattedText}
         dangerouslySetInnerHTML={{__html: this.props.text}}>
       </span>
-    );
+    )
   }
 }
 
-export default PostText;
+export default PostText

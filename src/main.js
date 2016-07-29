@@ -1,6 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+// Instant usage
 import createBrowserHistory from 'history/lib/createBrowserHistory'
+// For cordova, phonegap
+// import createBrowserHistory from 'history/lib/createHashHistory'
+
 import { useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import createStore from './store/createStore'
@@ -103,3 +108,4 @@ if (__DEV__ && module.hot) {
 // Go!
 // ========================================================
 render()
+console.log('yourselfr is ready for use')

@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import { isNotEmptyString } from '../Toools';
-import s from './Profile.scss';
+import React, { Component, PropTypes } from 'react'
+import { isNotEmptyString } from '../Toools'
+import s from './Profile.scss'
 
 class StatusBox extends Component {
   static propTypes = {
@@ -8,14 +8,14 @@ class StatusBox extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return this.props.status !== nextProps.status;
+    return this.props.status !== nextProps.status
   }
 
   render () {
-    var isStatus = isNotEmptyString(this.props.status);
+    var isStatus = isNotEmptyString(this.props.status)
     return (
       <div>
-        { isStatus && (
+        {isStatus && (
           <div className='container--left'>
             <div className={s.status}>
               {this.props.status}
@@ -23,8 +23,8 @@ class StatusBox extends Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default StatusBox;
+export default StatusBox

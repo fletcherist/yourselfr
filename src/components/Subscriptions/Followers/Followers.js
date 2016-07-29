@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
-import s from '../Subscriptions.scss';
+import React, { Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import s from '../Subscriptions.scss'
 import { Link } from 'react-router'
 
-import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
-import { config } from '../../../store/config';
-import SubscribeButton from '../../SubscribeButton';
-import FollowersHeader from '../../Headers/FollowersHeader';
-import NoFollowers from 'components/NoData/NoFollowers';
+import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools'
+import { config } from '../../../store/config'
+import SubscribeButton from '../../SubscribeButton'
+import FollowersHeader from '../../Headers/FollowersHeader'
+import NoFollowers from 'components/NoData/NoFollowers'
 
 class Followers extends Component {
   static propTypes = {
@@ -17,23 +17,23 @@ class Followers extends Component {
     isFetching: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
-  };
+  }
 
   componentWillUpdate (nextProps) {
     return !arraysEqual(this.props.followers, nextProps.followers)
   }
 
   render () {
-    const isAuthenticated = this.props.auth.authenticated;
-    const myUserId = this.props.auth.user._id;
+    const isAuthenticated = this.props.auth.authenticated
+    const myUserId = this.props.auth.user._id
 
-    var followersList;
+    var followersList
     if (!isEmpty(this.props.followers)) {
-      var followers = this.props.followers;
+      var followers = this.props.followers
       followersList = followers.map(function (follower) {
-        var photo = isValidPhoto(follower.photo);
-        var linkHref = '/' + follower.alias;
-        const myPageInList = follower._id === myUserId;
+        var photo = isValidPhoto(follower.photo)
+        var linkHref = '/' + follower.alias
+        const myPageInList = follower._id === myUserId
         return (
           <div>
             {follower.background && (
@@ -66,7 +66,7 @@ class Followers extends Component {
             )}
           </div>
         )
-      });
+      })
     } else {
       followersList = undefined
     }
@@ -98,4 +98,4 @@ function mapStateToProps (state) {
     user: state.user
   }
 }
-export default connect(mapStateToProps)(Followers);
+export default connect(mapStateToProps)(Followers)

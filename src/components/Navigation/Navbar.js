@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import s from './Navbar.scss';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import Navigation from './Navigation';
-// import { loadUser } from '../../store/modules/user';
+import React, { Component } from 'react'
+import s from './Navbar.scss'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import Navigation from './Navigation'
+// import { loadUser } from '../../store/modules/user'
 
 class NavBar extends Component {
   static propTypes = {
 
-  };
+  }
 
   render () {
-    const { authenticated, alias, username } = this.props;
+    const { authenticated, alias, username } = this.props
     if (!authenticated) {
       return (
         <div className={s.navbar}>
@@ -36,9 +36,6 @@ class NavBar extends Component {
             <Link to={`/${alias}`}>{username}</Link>
           </div>
           <div className={s.item}>
-            <Link to={`/${alias}/friends`} activeClassName={s.active}>друзья</Link>
-          </div>
-          <div className={s.item}>
             <Link to='/feed' activeClassName={s.active}>лента</Link>
           </div>
           <div className={s.item}>
@@ -46,7 +43,7 @@ class NavBar extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -58,9 +55,9 @@ const mapStateToProps = state => ({
   alias: state.auth.user.alias,
   authenticated: state.auth.authenticated,
   username: state.auth.user.username
-});
+})
 
 // const mapDispatchToProps = dispatch => ({
 //   loadUser: alias => dispatch(loadUser(alias))
-// });
-export default connect(mapStateToProps)(NavBar);
+// })
+export default connect(mapStateToProps)(NavBar)

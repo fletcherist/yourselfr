@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import s from './Photopost.scss';
-import { config } from '../../store/config';
-import { isValidPhoto } from '../Toools';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import s from './Photopost.scss'
+import { config } from '../../store/config'
+import { isValidPhoto } from '../Toools'
+import { Link } from 'react-router'
 
 class Photopost extends Component {
   static propTypes = {
@@ -14,8 +14,8 @@ class Photopost extends Component {
   };
 
   render () {
-    var photo = isValidPhoto(this.props.attachmentsPhoto);
-    const { alias, text } = this.props;
+    var photo = isValidPhoto(this.props.attachmentsPhoto)
+    const { alias, text } = this.props
 
     return (
       <div>
@@ -28,7 +28,7 @@ class Photopost extends Component {
             </Link>
           </div>
           <div className={s.photoText}>
-            <div className={s.text} dangerouslySetInnerHTML={{__html: this.props.text}}></div>
+            <div className={s.text} dangerouslySetInnerHTML={{__html: text}}></div>
           </div>
         </div>
         <div className={s.background} style={{background: `url(${config.http}/upload/photo/${this.props.photo})`}}></div>
@@ -37,4 +37,4 @@ class Photopost extends Component {
   }
 }
 
-export default Photopost;
+export default Photopost

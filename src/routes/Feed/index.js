@@ -1,11 +1,11 @@
-import { authenticate } from 'store/modules/auth';
-import { loadUser } from 'store/modules/user';
+import { authenticate } from 'store/modules/auth'
+import { loadUser } from 'store/modules/user'
 export default store => ({
   path: 'feed',
   getComponent (nextState, cb) {
     require.ensure([], require => {
-      var Feed = require('components/Feed').default;
-      var authenticated = store.getState().auth.authenticated;
+      var Feed = require('components/Feed').default
+      var authenticated = store.getState().auth.authenticated
       if (authenticated) {
         if (store.getState().user.isLoaded === false) {
           store.dispatch(authenticate())
@@ -18,8 +18,8 @@ export default store => ({
           cb(null, Feed)
         }
       } else {
-        window.location.href = '/';
+        window.location.href = '/'
       }
-    }, 'feed');
+    }, 'feed')
   }
-});
+})

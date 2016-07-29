@@ -1,16 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import s from './CommentForm.scss';
-import cx from 'classnames';
-import { connect } from 'react-redux';
-import { postComment } from '../../store/modules/comments';
+import React, { Component, PropTypes } from 'react'
+import s from './CommentForm.scss'
+import cx from 'classnames'
+import { connect } from 'react-redux'
+import { postComment } from '../../store/modules/comments'
 
 class CommentForm extends Component {
   static propTypes = {
     postComment: PropTypes.func.isRequired,
-    post_id: PropTypes.string.isRequired
+    postId: PropTypes.string.isRequired
   };
   constructor () {
-    super();
+    super()
     this.state = {
       selected: false
     }
@@ -25,20 +25,20 @@ class CommentForm extends Component {
       this.setState({
         selected: false
       })
-    }, 200);
+    }, 200)
   }
 
   postComment () {
-    this.props.postComment(this.input.value, this.props.post_id);
-    this.input.value = '';
+    this.props.postComment(this.input.value, this.props.postId)
+    this.input.value = ''
   }
   render () {
     return (
       <div className={s.form} onFocus={() => this.focus()} onBlur={() => this.blur()}>
         <input className={cx('input', s.input)} placeholder='Написать комментарий..'
-              ref={(r) => this.input = r}/>
+          ref={(r) => this.input = r} />
         {this.state.selected && (
-          <div className={s.button} onClick={ this.postComment.bind(this) }>Отправить</div>
+          <div className={s.button} onClick={this.postComment.bind(this)}>Отправить</div>
         )}
       </div>
     )
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    postComment: (text, post_id) => dispatch(postComment(text, post_id))
+    postComment: (text, postId) => dispatch(postComment(text, postId))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

@@ -5,7 +5,7 @@ import { register } from 'store/modules/auth'
 
 import { isValidEmail } from 'components/Toools'
 import { routeActions } from 'react-router-redux'
-import Logotype from '../Logotype'
+import Logotype from 'components/Logotype'
 import { HaveAccount } from '../Same'
 // import { AuthPack } from 'components/Buttons/SocialButtons'
 

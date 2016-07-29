@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 class RegistrationDate extends Component {
   static propTypes = {
@@ -7,38 +7,38 @@ class RegistrationDate extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
 
   render () {
     if (!this.props.created_at) {
-      return (null);
+      return (null)
     }
-    var date = formatDate(this.props.created_at);
+    var date = formatDate(this.props.created_at)
     return (
       <div className='text-grey'>
         вы зарегистрировались:
         {' '}
         <b>{date}</b>
       </div>
-    );
+    )
   }
 }
 
 const formatDate = (date) => {
   if (!date) {
-    return false;
+    return false
   }
-  date = new Date(date);
-  var month = date.getMonth();
+  date = new Date(date)
+  var month = date.getMonth()
   if (month < 10) {
-    month = '0' + month;
+    month = '0' + month
   }
-  var day = date.getDate();
+  var day = date.getDate()
   if (date < 10) {
-    day = '0' + date;
+    day = '0' + date
   }
-  return (day + '.' + month + '.' + date.getFullYear());
+  return (day + '.' + month + '.' + date.getFullYear())
 }
 
 const mapStateToProps = (state) => {
@@ -47,4 +47,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(RegistrationDate);
+export default connect(mapStateToProps)(RegistrationDate)

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import WriteBox from './WriteBox';
+import React, { Component } from 'react'
+import WriteBox from './WriteBox'
 
 class OpenBox extends Component {
   static propTypes = {
@@ -11,8 +11,8 @@ class OpenBox extends Component {
       <div>
         <WriteBox isOpen />
       </div>
-    );
+    )
   }
 }
 
-export default OpenBox;
+export default OpenBox

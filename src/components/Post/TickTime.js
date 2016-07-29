@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { timePassed } from '../Toools';
+import React, { Component, PropTypes } from 'react'
+import { timePassed } from '../Toools'
 
 class TickTime extends Component {
   static propTypes = {
@@ -7,38 +7,38 @@ class TickTime extends Component {
   };
 
   constructor () {
-    super();
-    this.timePassed = timePassed;
+    super()
+    this.timePassed = timePassed
   }
 
   componentWillUpdate () {
-    var time = new Date(this.props.time);
-    var hours = time / 1000 / 60 / 60;
+    var time = new Date(this.props.time)
+    var hours = time / 1000 / 60 / 60
     if (hours > 1) {
-      return false;
+      return false
     }
 
-    console.log(time / 1000 / 60 / 60);
-    return true;
+    console.log(time / 1000 / 60 / 60)
+    return true
   }
 
   tickTime () {
-    var time = new Date(this.props.time);
-    var timePassed = this.timePassed(time);
+    var time = new Date(this.props.time)
+    var timePassed = this.timePassed(time)
     this.setState({
       time: timePassed.pronounce
     })
   }
   componentDidMount () {
-    this.loadInterval = setInterval(this.tickTime.bind(this), 1000);
+    this.loadInterval = setInterval(this.tickTime.bind(this), 1000)
   }
   componentWillUnmount () {
-    this.loadInterval && clearInterval(this.loadInterval);
-    this.loadInterval = false;
+    this.loadInterval && clearInterval(this.loadInterval)
+    this.loadInterval = false
   }
   componentWillMount () {
-    this.setState({time: ''});
-    this.tickTime();
+    this.setState({time: ''})
+    this.tickTime()
   }
 
   render () {
@@ -48,4 +48,4 @@ class TickTime extends Component {
   }
 }
 
-export default TickTime;
+export default TickTime

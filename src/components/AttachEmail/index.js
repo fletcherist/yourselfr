@@ -1,2 +1,2 @@
-import AttachEmail from './AttachEmail';
-export default AttachEmail;
+import AttachEmail from './AttachEmail'
+export default AttachEmail

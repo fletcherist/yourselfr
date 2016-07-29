@@ -17,13 +17,15 @@ class GetStarted extends Component {
         <Navbar />
         <div className={s.container}>
           <div className={s.middle}>
-            <h1 className={s.greeting}>Рады вас видеть,<br />
+            <h1 className={s.greeting}>Рады тебя видеть,<br />
               <Link to={`/${alias}`}>{username}</Link>
             </h1>
             <div className={s.info}>
-              <div>Йорселфер — это бесконечный поток мнений о вас.</div>
-              <span><b>Читайте</b> мнения о себе и <b>анонимно пишите</b>, что думаете о ваших друзьях. </span>
-              <span><b>Подпишитесь</b> на тех людей, мнения о которых вы хотите знать.</span>
+              <div>Йорселфер — это бесконечный поток анонимных мнений о тебе.</div>
+              <div className='rate-empty-line-5'></div>
+              <span><b>Читай</b> мнения о себе и пиши, что думаешь о твоих друзьях. </span><br />
+              <div className='rate-empty-line-2'></div>
+              <span><b>Подписывайся</b> на людей, чтобы узнать, что о них думают другие.</span>
             </div>
             <div className='rate-empty-line-2'></div>
             <Link to='/i/get-personalized'>

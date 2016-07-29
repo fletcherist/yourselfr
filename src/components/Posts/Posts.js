@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import s from './Posts.scss';
-import Post from '../Post';
-import { isEmpty, arraysEqual } from '../Toools';
-import {connect} from 'react-redux';
-import { actions as postsActions } from '../../store/modules/posts';
-import Loader from '../Loader';
-import NoPosts from '../NoData/NoPosts';
-import PostsHeader from '../Headers/PostsHeader';
+import React, { Component, PropTypes } from 'react'
+import s from './Posts.scss'
+import Post from '../Post'
+import { isEmpty } from '../Toools'
+import {connect} from 'react-redux'
+import { actions as postsActions } from '../../store/modules/posts'
+import Loader from '../Loader'
+import NoPosts from '../NoData/NoPosts'
+import PostsHeader from '../Headers/PostsHeader'
 
 class Posts extends Component {
   static propTypes = {
@@ -28,14 +28,14 @@ class Posts extends Component {
       count: this.props.count,
       postsLoaded: 25,
       height: 200
-    });
+    })
   }
 
   componentWillUpdate (nextProps) {
     if (this.props.posts[0] && nextProps.posts[0]) {
-      return this.props.posts[0]._id !== nextProps.posts[0]._id;
+      return this.props.posts[0]._id !== nextProps.posts[0]._id
     }
-    return false;
+    return false
   }
 
   componentDidMount () {
@@ -50,9 +50,9 @@ class Posts extends Component {
       // this.endlessFeed = false;
   }
   render () {
-    var self = this;
-    var posts = this.props.posts;
-    var postsArray;
+    var self = this
+    var posts = this.props.posts
+    var postsArray
     if (posts && !isEmpty(posts) && Array.isArray(posts)) {
       postsArray = posts.map(function (post) {
         return (
@@ -69,7 +69,7 @@ class Posts extends Component {
             removePost={self.props.removePost}
           />
         )
-      });
+      })
     }
     return (
       <div className='container--right padding-0' id='right'>

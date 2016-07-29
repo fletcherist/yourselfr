@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import s from './SmileBox.scss';
+import React, { Component } from 'react'
+import s from './SmileBox.scss'
 
 const smiles = [
   '😀', '😬', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😉', '😊', '🙂',
@@ -11,7 +11,7 @@ const smiles = [
   '🤖', '😺', '😸', '😹', '😻', '😽', '🙀', '😿', '😾', '🙌', '👏', '👋',
   '👍', '👊', '✊', '👌', '✋', '💪', '🙏', '👆', '👇', '👈', '👉', '🖕',
   '🤘', '💅'
-];
+]
 
 class SmileBox extends Component {
   componentWillMount () {
@@ -22,23 +22,23 @@ class SmileBox extends Component {
   showBox () {
     this.setState({
       style: {visibility: 'visible', display: 'block'}
-    });
+    })
   }
   hideBox () {
     this.setState({
       style: {visibility: 'hidden', display: 'none'}
-    });
-    var self = this;
+    })
+    var self = this
     setTimeout(() => {
       self.setState({
         style: {display: 'block'}
-      });
-    }, 500);
+      })
+    }, 500)
   }
   addSmile (smile) {
-    var textForm = document.getElementById('text-form');
-    textForm.innerHTML = textForm.innerHTML + smile + ' ';
-    this.hideBox();
+    var textForm = document.getElementById('text-form')
+    textForm.innerHTML = textForm.innerHTML + smile + ' '
+    this.hideBox()
   }
   render () {
     return (
@@ -61,4 +61,4 @@ class SmileBox extends Component {
   }
 }
 
-export default SmileBox;
+export default SmileBox

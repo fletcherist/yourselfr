@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import s from './Friends.scss';
-import { loadFriends } from '../../store/modules/friends';
-import { loadUser } from '../../store/modules/user';
-import { shuffle } from '../Toools';
-import cookie from 'react-cookie';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import s from './Friends.scss'
+import { loadFriends } from '../../store/modules/friends'
+import { loadUser } from '../../store/modules/user'
+import { shuffle } from '../Toools'
+import cookie from 'react-cookie'
 
 class Friends extends Component {
   static propTypes = {
@@ -14,48 +14,48 @@ class Friends extends Component {
     loadUser: PropTypes.func.isRequired
   };
   componentWillMount () {
-    var closeFriends = cookie.load('closeFriends');
-    this.setState({closed: closeFriends || false});
+    var closeFriends = cookie.load('closeFriends')
+    this.setState({closed: closeFriends || false})
     if (closeFriends !== false) {
-      this.props.loadFriends();
+      this.props.loadFriends()
     }
   }
 
   shouldComponentUpdate () {
     if (this.props.friends && this.props.friends.length > 0) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
   refresh () {
-    this.forceUpdate();
+    this.forceUpdate()
   }
 
   close () {
-    cookie.remove('closeFriends', { path: '/' });
-    cookie.save('closeFriends', true, { path: '/' });
+    cookie.remove('closeFriends', { path: '/' })
+    cookie.save('closeFriends', true, { path: '/' })
     this.setState({closed: true})
   }
 
   render () {
-    var user1 = '';
-    var user2 = '';
-    var user3 = '';
-    const { loadUser } = this.props;
-    console.log(this.props.friends);
+    var user1 = ''
+    var user2 = ''
+    var user3 = ''
+    const { loadUser } = this.props
+    console.log(this.props.friends)
     if (this.props.friends[0] && this.props.friends[1] && this.props.friends[2]) {
-      var { friends } = this.props;
-      friends = shuffle(friends);
-      user1 = friends[0];
-      user2 = friends[1];
-      user3 = friends[2];
+      var { friends } = this.props
+      friends = shuffle(friends)
+      user1 = friends[0]
+      user2 = friends[1]
+      user3 = friends[2]
     } else {
-      return (null);
+      return (null)
     }
 
     if (this.state.closed) {
-      return (null);
+      return (null)
     } else {
       return (
         <div className='container--left'>
@@ -68,7 +68,7 @@ class Friends extends Component {
             <Link to={`${user3.alias}`} onClick={() => loadUser(user3.alias)}><div style={{background: `url(${user3.photo})`}} className={s.avatar}></div></Link>
           </div>
         </div>
-      );
+      )
     }
   }
 }
@@ -84,4 +84,4 @@ const mapDispatchToProps = (dispatch) => {
     loadFriends: () => dispatch(loadFriends())
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Friends);
+export default connect(mapStateToProps, mapDispatchToProps)(Friends)

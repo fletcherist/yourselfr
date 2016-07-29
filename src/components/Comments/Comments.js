@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import { isEmpty, arraysEqual } from '../Toools';
-import { connect } from 'react-redux';
-import { loadUser } from '../../store/modules/user';
-import { removeComment } from '../../store/modules/comments';
-import Comment from '../Comment';
+import React, { Component, PropTypes } from 'react'
+import { isEmpty, arraysEqual } from '../Toools'
+import { connect } from 'react-redux'
+import { loadUser } from '../../store/modules/user'
+import { removeComment } from '../../store/modules/comments'
+import Comment from '../Comment'
 
 class Comments extends Component {
   static propTypes = {
@@ -14,17 +14,17 @@ class Comments extends Component {
   };
   shouldComponentUpdate (nextProps) {
     if (nextProps.comments.length === 0) {
-      return false;
+      return false
     }
     if (arraysEqual(nextProps.comments, this.props.comments)) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
   render () {
-    var comments = this.props.comments;
-    const { isYourPage, loadUser, removeComment } = this.props;
+    var comments = this.props.comments
+    const { isYourPage, loadUser, removeComment } = this.props
     if (comments && !isEmpty(comments) && Array.isArray(comments)) {
       return (
         <div>
@@ -58,4 +58,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)

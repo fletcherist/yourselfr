@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router';
-import s from './WantToRegister.scss';
-import Translate from 'react-translate-component';
+import React from 'react'
+import { Link } from 'react-router'
+import s from './WantToRegister.scss'
+import Translate from 'react-translate-component'
 
 class WantToRegister extends React.Component {
   constructor () {
-    super();
+    super()
     this.state = {
       step: 1
     }
@@ -23,4 +23,4 @@ class WantToRegister extends React.Component {
   }
 }
 
-export default WantToRegister;
+export default WantToRegister

@@ -1,15 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import s from 'components/Post/Post.scss';
-import cx from 'classnames/bind';
+import s from 'components/Post/Post.scss'
+import cx from 'classnames/bind'
 // import { config } from '../../store/config';
-import TickTime from '../Post/TickTime';
-import PostText from '../Post/PostText';
-import PhotopostFeed from 'components/Photopost/PhotopostFeed';
-import { Link } from 'react-router';
-import { isValidPhoto } from 'components/Toools';
+import TickTime from '../Post/TickTime'
+import PostText from '../Post/PostText'
+import PhotopostFeed from 'components/Photopost/PhotopostFeed'
+import { Link } from 'react-router'
+import { isValidPhoto } from 'components/Toools'
 
-let ccx = cx.bind(s);
+let ccx = cx.bind(s)
 class FeedPost extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
@@ -21,8 +21,8 @@ class FeedPost extends Component {
   };
 
   constructor (props) {
-    super(props);
-    this.displayName = '';
+    super(props)
+    this.displayName = ''
     this.state = {
       isHot: false
     }
@@ -34,12 +34,12 @@ class FeedPost extends Component {
       hot: this.state.isHot
     })
 
-    var isPhoto;
+    var isPhoto
     this.props.attachments &&
     this.props.attachments.photo &&
     this.props.attachments.photo !== 'undefined' ? isPhoto = true : isPhoto = false
 
-    const { username, alias } = this.props.user;
+    const { username, alias } = this.props.user
     return (
       <div className={s.postOne}>
         {!isPhoto && (
@@ -73,7 +73,7 @@ class FeedPost extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
-export default FeedPost;
+export default FeedPost

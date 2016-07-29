@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
 import { config } from '../config'
 import { fetchLogIn, fetchRegister } from './isFetching'
-import { routerActions } from 'react-router-redux'
+import { push } from 'react-router-redux'
 import ga from 'react-ga'
 import cookie from 'react-cookie'
 
@@ -166,7 +166,7 @@ export const logIn = (username, password) => {
         dispatch(fetchLogIn([true]))
         dispatch(authenticate())
         setTimeout(() => {
-          dispatch(routerActions.push('/i/get-started'))
+          dispatch(push('/i/get-started'))
         }, 1000)
         ga.event({
           category: 'User',
@@ -184,7 +184,9 @@ export const register = (username, email, password) => {
     console.log('do login')
 
     if (password.length < 6) {
-      return dispatch(fetchRegister([false, 'Допишите к паролю ещё пару символов.']))
+      return dispatch(fetchRegister(
+        [false, 'Допишите к паролю ещё пару символов.'])
+      )
     }
     fetch(`${config.http}/auth/signup`, {
       method: 'post',
@@ -206,7 +208,7 @@ export const register = (username, email, password) => {
         dispatch(fetchRegister(false))
         dispatch(authenticate())
         setTimeout(() => {
-          dispatch(routerActions.push('/i/get-started'))
+          dispatch(push('/i/get-started'))
         }, 1000)
         ga.event({
           category: 'User',

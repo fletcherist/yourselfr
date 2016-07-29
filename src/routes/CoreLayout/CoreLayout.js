@@ -5,11 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 // import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 
-const palette = {
-  yoColor: '#0088cc',
-  yoGreen: '#4CAF50',
-  white: '#ffffff'
-}
+import { palette } from 'store/config'
 
 const muiTheme = getMuiTheme({
   appBar: {
@@ -27,6 +23,10 @@ const muiTheme = getMuiTheme({
     primaryTextColor: palette.yoGreen,
     fontSize: 12,
     fontWeight: 700
+  },
+  toggle: {
+    thumbOnColor: palette.yoColor,
+    trackOnColor: palette.black
   }
 })
 

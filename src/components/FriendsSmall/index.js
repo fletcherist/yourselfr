@@ -1,2 +1,2 @@
-import FriendsSmall from './FriendsSmall';
-export default FriendsSmall;
+import FriendsSmall from './FriendsSmall'
+export default FriendsSmall

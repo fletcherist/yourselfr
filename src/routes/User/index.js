@@ -1,35 +1,38 @@
-// import { injectReducer } from '../../store/reducers';
+// import { injectReducer } from '../../store/reducers'
 
-import { loadUser } from 'store/modules/user';
-import { loadFollowers, loadFollowing } from 'store/modules/followers';
-import { loadFriends } from 'store/modules/friends';
+import { loadUser, getAlias } from 'store/modules/user'
+import { loadFollowers, loadFollowing } from 'store/modules/followers'
+import { loadFriends } from 'store/modules/friends'
 
 export default (store) => ({
   'path': ':user',
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
-      const User = require('./containers/User').default;
-      // const reducer = require('../../store/modules/user').default;
-      // injectReducer(store, {key: 'user', reducer});
+      const User = require('./containers/User').default
+      // const reducer = require('../../store/modules/user').default
+      // injectReducer(store, {key: 'user', reducer})
 
-      var currentAlias = store.getState().user.alias;
-      var alias = window.location.pathname.substr(1).split('/')[0];
+      var currentAlias = store.getState().user.alias
+      var alias = getAlias()
 
       if (currentAlias === alias) {
-        return cb(null, User);
+        return cb(null, User)
       }
       store.dispatch(loadUser())
         .then(
            result => { cb(null, User) },
-           error => { window.location.href = '/404'}
-        );
-    }, 'user');
+           error => {
+             window.location.href = '/404'
+             throw new Error(error)
+           }
+        )
+    }, 'user')
   },
   indexRoute: {
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        const Posts = require('components/Posts').default;
-        cb(null, Posts);
+        const Posts = require('components/Posts').default
+        cb(null, Posts)
       }, 'posts')
     }
   },
@@ -38,37 +41,37 @@ export default (store) => ({
       'path': 'followers',
       getComponent (nextState, cb) {
         require.ensure([], (require) => {
-          const Followers = require('components/Subscriptions/Followers').default;
+          const Followers = require('components/Subscriptions/Followers').default
 
           store.dispatch(loadFollowers())
             .then(
               result => cb(null, Followers)
-            );
-        }, 'followers');
+            )
+        }, 'followers')
       }
     },
     {
       'path': 'following',
       getComponent (nextState, cb) {
         require.ensure([], (require) => {
-          const Following = require('components/Subscriptions/Following').default;
+          const Following = require('components/Subscriptions/Following').default
 
           store.dispatch(loadFollowing())
             .then(
               result => cb(null, Following)
-            );
-        }, 'following');
+            )
+        }, 'following')
       }
     },
     {
       path: 'friends',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          const Friends = require('components/Subscriptions/Friends').default;
+          const Friends = require('components/Subscriptions/Friends').default
           store.dispatch(loadFriends())
             .then(
               result => cb(null, Friends)
-            );
+            )
         })
       }
     },
@@ -76,10 +79,10 @@ export default (store) => ({
       path: 'write',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          const WriteBox = require('components/WriteBox/OpenBox').default;
-          cb(null, WriteBox);
+          const WriteBox = require('components/WriteBox/OpenBox').default
+          cb(null, WriteBox)
         })
       }
     }
   ]
-});
+})

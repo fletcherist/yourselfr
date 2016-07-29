@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import s from './TextBox.scss';
+import React, { Component, PropTypes } from 'react'
+import s from './TextBox.scss'
 // import generatePhrase from './generatePhrase';
-import { focusDiv } from '../Toools';
+import { focusDiv } from '../Toools'
 
 class TextBox extends Component {
   static propTypes = {
@@ -9,7 +9,7 @@ class TextBox extends Component {
     alias: PropTypes.string.isRequired
   };
   shouldComponentUpdate (nextProps) {
-    return nextProps.username !== this.props.username;
+    return nextProps.username !== this.props.username
   }
   componentWillMount () {
     this.setState({
@@ -18,12 +18,12 @@ class TextBox extends Component {
         display: 'block'
       },
       focused: false
-    });
+    })
   }
 
   boxFocus () {
     if (this.state.focused) {
-      return false;
+      return false
     }
     this.setState({
       opacity: {
@@ -31,16 +31,16 @@ class TextBox extends Component {
         display: 'none'
       },
       focused: true
-    });
-    this.forceUpdate();
+    })
+    this.forceUpdate()
   }
   componentDidMount () {
     setTimeout(() => {
-      focusDiv(document.querySelector('#text-form'));
-    }, 100);
+      focusDiv(document.querySelector('#text-form'))
+    }, 100)
     document.onkeypress = () => {
       if (!this.state.focused) {
-        this.boxFocus();
+        this.boxFocus()
       }
     }
   }
@@ -64,8 +64,8 @@ class TextBox extends Component {
           {placeholder}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default TextBox;
+export default TextBox

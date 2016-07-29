@@ -1,2 +1,2 @@
-import Slideshow from './Slideshow';
-export default Slideshow;
+import Slideshow from './Slideshow'
+export default Slideshow

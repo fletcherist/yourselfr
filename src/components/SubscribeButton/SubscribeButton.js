@@ -2,9 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { subscribe } from '../../store/modules/user'
 import s from './SubscribeButton.scss'
-import classNames from 'classnames/bind'
-
-let cx = classNames.bind(s)
 
 import FlatButton from 'material-ui/FlatButton'
 

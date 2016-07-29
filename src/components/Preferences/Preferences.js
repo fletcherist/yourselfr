@@ -1,16 +1,15 @@
 import React, { Component, PropTypes } from 'react'
-import s from './Preferences.scss'
-import x from './UpdateSocialNetworks.scss'
+// import s from './Preferences.scss'
 import { connect } from 'react-redux'
 import { actions } from '../../store/modules/preferences'
-import classNames from 'classnames/bind'
 
-import { LoaderSmall } from '../Loader'
 import VkSupport from './Additional/VkSupport'
 import RegistrationDate from './Additional/RegistrationDate'
 import Email from './Additional/Email'
 
-let cx = classNames.bind(s)
+import { palette } from 'store/config'
+
+import TextField from 'material-ui/TextField'
 
 class Preferences extends Component {
   static propTypes = {
@@ -24,116 +23,63 @@ class Preferences extends Component {
     saveUsername: PropTypes.func.isRequired
   }
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      username: this.props.username,
-      alias: this.props.alias,
-      status: this.props.status
-    }
-  }
-
-  componentWillReceiveProps (props) {
-    this.setState({
-      username: props.username,
-      alias: props.alias,
-      status: props.status
-    })
-  }
-
-  handleChange (name, e) {
-    var change = {}
-    change[name] = e.target.value
-    this.setState(change)
-  }
   render () {
     const {isFetching} = this.props
     return (
       <div>
         <h3>имя</h3>
-        <div className={cx(x.innerAddon)}>
-          <input
-            value={this.state.username}
-            onChange={this.handleChange.bind(this, 'username')}
-            className={cx({
-              username: true,
-              fetchingForms: isFetching.username.status,
-              formError: isFetching.username.state === false,
-              formSuccess: isFetching.username.state === true
-            })}
-            onBlur={() => this.props.saveUsername(this.state.username)}
+        <div className='padding'>
+          <TextField
+            defaultValue={this.props.username}
+            onBlur={(e) => { this.props.saveUsername(e.target.value) }}
             ref={(r) => this.username = r}
+            hintText='имя пользователя'
+            fullWidth
+            errorStyle={
+              isFetching.username.state
+                ? {color: palette.yoGreen}
+                : {}
+            }
+            errorText={isFetching.username.message}
           />
-          <div className={x.rightAddon}>
-            {isFetching.username.status && (
-              <LoaderSmall />
-            )}
-          </div>
         </div>
-          {isFetching.username.message && (
-            <div className={cx({
-              state: true,
-              success: isFetching.username.state === true,
-              error: isFetching.username.state === false
-            })}>{isFetching.username.message}</div>
-          )}
 
         <h3>адрес страницы</h3>
         <small>поделитесь им с друзьями, чтобы они смогли найти вас</small>
-        <div className={cx(x.innerAddon)}>
-          <input
-            value={this.state.alias}
-            onChange={this.handleChange.bind(this, 'alias')}
-            className={cx({
-              alias: true,
-              fetchingForms: isFetching.alias.status,
-              formError: isFetching.alias.state === false,
-              formSuccess: isFetching.alias.state === true
-            })}
-            onBlur={() => this.props.saveAlias(this.state.alias)}
+        <div className='padding'>
+          <TextField
+            defaultValue={this.props.alias}
+            onBlur={(e) => { this.props.saveAlias(e.target.value) }}
             ref={(r) => this.alias = r}
+            hintText='адрес страницы'
+            fullWidth
+            errorStyle={
+              isFetching.alias.state
+                ? {color: palette.yoGreen}
+                : {}
+            }
+            errorText={isFetching.alias.message}
           />
-          <div className={x.rightAddon}>
-            {isFetching.alias.status && (
-              <LoaderSmall />
-            )}
-          </div>
         </div>
-        {isFetching.alias.message && (
-          <div className={cx({
-            state: true,
-            success: isFetching.alias.state === true,
-            error: isFetching.alias.state === false
-          })}>{isFetching.alias.message}</div>
-        )}
         <h3>о себе</h3>
-        <div className={cx(x.innerAddon)}>
-          <textarea
-            value={this.state.status}
-            onChange={this.handleChange.bind(this, 'status')}
-            className={cx({
-              status: true,
-              fetchingForms: isFetching.status.status,
-              formError: isFetching.status.state === false,
-              formSuccess: isFetching.status.state === true
-            })}
-            onBlur={() => this.props.saveStatus(this.state.status)}
+        <div className='padding'>
+          <TextField
+            defaultValue={this.props.status}
+            onBlur={(e) => { this.props.saveStatus(e.target.value) }}
             ref={(r) => this.status = r}
+            errorStyle={
+              isFetching.status.state
+                ? {color: palette.yoGreen}
+                : {}
+            }
+            errorText={isFetching.status.message}
+            multiLine
+            fullWidth
+            rows={3}
           />
-          <div className={x.rightAddon}>
-            {isFetching.status.status && (
-              <LoaderSmall />
-            )}
-          </div>
         </div>
-        {isFetching.status.message && (
-          <div className={cx({
-            stateStatus: true,
-            success: isFetching.status.state === true,
-            error: isFetching.status.state === false
-          })}>{isFetching.status.message}</div>
-        )}
         <div>
+          <div className='rate-empty-line-2'></div>
           <VkSupport />
           <RegistrationDate />
           <Email />

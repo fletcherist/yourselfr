@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import s from './NoData.scss';
-import Translate from 'react-translate-component';
+import React, { Component, PropTypes } from 'react'
+import s from './NoData.scss'
+import Translate from 'react-translate-component'
 
 class NoFollowing extends Component {
   static propTypes = {
@@ -8,7 +8,7 @@ class NoFollowing extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   render () {
     return (
@@ -18,4 +18,4 @@ class NoFollowing extends Component {
     )
   }
 }
-export default NoFollowing;
+export default NoFollowing

@@ -118,34 +118,6 @@ small {
   100% { background-position: 50px 50px }
 }
 
-.state {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  padding: 5px;
-  font-size: 11px;
-}
-.stateStatus {
-  margin-top: -3px;
-  margin-bottom: 20px;
-  padding: 5px;
-  font-size: 11px;
-}
-.success {
-  color: $yoGreen;
-  font-weight: bold;
-}
-.error {
-  color: $errorColor;
-  font-weight: bold;
-}
-
-.formError {
-  border-bottom: 1px solid $errorColor;
-}
-.formSuccess {
-  border-bottom: 1px solid $successColor;
-}
-
 .loader {
   margin-top: -5px;
   position: absolute;

@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import classNames from 'classnames/bind';
-import { connect } from 'react-redux';
-import { actions as feed } from '../../store/modules/endlessFeed';
-import s from './Headers.scss';
-let cx = classNames.bind(s);
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { actions as feed } from 'store/modules/endlessFeed'
+import s from './Headers.scss'
+
+import Toggle from 'material-ui/Toggle'
 
 class FeedHeader extends Component {
   static propTypes = {
@@ -12,9 +12,9 @@ class FeedHeader extends Component {
     username: PropTypes.string.isRequired,
     loadEndlessFeed: PropTypes.func.isRequired,
     loadFeed: PropTypes.func.isRequired
-  };
+  }
   constructor () {
-    super();
+    super()
     this.state = {
       selected: 1
     }
@@ -22,22 +22,29 @@ class FeedHeader extends Component {
 
   componentWillMount () {
     if (this.state.selected === 2) {
-      this.props.loadEndlessFeed();
+      this.props.loadEndlessFeed()
     } else {
-      this.props.loadFeed();
+      this.props.loadFeed()
     }
   }
-  changeSelector (selector) {
-    if (selector === this.state.selected) return false;
+  changeSelector () {
+    // if (selector === this.state.selected) return false
+    var selector = this.state.selected
+    if (selector === 1) selector = 2
+    else selector = 1
     this.setState({
       selected: selector
     })
-    if (this.state.selected === 1) this.props.loadEndlessFeed();
-    else this.props.loadFeed();
+    if (this.state.selected === 1) this.props.loadEndlessFeed()
+    else this.props.loadFeed()
   }
 
   render () {
-    const { alias, username } = this.props;
+    const { alias, username } = this.props
+    var label = 'твоя'
+    if (this.state.selected === 2) {
+      label = 'вся'
+    }
     return (
       <div className={s.blockTitle}>
         <div className={s.feedUser}>
@@ -46,11 +53,13 @@ class FeedHeader extends Component {
           <span className={s.navItem}>Лента</span>
         </div>
         <div className={s.pick}>
-          <div className={cx({param: true, selected: this.state.selected === 1})} onClick={() => this.changeSelector(1)}>личная</div>
-          <div className={cx({param: true, selected: this.state.selected === 2})} onClick={() => this.changeSelector(2)}>всеобщая</div>
+          <Toggle
+            onToggle={() => this.changeSelector()}
+            label={label}
+          />
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -58,4 +67,4 @@ const mapStateToProps = (state) => {
   return {
   }
 }
-export default connect(mapStateToProps, feed)(FeedHeader);
+export default connect(mapStateToProps, feed)(FeedHeader)

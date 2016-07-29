@@ -1,10 +1,10 @@
-import { authenticate } from 'store/modules/auth';
-import { loadUser } from 'store/modules/user';
+import { authenticate } from 'store/modules/auth'
+import { loadUser } from 'store/modules/user'
 export default (store) => ({
   'path': '/preferences',
   getComponent (nextState, cb) {
     require.ensure([], require => {
-      var PreferencesContainer = require('components/Preferences/Container').default;
+      var PreferencesContainer = require('components/Preferences/Container').default
       if (store.getState().user.isLoaded === false) {
         store.dispatch(authenticate())
         .then(response => store.dispatch(loadUser()))
@@ -15,14 +15,14 @@ export default (store) => ({
       } else {
         cb(null, PreferencesContainer)
       }
-    }, 'preferences_container');
+    }, 'preferences_container')
   },
   indexRoute: {
     getComponent (nextState, cb) {
       require.ensure([], require => {
-        var Preferences = require('components/Preferences').default;
+        var Preferences = require('components/Preferences').default
         cb(null, Preferences)
-      }, 'preferences_general');
+      }, 'preferences_general')
     }
   },
   childRoutes: [
@@ -30,8 +30,8 @@ export default (store) => ({
       path: 'photos',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          var Photos = require('components/Preferences/Photos').default;
-          cb(null, Photos);
+          var Photos = require('components/Preferences/Photos').default
+          cb(null, Photos)
         }, 'preferences_photos')
       }
     },
@@ -39,10 +39,10 @@ export default (store) => ({
       path: 'social',
       getComponent (nextState, cb) {
         require.ensure([], require => {
-          var SocialNetworks = require('components/Preferences/UpdateSocialNetworks').default;
+          var SocialNetworks = require('components/Preferences/UpdateSocialNetworks').default
           cb(null, SocialNetworks)
         }, 'preferences_social')
       }
     }
   ]
-});
+})

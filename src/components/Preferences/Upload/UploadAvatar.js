@@ -1,25 +1,25 @@
-import React, { Component, PropTypes } from 'react';
-import s from '../Preferences.scss';
-import { connect } from 'react-redux';
-import classNames from 'classnames/bind';
-import { loadAvatar } from 'store/modules/upload';
-import { LoaderSmall } from 'components/Loader';
+import React, { Component, PropTypes } from 'react'
+import s from '../Preferences.scss'
+import { connect } from 'react-redux'
+import classNames from 'classnames/bind'
+import { loadAvatar } from 'store/modules/upload'
+import { LoaderSmall } from 'components/Loader'
 
-let cx = classNames.bind(s);
+let cx = classNames.bind(s)
 
 class UploadAvatar extends Component {
   uploadAvatar () {
-    var photo = this.avatarForm;
-    var fd = new FormData();
-    fd.append('file', photo[0].files[0]);
-    this.props.loadAvatar(fd);
+    var photo = this.avatarForm
+    var fd = new FormData()
+    fd.append('file', photo[0].files[0])
+    this.props.loadAvatar(fd)
   }
 
   render () {
-    const { isFetching } = this.props;
-    const { state, status } = isFetching;
+    const { isFetching } = this.props
+    const { state, status } = isFetching
 
-    var icon;
+    var icon
     if (!status) {
       icon = <div className={s.photoPlus}>+</div>
     } else {
@@ -55,7 +55,7 @@ class UploadAvatar extends Component {
           />
         </form>
       </div>
-    );
+    )
   }
 }
 
@@ -75,4 +75,4 @@ function mapDispatchToProps (dispatch) {
     loadAvatar: (avatar) => dispatch(loadAvatar(avatar))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(UploadAvatar);
+export default connect(mapStateToProps, mapDispatchToProps)(UploadAvatar)

@@ -20,7 +20,7 @@ class ShareWithSocial extends Component {
           <div>
             <div id='selectable' className={s.link} ref={(r) => this.link = r}
               onClick={() => selectText('selectable')}>
-              http://yourselfr.com/<b>{this.props.alias}</b>
+              http://yoursel.fr/<b>{this.props.alias}</b>
             </div>
           </div>
           <div className='groupSeparator grey'><p>или</p></div>

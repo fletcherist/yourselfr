@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import s from './NoData.scss';
-import Translate from 'react-translate-component';
+import React, { Component, PropTypes } from 'react'
+import s from './NoData.scss'
+import Translate from 'react-translate-component'
 
 class NoPosts extends Component {
   static propTypes = {
@@ -8,24 +8,24 @@ class NoPosts extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   render () {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated } = this.props
     if (isAuthenticated) {
       return (
         <div className={s.noData}>
-          <Translate content='NoData.NoPosts.authenticated'/>
+          <Translate content='NoData.NoPosts.authenticated' />
         </div>
       )
     } else {
       return (
         <div className={s.noData}>
-          <Translate content='NoData.NoPosts.not_authenticated'/>
+          <Translate content='NoData.NoPosts.not_authenticated' />
         </div>
       )
     }
   }
 }
 
-export default NoPosts;
+export default NoPosts

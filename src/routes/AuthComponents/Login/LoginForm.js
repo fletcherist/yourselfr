@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import s from '../AuthComponents.scss'
 import { connect } from 'react-redux'
-import { logIn } from '../../../store/modules/auth'
-import Logotype from '../Logotype'
+import { logIn } from 'store/modules/auth'
+import Logotype from 'components/Logotype'
 import { NoAccount } from '../Same'
 
 import TextField from 'material-ui/TextField'

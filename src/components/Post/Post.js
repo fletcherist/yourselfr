@@ -1,17 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import Like from '../Like';
+import React, { Component, PropTypes } from 'react'
+import Like from '../Like'
 
-import s from './Post.scss';
-import cx from 'classnames/bind';
-import CommentForm from '../Comment/CommentForm';
-import Photopost from '../Photopost';
-import TickTime from './TickTime';
-import PostText from './PostText';
-import Comments from '../Comments';
+import s from './Post.scss'
+import cx from 'classnames/bind'
+import CommentForm from '../Comment/CommentForm'
+import Photopost from '../Photopost'
+import TickTime from './TickTime'
+import PostText from './PostText'
+import Comments from '../Comments'
 
-import { isHot } from '../Toools';
+import { isHot } from '../Toools'
 
-let ccx = cx.bind(s);
+import Chip from 'material-ui/Chip'
+
+let ccx = cx.bind(s)
 class Post extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
@@ -23,22 +25,22 @@ class Post extends Component {
     comments: PropTypes.array,
     isYourPage: PropTypes.bool.isRequired,
     removePost: React.PropTypes.func.isRequired
-  };
+  }
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       isHot: isHot(this.props.created_at),
       showCommentForm: false
     }
   }
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   openCommentForm () {
     this.setState({
       showCommentForm: !this.state.showCommentForm
     })
-    this.forceUpdate();
+    this.forceUpdate()
   }
   render () {
     let postClasses = ccx({
@@ -47,7 +49,7 @@ class Post extends Component {
       isLiked: this.state.isLiked
     })
 
-    var isPhoto;
+    var isPhoto
     this.props.attachments &&
     this.props.attachments.photo &&
     this.props.attachments.photo !== undefined ? isPhoto = true : isPhoto = false
@@ -87,8 +89,8 @@ class Post extends Component {
             <CommentForm post_id={this.props.id} />
           )}
       </div>
-      );
+      )
   }
 }
 
-export default Post;
+export default Post

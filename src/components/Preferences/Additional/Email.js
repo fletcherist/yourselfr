@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 class Email extends Component {
   static propTypes = {
@@ -7,12 +7,12 @@ class Email extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
 
   render () {
     if (!this.props.email) {
-      return (null);
+      return (null)
     }
     return (
       <div className='text-grey'>
@@ -20,7 +20,7 @@ class Email extends Component {
         {' '}
         <b>{this.props.email}</b>
       </div>
-    );
+    )
   }
 }
 
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Email);
+export default connect(mapStateToProps)(Email)

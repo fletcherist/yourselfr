@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import s from './WriteBox.scss';
-import { connect } from 'react-redux';
-import { actions as postsActions } from '../../store/modules/posts';
-import Modal from 'react-modal';
-import AttachPhoto from './AttachPhoto';
-import ModalStyles from './ModalStyles.js';
-import TextBox from '../TextBox';
-import SmileBox from '../SmileBox';
-import { isValidPhoto } from 'components/Toools';
+import React, { Component, PropTypes } from 'react'
+import s from './WriteBox.scss'
+import { connect } from 'react-redux'
+import { actions as postsActions } from '../../store/modules/posts'
+import Modal from 'react-modal'
+import AttachPhoto from './AttachPhoto'
+import ModalStyles from './ModalStyles.js'
+import TextBox from '../TextBox'
+// import SmileBox from '../SmileBox'
+import { isValidPhoto } from 'components/Toools'
 
 class WriteBox extends Component {
   static propTypes = {
@@ -21,7 +21,7 @@ class WriteBox extends Component {
   };
 
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       username: undefined,
       text: '',
@@ -37,27 +37,27 @@ class WriteBox extends Component {
       created_by: props.alias,
       text: '',
       isOpen: props.isOpen || false
-    });
+    })
   }
 
   handleSubmitButton (e) {
     var textBox = document.querySelector('#text-form')
-    var photo = document.querySelector('#input-value').value;
-    var preview = document.querySelector('#attach-preview');
-    var attachBlock = document.querySelector('#attach-block');
-    var text = textBox.textContent;
-    console.log(text);
+    var photo = document.querySelector('#input-value').value
+    var preview = document.querySelector('#attach-preview')
+    var attachBlock = document.querySelector('#attach-block')
+    var text = textBox.textContent
+    console.log(text)
     if (!photo && !text) {
-      textBox.focus();
+      textBox.focus()
     }
     if (/^\s+$/.test(text)) {
-      return textBox.focus();
+      return textBox.focus()
     }
-    this.props.sendPost(text, photo);
-    textBox.value = '';
-    preview.src = '';
+    this.props.sendPost(text, photo)
+    textBox.value = ''
+    preview.src = ''
     attachBlock.classList.add('hidden')
-    this.props.toggleModalBox();
+    this.props.toggleModalBox()
   }
 
   render () {
@@ -86,7 +86,7 @@ class WriteBox extends Component {
             </div>
           </div>
         </div>
-      </Modal>);
+      </Modal>)
   }
 }
 
@@ -113,4 +113,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, postsActions)(WriteBox);
+export default connect(mapStateToProps, postsActions)(WriteBox)

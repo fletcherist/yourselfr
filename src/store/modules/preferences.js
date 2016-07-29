@@ -1,16 +1,16 @@
-import { config } from '../config';
+import { config } from '../config'
 import { fetchUsername,
          fetchAlias,
          fetchStatus,
          fetchRemoveAvatar,
          fetchRemoveBackground
-} from './isFetching';
+} from './isFetching'
 
 import {
   changeUsername,
   changeAlias,
   changeStatus
-} from './auth';
+} from './auth'
 
 export const removeAvatar = () => {
   return (dispatch, getState) => {
@@ -22,8 +22,8 @@ export const removeAvatar = () => {
       }
     })
     .then(() => {
-      dispatch(fetchRemoveAvatar(true));
-    });
+      dispatch(fetchRemoveAvatar(true))
+    })
   }
 }
 
@@ -35,14 +35,14 @@ export const removeBackground = () => {
       headers: {'Content-type': config.post}
     })
     .then(() => {
-      dispatch(fetchRemoveBackground(true));
-    });
+      dispatch(fetchRemoveBackground(true))
+    })
   }
 }
 
 export const saveUsername = (username) => {
   return (dispatch, getState) => {
-    dispatch(fetchUsername({status: true}));
+    dispatch(fetchUsername({status: true}))
 
     if (username.length === 0) {
       return dispatch(fetchUsername({
@@ -59,9 +59,9 @@ export const saveUsername = (username) => {
       }))
     }
 
-    dispatch(changeUsername(username));
-    var body = createBody({username: username});
-    console.log(username);
+    dispatch(changeUsername(username))
+    var body = createBody({username: username})
+    console.log(username)
     fetch(`${config.http}/api/preferences/change/username`, {
       method: 'POST',
       headers: {'Content-type': config.post},
@@ -70,26 +70,24 @@ export const saveUsername = (username) => {
     })
     .then((r) => r.json())
     .then((res) => {
-      console.log(res);
+      console.log(res)
       if (res.status) {
       }
-      setTimeout(() => {
-        dispatch(fetchUsername({
-          status: false,
-          state: true,
-          message: 'Имя успешно обновлено.'
-        }));
-      }, 1000);
+      dispatch(fetchUsername({
+        status: false,
+        state: true,
+        message: 'Имя успешно обновлено.'
+      }))
     })
   }
 }
 
 export const saveAlias = (alias) => {
   return (dispatch, getState) => {
-    dispatch(fetchAlias({status: true}));
+    dispatch(fetchAlias({status: true}))
 
     // Check Alias for it's Right!
-    var regex = new RegExp(/^[a-z\d_]{1,32}$/g);
+    var regex = new RegExp(/^[a-z\d_]{1,32}$/g)
     if (!regex.test(alias)) {
       return dispatch(fetchAlias({
         status: false,
@@ -98,8 +96,8 @@ export const saveAlias = (alias) => {
       }))
     }
 
-    dispatch(changeAlias(alias));
-    var body = createBody({alias: alias});
+    dispatch(changeAlias(alias))
+    var body = createBody({alias: alias})
     fetch(`${config.http}/api/preferences/change/alias`, {
       method: 'POST',
       headers: {'Content-type': config.post},
@@ -108,34 +106,32 @@ export const saveAlias = (alias) => {
     })
     .then((r) => r.json())
     .then((res) => {
-      setTimeout(() => {
-        dispatch(fetchAlias({
-          status: false,
-          state: true,
-          message: 'Адрес успешно обновлён.'
-        }));
-      }, 1000);
+      dispatch(fetchAlias({
+        status: false,
+        state: true,
+        message: 'Адрес успешно обновлён.'
+      }))
     })
   }
 }
 
 export const saveStatus = (status) => {
-  console.log(status);
+  console.log(status)
   return (dispatch, getState) => {
-    dispatch(fetchStatus({status: true}));
+    dispatch(fetchStatus({status: true}))
     if (!status) {
-      status = '';
+      status = ''
     }
     if (status.length > 250) {
       dispatch(fetchStatus({
         status: false,
         state: false,
         message: 'Пожалуйста, не пишите себе так много!'
-      }));
+      }))
     }
-    dispatch(changeStatus(status));
+    dispatch(changeStatus(status))
 
-    var body = createBody({status: status});
+    var body = createBody({status: status})
     fetch(`${config.http}/api/preferences/change/status`, {
       method: 'POST',
       headers: {
@@ -146,29 +142,27 @@ export const saveStatus = (status) => {
     })
     .then((r) => r.json())
     .then((res) => {
-      console.log(res);
-      setTimeout(() => {
-        dispatch(fetchStatus({
-          status: false,
-          state: true,
-          message: 'Статус успешно обновлён.'
-        }));
-      }, 1000);
+      console.log(res)
+      dispatch(fetchStatus({
+        status: false,
+        state: true,
+        message: 'Статус успешно обновлён.'
+      }))
     })
   }
 }
 
 const createBody = (user) => {
-  var body = ``;
-  if (user.username) { body += `username=${user.username}&`; }
-  if (user.alias) { body += `alias=${user.alias}&`; }
-  if (user.status) { body += `status=${user.status}&`; }
-  if (user.vk) { body += `vk=${user.vk}&`; }
-  if (user.twitter) { body += `twitter=${user.twitter}&`; }
-  if (user.tumblr) { body += `tumblr=${user.tumblr}&`; }
-  if (user.instagram) { body += `instagram=${user.instagram}&`; }
+  var body = ''
+  if (user.username) { body += `username=${user.username}&` }
+  if (user.alias) { body += `alias=${user.alias}&` }
+  if (user.status) { body += `status=${user.status}&` }
+  if (user.vk) { body += `vk=${user.vk}&` }
+  if (user.twitter) { body += `twitter=${user.twitter}&` }
+  if (user.tumblr) { body += `tumblr=${user.tumblr}&` }
+  if (user.instagram) { body += `instagram=${user.instagram}&` }
 
-  return body;
+  return body
 }
 
 export const actions = {

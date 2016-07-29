@@ -1,15 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
-import s from '../Subscriptions.scss';
+import React, { Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import s from '../Subscriptions.scss'
 import { Link } from 'react-router'
 
-import { loadUser } from '../../../store/modules/user';
+import { loadUser } from '../../../store/modules/user'
 import { loadFollowing } from '../../../store/modules/followers'
-import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools';
-import { config } from '../../../store/config';
-import SubscribeButton from '../../SubscribeButton';
-import FollowingHeader from '../../Headers/FollowingHeader';
-import NoFollowing from 'components/NoData/NoFollowing';
+import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools'
+import { config } from '../../../store/config'
+import SubscribeButton from '../../SubscribeButton'
+import FollowingHeader from '../../Headers/FollowingHeader'
+import NoFollowing from 'components/NoData/NoFollowing'
 
 class Following extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class Following extends Component {
   };
 
   componentWillMount () {
-    this.props.loadFollowing();
+    this.props.loadFollowing()
   }
 
   componentWillUpdate (nextProps) {
@@ -30,16 +30,16 @@ class Following extends Component {
   }
 
   render () {
-    const isAuthenticated = this.props.auth.authenticated;
-    const myUserId = this.props.auth.user._id;
+    const isAuthenticated = this.props.auth.authenticated
+    const myUserId = this.props.auth.user._id
 
-    var followingList;
+    var followingList
     if (!isEmpty(this.props.following)) {
-      var following = this.props.following;
+      var following = this.props.following
       followingList = following.map(function (following) {
-        var photo = isValidPhoto(following.photo);
-        var linkHref = '/' + following.alias;
-        const myPageInList = following._id === myUserId;
+        var photo = isValidPhoto(following.photo)
+        var linkHref = '/' + following.alias
+        const myPageInList = following._id === myUserId
         return (
           <div>
             {following.background && (
@@ -72,9 +72,9 @@ class Following extends Component {
             )}
           </div>
         )
-      });
+      })
     } else {
-      followingList = '';
+      followingList = ''
     }
     return (
       <div className='container--right padding-0 container--subscriptions relative'>
@@ -108,4 +108,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Following);
+export default connect(mapStateToProps, mapDispatchToProps)(Following)

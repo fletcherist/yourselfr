@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import cx from 'classnames';
-import x from './megaphone.scss';
-import { selectText } from '../Toools';
-import cookie from 'react-cookie';
+import React, { Component, PropTypes } from 'react'
+import cx from 'classnames'
+import x from './megaphone.scss'
+import { selectText } from '../Toools'
+import cookie from 'react-cookie'
 // i am like this when the police finally finds me
 // dropped body on a slippy road
 // this shitty component is the last thing i will gift to this pathetic
@@ -13,19 +13,19 @@ class Megaphone extends Component {
     username: PropTypes.string.isRequired
   };
   componentWillMount () {
-    var closeFriends = cookie.load('closeMegaphone');
-    this.setState({closed: closeFriends || false});
+    var closeFriends = cookie.load('closeMegaphone')
+    this.setState({closed: closeFriends || false})
   }
 
   close () {
-    cookie.remove('closeMegaphone', { path: '/' });
-    cookie.save('closeMegaphone', true, { path: '/' });
+    cookie.remove('closeMegaphone', { path: '/' })
+    cookie.save('closeMegaphone', true, { path: '/' })
     this.setState({closed: true})
   }
 
   render () {
     if (this.state.closed) {
-      return (null);
+      return (null)
     }
     return (
       <div className={cx(x.megaphone, 'container--left')}>
@@ -45,8 +45,8 @@ class Megaphone extends Component {
             className={cx(x.button, x.tb)}>Тамблер</a>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Megaphone;
+export default Megaphone

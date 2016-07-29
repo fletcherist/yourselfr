@@ -21,5 +21,5 @@ export default function generatePhrase (username) {
   ]
 
   var random = Math.floor(Math.random() * phrases.length)
-  return phrases[random];
+  return phrases[random]
 }

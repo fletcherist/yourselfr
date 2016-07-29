@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import s from './NoData.scss';
-import Translate from 'react-translate-component';
+import React, { Component, PropTypes } from 'react'
+import s from './NoData.scss'
+import Translate from 'react-translate-component'
 
 class NoFollowers extends Component {
   static propTypes = {
@@ -8,15 +8,15 @@ class NoFollowers extends Component {
   };
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
   render () {
     return (
       <div className={s.noData}>
-        <Translate content='NoData.NoFollowers' username={this.props.username}/>
+        <Translate content='NoData.NoFollowers' username={this.props.username} />
       </div>
     )
   }
 }
 
-export default NoFollowers;
+export default NoFollowers

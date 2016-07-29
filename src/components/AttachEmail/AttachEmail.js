@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import s from './AttachEmail.scss';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import s from './AttachEmail.scss'
 
 class AttachEmail extends Component {
   static propTypes = {
     email: PropTypes.string
   };
   componentWillUpdate () {
-    return false;
+    return false
   }
   render () {
     return (
@@ -17,7 +17,7 @@ class AttachEmail extends Component {
           <input className={s.input} placeHolder='youremail@gmail.com' />
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => {
     email: state.auth.user.email
   }
 }
-export default connect(mapStateToProps)(AttachEmail);
+export default connect(mapStateToProps)(AttachEmail)

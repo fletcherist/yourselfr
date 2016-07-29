@@ -27,4 +27,4 @@ const ModalStyles = {
   }
 }
 
-export default ModalStyles;
+export default ModalStyles

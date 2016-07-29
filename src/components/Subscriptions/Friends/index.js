@@ -1,2 +1,2 @@
-import Friends from './Friends';
-export default Friends;
+import Friends from './Friends'
+export default Friends

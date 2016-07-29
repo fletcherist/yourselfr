@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { ending, hideBlocks } from '../Toools';
-import WriteBox from '../WriteBox';
-import s from './Headers.scss';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import { ending, hideBlocks } from '../Toools'
+import WriteBox from '../WriteBox'
+import s from './Headers.scss'
+import { Link } from 'react-router'
 
 class PostsHeader extends Component {
   static propTypes = {
@@ -20,18 +20,18 @@ class PostsHeader extends Component {
   toggleModalBox () {
     if (this.state.isOpen) {
       this.setState({isOpen: false})
-      hideBlocks(false);
+      hideBlocks(false)
     } else {
       this.setState({isOpen: true})
-      hideBlocks(true);
+      hideBlocks(true)
     }
   }
 
   render () {
-    var {count, username, alias} = this.props;
-    var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений']);
+    var {count, username, alias} = this.props
+    var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений'])
     if (!username) {
-      username = 'Пользователь';
+      username = 'Пользователь'
     }
     return (
       <div className={s.blockTitle}>
@@ -40,7 +40,9 @@ class PostsHeader extends Component {
           <span className={s.separator}></span>
           <span className={s.navItem}>{count} {postsPronounce}</span>
         </div>
-        <span className={s.blockTitleRight} onClick={this.toggleModalBox.bind(this)}>Оставить мнение</span>
+        <span
+          className={s.blockTitleRight}
+          onClick={this.toggleModalBox.bind(this)}>Оставить мнение</span>
         <WriteBox
           isOpen={this.state.isOpen}
           toggleModalBox={this.toggleModalBox.bind(this)}
@@ -50,4 +52,4 @@ class PostsHeader extends Component {
   }
 }
 
-export default PostsHeader;
+export default PostsHeader

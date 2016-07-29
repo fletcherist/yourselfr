@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
-import s from './Profile.scss';
-import { Link } from 'react-router';
-import { isValidPhoto } from '../Toools';
+import React, { PropTypes } from 'react'
+import s from './Profile.scss'
+import { Link } from 'react-router'
+import { isValidPhoto } from '../Toools'
 
 export const Avatar = ({photo, alias}) => (
   <div className={s.avatar}>
@@ -18,12 +18,12 @@ Avatar.propTypes = {
 export const Username = ({username, online}) => {
   var usernameStyle = {fontSize: 22}
   if (username.length > 15) {
-    usernameStyle.fontSize = 18;
+    usernameStyle.fontSize = 18
   }
   if (online === true) {
-    usernameStyle.color = '#148bc3';
+    usernameStyle.color = '#148bc3'
   }
-  console.log('online +  ' + online);
+  console.log('online +  ' + online)
   return (
     <div className={s.username}>
       <span style={usernameStyle}>{username}</span>
