@@ -8,6 +8,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { palette } from 'store/config'
 
 const muiTheme = getMuiTheme({
+  palette: {
+    primaryColor: palette.yoColor,
+    secondaryColor: palette.yoColor,
+    focusColor: palette.yoColor,
+    accent1Color: palette.yoColor
+  },
   appBar: {
     height: 50,
     fontSize: 19
@@ -27,6 +33,16 @@ const muiTheme = getMuiTheme({
   toggle: {
     thumbOnColor: palette.yoColor,
     trackOnColor: palette.black
+  },
+  textField: {
+    focusColor: palette.yoColor
+  },
+  tabs: {
+    backgroundColor: palette.greyBackground,
+    textColor: palette.yoColor2,
+    selectedTextColor: palette.yoColor,
+    focusColor: palette.yoColor
+
   }
 })
 

@@ -12,8 +12,6 @@ import NoFollowers from 'components/NoData/NoFollowers'
 class Followers extends Component {
   static propTypes = {
     followers: PropTypes.array.isRequired,
-    loadFollowers: PropTypes.func.isRequired,
-    loadUser: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired

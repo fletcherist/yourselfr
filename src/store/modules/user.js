@@ -55,6 +55,7 @@ export function getAlias () {
 
 const loadUserPatch = createAction(LOAD_USER)
 export const loadUser = (alias) => {
+  console.log('trying to load ')
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       dispatch(fetchUser({status: true}))
@@ -91,8 +92,9 @@ export const loadUser = (alias) => {
           .then((data) => {
             dispatch(fetchUser({status: false}))
             if (!data.user) {
-              resolve()
+              return reject()
             }
+            console.log(data)
             data.user.isLoaded = true
             dispatch(loadUserPatch(data.user))
             dispatch(loadPostsPatch(data.posts))

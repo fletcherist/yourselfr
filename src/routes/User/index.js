@@ -4,6 +4,8 @@ import { loadUser, getAlias } from 'store/modules/user'
 import { loadFollowers, loadFollowing } from 'store/modules/followers'
 import { loadFriends } from 'store/modules/friends'
 
+import { push } from 'react-router-redux'
+
 export default (store) => ({
   'path': ':user',
   getComponent (nextState, cb) {
@@ -20,12 +22,18 @@ export default (store) => ({
       }
       store.dispatch(loadUser())
         .then(
-           result => { cb(null, User) },
-           error => {
-             window.location.href = '/404'
-             throw new Error(error)
-           }
-        )
+         result => { cb(null, User) },
+         error => {
+           console.log(error)
+           store.dispatch(push('/404'))
+           throw new Error(error)
+         })
+        .catch(e => {
+          console.log(e)
+        })
+
+
+
     }, 'user')
   },
   indexRoute: {
@@ -45,7 +53,10 @@ export default (store) => ({
 
           store.dispatch(loadFollowers())
             .then(
-              result => cb(null, Followers)
+              result => cb(null, Followers),
+              error => {
+                console.log(error)
+              }
             )
         }, 'followers')
       }
@@ -58,7 +69,10 @@ export default (store) => ({
 
           store.dispatch(loadFollowing())
             .then(
-              result => cb(null, Following)
+              result => cb(null, Following),
+              error => {
+                console.log(error)
+              }
             )
         }, 'following')
       }

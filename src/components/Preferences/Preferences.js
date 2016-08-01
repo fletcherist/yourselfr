@@ -41,6 +41,7 @@ class Preferences extends Component {
                 : {}
             }
             errorText={isFetching.username.message}
+            name='username'
           />
         </div>
 
@@ -59,6 +60,7 @@ class Preferences extends Component {
                 : {}
             }
             errorText={isFetching.alias.message}
+            name='alias'
           />
         </div>
         <h3>о себе</h3>
@@ -75,7 +77,7 @@ class Preferences extends Component {
             errorText={isFetching.status.message}
             multiLine
             fullWidth
-            rows={3}
+            name='status'
           />
         </div>
         <div>

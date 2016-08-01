@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import { ending, hideBlocks } from '../Toools'
+import { ending } from '../Toools'
 import WriteBox from '../WriteBox'
 import s from './Headers.scss'
-import { Link } from 'react-router'
 
 class PostsHeader extends Component {
   static propTypes = {
@@ -20,10 +19,8 @@ class PostsHeader extends Component {
   toggleModalBox () {
     if (this.state.isOpen) {
       this.setState({isOpen: false})
-      hideBlocks(false)
     } else {
       this.setState({isOpen: true})
-      hideBlocks(true)
     }
   }
 
@@ -34,19 +31,8 @@ class PostsHeader extends Component {
       username = 'Пользователь'
     }
     return (
-      <div className={s.blockTitle}>
-        <div className={s.postsUser}>
-          <Link to={`/${alias}`} className={s.navLink}>{username}</Link>
-          <span className={s.separator}></span>
-          <span className={s.navItem}>{count} {postsPronounce}</span>
-        </div>
-        <span
-          className={s.blockTitleRight}
-          onClick={this.toggleModalBox.bind(this)}>Оставить мнение</span>
-        <WriteBox
-          isOpen={this.state.isOpen}
-          toggleModalBox={this.toggleModalBox.bind(this)}
-        />
+      <div className={s.blockTitlePosts}>
+        <WriteBox />
       </div>
     )
   }

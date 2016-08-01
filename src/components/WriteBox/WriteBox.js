@@ -2,12 +2,16 @@ import React, { Component, PropTypes } from 'react'
 import s from './WriteBox.scss'
 import { connect } from 'react-redux'
 import { actions as postsActions } from '../../store/modules/posts'
-import Modal from 'react-modal'
-import AttachPhoto from './AttachPhoto'
-import ModalStyles from './ModalStyles.js'
-import TextBox from '../TextBox'
+// import AttachPhoto from './AttachPhoto'
+// import TextBox from '../TextBox'
 // import SmileBox from '../SmileBox'
-import { isValidPhoto } from 'components/Toools'
+// import { isValidPhoto } from 'components/Toools'
+
+import TextField from 'material-ui/TextField'
+import IconButton from 'material-ui/IconButton'
+import SendIcon from 'material-ui/svg-icons/content/send'
+
+import { palette } from 'store/config'
 
 class WriteBox extends Component {
   static propTypes = {
@@ -15,9 +19,7 @@ class WriteBox extends Component {
     alias: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     photo: PropTypes.string.isRequired,
-    isYourPage: PropTypes.bool.isRequired,
-    isOpen: PropTypes.bool.isRequired,
-    toggleModalBox: PropTypes.func.isRequired
+    isYourPage: PropTypes.bool.isRequired
   };
 
   constructor (props) {
@@ -40,53 +42,71 @@ class WriteBox extends Component {
     })
   }
 
+  componentDidMount () {
+    console.log(this.textField)
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13 && e.metaKey) {
+        this.handleSubmitButton(e)
+      }
+    })
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('keydown', () => {})
+  }
+
   handleSubmitButton (e) {
-    var textBox = document.querySelector('#text-form')
-    var photo = document.querySelector('#input-value').value
-    var preview = document.querySelector('#attach-preview')
-    var attachBlock = document.querySelector('#attach-block')
-    var text = textBox.textContent
-    console.log(text)
-    if (!photo && !text) {
-      textBox.focus()
+    console.log(this.textField)
+    var text = this.textField.getValue()
+    var photo = false
+    if (/^\s+$/.test(text) || !text) {
+      return this.textField.input.refs.input.focus()
     }
-    if (/^\s+$/.test(text)) {
-      return textBox.focus()
-    }
+
     this.props.sendPost(text, photo)
-    textBox.value = ''
-    preview.src = ''
-    attachBlock.classList.add('hidden')
-    this.props.toggleModalBox()
+
+    this.setState({text: ''})
+
+    setTimeout(() => {
+      return this.textField.input.refs.input.focus()
+    }, 200)
+    // preview.src = ''
+    // attachBlock.classList.add('hidden')
+  }
+
+  updateValue (e) {
+    this.setState({text: e.target.value})
   }
 
   render () {
     return (
-      <Modal
-        isOpen={this.props.isOpen}
-        style={ModalStyles}
-        onRequestClose={this.props.toggleModalBox}
-        closeTimeoutMS={300}>
-        <div className={s.container}>
-          <GreetingHeader
-            username={this.props.username}
-            photo={this.props.photo}
-          />
-          <TextBox username={this.props.username} alias={this.props.alias} />
-          <div id='attach-block' className='hidden'>
-            <div className={s.plus}>+</div>
-            <img id='attach-preview' className={s.attachPreview} />
-          </div>
-          <div className={s.additional}>
-            <AttachPhoto />
-            <div
-              className={s.buttonSubmit}
-              onClick={this.handleSubmitButton.bind(this)}>
-              Отправить
-            </div>
-          </div>
+      <div>
+        <TextField
+          style={{margin: 0, padding: 0}}
+          textareaStyle={{paddingLeft: 15, paddingBottom: 0}}
+          hintStyle={{
+            paddingLeft: 15
+          }}
+          underlineStyle={{
+            bottom: 0
+          }}
+          hintText='Что ты думаешь обо мне?'
+          defaultValue=''
+          autoFocus fullWidth multiLine
+          value={this.state.text}
+          onChange={(e) => this.updateValue(e)}
+          ref={(r) => this.textField = r}
+        />
+        <div className={s.actions}>
+          <IconButton
+            onClick={this.handleSubmitButton.bind(this)}>
+            <SendIcon
+              color={palette.yoColor}
+            />
+          </IconButton>
         </div>
-      </Modal>)
+      </div>
+    )
   }
 }
 
@@ -94,9 +114,6 @@ class WriteBox extends Component {
 
 const GreetingHeader = ({username, photo}) => (
   <div className={s.header}>
-    <div className={s.left}>
-      <img src={isValidPhoto(photo)} className={s.avatar} />
-    </div>
     <div className={s.right}>
       <div className={s.greeting}>{username}</div>
       <div className={s.action}>Расскажи обо мне.</div>

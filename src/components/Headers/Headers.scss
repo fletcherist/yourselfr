@@ -9,6 +9,13 @@
   border-bottom: 1px solid $borderColor;
   border-radius: 3px 3px 0px 0px;
 }
+
+.blockTitlePosts {
+  padding-top: 10px;
+  background-color: $greyBackground;
+  position: relative;
+}
+
 .blockTitleRight {
   color: $yoColor;
   float: right;

@@ -1,5 +1,6 @@
 import { authenticate } from 'store/modules/auth'
 import { loadUser } from 'store/modules/user'
+
 export default store => ({
   path: 'feed',
   getComponent (nextState, cb) {
