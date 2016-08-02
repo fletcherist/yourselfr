@@ -10,6 +10,9 @@ import Preferences from './Preferences'
 import Photos from './Photos'
 import SocialNetworks from './UpdateSocialNetworks'
 
+import { push } from 'react-router-redux'
+import { connect } from 'react-redux'
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -24,22 +27,63 @@ const styles = {
   }
 }
 
-export class PreferencesContainer extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  }
+const _preferences = {
+  default: '/preferences',
+  photos: '/preferences/photos',
+  social: '/preferences/social'
+}
 
+export class PreferencesContainer extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      slideIndex: 0
+    let slideIndex = 0
+
+    switch (document.location.pathname) {
+      case _preferences.default: slideIndex = 0; break
+      case _preferences.photos: slideIndex = 1; break
+      case _preferences.social: slideIndex = 2; break
+      default: slideIndex = 0; break
     }
+    this.state = { slideIndex: slideIndex }
+
+    this.listener = this.listener.bind(this)
+  }
+
+  componentDidMount () {
+    window.addEventListener('keydown', this.listener)
+  }
+  componentWillUnmount () {
+    window.removeEventListener('keydown', this.listener)
+  }
+  listener (e) {
+    let slideIndex = this.state.slideIndex
+    switch (e.keyCode) {
+      case 39: slideIndex += 1; break
+      case 37: slideIndex -= 1; break
+      default: slideIndex = 0; break
+    }
+    if (slideIndex > 2) {
+      slideIndex = 2
+    }
+    if (slideIndex < 0) {
+      slideIndex = 0
+    }
+
+    this.handleChange(slideIndex)
   }
 
   handleChange = (value) => {
     this.setState({
       slideIndex: value
     })
+
+    const { dispatch } = this.props
+    switch (value) {
+      case 0: dispatch(push(_preferences.default)); break
+      case 1: dispatch(push(_preferences.photos)); break
+      case 2: dispatch(push(_preferences.social)); break
+      default: dispatch(push(_preferences.default)); break
+    }
   }
 
   render () {
@@ -77,22 +121,4 @@ export class PreferencesContainer extends Component {
     )
   }
 }
-
-// <div>
-//   <div className={s.category}>
-//     <Link to='/preferences/'>общие</Link>
-//   </div>
-//   <div className={s.category}>
-//     <Link to='/preferences/photos' activeStyle={activeStyle}>
-//       фотографии
-//     </Link>
-//   </div>
-//   <div className={s.category}>
-//     <Link to='/preferences/social' activeStyle={activeStyle}>
-//       социальные сети
-//     </Link>
-//   </div>
-// </div>
-// {this.props.children}
-
-export default PreferencesContainer
+export default connect()(PreferencesContainer)

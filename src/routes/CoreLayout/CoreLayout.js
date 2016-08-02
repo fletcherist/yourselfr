@@ -39,10 +39,9 @@ const muiTheme = getMuiTheme({
   },
   tabs: {
     backgroundColor: palette.greyBackground,
-    textColor: palette.yoColor2,
+    textColor: palette.grey,
     selectedTextColor: palette.yoColor,
     focusColor: palette.yoColor
-
   }
 })
 

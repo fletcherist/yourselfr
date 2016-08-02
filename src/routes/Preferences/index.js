@@ -28,21 +28,9 @@ export default (store) => ({
   },
   childRoutes: [
     {
-      path: 'photos',
+      path: '*',
       getComponent (nextState, cb) {
-        require.ensure([], require => {
-          var Photos = require('components/Preferences/Photos').default
-          cb(null, Photos)
-        }, 'preferences_photos')
-      }
-    },
-    {
-      path: 'social',
-      getComponent (nextState, cb) {
-        require.ensure([], require => {
-          var SocialNetworks = require('components/Preferences/UpdateSocialNetworks').default
-          cb(null, SocialNetworks)
-        }, 'preferences_social')
+        cb(null)
       }
     }
   ]

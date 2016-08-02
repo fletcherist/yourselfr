@@ -18,7 +18,7 @@ class Profile extends Component {
     alias: PropTypes.string.isRequired,
     photo: PropTypes.string.isRequired,
     background: PropTypes.string,
-    online: PropTypes.bool,
+    online: PropTypes.object,
     isYourPage: PropTypes.bool.isRequired,
     status: PropTypes.string,
     social: PropTypes.object,
