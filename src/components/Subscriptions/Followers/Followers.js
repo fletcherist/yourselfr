@@ -21,33 +21,41 @@ class Followers extends Component {
     return !arraysEqual(this.props.followers, nextProps.followers)
   }
 
+  renderBackground (follower) {
+    if (!follower.background) {
+      return (null)
+    }
+    console.log(follower.background)
+    return (
+      <div
+        style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
+        className={s.background}>
+      </div>
+    )
+  }
+
   render () {
     const isAuthenticated = this.props.auth.authenticated
     const myUserId = this.props.auth.user._id
+    const self = this
 
     var followersList
     if (!isEmpty(this.props.followers)) {
       var followers = this.props.followers
       followersList = followers.map(function (follower) {
         var photo = isValidPhoto(follower.photo)
-        var linkHref = '/' + follower.alias
         const myPageInList = follower._id === myUserId
         return (
-          <div>
-            {follower.background && (
-              <div style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}} className={s.background}></div>
-            )}
-            <div key={follower._id} className={s.container}>
-              <Link to={linkHref}>
+          <div key={follower._id}>
+            {self.renderBackground(follower)}
+            <div className={s.container}>
+              <Link to={`/${follower.alias}`}>
                 <img src={photo} className={s.photo} />
               </Link>
               <div className={s.info}>
-                <Link to={linkHref} className={s.username}>
+                <Link to={`/${follower.alias}`} className={s.username}>
                   {follower.username}
                 </Link>
-                <div className={s.alias}>
-                  @{follower.alias}
-                </div>
               </div>
               {isAuthenticated && !myPageInList && (
                 <div className={s.SubscribeButton}>

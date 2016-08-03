@@ -6,6 +6,9 @@ if (__PROD__) {
   var http = 'http://localhost:80'
 }
 
+var http = 'http://yoursel.fr'
+var ip = 'http://185.18.54.156'
+
 export const config = {
   http: http,
   ip: ip,

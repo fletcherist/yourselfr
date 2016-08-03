@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 // import { Link } from 'react-router'
 // import s from './Preferences.scss'
 import User from 'routes/User/containers/User'

@@ -4,6 +4,21 @@ import { Link } from 'react-router'
 import { cpEnding } from '../Toools'
 import Translate from 'react-translate-component'
 
+import { Tabs, Tab } from 'material-ui/Tabs'
+
+import Eye from 'material-ui/svg-icons/image/remove-red-eye'
+import Hearing from 'material-ui/svg-icons/AV/hearing'
+import People from 'material-ui/svg-icons/social/people-outline'
+
+import { push } from 'react-router-redux'
+import { connect } from 'react-redux'
+
+import { palette } from 'store/config'
+const tab = {
+  color: palette.yoColor,
+  fontSize: 22
+}
+
 class Counters extends Component {
   static propTypes = {
     visits: PropTypes.number.isRequired,
@@ -12,35 +27,30 @@ class Counters extends Component {
     alias: PropTypes.string.isRequired
   };
 
-  componentWillMount () {
-    var type
-    var path = window.location.pathname
-    if (path.match('followers')) {
-      type = 1
-    } else if (path.match('following')) {
-      type = 2
+  constructor () {
+    super()
+    this.state = {
+      slideIndex: 0
     }
-    var followersStyle = type === 1 ? 'rgb(246, 246, 246)' : ''
-    var followingStyle = type === 2 ? 'rgb(246, 246, 246)' : ''
-    this.setState({
-      followersStyle: followersStyle,
-      followingStyle: followingStyle
-    })
   }
 
-  handleClick (type) {
-    // Followers click
-    if (type === 1) {
-      this.setState({
-        followersStyle: 'rgb(246, 246, 246)',
-        followingStyle: ''
-      })
-    } else {
-      this.setState({
-        followersStyle: '',
-        followingStyle: 'rgb(246, 246, 246)'
-      })
+  componentWillUpdate () {
+    return false
+  }
+
+  handleChange = (value) => {
+    const { dispatch, alias } = this.props
+    switch (value) {
+      case 0: dispatch(push(`/${alias}`)); break
+      case 1: dispatch(push(`/${alias}/followers`)); break
+      case 2: dispatch(push(`/${alias}/following`)); break
     }
+
+    this.setState({
+      slideIndex: value
+    })
+
+    this.forceUpdate()
   }
 
   render () {
@@ -50,30 +60,36 @@ class Counters extends Component {
       following: cpEnding(this.props.following, 'counters.following')
     }
     const { visits, followers, following } = this.props
+    var userLink = `/${this.props.alias}`
     var followersLink = `/${this.props.alias}/followers`
     var followingLink = `/${this.props.alias}/following`
     return (
       <div className={s.counters}>
         <div className={s.counter}>
-          <div className={s.counter_count}>{visits}</div>
-          <div className={s.counter_title}><Translate content={pronounce.visits} /></div>
+          <div className={s.counter_title}>
+            <Translate content={pronounce.visits} />
+          </div>
         </div>
-        <Link to={followersLink} className={s.counter}
-          onClick={() => this.handleClick(1)}
-          style={{
-            backgroundColor: this.state.followersStyle}}>
-          <div className={s.counter_count}>{followers}</div>
-          <div className={s.counter_title}><Translate content={pronounce.followers} /></div>
-        </Link>
-        <Link to={followingLink} className={s.counter}
-          onClick={() => this.handleClick(2)}
-          style={{
-            backgroundColor: this.state.followingStyle}}>
-          <div className={s.counter_count}>{following}</div>
-          <div className={s.counter_title}><Translate content={pronounce.following} /></div>
-        </Link>
+        <div className={s.counter}>
+          <div className={s.counter_title}>
+            <Translate content={pronounce.followers} />
+          </div>
+        </div>
+        <div className={s.counter}>
+          <div className={s.counter_title}>
+            <Translate content={pronounce.following} />
+          </div>
+        </div>
+        <Tabs
+          onChange={this.handleChange}
+          value={this.state.slideIndex}>
+          <Tab style={tab} value={0} label={visits} />
+          <Tab style={tab} label={followers} value={1} />
+          <Tab style={tab} label={following} value={2} />
+        </Tabs>
       </div>
       )
   }
 }
-export default Counters
+
+export default connect()(Counters)
