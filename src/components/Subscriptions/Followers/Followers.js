@@ -67,9 +67,7 @@ class Followers extends Component {
                 </div>
               )}
             </div>
-            {!follower.background && (
-              <div className={s.borderBottom}></div>
-            )}
+            <div className={s.borderBottom}></div>
           </div>
         )
       })

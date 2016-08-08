@@ -23,7 +23,6 @@ export const Username = ({username, online}) => {
   if (online === true) {
     usernameStyle.color = '#148bc3'
   }
-  console.log('online +  ' + online)
   return (
     <div className={s.username}>
       <span style={usernameStyle}>{username}</span>

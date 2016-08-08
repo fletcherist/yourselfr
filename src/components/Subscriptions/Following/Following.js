@@ -53,9 +53,6 @@ class Following extends Component {
                 <Link to={linkHref} className={s.username}>
                   {following.username}
                 </Link>
-                <div className={s.alias}>
-                  @{following.alias}
-                </div>
               </div>
               {isAuthenticated && !myPageInList && (
                 <div className={s.SubscribeButton}>

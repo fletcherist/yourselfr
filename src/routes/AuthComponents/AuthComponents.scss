@@ -3,7 +3,22 @@
 body {
   background-color: #fdfdfd;
   transition: background .6s;
+}
 
+.wrap {
+  z-index: -1;
+  position: fixed;
+  width:100%;
+  height: 100%;
+  min-height: 500px;
+  background-size:cover;
+  background-position:center; /* IE fix */
+  background-color: #F1F2F4;
+  background: url('./routes/AuthComponents/1920.jpg') no-repeat center;
+
+  @media screen and(max-height: 500px) {
+    background: url('./routes/AuthComponents/320.jpg') no-repeat center;
+  }
 }
 
 .container {
@@ -51,13 +66,21 @@ body {
   }
 }
 
+.overlay {
+  background-color: $yoColor;
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
 .titleAction {
   text-align: center;
   margin: 40px 0px;
   font-weight: bold;
-  color: $yoGrey;
+  color: white;
   min-height: 60px;
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 
 .formBlock {

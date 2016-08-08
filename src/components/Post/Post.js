@@ -52,18 +52,25 @@ class Post extends Component {
     var isPhoto
     this.props.attachments &&
     this.props.attachments.photo &&
-    this.props.attachments.photo !== undefined ? isPhoto = true : isPhoto = false
+    this.props.attachments.photo !== undefined
+      ? isPhoto = true
+      : isPhoto = false
 
     return (
       <div className={s.first}>
         {!isPhoto && (
-          <div className={postClasses} onClick={this.openCommentForm.bind(this)}>
+          <div
+            className={postClasses}
+            onClick={this.openCommentForm.bind(this)}>
             <div className={s.time}>
               <span className={ccx({hideOnHover: this.props.isYourPage})}>
                 <TickTime time={this.props.created_at} />
               </span>
               {this.props.isYourPage && (
-                <div className={s.removeButton} onClick={() => this.props.removePost(this.props.id)}></div>
+                <div
+                  className={s.removeButton}
+                  onClick={() => this.props.removePost(this.props.id)}>
+                </div>
               )}
             </div>
             <PostText text={this.props.text} />
@@ -74,8 +81,27 @@ class Post extends Component {
               type='post'
             />
           </div>
-      )}
-      {isPhoto && (
+        )}
+        {this.renderPhotopost()}
+        <Comments
+          comments={this.props.comments}
+          isYourPage={this.props.isYourPage}
+        />
+        {this.renderCommentForm()}
+      </div>
+      )
+  }
+
+  renderPhotopost () {
+    var isPhoto
+    this.props.attachments &&
+    this.props.attachments.photo &&
+    this.props.attachments.photo !== undefined
+      ? isPhoto = true
+      : isPhoto = false
+
+    if (isPhoto) {
+      return (
         <Photopost
           id={this.props.id}
           isYourPage={this.props.isYourPage}
@@ -83,13 +109,18 @@ class Post extends Component {
           photo={this.props.attachments.photo}
           text={this.props.text}
         />
-      )}
-        <Comments comments={this.props.comments} isYourPage={this.props.isYourPage} />
-          {this.state.showCommentForm && (
-            <CommentForm post_id={this.props.id} />
-          )}
-      </div>
       )
+    }
+    return null
+  }
+
+  renderCommentForm () {
+    if (this.state.showCommentForm) {
+      return (
+        <CommentForm post_id={this.props.id} />
+      )
+    }
+    return null
   }
 }
 

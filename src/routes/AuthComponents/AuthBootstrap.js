@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Footer from 'components/Footer'
 import SignupForm from './Signup/SignupForm'
 import LoginForm from './Login/LoginForm'
-// import s from './AuthComponents.scss'
+import s from './AuthComponents.scss'
 // import Slideshow from 'components/Slideshow'
 
 export class AuthBootstrap extends Component {
@@ -11,7 +11,7 @@ export class AuthBootstrap extends Component {
   }
   render () {
     return (
-      <div>
+      <div className={s.wrap}>
         {this.props.children}
       </div>
     )

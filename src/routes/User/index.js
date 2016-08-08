@@ -31,9 +31,6 @@ export default (store) => ({
         .catch(e => {
           console.log(e)
         })
-
-
-
     }, 'user')
   },
   indexRoute: {

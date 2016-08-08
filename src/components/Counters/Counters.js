@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import s from './Counters.scss'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import { cpEnding } from '../Toools'
 import Translate from 'react-translate-component'
 
 import { Tabs, Tab } from 'material-ui/Tabs'
-
-import Eye from 'material-ui/svg-icons/image/remove-red-eye'
-import Hearing from 'material-ui/svg-icons/AV/hearing'
-import People from 'material-ui/svg-icons/social/people-outline'
 
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
@@ -30,27 +26,39 @@ class Counters extends Component {
   constructor () {
     super()
     this.state = {
-      slideIndex: 0
+      slideIndex: 0,
+      currentAlias: 0
     }
   }
+  componentWillMount () {
+    const { alias } = this.props
+    this.aliases = [
+      `/${alias}`,
+      `/${alias}/followers`,
+      `/${alias}/following`
+    ]
 
+    for (var i = 0; i < this.aliases.length; i++) {
+      if (window.location.pathname === this.aliases[i]) {
+        this.setState({slideIndex: i})
+        return false
+      }
+    }
+  }
   componentWillUpdate () {
     return false
   }
 
   handleChange = (value) => {
-    const { dispatch, alias } = this.props
-    switch (value) {
-      case 0: dispatch(push(`/${alias}`)); break
-      case 1: dispatch(push(`/${alias}/followers`)); break
-      case 2: dispatch(push(`/${alias}/following`)); break
-    }
-
+    const { dispatch } = this.props
     this.setState({
-      slideIndex: value
+      slideIndex: value,
+      currentAlias: this.aliases[value]
     })
-
-    this.forceUpdate()
+    setTimeout(() => {
+      dispatch(push(this.aliases[value]))
+      this.forceUpdate()
+    }, 300)
   }
 
   render () {
@@ -60,9 +68,6 @@ class Counters extends Component {
       following: cpEnding(this.props.following, 'counters.following')
     }
     const { visits, followers, following } = this.props
-    var userLink = `/${this.props.alias}`
-    var followersLink = `/${this.props.alias}/followers`
-    var followingLink = `/${this.props.alias}/following`
     return (
       <div className={s.counters}>
         <div className={s.counter}>

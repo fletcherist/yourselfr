@@ -3,8 +3,7 @@ import s from './User.scss'
 import Profile from 'components/Profile'
 import Navbar from 'components/Navigation/Navbar'
 import Background from 'components/Background'
-
-import { Tabs, Tab } from 'material-ui/Tabs'
+import Socket from 'components/Socket'
 
 class User extends Component {
   static propTypes = {
@@ -13,7 +12,6 @@ class User extends Component {
   constructor () {
     super()
     let showTabs = this.showTabs()
-    console.log(showTabs)
     this.state = {
       slideIndex: 0,
       showTabs: showTabs
@@ -50,6 +48,7 @@ class User extends Component {
             {this.props.children}
           </div>
         </div>
+        <Socket />
       </div>
     )
   }

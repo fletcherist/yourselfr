@@ -108,4 +108,3 @@ if (__DEV__ && module.hot) {
 // Go!
 // ========================================================
 render()
-console.log('yourselfr is ready for use')

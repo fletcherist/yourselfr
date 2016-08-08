@@ -10,6 +10,7 @@ const LOAD_USER = 'LOAD_USER'
 const SUBSCRIBE = 'SUBSCRIBE'
 const UPDATE_SUBSCRIPTION_COUNTER = 'UPDATE_SUBSCRIPTION_COUNTER'
 const UPDATE_POSTS_COUNTER = 'UPDATE_POSTS_COUNTER'
+const UPDATE_VISITS_COUNTER = 'UPDATE_VISITS_COUNTER'
 
 const PATCH_USERNAME = 'PATCH_USERNAME'
 const PATCH_ALIAS = 'PATCH_ALIAS'
@@ -35,8 +36,14 @@ export const patchInstagram = createAction(PATCH_INSTAGRAM)
 export const patchFacebook = createAction(PATCH_FACEBOOK)
 
 export const updatePostsCounter = createAction(UPDATE_POSTS_COUNTER)
+export const updateSubscriptionCounter =
+              createAction(UPDATE_SUBSCRIPTION_COUNTER)
+export const updateVisitsCounter = createAction(UPDATE_VISITS_COUNTER)
 
 export function getAlias () {
+  if (typeof window === 'undefined') {
+    return false
+  }
   var alias = window.location.pathname.substr(1)
   if (!alias) {
     // Try to use hash routing
@@ -55,7 +62,6 @@ export function getAlias () {
 
 const loadUserPatch = createAction(LOAD_USER)
 export const loadUser = (alias) => {
-  console.log('trying to load ')
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       dispatch(fetchUser({status: true}))
@@ -94,7 +100,6 @@ export const loadUser = (alias) => {
             if (!data.user) {
               return reject()
             }
-            console.log(data)
             data.user.isLoaded = true
             dispatch(loadUserPatch(data.user))
             dispatch(loadPostsPatch(data.posts))
@@ -111,7 +116,7 @@ export const loadUser = (alias) => {
 }
 
 const subscribePatch = createAction(SUBSCRIBE)
-const updateSubscriptionCounter = createAction(UPDATE_SUBSCRIPTION_COUNTER)
+
 export const subscribe = (alias, updateCounters) => {
   return (dispatch, getState) => {
     dispatch(fetchSubscribe(true))
@@ -151,7 +156,10 @@ export const subscribe = (alias, updateCounters) => {
 }
 
 export const actions = {
-  loadUser
+  loadUser,
+  updateVisitsCounter,
+  updatePostsCounter,
+  updateSubscriptionCounter
 }
 
 var standartUser = {
@@ -181,6 +189,13 @@ export default handleActions({
     return Object.assign({}, state, {
       stats: Object.assign({}, state.stats, {
         posts: state.stats.posts + 1
+      })
+    })
+  },
+  UPDATE_VISITS_COUNTER: (state, { payload }) => {
+    return Object.assign({}, state, {
+      stats: Object.assign({}, state.stats, {
+        visits: state.stats.visits + 1
       })
     })
   },
