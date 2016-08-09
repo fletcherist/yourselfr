@@ -42,17 +42,18 @@ class WriteBox extends Component {
     })
   }
 
-  componentDidMount () {
-    console.log(this.textField)
-    window.addEventListener('keydown', (e) => {
+  focusHandler () {
+    document.addEventListener('keydown', (e) => {
       if (e.keyCode === 13 && e.metaKey) {
         this.handleSubmitButton(e)
       }
     })
+    console.info('focus')
   }
 
-  componentWillUnmount () {
-    window.removeEventListener('keydown', () => {})
+  blurHandler () {
+    document.removeEventListener('keydown', () => {})
+    console.info('blur')
   }
 
   handleSubmitButton (e) {
@@ -84,17 +85,15 @@ class WriteBox extends Component {
         <TextField
           style={{margin: 0, padding: 0}}
           textareaStyle={{paddingLeft: 15, paddingBottom: 0}}
-          hintStyle={{
-            paddingLeft: 15
-          }}
-          underlineStyle={{
-            bottom: 0
-          }}
+          hintStyle={{paddingLeft: 15}}
+          underlineStyle={{bottom: 0}}
           hintText='Что ты думаешь обо мне?'
           defaultValue=''
           autoFocus fullWidth multiLine
           value={this.state.text}
           onChange={(e) => this.updateValue(e)}
+          onFocus={this.focusHandler.bind(this)}
+          onBlur={this.blurHandler.bind(this)}
           ref={(r) => this.textField = r}
         />
         <div className={s.actions}>

@@ -1,15 +1,16 @@
+@import 'variables';
+
 .like {
 	display: flex;
 	width: 70px;
 	align-items: flex-start;
 	.count {
-		font-weight: bold;
-		font-size: 15px;
-		color:  #148BC3;
-		margin-top: -2px;
+		font-size: 14px;
+		color:  $yoColor;
+		margin-top: 1px;
 		text-align: right;
 		width: 20px;
-		margin-right: 7px;
+		margin-right: 4px;
 	}
 
 	.button {

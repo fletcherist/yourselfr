@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import s from './CommentForm.scss'
-import cx from 'classnames'
+// import cx from 'classnames'
 import { connect } from 'react-redux'
 import { postComment } from '../../store/modules/comments'
+
+import TextField from 'material-ui/TextField'
+import Reply from '../Reply'
+import IconButton from 'material-ui/IconButton'
 
 class CommentForm extends Component {
   static propTypes = {
@@ -12,20 +16,18 @@ class CommentForm extends Component {
   constructor () {
     super()
     this.state = {
-      selected: false
+      selected: false,
+      value: ''
     }
   }
-  focus () {
+
+  handleChange (e) {
+    console.log(e.target.value)
     this.setState({
-      selected: true
+      value: e.target.value
     })
-  }
-  blur () {
-    setTimeout(() => {
-      this.setState({
-        selected: false
-      })
-    }, 200)
+    var selected = this.state.value.length > 0
+    this.setState({selected: selected})
   }
 
   postComment () {
@@ -34,14 +36,32 @@ class CommentForm extends Component {
   }
   render () {
     return (
-      <div className={s.form} onFocus={() => this.focus()} onBlur={() => this.blur()}>
-        <input className={cx('input', s.input)} placeholder='Написать комментарий..'
-          ref={(r) => this.input = r} />
-        {this.state.selected && (
-          <div className={s.button} onClick={this.postComment.bind(this)}>Отправить</div>
-        )}
+      <div className={s.form}>
+        <TextField
+          floatingLabelText='Что на это скажешь?'
+          ref={(r) => this.input = r}
+          onChange={this.handleChange.bind(this)}
+          value={this.state.value}
+          multiLine
+        />
+        {this.renderReply()}
       </div>
     )
+  }
+
+  renderReply () {
+    if (this.state.selected) {
+      return (
+        <div className={s.actions}>
+          <IconButton>
+            <Reply
+              onClick={this.postComment.bind(this)}
+            />
+          </IconButton>
+        </div>
+      )
+    }
+    return null
   }
 }
 

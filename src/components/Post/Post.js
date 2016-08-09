@@ -9,9 +9,9 @@ import TickTime from './TickTime'
 import PostText from './PostText'
 import Comments from '../Comments'
 
-import { isHot } from '../Toools'
+import Reply from '../Reply'
 
-import Chip from 'material-ui/Chip'
+import { isHot } from '../Toools'
 
 let ccx = cx.bind(s)
 class Post extends Component {
@@ -123,5 +123,28 @@ class Post extends Component {
     return null
   }
 }
+
+// <div
+//   className={postClasses}
+//   onClick={this.openCommentForm.bind(this)}>
+//   <div className={s.time}>
+//     <span className={ccx({hideOnHover: this.props.isYourPage})}>
+//       <TickTime time={this.props.created_at} />
+//     </span>
+//     {this.props.isYourPage && (
+//       <div
+//         className={s.removeButton}
+//         onClick={() => this.props.removePost(this.props.id)}>
+//       </div>
+//     )}
+//   </div>
+//   <PostText text={this.props.text} />
+//   <Like
+//     count={this.props.likes}
+//     object={this.props.id}
+//     isLiked={this.props.isLiked}
+//     type='post'
+//   />
+// </div>
 
 export default Post

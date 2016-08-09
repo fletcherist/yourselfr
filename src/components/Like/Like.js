@@ -4,6 +4,11 @@ import s from './Like.scss'
 import { connect } from 'react-redux'
 import { likePost } from '../../store/modules/posts'
 
+import Favorite from 'material-ui/svg-icons/action/favorite'
+import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
+
+import { palette } from 'store/config'
+
 let cx = classNames.bind(s)
 
 class Like extends Component {
@@ -35,7 +40,6 @@ class Like extends Component {
       count: this.state.count + diff
     })
     this.props.likePost(this.state.object, this.props.type)
-    console.log(this.props)
   }
   render () {
     var classes = cx({
@@ -43,6 +47,15 @@ class Like extends Component {
       inactive: !this.state.active,
       active: this.state.active || this.props.isLiked
     })
+
+    var active = this.state.active
+      ? <Favorite style={{
+        color: palette.yoColor
+      }} />
+      : <FavoriteBorder style={{
+        color: palette.yoColor
+      }} />
+
     return (
       <div className={s.like} onClick={this.toggle.bind(this)}>
         <div className={s.count}>
@@ -50,7 +63,7 @@ class Like extends Component {
              this.state.count
           )}
         </div>
-        <div className={classes}></div>
+        {active}
       </div>
     )
   }

@@ -1,28 +1,12 @@
 @import 'variables';
 .form {
-  margin-left: 60px;
+  margin-left: 50px;
+  margin-right: 80px;
+  position: relative;
 }
-.input {
-  font-size: 12px;
-  max-width: 80%;
-  padding-right: 120px;
-}
-
-.button {
-  margin-left: -100px;
-  font-weight: bold;
-  display: inline-block;
-  color: $yoColor;
-  cursor: pointer;
-  z-index: 999999999;
-  font-size: 12px;
-  padding: 10px;
-  width: 100px;
-  text-align: center;
-  border-radius: 3px;
-  transition: all .2s;
-
-  &:hover {
-    background-color: $yoColor05;
-  }
+.actions {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  height: 30px;
 }

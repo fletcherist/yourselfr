@@ -83,7 +83,8 @@ class Posts extends Component {
         )}
         {!this.props.isFetching && (
           <div>
-            {this.props.count === 0 && (<NoPosts isAuthenticated={this.props.isAuthenticated} />)}
+            {this.props.count === 0 &&
+              (<NoPosts isAuthenticated={this.props.isAuthenticated} />)}
             {this.props.count > 0 && (postsArray)}
           </div>
         )}
