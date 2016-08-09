@@ -13,12 +13,12 @@ class Comments extends Component {
     removeComment: PropTypes.func.isRequired
   };
   shouldComponentUpdate (nextProps) {
-    if (nextProps.comments.length === 0) {
-      return false
-    }
-    if (arraysEqual(nextProps.comments, this.props.comments)) {
-      return false
-    }
+    // if (nextProps.comments.length === 0) {
+    //   return false
+    // }
+    // if (arraysEqual(nextProps.comments, this.props.comments)) {
+    //   return false
+    // }
     return true
   }
 

@@ -4,10 +4,10 @@ import s from '../Subscriptions.scss'
 import { Link } from 'react-router'
 
 import { isValidPhoto, isEmpty, arraysEqual } from '../../Toools'
-import { config } from '../../../store/config'
 import SubscribeButton from '../../SubscribeButton'
 import FollowersHeader from '../../Headers/FollowersHeader'
 import NoFollowers from 'components/NoData/NoFollowers'
+import RenderBackground from '../RenderBackground'
 
 class Followers extends Component {
   static propTypes = {
@@ -21,20 +21,7 @@ class Followers extends Component {
     return !arraysEqual(this.props.followers, nextProps.followers)
   }
 
-  renderBackground (follower) {
-    if (!follower.background) {
-      return (null)
-    }
-    console.log(follower.background)
-    return (
-      <div
-        style={{background: `url(${config.http}/upload/background_cropped/${follower.background})`}}
-        className={s.background}>
-      </div>
-    )
-  }
-
-  render () {
+  renderFollowersList () {
     const isAuthenticated = this.props.auth.authenticated
     const myUserId = this.props.auth.user._id
     const self = this
@@ -47,7 +34,7 @@ class Followers extends Component {
         const myPageInList = follower._id === myUserId
         return (
           <div key={follower._id}>
-            {self.renderBackground(follower)}
+            <RenderBackground subscription={follower} />
             <div className={s.container}>
               <Link to={`/${follower.alias}`}>
                 <img src={photo} className={s.photo} />
@@ -71,10 +58,15 @@ class Followers extends Component {
           </div>
         )
       })
-    } else {
-      followersList = undefined
+      return followersList
     }
 
+    return (
+      <NoFollowers username={this.props.user.username} />
+    )
+  }
+
+  render () {
     return (
       <div className='container--right padding-0 container--subscriptions'>
         <FollowersHeader
@@ -82,12 +74,7 @@ class Followers extends Component {
           username={this.props.user.username}
         />
         <div>
-          {followersList && (
-            followersList
-          )}
-          {!followersList && (
-            <NoFollowers username={this.props.user.username} />
-          )}
+          {this.renderFollowersList()}
         </div>
       </div>
     )

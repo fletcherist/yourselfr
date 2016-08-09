@@ -84,12 +84,12 @@
   }
   @media screen and (max-width: 800px){
     max-width: 900px;
-    width: 50%;
+    width: 60%;
 		margin: 10px auto;
 		float: none !important;
     display: block !important;
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 500px){
     max-width: 100%;
     width: 100%;
     border-left: 0px;
@@ -101,7 +101,7 @@
 }
 
 .container--user {
-  min-height: $minHeight;
+  // min-height: $minHeight;
   display: inline-block;
   border-top: 1px solid $borderColor;
   border-bottom: 0px;
@@ -129,14 +129,14 @@
   @media screen and (max-width: 800px){
     display: block;
     max-width: 100%;
-    min-width: 50%;
-    width: 50%;
+    min-width: 60%;
+    width: 60%;
     margin: 10px auto;
     float: none;
 
     min-height: 280px;
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 500px){
     max-width: 100%;
     width: 100%;
     border-left: 0px;

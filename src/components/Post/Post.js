@@ -33,9 +33,9 @@ class Post extends Component {
       showCommentForm: false
     }
   }
-  shouldComponentUpdate () {
-    return false
-  }
+  // shouldComponentUpdate () {
+  //   return false
+  // }
   openCommentForm () {
     this.setState({
       showCommentForm: !this.state.showCommentForm
@@ -66,12 +66,7 @@ class Post extends Component {
               <span className={ccx({hideOnHover: this.props.isYourPage})}>
                 <TickTime time={this.props.created_at} />
               </span>
-              {this.props.isYourPage && (
-                <div
-                  className={s.removeButton}
-                  onClick={() => this.props.removePost(this.props.id)}>
-                </div>
-              )}
+              {this.renderRemoveButton()}
             </div>
             <PostText text={this.props.text} />
             <Like
@@ -90,6 +85,18 @@ class Post extends Component {
         {this.renderCommentForm()}
       </div>
       )
+  }
+
+  renderRemoveButton () {
+    if (this.props.isYourPage) {
+      return (
+        <div
+          className={s.removeButton}
+          onClick={() => this.props.removePost(this.props.id)}>
+        </div>
+      )
+    }
+    return null
   }
 
   renderPhotopost () {
@@ -117,34 +124,11 @@ class Post extends Component {
   renderCommentForm () {
     if (this.state.showCommentForm) {
       return (
-        <CommentForm post_id={this.props.id} />
+        <CommentForm postId={this.props.id} />
       )
     }
     return null
   }
 }
-
-// <div
-//   className={postClasses}
-//   onClick={this.openCommentForm.bind(this)}>
-//   <div className={s.time}>
-//     <span className={ccx({hideOnHover: this.props.isYourPage})}>
-//       <TickTime time={this.props.created_at} />
-//     </span>
-//     {this.props.isYourPage && (
-//       <div
-//         className={s.removeButton}
-//         onClick={() => this.props.removePost(this.props.id)}>
-//       </div>
-//     )}
-//   </div>
-//   <PostText text={this.props.text} />
-//   <Like
-//     count={this.props.likes}
-//     object={this.props.id}
-//     isLiked={this.props.isLiked}
-//     type='post'
-//   />
-// </div>
 
 export default Post

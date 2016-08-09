@@ -194,8 +194,8 @@ export default handleActions({
     ]
   },
   [LOAD_COMMENTS]: (state, { payload }) => {
-    const { post_id, comments } = payload
-    var postNumber = findPostById(state, post_id)
+    const { postId, comments } = payload
+    var postNumber = findPostById(state, postId)
     var post = state[postNumber]
     post.comments = comments
     return [...state, ...post]

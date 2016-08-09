@@ -22,7 +22,6 @@ class CommentForm extends Component {
   }
 
   handleChange (e) {
-    console.log(e.target.value)
     this.setState({
       value: e.target.value
     })
@@ -31,18 +30,19 @@ class CommentForm extends Component {
   }
 
   postComment () {
-    this.props.postComment(this.input.value, this.props.postId)
-    this.input.value = ''
+    this.props.postComment(this.state.value, this.props.postId)
+    console.log(this.input)
+    this.setState({value: '', selected: false})
+    this.forceUpdate()
   }
   render () {
     return (
       <div className={s.form}>
         <TextField
-          floatingLabelText='Что на это скажешь?'
+          hintText='Что на это скажешь?'
           ref={(r) => this.input = r}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
-          multiLine
         />
         {this.renderReply()}
       </div>
@@ -52,11 +52,11 @@ class CommentForm extends Component {
   renderReply () {
     if (this.state.selected) {
       return (
-        <div className={s.actions}>
+        <div
+          className={s.actions}
+          onClick={this.postComment.bind(this)}>
           <IconButton>
-            <Reply
-              onClick={this.postComment.bind(this)}
-            />
+            <Reply />
           </IconButton>
         </div>
       )
@@ -65,13 +65,8 @@ class CommentForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    postComment: (text, postId) => dispatch(postComment(text, postId))
-  }
-}
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => ({
+  postComment: (text, postId) => dispatch(postComment(text, postId))
+})
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

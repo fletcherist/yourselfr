@@ -53,14 +53,19 @@ class Comment extends Component {
         <div>
           <div className={postClasses}>
             <div className={s.time}>
-              {this.props.isYourPage && (
-                <div className={s.removeButton} onClick={this.removeComment.bind(this, id)}></div>
-              )}
+              {this.removeButton()}
             </div>
-            <UserAvatar photo={user.photo} alias={user.alias} loadUser={loadUser} />
+            <UserAvatar
+              photo={user.photo}
+              alias={user.alias}
+              loadUser={loadUser}
+            />
             <div className={ccx(s.text, s.commentText)}>
               <div className={s.commentTime}>
-                <Link onClick={() => loadUser(user.alias)} className={s.commentAuthor} to={`/${user.alias}`}>
+                <Link
+                  onClick={() => loadUser(user.alias)}
+                  className={s.commentAuthor}
+                  to={`/${user.alias}`}>
                   {user.username}
                 </Link>
                 {' '}
@@ -77,9 +82,23 @@ class Comment extends Component {
           </div>
         </div>
       )
-    } else {
-      return (<div className={s.removeComment}>Комментарий был успешно удалён.</div>)
     }
+    return (
+      <div className={s.removeComment}>Комментарий был успешно удалён.</div>
+    )
+  }
+
+  removeButton () {
+    const { isYourPage, id } = this.props
+    if (isYourPage) {
+      return (
+        <div
+          className={s.removeButton}
+          onClick={this.removeComment.bind(this, id)}>
+        </div>
+      )
+    }
+    return null
   }
 }
 export default Comment

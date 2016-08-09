@@ -57,7 +57,8 @@ export const postComment = (text, postId) => {
 export const removeComment = id => {
   return (dispatch, getState) => {
     console.log(id)
-    fetch(`${config.http}/api/comments/${id}`, {method: 'DELETE', credentials: 'include'})
+    fetch(`${config.http}/api/comments/${id}`,
+      {method: 'DELETE', credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
         console.log(res)
