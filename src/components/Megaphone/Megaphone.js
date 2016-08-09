@@ -33,15 +33,17 @@ class Megaphone extends Component {
         <div className={x.text}>
           Поделитесь ссылкой <br /> на ваш профиль
         </div>
-        <div className={x.input} id='megaphone' onClick={() => selectText('megaphone')}>yourselfr.com/<b>{this.props.alias}</b></div>
+        <div className={x.input} id='megaphone'
+          onClick={() => selectText('megaphone')}>
+            yoursel.fr/<b>{this.props.alias}</b></div>
         <div className={x.buttons}>
-          <a href={`http://vk.com/share.php?url=http://yourselfr.com/${this.props.alias}&title=Узнайте обо мне больше на Йорселфере!`}
+          <a href={`http://vk.com/share.php?url=http://yoursel.fr/${this.props.alias}&title=Узнайте обо мне больше на Йорселфере!`}
             className={cx(x.button, x.vk)}>ВК</a>
-          <a href='http://www.facebook.com/sharer.php?u=http://yourselfr.com/?t='
+          <a href='http://www.facebook.com/sharer.php?u=http://yoursel.fr/?t='
             className={cx(x.button, x.fb)}>Фейсбук</a>
-          <a href='http://twitter.com/share?url=http://yourselfr.com/?text=?via='
+          <a href='http://twitter.com/share?url=http://yoursel.fr/?text=?via='
             className={cx(x.button, x.tw)}>Твитер</a>
-          <a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=http://yourselfr.com/'
+          <a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=http://yoursel.fr/'
             className={cx(x.button, x.tb)}>Тамблер</a>
         </div>
       </div>

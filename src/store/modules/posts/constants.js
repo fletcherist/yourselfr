@@ -1,0 +1,6 @@
+export const LOAD_POSTS = 'LOAD_POSTS'
+export const SEND_POST = 'SEND_POST'
+export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS'
+export const REMOVE_POST = 'REMOVE_POST'
+export const LIKE_POST = 'LIKE_POST'
+export const LOAD_NEW_POSTS = 'LOAD_NEW_POSTS'

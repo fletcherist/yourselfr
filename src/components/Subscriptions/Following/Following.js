@@ -12,15 +12,10 @@ import RenderBackground from '../RenderBackground'
 class Following extends Component {
   static propTypes = {
     following: PropTypes.array.isRequired,
-    loadFollowing: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
   };
-
-  componentWillMount () {
-    this.props.loadFollowing()
-  }
 
   componentWillUpdate (nextProps) {
     return !arraysEqual(this.props.following, nextProps.following)

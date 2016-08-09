@@ -14,12 +14,14 @@
 	color: black;
 	border-radius: 3px;
 	border-radius: 0px 0px 2px 0px;
+	cursor: pointer;
 }
 
 .counter_count {
 	text-align: center;
 	font-size: 22px;
-	color: $yoColor;
+	color: black;
+	font-weight: lighter;
 }
 .counter_title {
 	color: $yoGrey;

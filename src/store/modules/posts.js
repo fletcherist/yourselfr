@@ -1,16 +1,20 @@
 import { createAction, handleActions } from 'redux-actions'
-import { config } from '../config.js'
+import { config } from 'store/config'
 import { updatePostsCounter } from './user'
 import { fetchPosts, fetchLoadMorePosts } from './isFetching'
 import { LOAD_COMMENTS } from './comments'
 import ga from 'react-ga'
 
-export const LOAD_POSTS = 'LOAD_POSTS'
-export const SEND_POST = 'SEND_POST'
-export const LOAD_MORE_POSTS = 'LOAD_MORE_POSTS'
-export const REMOVE_POST = 'REMOVE_POST'
-export const LIKE_POST = 'LIKE_POST'
-export const ENDLESS_LOAD = 'ENDLESS_LOAD'
+import {
+  LOAD_POSTS,
+  SEND_POST,
+  LOAD_MORE_POSTS,
+  REMOVE_POST,
+  LIKE_POST,
+  LOAD_NEW_POSTS
+} from './posts/constants'
+
+import loadNewPosts from './posts/loadNewPosts'
 
 export const likePost = createAction(LIKE_POST, async (id, type) => {
   if (!id) {
@@ -57,20 +61,21 @@ export const loadPosts = (offset) => {
   }
 }
 
-const endlessLoadPatch = createAction(ENDLESS_LOAD)
-export const endlessLoad = () => {
+const removePostPatch = createAction(REMOVE_POST)
+export const removePost = id => {
   return (dispatch, getState) => {
-    var lastPostID = getState().posts[0]._id
-    var alias = getState().user.alias
-    fetch(`${config.http}/api/posts/new/${alias}/${lastPostID}`)
+    console.log(id)
+    fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
-        if (res.posts) {
-          dispatch(endlessLoadPatch(res.posts))
-        } else {
-          console.log('new posts are not ready yet for patching')
-        }
+        console.log(res)
       })
+      .catch((e) => console.log(e))
+    dispatch(removePostPatch(id))
+    ga.event({
+      category: 'Posts',
+      action: 'Removed Post'
+    })
   }
 }
 
@@ -101,24 +106,6 @@ export const loadMorePosts = (offset) => {
   }
 }
 
-const removePostPatch = createAction(REMOVE_POST)
-export const removePost = id => {
-  return (dispatch, getState) => {
-    console.log(id)
-    fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'include'})
-      .then((r) => r.json())
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((e) => console.log(e))
-    dispatch(removePostPatch(id))
-    ga.event({
-      category: 'Posts',
-      action: 'Removed Post'
-    })
-  }
-}
-
 export const send = createAction(SEND_POST)
 export const sendPost = (text, photo) => {
   return (dispatch, getState) => {
@@ -142,7 +129,7 @@ export const sendPost = (text, photo) => {
     .then((data) => {
       console.log(data)
       if (data.status === 1) {
-        dispatch(loadPosts())
+        dispatch(loadNewPosts())
         dispatch(updatePostsCounter())
       } else {
 
@@ -162,7 +149,7 @@ export const actions = {
   loadMorePosts,
   removePost,
   likePost,
-  endlessLoad
+  loadNewPosts
 }
 
 const findPostById = (state, id) => {
@@ -182,7 +169,7 @@ export default handleActions({
   [LOAD_MORE_POSTS]: (state, { payload }) => {
     return [...state, ...payload]
   },
-  [ENDLESS_LOAD]: (state, { payload }) => {
+  [LOAD_NEW_POSTS]: (state, { payload }) => {
     return [...payload, ...state]
   },
   [REMOVE_POST]: (state, { payload }) => {
