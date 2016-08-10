@@ -1,4 +1,4 @@
-# Yourselfr [![Build Status](https://travis-ci.org/pizdets-team/yourselfr.svg?branch=master)](https://travis-ci.org/pizdets-team/yourselfr)
+# Yourselfr [![Build Status](https://travis-ci.org/fletcherist/Yourselfr.svg?branch=master](https://travis-ci.org/fletcherist/Yourselfr)
 
 A front-end part for [yourselfr.com](http://yourselfr.com) written in React and Redux.
 Connects to node.js back-end and generates webpages for user to stare at:
@@ -10,7 +10,3 @@ Supports different locales, uploads images, chages settings—in other words, do
     $ npm install
     $ npm start
     → localhost:3000
-
-<br/>
-A Pizdets project. Made with :heart: in Surgut and Uglich.  
-We can be reached at team@pizdets.xyz.
