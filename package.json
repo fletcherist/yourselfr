@@ -142,7 +142,8 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.14",
-    "yargs": "^4.0.0"
+    "yargs": "^4.0.0",
+    "webpack-dev-middleware": "^1.6.1"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
@@ -178,7 +179,6 @@
     "redbox-react": "^1.2.2",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.6.0"
   }
 }
