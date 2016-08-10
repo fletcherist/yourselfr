@@ -6,7 +6,7 @@
 
 .post {
 	word-wrap: break-word;
-	padding: 8px 15px 8px 5px;
+	padding: 5px 15px 5px 5px;
 	line-height: 20px;
 	font-size: 16px;
 	justify-content: left;
@@ -18,7 +18,6 @@
 		border-color: rgba(208, 64, 0, 0.51);
 		transition: 0;
 	}
-
 
 	.time {
 		font-weight: 300;
@@ -36,7 +35,6 @@
 		font-weight: 400;
 		color: #060606;
 		padding-left: 4px;
-		margin-top: 3px;
 	}
 	.feedText {
 		padding-left: 7px;
@@ -74,6 +72,7 @@
 	font-weight: 300;
 	font-size: 14px;
 	color: #8d96a2;
+	margin-right: 7px;
 }
 .commentAuthor {
 	font-weight: bold;

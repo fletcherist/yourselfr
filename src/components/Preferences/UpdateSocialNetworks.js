@@ -75,7 +75,8 @@ class UpdateSocialNetworks extends Component {
       <div>
         <h3>Социальные сети</h3>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.vk = r} placeholder='вконтакте' value={this.state.vk}
+          <input ref={(r) => this.vk = r} placeholder='вконтакте'
+            value={this.state.vk}
             className={c({
               'input': true,
               fetchingForms: isFetching.vk.status,
@@ -92,7 +93,8 @@ class UpdateSocialNetworks extends Component {
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.tumblr = r} placeholder='тамблер' value={this.state.tumblr}
+          <input ref={(r) => this.tumblr = r} placeholder='тамблер'
+            value={this.state.tumblr}
             className={c({
               'input': true,
               fetchingForms: isFetching.tumblr.status,
@@ -109,7 +111,8 @@ class UpdateSocialNetworks extends Component {
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.twitter = r} placeholder='твиттер' value={this.state.twitter}
+          <input ref={(r) => this.twitter = r} placeholder='твиттер'
+            value={this.state.twitter}
             className={c({
               'input': true,
               fetchingForms: isFetching.twitter.status,
@@ -126,7 +129,8 @@ class UpdateSocialNetworks extends Component {
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.instagram = r} placeholder='инстаграм' value={this.state.instagram}
+          <input ref={(r) => this.instagram = r} placeholder='инстаграм'
+            value={this.state.instagram}
             className={c({
               'input': true,
               fetchingForms: isFetching.instagram.status,
@@ -143,7 +147,8 @@ class UpdateSocialNetworks extends Component {
           </div>
         </div>
         <div className={cx(s.innerAddon, s.leftAddon)}>
-          <input ref={(r) => this.facebook = r} placeholder='фейсбук' value={this.state.facebook}
+          <input ref={(r) => this.facebook = r} placeholder='фейсбук'
+            value={this.state.facebook}
             className={c({
               'input': true,
               fetchingForms: isFetching.facebook.status,

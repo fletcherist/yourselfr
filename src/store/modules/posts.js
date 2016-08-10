@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
 import { config } from 'store/config'
-import { updatePostsCounter } from './user'
+import { updatePostsCounter, getAlias } from './user'
 import { fetchPosts, fetchLoadMorePosts } from './isFetching'
 import { LOAD_COMMENTS } from './comments'
 import ga from 'react-ga'
@@ -25,7 +25,6 @@ export const likePost = createAction(LIKE_POST, async (id, type) => {
     comment: `${config.http}/api/likes/comment`
   }
   var request = type === 'comment' ? url.comment : url.post
-  console.log(type, request)
   fetch(request, {
     method: 'POST',
     headers: {
@@ -34,9 +33,7 @@ export const likePost = createAction(LIKE_POST, async (id, type) => {
     body: `object=${id}`
   })
   .then((r) => r.json())
-  .then((res) => {
-    console.log(res)
-  })
+  .then((res) => {})
 })
 
 export const loadPostsPatch = createAction(LOAD_POSTS)
@@ -64,11 +61,9 @@ export const loadPosts = (offset) => {
 const removePostPatch = createAction(REMOVE_POST)
 export const removePost = id => {
   return (dispatch, getState) => {
-    console.log(id)
     fetch(`${config.http}/api/posts/remove/${id}`, {credentials: 'include'})
       .then((r) => r.json())
       .then((res) => {
-        console.log(res)
       })
       .catch((e) => console.log(e))
     dispatch(removePostPatch(id))
@@ -83,19 +78,18 @@ export const loadMorePostsPatch = createAction(LOAD_MORE_POSTS)
 export const loadMorePosts = (offset) => {
   return (dispatch, getState) => {
     dispatch(fetchLoadMorePosts(true))
-    var alias = window.location.pathname.substr(1)
-    // var alias = 'abracadabra';
+    var alias = getAlias()
     var url = `${config.http}/api/posts/${alias}`
     if (offset) {
       url += `/${offset}`
     }
-    console.log(url)
     fetch(url)
       .then((r) => r.json())
       .then((posts) => {
         if (!posts) {
 
         }
+        console.log(posts)
         dispatch(fetchLoadMorePosts(false))
         dispatch(loadMorePostsPatch(posts))
         ga.event({
@@ -129,7 +123,11 @@ export const sendPost = (text, photo) => {
     .then((data) => {
       console.log(data)
       if (data.status === 1) {
-        dispatch(loadNewPosts())
+        if (getState().posts.length === 0) {
+          dispatch(loadPosts())
+        } else {
+          dispatch(loadNewPosts())
+        }
         dispatch(updatePostsCounter())
       } else {
 

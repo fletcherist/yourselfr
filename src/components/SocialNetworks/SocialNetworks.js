@@ -48,7 +48,8 @@ class SocialNetworks extends Component {
 
     var networks = this.state.networks
     if (networks) {
-      if (networks.vk || networks.twitter || networks.tumblr || networks.instagram || networks.facebook) {
+      if (networks.vk || networks.twitter ||
+         networks.tumblr || networks.instagram || networks.facebook) {
         ifSocial = true
         networks = formatSocialNetworks(networks)
         var { vk, twitter, tumblr, instagram, facebook } = networks

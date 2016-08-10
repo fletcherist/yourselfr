@@ -13,7 +13,7 @@ class Posts extends Component {
     count: PropTypes.number.isRequired,
     posts: PropTypes.array.isRequired,
     loadPosts: PropTypes.func.isRequired,
-    endlessLoad: PropTypes.func.isRequired,
+    loadNewPosts: PropTypes.func.isRequired,
     loadMorePosts: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     isFetchingLoadMore: PropTypes.bool.isRequired,
@@ -39,7 +39,7 @@ class Posts extends Component {
   }
 
   componentDidMount () {
-    // this.endlessFeed = setInterval(() => this.props.endlessLoad(), 15000);
+    // this.endlessFeed = setInterval(() => this.props.loadNewPosts(), 15000);
   }
 
   componentWillUnmount () {

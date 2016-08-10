@@ -73,20 +73,24 @@
 	padding: 0px 15px 10px 15px;
 	margin: auto;
 	max-width: 230px;
+	color: $yoGrey;
 }
 
 .online {
-	margin-bottom: 2px;
-	margin-left: 4px;
-	// opacity: .5;
-	transition: all .3s;
+	margin-bottom: -8px;
+	padding-left: 8px;
 	cursor: pointer;
-	width: 10px;
-	height: 10px;
 	display: inline-block;
 	border-radius: 50px;
-	background-color: $yoColor;
-	&:hover {
-		opacity: 1;
+	color: $yoGrey;
+	// background-color: $yoColor;
+	animation: online;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	@keyframes online {
+	    0% {color: $yoGrey}
+	    50% {color: #F06292}
+			100% {color: $yoGrey}
 	}
 }

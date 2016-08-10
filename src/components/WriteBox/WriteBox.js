@@ -48,12 +48,10 @@ class WriteBox extends Component {
         this.handleSubmitButton(e)
       }
     })
-    console.info('focus')
   }
 
   blurHandler () {
     document.removeEventListener('keydown', () => {})
-    console.info('blur')
   }
 
   handleSubmitButton (e) {

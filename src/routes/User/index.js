@@ -26,7 +26,6 @@ export default (store) => ({
          error => {
            console.log(error)
            store.dispatch(push('/404'))
-           throw new Error(error)
          })
         .catch(e => {
           console.log(e)

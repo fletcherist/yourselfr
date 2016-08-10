@@ -1,15 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { isEmpty, arraysEqual } from '../Toools'
 import { connect } from 'react-redux'
-import { loadUser } from '../../store/modules/user'
-import { removeComment } from '../../store/modules/comments'
+import { removeComment } from 'store/modules/comments'
 import Comment from '../Comment'
 
 class Comments extends Component {
   static propTypes = {
     comments: PropTypes.array,
     isYourPage: PropTypes.bool.isRequired,
-    loadUser: PropTypes.func.isRequired,
     removeComment: PropTypes.func.isRequired
   };
   shouldComponentUpdate (nextProps) {
@@ -24,7 +22,7 @@ class Comments extends Component {
 
   render () {
     var comments = this.props.comments
-    const { isYourPage, loadUser, removeComment } = this.props
+    const { isYourPage, removeComment } = this.props
     if (comments && !isEmpty(comments) && Array.isArray(comments)) {
       return (
         <div>
@@ -34,7 +32,6 @@ class Comments extends Component {
                 key={comment._id}
                 id={comment._id}
                 isYourPage={isYourPage}
-                loadUser={loadUser}
                 removeComment={removeComment}
                 {...comment}
               />)
@@ -53,7 +50,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadUser: (alias) => dispatch(loadUser(alias)),
     removeComment: (id) => dispatch(removeComment(id))
   }
 }

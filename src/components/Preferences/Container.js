@@ -60,7 +60,7 @@ export class PreferencesContainer extends Component {
     switch (e.keyCode) {
       case 39: slideIndex += 1; break
       case 37: slideIndex -= 1; break
-      default: slideIndex = 0; break
+      default: break
     }
     if (slideIndex > 2) {
       slideIndex = 2

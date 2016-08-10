@@ -27,10 +27,10 @@ export const postComment = (text, postId) => {
       return false
     }
     console.log(postId)
-    var authenticated = getState().auth.authenticated
-    if (!authenticated) {
-      return console.log('Only authenticated users can write comments')
-    }
+    // var authenticated = getState().auth.authenticated
+    // if (!authenticated) {
+    //   return console.log('Only authenticated users can write comments')
+    // }
     var alias = getState().auth.user.alias
     var body = `text=${text}&created_by=${alias}&post_id=${postId}`
     fetch(`${config.http}/api/comments`, {

@@ -1,7 +1,7 @@
 {
   "name": "Yourselfr",
   "version": "2.0.0",
-  "description": "Web social network",
+  "description": "Web inferface for http://yoursel.fr",
   "main": "index.js",
   "engines": {
     "node": ">=4.2.0",
@@ -82,7 +82,7 @@
     "url": "git+https://github.com/fletcherist/yourselfr.git"
   },
   "author": "Phil Romanov",
-  "license": "MIT",
+  "license": "Apache",
   "dependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.3.17",

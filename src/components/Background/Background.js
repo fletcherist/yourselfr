@@ -7,7 +7,9 @@ class Background extends Component {
     background: PropTypes.string
   }
   render () {
-    if (!this.props.background) {
+    let { background } = this.props
+    console.log(background)
+    if (!background || background === '0') {
       return (
         <div className='responsive_crop_fixed' id='background'></div>
       )

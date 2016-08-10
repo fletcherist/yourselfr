@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
 import { getAlias, actions as userActions } from 'store/modules/user'
+import { config } from 'store/config'
 
-const socket = io('localhost')
+const socket = io(config.http)
 
 import Snackbar from 'material-ui/Snackbar'
 

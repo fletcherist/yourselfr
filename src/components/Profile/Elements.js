@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import s from './Profile.scss'
 import { Link } from 'react-router'
 import { isValidPhoto } from '../Toools'
+import Online from 'material-ui/svg-icons/image/remove-red-eye'
 
 export const Avatar = ({photo, alias}) => (
   <div className={s.avatar}>
@@ -20,14 +21,21 @@ export const Username = ({username, online}) => {
   if (username.length > 15) {
     usernameStyle.fontSize = 18
   }
-  if (online === true) {
-    usernameStyle.color = '#148bc3'
+  let onlineStatus = ''
+  if (online) {
+    onlineStatus = online.status
   }
   return (
     <div className={s.username}>
       <span style={usernameStyle}>{username}</span>
-      {online === true && (
-        <div className={s.online} />
+      {onlineStatus && (
+        <Online
+          style={{
+            height: 30,
+            width: 30
+          }}
+          className={s.online}
+        />
       )}
     </div>
   )
