@@ -14,4 +14,10 @@ script:
   - npm run lint
 
 after_success:
-  - npm run codecov
+  - npm start
+
+deploy:
+  provider: heroku
+  app: yourselfr
+  api_key:
+    secure: ae0ec196-6393-4462-ba41-a6b3c368cf7e

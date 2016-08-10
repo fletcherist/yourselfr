@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { ending } from '../Toools'
+// import { ending } from '../Toools'
 import WriteBox from '../WriteBox'
 import s from './Headers.scss'
 
@@ -25,11 +25,11 @@ class PostsHeader extends Component {
   }
 
   render () {
-    var {count, username, alias} = this.props
-    var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений'])
-    if (!username) {
-      username = 'Пользователь'
-    }
+    // var {count, username} = this.props
+    // var postsPronounce = ending(count, ['мнение', 'мнения', 'мнений'])
+    // if (!username) {
+    //   username = 'Пользователь'
+    // }
     return (
       <div className={s.blockTitlePosts}>
         <WriteBox />

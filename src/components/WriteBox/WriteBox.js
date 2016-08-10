@@ -109,14 +109,14 @@ class WriteBox extends Component {
 
 // <SmileBox />
 
-const GreetingHeader = ({username, photo}) => (
-  <div className={s.header}>
-    <div className={s.right}>
-      <div className={s.greeting}>{username}</div>
-      <div className={s.action}>Расскажи обо мне.</div>
-    </div>
-  </div>
-)
+// const GreetingHeader = ({username, photo}) => (
+//   <div className={s.header}>
+//     <div className={s.right}>
+//       <div className={s.greeting}>{username}</div>
+//       <div className={s.action}>Расскажи обо мне.</div>
+//     </div>
+//   </div>
+// )
 
 function mapStateToProps (state) {
   return {

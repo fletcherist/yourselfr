@@ -15,7 +15,7 @@
     "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "dev:no-debug": "npm run dev -- --no_debug",
-    "test": "better-npm-run test",
+    "test": "eslint src tests server",
     "test:dev": "npm run test -- --watch",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",

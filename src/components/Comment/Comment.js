@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import s from '../Post/Post.scss'
-import cx from 'classnames/bind'
-import { Link } from 'react-router'
+// import cx from 'classnames/bind'
+// import { Link } from 'react-router'
 import { isHot, isValidPhoto } from '../Toools'
 
-import UserAvatar from '../Post/UserAvatar'
+// import UserAvatar from '../Post/UserAvatar'
 import TickTime from '../Post/TickTime'
-import Like from '../Like'
+// import Like from '../Like'
 
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
@@ -28,7 +28,7 @@ const styles = {
     marginBottom: '5px'
   }
 }
-let ccx = cx.bind(s)
+// let ccx = cx.bind(s)
 class Comment extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
@@ -59,13 +59,13 @@ class Comment extends Component {
   }
 
   render () {
-    let postClasses = ccx({
-      post: true,
-      comment: true,
-      hot: this.state.isHot,
-      isLiked: this.state.isLiked
-    })
-    let { text, created_at, id, likes, isLiked, isYourPage } = this.props
+    // let postClasses = ccx({
+    //   post: true,
+    //   comment: true,
+    //   hot: this.state.isHot,
+    //   isLiked: this.state.isLiked
+    // })
+    let { text, created_at, id, isYourPage } = this.props
     if (!this.state.deleted) {
       return (
         <div>

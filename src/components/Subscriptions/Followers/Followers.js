@@ -24,7 +24,7 @@ class Followers extends Component {
   renderFollowersList () {
     const isAuthenticated = this.props.auth.authenticated
     const myUserId = this.props.auth.user._id
-    const self = this
+    // const self = this
 
     var followersList
     if (!isEmpty(this.props.followers)) {

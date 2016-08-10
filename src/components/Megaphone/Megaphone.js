@@ -35,7 +35,7 @@ class Megaphone extends Component {
         </div>
         <div className={x.input} id='megaphone'
           onClick={() => selectText('megaphone')}>
-            yoursel.fr/<b>{this.props.alias}</b></div>
+          yoursel.fr/<b>{this.props.alias}</b></div>
         <div className={x.buttons}>
           <a href={`http://vk.com/share.php?url=http://yoursel.fr/${this.props.alias}&title=Узнайте обо мне больше на Йорселфере!`}
             className={cx(x.button, x.vk)}>ВК</a>

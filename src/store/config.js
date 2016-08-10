@@ -1,13 +1,14 @@
+var http, ip
 if (__PROD__) {
-  var http = 'http://yoursel.fr'
-  var ip = 'http://185.18.54.156'
+  http = 'http://yoursel.fr'
+  ip = 'http://185.18.54.156'
 } else if (__DEV__) {
-  var ip = 'http://localhost:80'
-  var http = 'http://localhost:80'
+  ip = 'http://localhost:80'
+  http = 'http://localhost:80'
 }
 
-var http = 'http://yoursel.fr'
-var ip = 'http://185.18.54.156'
+// var http = 'http://yoursel.fr'
+// var ip = 'http://185.18.54.156'
 
 export const config = {
   http: http,

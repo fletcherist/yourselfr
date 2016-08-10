@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import classNames from 'classnames/bind'
+// import classNames from 'classnames/bind'
 import s from './Like.scss'
 import { connect } from 'react-redux'
 import { likePost } from '../../store/modules/posts'
@@ -9,7 +9,7 @@ import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 
 import { palette } from 'store/config'
 
-let cx = classNames.bind(s)
+// let cx = classNames.bind(s)
 
 class Like extends Component {
   static propTypes = {
@@ -42,11 +42,11 @@ class Like extends Component {
     this.props.likePost(this.state.object, this.props.type)
   }
   render () {
-    var classes = cx({
-      button: true,
-      inactive: !this.state.active,
-      active: this.state.active || this.props.isLiked
-    })
+    // var classes = cx({
+    //   button: true,
+    //   inactive: !this.state.active,
+    //   active: this.state.active || this.props.isLiked
+    // })
 
     var active = this.state.active
       ? <Favorite style={{

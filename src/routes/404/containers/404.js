@@ -14,7 +14,7 @@ export class NotFoundView extends React.Component {
         <div className={s.title}>404</div>
         <div className={s.sub}>Здесь могла бы быть ваша реклама</div>
         <Link to='/'>
-          <FlatButton label='найти себя'/>
+          <FlatButton label='найти себя' />
         </Link>
       </div>
     )

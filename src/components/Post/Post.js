@@ -9,7 +9,7 @@ import TickTime from './TickTime'
 import PostText from './PostText'
 import Comments from '../Comments'
 
-import Reply from '../Reply'
+// import Reply from '../Reply'
 
 import { isHot } from '../Toools'
 

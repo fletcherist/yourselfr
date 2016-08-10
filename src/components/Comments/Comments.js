@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { isEmpty, arraysEqual } from '../Toools'
+import { isEmpty } from '../Toools'
 import { connect } from 'react-redux'
 import { removeComment } from 'store/modules/comments'
 import Comment from '../Comment'
