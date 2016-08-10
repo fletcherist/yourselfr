@@ -28,7 +28,7 @@ const config = {
   // ----------------------------------
   server_host : process.env.NODE_ENV === 'production'
     ? 'yourselfr.herokuapp.com ' : localip,
-  server_port : 80,
+  server_port : process.env.PORT || 3000,
   // server_host: 'yourselfr.com',
   // server_port: 80,
 
