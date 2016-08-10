@@ -7,15 +7,6 @@ cache:
   directories:
     - node_modules
 
-install:
-  - npm install
-
-script:
-  - npm run lint
-
-after_success:
-  - npm start
-
 deploy:
   provider: heroku
   app: yourselfr
