@@ -8,6 +8,8 @@ import Logotype from 'components/Logotype'
 import Translate from 'react-translate-component'
 import { AuthPack } from 'components/Buttons/SocialButtons'
 
+import { Card } from 'material-ui/Card'
+
 class Main extends Component {
   static propTypes = {
     loadEndlessFeed: PropTypes.func.isRequired,

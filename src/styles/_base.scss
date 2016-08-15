@@ -47,12 +47,6 @@
   background-attachment: fixed;
 }
 
-.img-small {
-  filter: blur(50px);
-  /* this is needed so Safari keeps sharp edges */
-  transform: scale(1);
-}
-
 .responsive_crop_main {
   top: 0px;
   z-index: -1;
@@ -74,7 +68,7 @@
 	background-color: white;
   border-radius: 3px;
   padding-top: 10px;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
   max-width: 260px;
   width: 100%;
   @media screen and (max-width: 1500px){
@@ -104,6 +98,7 @@
   // min-height: $minHeight;
   display: inline-block;
   border-top: 1px solid $borderColor;
+  padding-bottom: 30px;
   border-bottom: 0px;
 
   @media screen and (max-width: 600px) {
@@ -119,12 +114,11 @@
   border-radius: 3px;
   float: left;
   padding: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 15px;
   z-index: 999999;
   max-width: 470px;
   min-width: 320px;
   width: 100%;
-  min-height: $minHeight;
 
   @media screen and (max-width: 800px){
     display: block;
@@ -133,8 +127,6 @@
     width: 60%;
     margin: 10px auto;
     float: none;
-
-    min-height: 280px;
   }
   @media screen and (max-width: 500px){
     max-width: 100%;
@@ -147,8 +139,17 @@
   }
 }
 
+.container--posts {
+  min-height: $minHeight;
+  margin-bottom: 100px;
+  @media screen and (max-width: 800px){
+    min-height: 280px;
+  }
+}
+
 .container--subscriptions {
   // border-bottom: 0px;
+  padding-bottom: 25px !important;
 }
 
 .padding {

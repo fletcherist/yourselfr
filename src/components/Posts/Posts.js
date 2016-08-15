@@ -1,28 +1,14 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import s from './Posts.scss'
 import Post from '../Post'
 import { isEmpty } from '../Toools'
-import {connect} from 'react-redux'
-import { actions as postsActions } from '../../store/modules/posts'
+
 import Loader from '../Loader'
 import NoPosts from '../NoData/NoPosts'
-import PostsHeader from '../Headers/PostsHeader'
+// import PostsHeader from '../Headers/PostsHeader'
+import WriteBox from '../WriteBox'
 
 class Posts extends Component {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    posts: PropTypes.array.isRequired,
-    loadPosts: PropTypes.func.isRequired,
-    loadNewPosts: PropTypes.func.isRequired,
-    loadMorePosts: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    isFetchingLoadMore: PropTypes.bool.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    username: PropTypes.string.isRequired,
-    alias: PropTypes.string.isRequired,
-    isYourPage: PropTypes.bool.isRequired
-  };
-
   componentWillMount () {
     this.setState({
       count: this.props.count,
@@ -38,17 +24,6 @@ class Posts extends Component {
     return false
   }
 
-  componentDidMount () {
-    // this.endlessFeed = setInterval(() => this.props.loadNewPosts(), 15000);
-  }
-
-  componentWillUnmount () {
-    // this.setState({
-    //   postsLoaded: 0
-    // })
-      // this.endlessFeed && clearInterval(this.endlessFeed);
-      // this.endlessFeed = false;
-  }
   render () {
     var self = this
     var posts = this.props.posts
@@ -72,12 +47,8 @@ class Posts extends Component {
       })
     }
     return (
-      <div className='container--right padding-0' id='right'>
-        <PostsHeader
-          count={this.props.count}
-          username={this.props.username}
-          alias={this.props.alias}
-        />
+      <div className='container--right container--posts padding-0' id='right'>
+        <WriteBox />
         {this.props.isFetching && (
           <Loader />
         )}
@@ -90,16 +61,14 @@ class Posts extends Component {
         )}
 
         {this.props.count > 10 && this.props.count > this.state.postsLoaded && (
-          <div
-            className={s.loadMore}
-            onClick={() => {
-              this.props.loadMorePosts(this.state.postsLoaded)
-              this.setState({
-                postsLoaded: this.state.postsLoaded + 10
-              })
-            }}>
-              {this.props.isFetchingLoadMore && ('Загрузка...')}
-              {!this.props.isFetchingLoadMore && ('Загрузить ещё')}
+          <div className={s.loadMore} onClick={() => {
+            this.props.loadMorePosts(this.state.postsLoaded)
+            this.setState({
+              postsLoaded: this.state.postsLoaded + 10
+            })
+          }}>
+            {this.props.isFetchingLoadMore && ('Загрузка...')}
+            {!this.props.isFetchingLoadMore && ('Загрузить ещё')}
           </div>
         )}
       </div>
@@ -107,16 +76,4 @@ class Posts extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  return {
-    posts: state.posts,
-    count: state.user.stats.posts,
-    isAuthenticated: state.auth.authenticated,
-    isYourPage: state.auth.isYourPage,
-    isFetching: state.isFetching.posts,
-    isFetchingLoadMore: state.isFetching.loadMorePosts,
-    username: state.user.username,
-    alias: state.user.alias
-  }
-}
-export default connect(mapStateToProps, postsActions)(Posts)
+export default Posts

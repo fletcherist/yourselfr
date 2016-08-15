@@ -1,67 +1,39 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { subscribe } from '../../store/modules/user'
+import React, { Component } from 'react'
 import s from './SubscribeButton.scss'
 
 import FlatButton from 'material-ui/FlatButton'
+import Favorite from 'material-ui/svg-icons/action/favorite'
 
-class SubscribeButton extends React.Component {
+class SubscribeButton extends Component {
   constructor (props) {
     super(props)
     this.state = {
       isFollowing: this.props.isFollowing
     }
   }
-  subscribe () {
+  componentDidMount () {
+    this.setState({isFollowing: this.props.isFollowing})
+  }
+  render () {
+    var { isFollowing } = this.state
+    var label = ''
+    label = isFollowing ? 'читаю' : 'читать'
+    return (
+      <div className={this.props.inline ? s.inline : s.subscribe}>
+        <FlatButton
+          label={label} primary={this.props.isFollowing}
+          labelPosition="before"
+          onClick={this.subscribe}
+          fullWidth
+          icon={<Favorite viewBox='0 0 35 25' />} />
+      </div>
+    )
+  }
+  subscribe = () => {
     this.props.subscribe(this.props.alias, this.props.updateCounters)
     this.setState({
       isFollowing: !this.state.isFollowing
     })
   }
-  componentWillReceiveProps (props) {
-    console.log(props)
-    this.setState({
-      isFollowing: props.isFollowing
-    })
-  }
-  render () {
-    var { isFollowing } = this.state
-    var label = ''
-    if (isFollowing === true) {
-      label = 'подписки'
-    } else if (isFollowing === false) {
-      label = 'подписаться'
-    } else {
-      label = ''
-    }
-    return (
-      <div className={s.subscribe}>
-        <FlatButton
-          label={label}
-          primary={isFollowing}
-          onClick={() => this.subscribe()}
-          fullWidth />
-      </div>
-    )
-  }
 }
-
-SubscribeButton.propTypes = {
-  alias: React.PropTypes.string.isRequired,
-  subscribe: React.PropTypes.func.isRequired,
-  isFollowing: React.PropTypes.bool.isRequired,
-  updateCounters: React.PropTypes.bool
-}
-
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    subscribe: (alias, updateCounters) => dispatch(subscribe(alias, updateCounters))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SubscribeButton)
+export default SubscribeButton

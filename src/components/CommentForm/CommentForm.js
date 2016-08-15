@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import s from './CommentForm.scss'
-// import cx from 'classnames'
 import { connect } from 'react-redux'
 import { postComment } from '../../store/modules/comments'
 
@@ -9,10 +8,6 @@ import Reply from '../Reply'
 import IconButton from 'material-ui/IconButton'
 
 class CommentForm extends Component {
-  static propTypes = {
-    postComment: PropTypes.func.isRequired,
-    postId: PropTypes.string.isRequired
-  };
   constructor () {
     super()
     this.state = {
@@ -39,6 +34,11 @@ class CommentForm extends Component {
     return (
       <div className={s.form}>
         <TextField
+          textareaStyle={{
+            paddingRight: 50,
+            paddingBottom: 0
+          }}
+          multiLine
           hintText='Что на это скажешь?'
           ref={(r) => this.input = r}
           onChange={this.handleChange.bind(this)}
@@ -63,6 +63,11 @@ class CommentForm extends Component {
     }
     return null
   }
+}
+
+CommentForm.propTypes = {
+  postComment: PropTypes.func.isRequired,
+  postId: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => ({})

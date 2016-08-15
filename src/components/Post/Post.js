@@ -3,29 +3,16 @@ import Like from '../Like'
 
 import s from './Post.scss'
 import cx from 'classnames/bind'
-import CommentForm from '../Comment/CommentForm'
+import CommentForm from '../CommentForm'
 import Photopost from '../Photopost'
 import TickTime from './TickTime'
 import PostText from './PostText'
 import Comments from '../Comments'
 
-// import Reply from '../Reply'
-
 import { isHot } from '../Toools'
 
 let ccx = cx.bind(s)
 class Post extends Component {
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    likes: PropTypes.number,
-    attachments: PropTypes.object,
-    isLiked: PropTypes.bool,
-    comments: PropTypes.array,
-    isYourPage: PropTypes.bool.isRequired,
-    removePost: React.PropTypes.func.isRequired
-  }
   constructor (props) {
     super(props)
     this.state = {
@@ -33,29 +20,17 @@ class Post extends Component {
       showCommentForm: false
     }
   }
-  // shouldComponentUpdate () {
-  //   return false
-  // }
-  openCommentForm () {
-    this.setState({
-      showCommentForm: !this.state.showCommentForm
-    })
-    this.forceUpdate()
-  }
+
   render () {
     let postClasses = ccx({
       post: true,
-      hotYellow: this.state.isHot,
+      hot: this.state.isHot,
       isLiked: this.state.isLiked
     })
 
-    var isPhoto
-    this.props.attachments &&
-    this.props.attachments.photo &&
-    this.props.attachments.photo !== undefined
-      ? isPhoto = true
-      : isPhoto = false
-
+    var isPhoto =
+        (this.props.attachments &&
+        this.props.attachments.photo)
     return (
       <div className={s.first}>
         {!isPhoto && (
@@ -86,12 +61,17 @@ class Post extends Component {
       </div>
       )
   }
+  openCommentForm () {
+    this.setState({
+      showCommentForm: !this.state.showCommentForm
+    })
+    this.forceUpdate()
+  }
 
   renderRemoveButton () {
     if (this.props.isYourPage) {
       return (
-        <div
-          className={s.removeButton}
+        <div className={s.removeButton}
           onClick={() => this.props.removePost(this.props.id)}>
         </div>
       )
@@ -100,12 +80,9 @@ class Post extends Component {
   }
 
   renderPhotopost () {
-    var isPhoto
-    this.props.attachments &&
-    this.props.attachments.photo &&
-    this.props.attachments.photo !== undefined
-      ? isPhoto = true
-      : isPhoto = false
+    var isPhoto =
+        (this.props.attachments &&
+        this.props.attachments.photo)
 
     if (isPhoto) {
       return (
@@ -129,6 +106,18 @@ class Post extends Component {
     }
     return null
   }
+}
+
+Post.propTypes = {
+  text: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.number,
+  attachments: PropTypes.object,
+  isLiked: PropTypes.bool,
+  comments: PropTypes.array,
+  isYourPage: PropTypes.bool.isRequired,
+  removePost: React.PropTypes.func.isRequired
 }
 
 export default Post

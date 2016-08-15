@@ -5,37 +5,29 @@ import { cpEnding } from '../Toools'
 import Translate from 'react-translate-component'
 
 class Counters extends Component {
-  static propTypes = {
-    visits: PropTypes.number.isRequired,
-    followers: PropTypes.number.isRequired,
-    following: PropTypes.number.isRequired,
-    alias: PropTypes.string.isRequired
-  };
-
   render () {
+    const { visits, followers, following, alias } = this.props
     var pronounce = {
-      visits: cpEnding(this.props.visits, 'counters.visits'),
-      followers: cpEnding(this.props.followers, 'counters.followers'),
-      following: cpEnding(this.props.following, 'counters.following')
+      visits: cpEnding(visits, 'counters.visits'),
+      followers: cpEnding(followers, 'counters.followers'),
+      following: cpEnding(following, 'counters.following')
     }
-    const { visits, followers, following } = this.props
-    var followersLink = `/${this.props.alias}/followers`
-    var followingLink = `/${this.props.alias}/following`
+    console.log(visits, following)
     return (
-      <div className={s.counters}>
-        <div className={s.counter}>
+      <div className='container--right padding-0'>
+        <Link to={`/${alias}`} className={s.counter}>
           <div className={s.counter_count}>{visits}</div>
           <div className={s.counter_title}>
             <Translate content={pronounce.visits} />
           </div>
-        </div>
-        <Link to={followersLink} className={s.counter}>
+        </Link>
+        <Link to={`/${alias}/followers`} className={s.counter}>
           <div className={s.counter_count}>{followers}</div>
           <div className={s.counter_title}>
             <Translate content={pronounce.followers} />
           </div>
         </Link>
-        <Link to={followingLink} className={s.counter}>
+        <Link to={`/${alias}/following`} className={s.counter}>
           <div className={s.counter_count}>{following}</div>
           <div className={s.counter_title}>
             <Translate content={pronounce.following} />
@@ -45,4 +37,12 @@ class Counters extends Component {
       )
   }
 }
+
+Counters.propTypes = {
+  visits: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+  following: PropTypes.number.isRequired,
+  alias: PropTypes.string.isRequired
+}
+
 export default Counters

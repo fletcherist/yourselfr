@@ -3,9 +3,11 @@
   margin-left: 50px;
   margin-right: 80px;
   position: relative;
+  max-width: 320px;
 }
 .actions {
   position: absolute;
+  display: inline-block;
   top: 8px;
   right: 5px;
   height: 30px;

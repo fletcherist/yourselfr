@@ -11,18 +11,8 @@ import { isValidPhoto } from 'components/Toools'
 
 let ccx = cx.bind(s)
 class FeedPost extends Component {
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    likes: PropTypes.number,
-    attachments: PropTypes.object,
-    user: PropTypes.object.isRequired
-  };
-
   constructor (props) {
     super(props)
-    this.displayName = ''
     this.state = {
       isHot: false
     }
@@ -34,11 +24,9 @@ class FeedPost extends Component {
       hot: this.state.isHot
     })
 
-    var isPhoto
-    this.props.attachments &&
-    this.props.attachments.photo &&
-    this.props.attachments.photo !== 'undefined' ? isPhoto = true : isPhoto = false
-
+    var isPhoto =
+        (this.props.attachments &&
+        this.props.attachments.photo)
     const { username, alias } = this.props.user
     return (
       <div className={s.postOne}>
@@ -75,5 +63,14 @@ class FeedPost extends Component {
       </div>
     )
   }
+}
+
+FeedPost.propTypes = {
+  text: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.number,
+  attachments: PropTypes.object,
+  user: PropTypes.object.isRequired
 }
 export default FeedPost

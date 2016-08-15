@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import Counters from '../Counters'
 import {connect} from 'react-redux'
 
 import { Avatar, Username, Status } from './Elements'
@@ -13,49 +12,15 @@ import { actions as userActions } from '../../store/modules/user'
 import s from './Profile.scss'
 
 class Profile extends Component {
-  static propTypes = {
-    username: PropTypes.string.isRequired,
-    alias: PropTypes.string.isRequired,
-    photo: PropTypes.string.isRequired,
-    background: PropTypes.string,
-    online: PropTypes.object,
-    isYourPage: PropTypes.bool.isRequired,
-    status: PropTypes.string,
-    social: PropTypes.object,
-    stats: PropTypes.shape({
-      visits: PropTypes.number.isRequired,
-      followers: PropTypes.number.isRequired,
-      following: PropTypes.number.isRequired
-    }),
-    loadUser: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    isFetching: PropTypes.object.isRequired,
-    isFollowing: PropTypes.bool.isRequired,
-
-    me: PropTypes.object
-  }
-
-  shouldComponentUpdate (nextProps) {
-    // return nextProps.alias !== this.props.alias
-    return true
-  }
-
-  componentWillMount () {
-    document.body.style.minHeight = '101vh'
-  }
-  componentWillUnmount () {
-    document.body.style.minHeight = '400px'
-  }
   render () {
     document.title = `${this.props.username} — Йорселфер`
 
     const { username, alias, photo,
-            status, online, stats,
+            status, online,
             isFollowing, social } = this.props
     return (
       <div>
-        <div
-          className='container--left
+        <div className='container--left
            padding-0 container--transparent container--user'
           id='profile'>
           <div className={s.profile}>
@@ -72,12 +37,6 @@ class Profile extends Component {
               updateCounters
             />
           )}
-          <Counters
-            visits={stats.visits}
-            followers={stats.followers}
-            following={stats.following}
-            alias={alias}
-          />
         </div>
 
         <div className='hide-on-mobile'>
@@ -89,9 +48,6 @@ class Profile extends Component {
             <FriendsSmall />
           </div>
         )}
-        <div className='hide-on-mobile'>
-          <Footer />
-        </div>
       </div>)
   }
 }
@@ -113,6 +69,28 @@ function mapStateToProps (state) {
 
     me: state.auth.user
   }
+}
+
+Profile.propTypes = {
+  username: PropTypes.string.isRequired,
+  alias: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  background: PropTypes.string,
+  online: PropTypes.object,
+  isYourPage: PropTypes.bool.isRequired,
+  status: PropTypes.string,
+  social: PropTypes.object,
+  stats: PropTypes.shape({
+    visits: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired
+  }),
+  loadUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isFetching: PropTypes.object.isRequired,
+  isFollowing: PropTypes.bool.isRequired,
+
+  me: PropTypes.object
 }
 
 export default connect(mapStateToProps, userActions)(Profile)

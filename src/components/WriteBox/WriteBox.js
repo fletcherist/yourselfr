@@ -69,8 +69,6 @@ class WriteBox extends Component {
     setTimeout(() => {
       return this.textField.input.refs.input.focus()
     }, 200)
-    // preview.src = ''
-    // attachBlock.classList.add('hidden')
   }
 
   updateValue (e) {
@@ -79,10 +77,14 @@ class WriteBox extends Component {
 
   render () {
     return (
-      <div>
+      <div className={s.main}>
         <TextField
           style={{margin: 0, padding: 0}}
-          textareaStyle={{paddingLeft: 15, paddingBottom: 0}}
+          textareaStyle={{
+            paddingLeft: 15,
+            paddingRight: 50,
+            paddingBottom: 0
+          }}
           hintStyle={{paddingLeft: 15}}
           underlineStyle={{bottom: 0}}
           hintText='Что ты думаешь обо мне?'
