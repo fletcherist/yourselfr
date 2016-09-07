@@ -20,23 +20,25 @@ class Followers extends Component {
   }
 
   renderSubscribeButton (subscription) {
+    console.log(document.width)
     const { authenticated } = this.props.auth
     const { alias } = subscription
     if (!authenticated) {
       return null
     }
     return (
-      <SubscribeButton
-        alias={alias}
-        isFollowing
-        updateCounters={false}
-        inline />
+      <div className='hide-on-mobile'>
+        <SubscribeButton
+          alias={alias}
+          isFollowing
+          updateCounters={false}
+          inline />
+      </div>
     )
   }
 
   renderSubscription (subscription) {
     const { _id, username, alias, photo } = subscription
-    console.log(_id, username)
     const photoAvatar = isValidPhoto(photo)
     // const myPageInList = follower._id === myUserId
     return (
@@ -55,7 +57,6 @@ class Followers extends Component {
   }
 
   renderList () {
-    console.log('adsasdadsadsadsasdqweewqqwe')
     var subscriptionsList
     const { subscriptions } = this.props
     if (!isEmpty(subscriptions)) {

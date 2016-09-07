@@ -47,19 +47,19 @@ class Comment extends Component {
 
   avatar () {
     let { user } = this.props
+    const photo =
+      user && user.photo
+      ? user.photo
+      : false
     if (user && user.photo) {
       return (
         <Avatar
-          src={isValidPhoto(user.photo)}
+          style={styles.avatar}
+          src={isValidPhoto(photo)}
           color={blue300} backgroundColor={indigo900} />
       )
     }
-    return (
-      <Avatar
-        color={blue300} backgroundColor={indigo900} size={10}>
-        YO
-      </Avatar>
-    )
+    return null
   }
 }
 

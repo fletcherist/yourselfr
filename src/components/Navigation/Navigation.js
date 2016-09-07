@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames/bind'
 import s from './Navigation.scss'
 import { Link } from 'react-router'
-import { connect } from 'react-redux'
-import { loadUser } from '../../store/modules/user'
 import { isValidPhoto } from 'components/Toools'
 
 let cx = classNames.bind(s)
@@ -12,32 +10,38 @@ const active = {
   backgroundColor: 'rgb(246, 246, 246)'
 }
 class Navigation extends Component {
-  static propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object,
-    loadUser: PropTypes.func.isRequired
-  }
   constructor (props) {
     super(props)
+
+    const hideMenu = !this.props.active || false
     this.state = {
-      hideMenu: true
+      hideMenu: hideMenu,
+      hideLogo: true
     }
   }
   toggle () {
-    this.setState({
-      hideMenu: !this.state.hideMenu
-    })
+    this.setState({hideMenu: !this.state.hideMenu})
   }
   render () {
+    const { isAuthenticated, hideLogo, center } = this.props
+    let marginCenter = {
+      margin: 0
+    }
+    console.log(isAuthenticated)
+    marginCenter.margin = center ? '10px auto' : ''
     return (
-      <div className={s.navigation}>
-        {this.props.isAuthenticated && (
+      <div className={s.navigation} style={marginCenter}>
+        {isAuthenticated && (
           <div>
-            <div className={s.yoButton} title='Вернуться на главную - Йорселфер' onClick={this.toggle.bind(this)}></div>
+            <div className={s.yoButton}
+              style={{display: hideLogo ? 'none' : 'block'}}
+              title='Вернуться на главную - Йорселфер' onClick={this.toggle.bind(this)} />
             <div title='Main Menu' className={cx({
               menu: true,
               hiddenMenu: this.state.hideMenu
-            })}>
+            })} style={{
+              marginLeft: center ? '-120px' : ''
+            }}>
               <div className={s.element} onClick={this.toggle.bind(this)}>
                 <Link to={`/${this.props.user.alias}`}>
                   <div title='перейти к профилю' className={s.photo} onClick={() => this.props.loadUser(this.props.user.alias)}>
@@ -89,15 +93,11 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.authenticated,
-    user: state.auth.user
-  }
+Navigation.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  user: PropTypes.object,
+  loadUser: PropTypes.func.isRequired,
+  active: PropTypes.bool
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadUser: (alias) => dispatch(loadUser(alias))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
+
+export default Navigation

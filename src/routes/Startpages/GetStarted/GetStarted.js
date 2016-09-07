@@ -5,6 +5,8 @@ import { Link } from 'react-router'
 
 import Navbar from 'components/Navigation/Navbar'
 import RaisedButton from 'material-ui/RaisedButton'
+import Background from 'components/Background'
+import Navigation from 'components/Navigation'
 
 class GetStarted extends Component {
   static propTypes = {
@@ -14,23 +16,15 @@ class GetStarted extends Component {
     const { username, alias } = this.props.user
     return (
       <div>
+        <Background />
         <Navbar />
         <div className={s.container}>
           <div className={s.middle}>
-            <h1 className={s.greeting}>Рады тебя видеть,<br />
+            <h1 className={s.greeting}>Привет,{' '}
               <Link to={`/${alias}`}>{username}</Link>
             </h1>
-            <div className={s.info}>
-              <div>Йорселфер — это бесконечный поток анонимных мнений о тебе.</div>
-              <div className='rate-empty-line-5'></div>
-              <span><b>Читай</b> мнения о себе и пиши, что думаешь о твоих друзьях. </span><br />
-              <div className='rate-empty-line-2'></div>
-              <span><b>Подписывайся</b> на людей, чтобы узнать, что о них думают другие.</span>
-            </div>
+            <Navigation active hideLogo center />
             <div className='rate-empty-line-2'></div>
-            <Link to='/i/get-personalized'>
-              <RaisedButton fullWidth label='Дальше →' />
-            </Link>
           </div>
         </div>
       </div>
