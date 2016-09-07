@@ -69,10 +69,10 @@
   border-radius: 3px;
   padding-top: 10px;
   margin-bottom: 15px;
-  max-width: 260px;
+  max-width: 250px;
   width: 100%;
   @media screen and (max-width: 1500px){
-    max-width: 250px;
+    max-width: 240px;
     width: 100%;
     display: block !important;
   }
@@ -99,7 +99,6 @@
   display: inline-block;
   border-top: 1px solid $borderColor;
   padding-bottom: 10px !important;
-  border-bottom: 0px;
 
   @media screen and (max-width: 600px) {
     min-height: 0px;
