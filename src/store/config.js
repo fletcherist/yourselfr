@@ -7,8 +7,12 @@ if (__PROD__) {
   http = 'http://localhost:80'
 }
 
-var http = 'http://yoursel.fr'
-var ip = 'http://185.18.54.156'
+http = 'http://yoursel.fr'
+ip = 'http://185.18.54.156'
+// http = 'https://yourselfr-api.herokuapp.com'
+// ip = 'https://yourselfr-api.herokuapp.com'
+// ip = 'http://localhost:5000'
+// http = 'http://localhost:5000'
 
 export const config = {
   http: http,

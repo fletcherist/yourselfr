@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import s from './SubscribeButton.scss'
 
 import FlatButton from 'material-ui/FlatButton'
-import Favorite from 'material-ui/svg-icons/action/favorite'
 
 class SubscribeButton extends Component {
   constructor (props) {
@@ -17,19 +16,27 @@ class SubscribeButton extends Component {
   render () {
     var { isFollowing } = this.state
     var label = ''
-    label = isFollowing ? 'читаю' : 'читать'
+    label = isFollowing ? 'подписки' : 'подписаться'
     return (
       <div className={this.props.inline ? s.inline : s.subscribe}>
         <FlatButton
-          label={label} primary={this.props.isFollowing}
-          labelPosition="before"
+          style={{
+            border: '2px solid',
+            backgroundColor: 'white',
+            padding: 0,
+            margin: 0,
+            minWidth: 160,
+            textTransform: 'lowercase'
+          }}
+          className={s.subscribe}
+          primary={this.props.isFollowing}
           onClick={this.subscribe}
-          fullWidth
-          icon={<Favorite viewBox='0 0 35 25' />} />
+          label={label}
+          fullWidth />
       </div>
     )
   }
-  subscribe = () => {
+  subscribe = (e) => {
     this.props.subscribe(this.props.alias, this.props.updateCounters)
     this.setState({
       isFollowing: !this.state.isFollowing

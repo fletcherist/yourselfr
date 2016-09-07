@@ -98,7 +98,7 @@
   // min-height: $minHeight;
   display: inline-block;
   border-top: 1px solid $borderColor;
-  padding-bottom: 30px;
+  padding-bottom: 10px !important;
   border-bottom: 0px;
 
   @media screen and (max-width: 600px) {
@@ -161,7 +161,7 @@
 }
 
 .padding-0 {
-  padding: 0px !important;
+  padding: 0px;
 }
 .padding-top-0 {
   padding-top: 0px;

@@ -77,20 +77,12 @@
 }
 
 .online {
-	margin-bottom: -8px;
-	padding-left: 8px;
+	margin-bottom: 2px;
+	margin-left: 8px;
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 50px;
-	color: $yoGrey;
-	// background-color: $yoColor;
-	animation: online;
-	animation-duration: 3s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	@keyframes online {
-	    0% {color: $yoGrey}
-	    50% {color: #F06292}
-			100% {color: $yoGrey}
-	}
+	height: 10px;
+	width: 10px;
+	background-color: $yoColor;
 }
