@@ -8,7 +8,7 @@ if (__PROD__) {
 }
 
 http = 'http://yoursel.fr'
-ip = 'http://185.18.54.156'
+ip = 'http://188.166.7.26'
 // http = 'https://yourselfr-api.herokuapp.com'
 // ip = 'https://yourselfr-api.herokuapp.com'
 // ip = 'http://localhost:5000'
