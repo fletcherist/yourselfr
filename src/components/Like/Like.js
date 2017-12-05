@@ -54,10 +54,7 @@ class Like extends Component {
       <a className={cx({['like-button']: true, liked: this.state.active
       })} onClick={this.toggle.bind(this)}>
         {label}
-        <span className={s['like-icon']}>
-          <div className={s['heart-animation-1']} />
-          <div className={s['heart-animation-2']} />
-        </span>
+        {active}
       </a>
     )
   }

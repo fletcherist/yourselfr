@@ -6,7 +6,7 @@ import SubscribeButton from '../SubscribeButton'
 import SocialNetworks from '../SocialNetworks'
 import Footer from '../Footer'
 import Megaphone from '../Megaphone'
-// import AttachEmail from '../AttachEmail'
+import AttachEmail from '../AttachEmail'
 import FriendsSmall from '../FriendsSmall'
 import { actions as userActions } from '../../store/modules/user'
 import s from './Profile.scss'
@@ -46,6 +46,7 @@ class Profile extends Component {
           <div className='hide-on-mobile'>
             <Megaphone alias={alias} username={username} />
             <FriendsSmall />
+            <AttachEmail />
           </div>
         )}
       </div>)

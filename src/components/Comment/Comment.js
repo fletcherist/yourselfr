@@ -5,6 +5,7 @@ import TickTime from '../Post/TickTime'
 
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
+import { config } from 'store/config'
 
 import { blue300, indigo900 } from 'material-ui/styles/colors'
 import styles from './styles'
@@ -47,10 +48,12 @@ class Comment extends Component {
 
   avatar () {
     let { user } = this.props
-    const photo =
+    let photo =
       user && user.photo
       ? user.photo
       : false
+    if (photo.match(/upload\/avatar/)) photo = `${config.http}/upload/default-avatar/10.jpg`
+    if (photo.match(/yoursel/)) photo = `${config.http}/upload/default-avatar/10.jpg`
     if (user && user.photo) {
       return (
         <Avatar

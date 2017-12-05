@@ -31,7 +31,7 @@ class NavBar extends Component {
     return (
       <div className={s.navbar}>
         <div className={s.wrap}>
-          <Navigation />
+          <Navigation {...this.props} />
           <div className={s.item}>
             <Link to={`/${alias}`}>{username}</Link>
           </div>
@@ -54,7 +54,8 @@ class NavBar extends Component {
 const mapStateToProps = state => ({
   alias: state.auth.user.alias,
   authenticated: state.auth.authenticated,
-  username: state.auth.user.username
+  username: state.auth.user.username,
+  user: state.auth.user
 })
 
 // const mapDispatchToProps = dispatch => ({

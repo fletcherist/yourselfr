@@ -18,7 +18,7 @@ class Background extends Component {
       <div
         className='responsive_crop_fixed'
         style={{
-          background: `url(${config.http}/upload/background/${this.props.background})`
+          background: `url(${this.props.background})`
         }}
         id='background'>
       </div>

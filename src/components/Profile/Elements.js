@@ -3,14 +3,19 @@ import s from './Profile.scss'
 import { Link } from 'react-router'
 import { isValidPhoto } from '../Toools'
 import Online from 'material-ui/svg-icons/image/lens'
+import { config } from 'store/config'
 
-export const Avatar = ({photo, alias}) => (
-  <div className={s.avatar}>
-    <Link to={`/${alias}`}>
-      <img src={isValidPhoto(photo)} />
-    </Link>
-  </div>
-)
+export const Avatar = ({photo, alias}) => {
+  if (photo.match(/upload\/avatar/)) photo = `${config.http}/upload/default-avatar/10.jpg`
+  if (photo.match(/yoursel/)) photo = `${config.http}/upload/default-avatar/10.jpg`
+  return (
+    <div className={s.avatar}>
+      <Link to={`/${alias}`}>
+        <img src={isValidPhoto(photo)} />
+      </Link>
+    </div>
+  )
+}
 Avatar.propTypes = {
   photo: PropTypes.string.isRequired,
   alias: PropTypes.string.isRequired

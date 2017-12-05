@@ -6,6 +6,7 @@ import NoFollowers from 'components/NoData/NoFollowers'
 import Avatar from 'material-ui/Avatar'
 import { List, ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
+import { config } from 'store/config'
 
 class Followers extends Component {
   componentWillUpdate (nextProps) {
@@ -39,7 +40,8 @@ class Followers extends Component {
 
   renderSubscription (subscription) {
     const { _id, username, alias, photo } = subscription
-    const photoAvatar = isValidPhoto(photo)
+    let photoAvatar = isValidPhoto(photo)
+    if (photoAvatar.match(/upload\/avatar/)) photoAvatar = `${config.http}/upload/default-avatar/10.jpg`
     // const myPageInList = follower._id === myUserId
     return (
       <div>

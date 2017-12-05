@@ -3,6 +3,7 @@ import classNames from 'classnames/bind'
 import s from './Navigation.scss'
 import { Link } from 'react-router'
 import { isValidPhoto } from 'components/Toools'
+import { loadUser } from '../../store/modules/user'
 
 let cx = classNames.bind(s)
 
@@ -23,15 +24,15 @@ class Navigation extends Component {
     this.setState({hideMenu: !this.state.hideMenu})
   }
   render () {
-    const { isAuthenticated, hideLogo, center } = this.props
+    const { authenticated, hideLogo, center } = this.props
     let marginCenter = {
       margin: 0
     }
-    console.log(isAuthenticated)
+    console.log(authenticated)
     marginCenter.margin = center ? '10px auto' : ''
     return (
       <div className={s.navigation} style={marginCenter}>
-        {isAuthenticated && (
+        {this.props.authenticated && (
           <div>
             <div className={s.yoButton}
               style={{display: hideLogo ? 'none' : 'block'}}
@@ -83,7 +84,7 @@ class Navigation extends Component {
             </div>
           </div>
         )}
-        {!this.props.isAuthenticated && (
+        {!this.props.authenticated && (
           <Link to='/signup'>
             <div className={s.yoButton} title='Вернуться на главную - Йорселфер' onClick={this.toggle.bind(this)}></div>
           </Link>
@@ -94,7 +95,7 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  authenticated: PropTypes.bool.isRequired,
   user: PropTypes.object,
   loadUser: PropTypes.func.isRequired,
   active: PropTypes.bool
