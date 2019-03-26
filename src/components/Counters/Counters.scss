@@ -1,37 +1,37 @@
-@import 'variables';
+@import "variables";
 .counters {
-	background-color: white;
+  background-color: white;
 }
 .counter {
-	width: 33.333%;
-	display: inline-block;
-	padding: 8px 0 12px 3px;
-	text-align: center;
-	text-decoration: none;
-	color: black;
-	border-radius: 3px;
-	border-radius: 0px 0px 2px 0px;
-	cursor: pointer;
+  width: 33.333%;
+  display: inline-block;
+  padding: 8px 0 12px 3px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  border-radius: 3px;
+  border-radius: 0px 0px 2px 0px;
+  cursor: pointer;
 }
 
 .counter_count {
-	text-align: center;
-	font-size: 22px;
-	color: black;
-	font-weight: lighter;
+  text-align: center;
+  font-size: 22px;
+  color: black;
+  font-weight: lighter;
 }
 .counter_title {
-	color: $yoGrey;
-	font-weight: 500;
-	font-size: 10px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
+  color: $yoGrey;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .highlighted {
-	background-color: #f2fdff;
+  background-color: #f2fdff;
 }
 
 .activeClass {
-	background-color: rgb(246, 246, 246);
+  background-color: rgb(246, 246, 246);
 }
